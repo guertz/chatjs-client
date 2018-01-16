@@ -1,0 +1,18 @@
+{
+    "reference": "string:16",
+    "destination": "string:16",
+    "from": "string:16",
+    "creator": "string:16", // == from
+    "jsonArgs": {
+        "from": {
+            "name": "string",
+            "image": "string:url",
+            "id": "string:16" // == from
+        },
+        "destination": {
+            "name": "string",
+            "image": "string:url",
+            "id": "string:16"
+        }
+    }
+}

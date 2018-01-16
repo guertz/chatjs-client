@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/main.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8cc.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// Librerie per la funzionalità dei websocket richieste dalle piattaforme windows</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef WIN32</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// #pragma comment( lib, &quot;ws2_32&quot; )</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">  #include &lt;WinSock2.h&gt;</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="web__ui_8h.html">common/helpers/web_ui.h</a>&quot;</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="app_8h.html">app/app.h</a>&quot;</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespace_web_u_i.html">WebUI</a>;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifdef WIN32</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// Definizione del metodo main per le piattaforme windows</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> WINAPI WinMain(HINSTANCE hInt, HINSTANCE hPrevInst, LPSTR lpCmdLine, <span class="keywordtype">int</span> nCmdShow) </div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// TODO: Only with debug mask</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Aggancia il terminale su windows per poter aver accesso ai log</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// seppure in applicazioni GUI</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// Necessario perchè la console è probabilmente scanciata da webview.h</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span>(AttachConsole(ATTACH_PARENT_PROCESS) || AllocConsole()){</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    freopen(<span class="stringliteral">&quot;CONOUT$&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>, stdout);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    freopen(<span class="stringliteral">&quot;CONOUT$&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>, stderr);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// Configurazione socket aggiuntive richieste dalle piattaforme windows</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  INT rc;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  WSADATA wsaData;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  rc = WSAStartup(MAKEWORD(2, 2), &amp;wsaData);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// TODO: validate if rc!=0</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="main_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   69</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() </div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">// Approfondire visualizzando il sorgente per le piattaforme windows</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">Webview</a>* webview = <a class="code" href="namespace_web_u_i.html#a2a6092fe8ec4e292475bb7df5bc69a02">Create</a>(); <span class="comment">// WebUI::Create =&gt; Inizializzazione webview</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  </div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">App::Bootstrap</a>(); <span class="comment">// Metodo Inizializzazione</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="comment">// TODO: prima di tutto, lei ad invocare create ed Inject ?</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  </div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="namespace_web_u_i.html#a336686d1be740ebc58cc3b01dafa9f8e">Inject</a>(); <span class="comment">// WebUI::Inject =&gt; Injecting dello stile e degli script JS</span></div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// Inserito dopo App::Bootstrap perchè prima devono essere registrati gli eventi</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">// di callback che bindano una funzione Javascript al metodo invoke</span></div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">while</span> (webview_loop(webview, 1) == 0) </div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      ; <span class="comment">// Application Loop</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// TODO: Viene terminato quando viene schiacciata la X?</span></div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  webview_exit(webview); <span class="comment">// Chiusura applicazione una volta usciti dal loop</span></div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">App::Destroy</a>(); <span class="comment">// Metodo Distruttore</span></div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  </div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">  #ifdef WIN32</span></div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    WSACleanup(); <span class="comment">// Necessario sulle piattaforme windows</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                  <span class="comment">// per terminare i socket in modo pulito</span></div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">  #endif</span></div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div><div class="ttc" id="namespace_app_html_a7effd8d80a014a8ca3cdf39c2870c9e6"><div class="ttname"><a href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">App::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Metodo della registrazione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="app_8cc_source.html#l00045">app.cc:45</a></div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="main_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cc_source.html#l00069">main.cc:69</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a336686d1be740ebc58cc3b01dafa9f8e"><div class="ttname"><a href="namespace_web_u_i.html#a336686d1be740ebc58cc3b01dafa9f8e">WebUI::Inject</a></div><div class="ttdeci">void Inject()</div><div class="ttdoc">Metodo per iniettare gli script e gli stili nella webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00141">web_ui.cc:141</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a9c400b172310dd01b515c51d27379615"><div class="ttname"><a href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">WebUI::Webview</a></div><div class="ttdeci">struct webview Webview</div><div class="ttdoc">Definizione della struttura dati struct Webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8h_source.html#l00012">web_ui.h:12</a></div></div>
+<div class="ttc" id="web__ui_8h_html"><div class="ttname"><a href="web__ui_8h.html">web_ui.h</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html"><div class="ttname"><a href="namespace_web_u_i.html">WebUI</a></div><div class="ttdoc">Funzioni di supporto e metodi elementari e creazione della webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00036">web_ui.cc:36</a></div></div>
+<div class="ttc" id="namespace_app_html_a66dd2456f5144a9747d6ebb291d9ead4"><div class="ttname"><a href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">App::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Metodo della distruzione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="app_8cc_source.html#l00061">app.cc:61</a></div></div>
+<div class="ttc" id="app_8h_html"><div class="ttname"><a href="app_8h.html">app.h</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a2a6092fe8ec4e292475bb7df5bc69a02"><div class="ttname"><a href="namespace_web_u_i.html#a2a6092fe8ec4e292475bb7df5bc69a02">WebUI::Create</a></div><div class="ttdeci">Webview * Create()</div><div class="ttdoc">Metodo per la creazione della finestra webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00095">web_ui.cc:95</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/providers/chats/chat.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_306d1f7c2316132a5a1b654ae206deb5.html">providers</a></li><li class="navelem"><a class="el" href="dir_b4422c3ff2750e5a37c3c8a900dcc6a1.html">chats</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">chat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="chat_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef chat_definition_h</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define chat_definition_h</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2">ACK_LEVEL</a> {</div><div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a757971c0bc5a1972d5f1b1be2c0e2087">    5</a></span>&#160;    <a class="code" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a757971c0bc5a1972d5f1b1be2c0e2087">WAITING</a>,</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2af29619d9240b20155ab50bc3beb3947b">    6</a></span>&#160;    <a class="code" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2af29619d9240b20155ab50bc3beb3947b">SENT</a>,</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a1cf265da0334753368223d47f242a8df">    7</a></span>&#160;    <a class="code" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a1cf265da0334753368223d47f242a8df">RECEIVED</a></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;};</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// const data = true!!</span></div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structmessage__block__data.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structmessage__block__data.html">message_block_data</a> {</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structmessage__block__data.html#a931be6b56c704e29dcbfcc10615d9703">   12</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structmessage__block__data.html#a931be6b56c704e29dcbfcc10615d9703">content</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structmessage__block__data.html#ac833d61f930105388ca939458c2f4eac">   13</a></span>&#160;    <a class="code" href="chat_8h.html#a163b02da955abcc41c04281ddba948a2">ACK_LEVEL</a> <a class="code" href="structmessage__block__data.html#ac833d61f930105388ca939458c2f4eac">status</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structmessage__block__data.html#a0a96d9b0ffe8e0f0575a49747063865d">   14</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structmessage__block__data.html#a0a96d9b0ffe8e0f0575a49747063865d">isMe</a>;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structmessage__block__data.html#ad43542454be2b89f33bb087f7e59d028">   15</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structmessage__block__data.html#ad43542454be2b89f33bb087f7e59d028">avatar</a>;</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structmessage__block__data.html#a9200ea6b128b7a625b882041bac4ec99">   16</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structmessage__block__data.html#a9200ea6b128b7a625b882041bac4ec99">time</a>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="chat_8h.html#aea9d95c49b37a599d7518b0543d2a814">   19</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmessage__block__data.html">message_block_data</a> <a class="code" href="structmessage__block__data.html">message_block</a>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="chat_8h_html_a163b02da955abcc41c04281ddba948a2a757971c0bc5a1972d5f1b1be2c0e2087"><div class="ttname"><a href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a757971c0bc5a1972d5f1b1be2c0e2087">WAITING</a></div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00005">chat.h:5</a></div></div>
+<div class="ttc" id="structmessage__block__data_html"><div class="ttname"><a href="structmessage__block__data.html">message_block_data</a></div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00011">chat.h:11</a></div></div>
+<div class="ttc" id="structmessage__block__data_html_ad43542454be2b89f33bb087f7e59d028"><div class="ttname"><a href="structmessage__block__data.html#ad43542454be2b89f33bb087f7e59d028">message_block_data::avatar</a></div><div class="ttdeci">char * avatar</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00015">chat.h:15</a></div></div>
+<div class="ttc" id="structmessage__block__data_html_ac833d61f930105388ca939458c2f4eac"><div class="ttname"><a href="structmessage__block__data.html#ac833d61f930105388ca939458c2f4eac">message_block_data::status</a></div><div class="ttdeci">ACK_LEVEL status</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00013">chat.h:13</a></div></div>
+<div class="ttc" id="chat_8h_html_a163b02da955abcc41c04281ddba948a2af29619d9240b20155ab50bc3beb3947b"><div class="ttname"><a href="chat_8h.html#a163b02da955abcc41c04281ddba948a2af29619d9240b20155ab50bc3beb3947b">SENT</a></div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00006">chat.h:6</a></div></div>
+<div class="ttc" id="structmessage__block__data_html_a0a96d9b0ffe8e0f0575a49747063865d"><div class="ttname"><a href="structmessage__block__data.html#a0a96d9b0ffe8e0f0575a49747063865d">message_block_data::isMe</a></div><div class="ttdeci">bool isMe</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00014">chat.h:14</a></div></div>
+<div class="ttc" id="chat_8h_html_a163b02da955abcc41c04281ddba948a2"><div class="ttname"><a href="chat_8h.html#a163b02da955abcc41c04281ddba948a2">ACK_LEVEL</a></div><div class="ttdeci">ACK_LEVEL</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00004">chat.h:4</a></div></div>
+<div class="ttc" id="structmessage__block__data_html_a9200ea6b128b7a625b882041bac4ec99"><div class="ttname"><a href="structmessage__block__data.html#a9200ea6b128b7a625b882041bac4ec99">message_block_data::time</a></div><div class="ttdeci">char * time</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00016">chat.h:16</a></div></div>
+<div class="ttc" id="chat_8h_html_a163b02da955abcc41c04281ddba948a2a1cf265da0334753368223d47f242a8df"><div class="ttname"><a href="chat_8h.html#a163b02da955abcc41c04281ddba948a2a1cf265da0334753368223d47f242a8df">RECEIVED</a></div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00007">chat.h:7</a></div></div>
+<div class="ttc" id="structmessage__block__data_html_a931be6b56c704e29dcbfcc10615d9703"><div class="ttname"><a href="structmessage__block__data.html#a931be6b56c704e29dcbfcc10615d9703">message_block_data::content</a></div><div class="ttdeci">char * content</div><div class="ttdef"><b>Definition:</b> <a href="chat_8h_source.html#l00012">chat.h:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

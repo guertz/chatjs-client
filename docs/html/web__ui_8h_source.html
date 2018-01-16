@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/common/helpers/web_ui.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_4f709cff4be7695bbf6beef1aa269e6a.html">helpers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">web_ui.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="web__ui_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;webview.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_web_u_i.html">WebUI</a> {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">// TODO: Definizione è un termine scorretto? (Dichiarazione?)</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment">// TODO: Specifica da quali attributi è composta</span></div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">   12</a></span>&#160;<span class="comment"></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>webview <a class="code" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">Webview</a>;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// TODO: Nome methods è ambiguo</span></div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespace_web_u_i.html#acdb28be453e03e0e0dd5606c06719e4a">   18</a></span>&#160;<span class="comment"></span>    <span class="keyword">typedef</span> map&lt;string , void(*)(const char *argc)&gt; <a class="code" href="namespace_web_u_i.html#acdb28be453e03e0e0dd5606c06719e4a">Methods</a>; </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespace_web_u_i.html#a6e5df5bc150bd5db5015fda2df19d9bb">Register</a>(<span class="keywordtype">string</span> callback_name, <span class="keywordtype">void</span> (*callback_fn)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">Webview</a>* <a class="code" href="namespace_web_u_i.html#a2a6092fe8ec4e292475bb7df5bc69a02">Create</a>();</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespace_web_u_i.html#a336686d1be740ebc58cc3b01dafa9f8e">Inject</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">Dispatch</a>(<a class="code" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">Webview</a> *w, <span class="keywordtype">void</span> *voidPtrChar );</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">Webview</a>* <a class="code" href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">GetContext</a>();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// namespace Events {</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">//     void OnResize(const char* args);</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// }</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div><div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a70f551c8ec74051818a6096aa62664fc"><div class="ttname"><a href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a></div><div class="ttdeci">void Dispatch(Webview *w, void *voidPtrChar)</div><div class="ttdoc">Metodo helper per eseguire istruzioni JavaScript sulla webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00126">web_ui.cc:126</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a336686d1be740ebc58cc3b01dafa9f8e"><div class="ttname"><a href="namespace_web_u_i.html#a336686d1be740ebc58cc3b01dafa9f8e">WebUI::Inject</a></div><div class="ttdeci">void Inject()</div><div class="ttdoc">Metodo per iniettare gli script e gli stili nella webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00141">web_ui.cc:141</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a9c400b172310dd01b515c51d27379615"><div class="ttname"><a href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">WebUI::Webview</a></div><div class="ttdeci">struct webview Webview</div><div class="ttdoc">Definizione della struttura dati struct Webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8h_source.html#l00012">web_ui.h:12</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_ac732703a18b61f3cd75283fa6842d726"><div class="ttname"><a href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a></div><div class="ttdeci">Webview * GetContext()</div><div class="ttdoc">Metodo per ottenere il riferimento all&amp;#39;istanza della Webview creata. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00155">web_ui.cc:155</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html"><div class="ttname"><a href="namespace_web_u_i.html">WebUI</a></div><div class="ttdoc">Funzioni di supporto e metodi elementari e creazione della webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00036">web_ui.cc:36</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_acdb28be453e03e0e0dd5606c06719e4a"><div class="ttname"><a href="namespace_web_u_i.html#acdb28be453e03e0e0dd5606c06719e4a">WebUI::Methods</a></div><div class="ttdeci">map&lt; string, void(*)(const char *argc)&gt; Methods</div><div class="ttdoc">Definizione della struttura dati map che mappa ad ogni stringa un puntatore a funzione. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8h_source.html#l00018">web_ui.h:18</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a6e5df5bc150bd5db5015fda2df19d9bb"><div class="ttname"><a href="namespace_web_u_i.html#a6e5df5bc150bd5db5015fda2df19d9bb">WebUI::Register</a></div><div class="ttdeci">void Register(string callback_name, void(*callback_fn)(const char *))</div><div class="ttdoc">Variabile in cui vengono memorizzate le associazioni nome &lt;=&gt; puntatore a funzione (callback) ...</div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00046">web_ui.cc:46</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a2a6092fe8ec4e292475bb7df5bc69a02"><div class="ttname"><a href="namespace_web_u_i.html#a2a6092fe8ec4e292475bb7df5bc69a02">WebUI::Create</a></div><div class="ttdeci">Webview * Create()</div><div class="ttdoc">Metodo per la creazione della finestra webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00095">web_ui.cc:95</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
