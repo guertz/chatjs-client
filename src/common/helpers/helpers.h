@@ -36,7 +36,7 @@ namespace Helpers {
         */
         char *deserialize(void *charPtrVoid);
 
-        const char* const parse_asset(char* asset);
+        const char* parse_asset(const char* );
         // TODO:
             // Gestione struct
             // Gestione json structure

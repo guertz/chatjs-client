@@ -5,11 +5,10 @@
 
 #include "chat-details.h"
 
-#include "common/helpers/web_ui.h"
+#include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
 
 #include "providers/chats/chats.h"
-#include "providers/session/authstate.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -110,7 +109,7 @@ namespace ChatDetails {
             
             json jChatStatus = json::parse(chatStatus);
 
-                jChatStatus["selected"] = jChatInput["params"]["ref"];
+                jChatStatus["selected"] = jChatInput.at("ref");
                 jChatStatus["last-message"] = "undefined";
 
             chatStatus = safestr::duplicate(jChatStatus.dump().c_str());
@@ -138,7 +137,7 @@ namespace ChatDetails {
             )"_json;
 
             jExtern["reference"] = jChat["selected"].get<string>();
-            jExtern["text"] = jArgs["params"]["text"].get<string>();
+            jExtern["text"] = jArgs.at("text").get<string>();
 
             ChatState::Chat::SendAMessage(safestr::duplicate(jExtern.dump().c_str()));
 
@@ -162,6 +161,8 @@ namespace ChatDetails {
                 }        
 
             // }
+
+            safeptr::free_block(emptyJson);
         }
     }
 }

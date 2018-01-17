@@ -11,6 +11,7 @@ window.stylify = function(multiline, css) {
 }
 
 window.consolelog = function(event, message) {
+    // create a type safe method that will always pass a string!!
     window.external.invoke_(JSON.stringify(
         {
             fn: 'WebUI::Log', 

@@ -37,7 +37,7 @@
 
 #include <iostream>
 #include <assert.h>
-#include "common/helpers/web_ui.h"
+#include "common/web-ui/web-ui.h"
 #include "app/app.h"
 
 using namespace std;
@@ -66,6 +66,7 @@ int main() {
     cout<<endl;
   #endif
 
+  // Move all to app bootstrap?
   Webview* webview = Create(); // WebUI::Create => Inizializzazione webview
   
   App::Bootstrap(); // Metodo inizializzare la app

@@ -3,13 +3,14 @@
 #include "chats.h"
 #include "chat.h"
 #include "providers/sockets/wscustom.h"
-#include "providers/session/authstate.h"
+#include "states/auth-state/auth-state.h"
 #include "common/helpers/helpers.h"
 
 using json = nlohmann::json;
 using namespace std;
 using namespace ws;
 using namespace Helpers;
+using namespace States;
 
 namespace ChatState {
 
@@ -211,7 +212,7 @@ namespace ChatState {
             
             switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
                 case AuthState::AUTHSIGNAL::LOGIN:
-                    if(!jDat["failure"].get<bool>()){
+                    if(jDat["online"].get<bool>()){
                         
                         Sockets::Init(safestr::duplicate(jDat["_id"].get<string>().c_str()));
                     }

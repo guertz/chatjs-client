@@ -1,7 +1,3 @@
-#include <map>
-#include "common/helpers/web_ui.h"
-#include "providers/sockets/wscustom.h"
-
 namespace ChatDetails {
 
     void Bootstrap();

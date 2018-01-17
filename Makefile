@@ -16,11 +16,11 @@ DIR_BUILD_SPACE=.build
 #	2° line are app components connected to a .cc page or component
 #
 # Both has to be manually updated: see helpers at bottom
-ASSETS=	$(DIR_ASSETS_SRC)/index.html.o $(DIR_ASSETS_SRC)/appinit.js.o $(DIR_ASSETS_SRC)/picodom.js.o $(DIR_ASSETS_SRC)/picostyle.js.o $(DIR_ASSETS_SRC)/style.css.o $(DIR_ASSETS_SRC)/stylew3.css.o \
-		src/app/app.ojs src/common/modal/modal.ojs src/modals/auth-modal/auth-modal.ojs
+ASSETS=	$(DIR_ASSETS_SRC)/index.html.o $(DIR_ASSETS_SRC)/appinit.js.o $(DIR_ASSETS_SRC)/style.css.o $(DIR_ASSETS_SRC)/stylew3.css.o \
+		src/app/app.ojs src/directives/modals/modals.ojs src/directives/modals/auth-modal/auth-modal.ojs
 
 # Compiled parts that compose the whole app
-APP=src/app/app.o src/common/helpers/base64.o src/common/helpers/helpers.o src/common/helpers/logger.o src/common/helpers/web_ui.o src/common/modal/modal.o src/common/navbar/navbar.o src/common/toast/toast.o src/main.o src/modals/auth-modal/auth-modal.o src/modals/chat-modal/chat-modal.o src/navbar/profile/profile.o src/pages/chat-details/chat-details.o src/pages/chat-list/chat-list.o src/providers/chats/chats.o src/providers/session/authstate.o src/providers/sockets/easywsclient.o src/providers/sockets/wscustom.o
+APP=src/app/app.o src/common/base64/base64.o src/common/helpers/helpers.o src/common/logger/logger.o src/common/web-ui/web-ui.o src/directives/modals/auth-modal/auth-modal.o src/directives/modals/chat-modal/chat-modal.o src/directives/modals/connectivity/connectivity.o src/directives/modals/modals.o src/directives/navbar/navbar.o src/directives/navbar/profile/profile.o src/directives/toast/toast.o src/main.o src/pages/chat-details/chat-details.o src/pages/chat-list/chat-list.o src/providers/chats/chats.o src/providers/sockets/easywsclient.o src/providers/sockets/wscustom.o src/states/auth-state/auth-state.o src/states/auth-state/definitions/auth.o src/states/auth-state/definitions/user.o
 
 # Flags that will be added to CXXFLAGS for the release build stage
 RELEASE_FLAGS= -DNDEBUG
@@ -131,8 +131,6 @@ assets:
 	test -d $(DIR_ASSETS_SRC) || mkdir -p $(DIR_ASSETS_SRC)
 	ld -r -b binary -o $(DIR_ASSETS_SRC)/appinit.js.o   $(DIR_ASSETS)/appinit.js
 	ld -r -b binary -o $(DIR_ASSETS_SRC)/index.html.o   $(DIR_ASSETS)/index.html
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/picodom.js.o   $(DIR_ASSETS)/picodom.js
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/picostyle.js.o $(DIR_ASSETS)/picostyle.js
 	ld -r -b binary -o $(DIR_ASSETS_SRC)/style.css.o    $(DIR_ASSETS)/style.css
 	ld -r -b binary -o $(DIR_ASSETS_SRC)/stylew3.css.o  $(DIR_ASSETS)/stylew3.css
 
@@ -160,6 +158,7 @@ check-env:
 
 # Build the application based on the target definition.
 # *It will clean and recompile all APP objects
+# *Also use when changing env.h
 # 
 # Parent phony targets:
 #	clean
@@ -179,10 +178,9 @@ refresh-assets: assets build
 # *It will refresh assets translated in depend step
 # 
 # Parent phony targets:
-#	clean
 #	assets
-#	build (see for advice)
-refresh-all: clean assets build
+#	refresh-app
+refresh-all: assets refresh-app
 	
 # ----------------- #
 # ----  CLEAN  ---- #

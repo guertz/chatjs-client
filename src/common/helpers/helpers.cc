@@ -32,7 +32,7 @@ namespace Helpers {
             return reinterpret_cast<char*>(charPtrVoid);
         }
 
-        const char* const parse_asset(char* asset){
+        const char* parse_asset(const char* asset){
             return reinterpret_cast<const char* const>(asset);
         }
 

@@ -7,12 +7,12 @@
 
 #include "chat-list.h"
 #include "pages/chat-details/chat-details.h"
-#include "modals/chat-modal/chat-modal.h"
+#include "directives/modals/chat-modal/chat-modal.h"
 
-#include "common/helpers/web_ui.h"
+#include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
 
-#include "providers/session/authstate.h"
+#include "states/auth-state/auth-state.h"
 #include "providers/chats/chats.h"
 
 
@@ -21,6 +21,7 @@ using namespace std;
 using namespace ws;
 using namespace WebUI;
 using namespace Helpers;
+using namespace States;
 
 // ToastifyNewChat(safestr::duplicate(Chatters["jsonArgs"]["from"].dump().c_str()));
 // void ToastifyNewChat(const char* args){
@@ -66,7 +67,7 @@ namespace ChatList {
             
             switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
                 case AuthState::AUTHSIGNAL::LOGIN:
-                    if(!jDat["failure"].get<bool>()){
+                    if(jDat["online"].get<bool>()){
                         
                         const char* BUNDLE = js::compact(80, 3, "makeAToast('Bentornato ", jDat["name"].get<string>().c_str(), "')");
 
