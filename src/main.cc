@@ -38,6 +38,7 @@
 #include <iostream>
 #include <assert.h>
 #include "common/web-ui/web-ui.h"
+#include "common/logger/logger.h"
 #include "app/app.h"
 
 using namespace std;
@@ -77,9 +78,12 @@ int main() {
             // Inserito dopo App::Bootstrap perchè bootstrap registra il metodo
             // di callback Ready invocato dopo aver iniettato queste risorse
 
+  log_base("WEB", "loop");
+  
   while (webview_loop(webview, 1) == 0) 
       ; // Application Loop
 
+  log_base("WEB", "error");
   webview_exit(webview);
 
   App::Destroy(); // Metodo Distruttore

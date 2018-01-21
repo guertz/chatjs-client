@@ -1,6 +1,6 @@
 #include <iostream>
 #include "auth-state.h"
-#include "providers/sockets/wscustom.h"
+#include "protocol/sockets/wscustom.h"
 #include "common/helpers/helpers.h"
 #include <json.hpp>
 
@@ -14,7 +14,9 @@ using namespace Helpers;
 namespace States {
     namespace AuthState {
 
-        static Socket *authSocket = 0; // remember to clean up
+        void receiveLoginAction(const char* args);
+
+        static Socket authSocket  ("users", receiveLoginAction);
         static bool pending       = false;
         static bool loggedIn      = false;
         static char* cached       = 0;
@@ -42,7 +44,16 @@ namespace States {
 
         void Bootstrap() {
 
-            authSocket = new Socket("users",false);
+            try {
+                authSocket.compute();
+            }catch(...) {
+                log_base("AuthState", "socket error");
+            }
+
+        }
+
+        void Destroy() {
+            authSocket.stop();
         }
 
 
@@ -63,7 +74,7 @@ namespace States {
                 jIntern["attributes"]["action"] = AuthState::AUTHSIGNAL::LOGIN;
 
                 // if success not found, handle exception
-                if(!jIntern.at("success").get<int>()){
+                if(!jIntern.at("content").at("success").get<int>()){
                     
                     jIntern["attributes"]["online"] = true;
                     AuthUserDefinition::AuthUser auth_success = jIntern.at("attributes");
@@ -86,12 +97,6 @@ namespace States {
                 
                 notify(safestr::duplicate(report.dump().c_str()));
 
-                // TODO: check on it
-                // authSocket->stop();
-                // delete authSocket;
-            
-                // authSocket = new Socket("users",false);
-
                 log_base("JSON::AuthState::Login", "Error parsing");
             }
 
@@ -110,7 +115,7 @@ namespace States {
                 json request = auth;
 
                 log_base("Login", request.dump().c_str());
-                // authSocket->write(request.dump(), receiveLoginAction);
+                authSocket.setBuffer(request.dump(), false);
             }
 
         }
@@ -121,11 +126,6 @@ namespace States {
                 json report = auth_base;
 
             notify(safestr::duplicate(report.dump().c_str()));
-
-            // authSocket->stop();
-            // delete authSocket;
-
-            // authSocket = new Socket("users",false);
 
         }
 

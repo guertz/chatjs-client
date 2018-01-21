@@ -7,9 +7,13 @@
 // const char* => use string when i can!!
 // header ifdef, define, ifndef
 // make pointer more resistant (assets)
+// comments on files are safe?
+// everything as a string
 
 #define SERVER_HOST "localhost"
 #define SERVER_PORT "8000"
+#define SOCKET_ACTIVE_POLL 300
+#define SOCKET_INACTIVE_POLL 1000
 
 // DEFAULT
 // #define WEBVIEW_DEBUG 0

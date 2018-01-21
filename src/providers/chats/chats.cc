@@ -2,9 +2,10 @@
 #include <string>
 #include "chats.h"
 #include "chat.h"
-#include "providers/sockets/wscustom.h"
+#include "protocol/sockets/wscustom.h"
 #include "states/auth-state/auth-state.h"
 #include "common/helpers/helpers.h"
+#include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -17,32 +18,31 @@ namespace ChatState {
     static typo_chats         chat_list;
     static typo_chat_watchers chat_watchers;
 
-    static Socket *Channel = 0;
+    static Socket Channel("chats-stream", Sockets::NewChat);
 
     void Bootstrap(){
         AuthState::Register("ChatState", Auth::State);
 
-        Channel = new Socket("chats-stream", false);
+        try {
+            Channel.compute();
+        } catch(...) {
+            log_base("ChatState", "socket error");
+        }
     }
+
+    // Destroy => stop
 
     namespace Sockets {
         void Init(const char* user){
 
             cout<<user<<endl;
             // if(!Channel){
-                json jReq = R"(
-                    {
-                        "type": "connect",
-                        "content": {
-                            "_id": "fakecontent"
-                        }
-                    }
-                )"_json;
-
-                jReq["content"]["_id"] = user;
-                
-                cout<<"writing"<<endl;
-                Channel->write(jReq.dump(), NewChat);
+                json jReq;
+                     jReq["type"] = "connect";
+                     jReq["_id"] = user;
+                     
+                     
+                Channel.setBuffer(jReq.dump(), true);
 
                 cout<<"Socket initialized here"<<endl;
                 
@@ -85,8 +85,9 @@ namespace ChatState {
 
             string referral = Chatters["reference"].get<string>();
 
+            // todo, clean this mess
             // not ok, should instead push to current list dispatched to component
-            chat_watchers[referral] = new Socket("chats/"+referral);
+            chat_watchers[referral] = new Socket("chats/"+referral,  ChatState::Sockets::NewMessage);
 
             json jChatJoin = R"(
                         {
@@ -99,7 +100,7 @@ namespace ChatState {
 
                 jChatJoin["content"]["_id"] = jAuth["_id"];
 
-            chat_watchers[referral]->write(jChatJoin.dump(), ChatState::Sockets::NewMessage);  
+            chat_watchers[referral]->setBuffer(jChatJoin.dump(), true);  
 
             // destination is always me when receiving
             chat_details details;
@@ -158,7 +159,7 @@ namespace ChatState {
             communicate["content"]["text"] = jArgs["text"].get<string>();
 
 
-            chat_watchers[jArgs["reference"].get<string>()]->write(communicate.dump(), ChatState::Sockets::NewMessage);  
+            chat_watchers[jArgs["reference"].get<string>()]->setBuffer(communicate.dump(), true);  
 
         }
 
@@ -189,18 +190,11 @@ namespace ChatState {
             json jParam = json::parse(args);
 
             // better data rapresentation with serializators
-            json jReq = R"(
-                {
-                    "type": "create",
-                    "content": {
-                        "destination": "fakecontent"
-                    }
-                }
-            )"_json;
-
-            jReq["content"]["destination"] = jParam["destination"];
-
-            Channel->write(jReq.dump(), Sockets::NewChat);
+            json jReq;
+                 jReq["type"] = "create";
+                 jReq["destination"] = jParam["destination"];
+                 
+            Channel.setBuffer(jReq.dump(), true);
 
             safeptr::free_block(args);
         }

@@ -1,6 +1,6 @@
 #include <map>
 #include "chat.h"
-#include "providers/sockets/wscustom.h"
+#include "protocol/sockets/wscustom.h"
 
 using namespace ws;
 using namespace std;

@@ -4,13 +4,14 @@
 #include "chat-modal.h"
 
 #include "common/helpers/helpers.h"
+#include "common/logger/logger.h"
 #include "common/web-ui/web-ui.h"
 
 #include "directives/modals/modals.h"
 #include "directives/toast/toast.h"
 
 #include "states/auth-state/auth-state.h"
-#include "providers/sockets/wscustom.h"
+#include "protocol/sockets/wscustom.h"
 #include "providers/chats/chats.h"
 
 using json = nlohmann::json;
@@ -26,7 +27,7 @@ namespace Modal {
         // Deve essere lo stesso valore presente nel file JS
         static const char* modalRef = "chat-modal"; /** Nome identificativo del modale chat */
 
-        static Socket* usersStream; // cleanup
+        static Socket usersStream ("users-stream", State::RefreshUsers);
 
         void RegisterModal(){
             
@@ -34,17 +35,16 @@ namespace Modal {
             
             ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
-            usersStream = new Socket("users-stream",false);
+            try {
+                usersStream.compute();
+            } catch(...) {
+                log_base("AuthState", "socket error");
+            }
+
         }
 
         void EraseModal () {
-            // if userSteam 
-            //  if open
-            //      close
-            //  destroy
-            // = 0
-
-            // Unsubscribe
+            usersStream.stop();
         }
 
         namespace Events { 
@@ -71,7 +71,8 @@ namespace Modal {
                          jReq["type"] = "listen";
                          jReq["user"]["_id"] = jUser["_id"];
                 
-                    usersStream->write(jReq.dump(), State::RefreshUsers);
+                    // TODO: structuryze
+                    usersStream.setBuffer(jReq.dump(), true);
 
                     Modal::Events::ShowModalByRef(safestr::duplicate(modalRef));
                 }
@@ -80,7 +81,6 @@ namespace Modal {
             }
 
             void Hide() {
-                // usersStream->stop();
                 Modal::Events::HideModalByRef(safestr::duplicate(modalRef));    
             }
 
