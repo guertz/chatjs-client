@@ -37,7 +37,7 @@ namespace App {
      */
     void Init() { // < TODO: static
         // ChatState::Bootstrap();
-        // AuthState::Bootstrap();
+        AuthState::Bootstrap();
         
         // Navbar::Bootstrap();
         Modal::Bootstrap();

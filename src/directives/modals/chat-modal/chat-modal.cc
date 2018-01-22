@@ -27,16 +27,17 @@ namespace Modal {
         // Deve essere lo stesso valore presente nel file JS
         static const char* modalRef = "chat-modal"; /** Nome identificativo del modale chat */
 
-        static Socket usersStream ("users-stream", State::RefreshUsers);
+        static Socket *usersStream;
 
         void RegisterModal(){
-            
+            usersStream = new Socket("users-stream", State::RefreshUsers);
+
             WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
             
             ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
             try {
-                usersStream.compute();
+                usersStream->compute();
             } catch(...) {
                 log_base("AuthState", "socket error");
             }
@@ -44,7 +45,8 @@ namespace Modal {
         }
 
         void EraseModal () {
-            usersStream.stop();
+            usersStream->stop();
+            // delete
         }
 
         namespace Events { 
@@ -72,7 +74,7 @@ namespace Modal {
                          jReq["user"]["_id"] = jUser["_id"];
                 
                     // TODO: structuryze
-                    usersStream.setBuffer(jReq.dump(), true);
+                    usersStream->setBuffer(jReq.dump(), true);
 
                     Modal::Events::ShowModalByRef(safestr::duplicate(modalRef));
                 }

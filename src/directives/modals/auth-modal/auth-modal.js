@@ -40,7 +40,7 @@ const AuthModalFactory = function(){
             {
                 fn: 'Modal::AuthModal::Submit', 
                 params: {
-                    'action': 1,
+                    'type': 'login',
                     'user': val
                 }
             }

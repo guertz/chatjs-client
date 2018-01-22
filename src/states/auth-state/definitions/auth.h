@@ -9,6 +9,7 @@ using nlohmann::json;
 namespace States {
     namespace AuthState {
 
+
         enum AUTHSIGNAL {
             LOGOUT = 0,
             LOGIN = 1            
@@ -16,7 +17,7 @@ namespace States {
 
         namespace AuthActionDefinition {
             typedef struct AuthAction {
-                AUTHSIGNAL action;
+                string type;
                 string user;
             } AuthAction;
 

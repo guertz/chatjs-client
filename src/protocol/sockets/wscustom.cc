@@ -31,16 +31,25 @@ namespace ws {
         //         Types: (2 classes)
         //              - flow
         //              - request & response
+        assert(this->channel);
         while(this->channel->getReadyState() != WebSocket::CLOSED) {
 
+            log_base("Socket", "Looping");
+
             if(this->is_computing) {
+                log_base("Socket", "Computing");
+
                 if(this->buffer.size() > 0 && !this->is_send) { 
                     this->channel->send(this->buffer);
                     this->is_send = true;
-                } else {
+                }
+                // I probably do not need an else
+                // } else {
 
                     this->channel->dispatch([this](const string& socketResponse) {
                         
+                        log_base("received", socketResponse.c_str());
+
                         json json_response = json::parse(socketResponse);
                         ws::ResponseDefinition::Response response = json_response;
 
@@ -52,7 +61,7 @@ namespace ws {
                         this->onmessage(safestr::duplicate(json_response.at("content").dump().c_str()));
                     });
 
-                }
+                // }
             }
 
             this->channel->poll(this->is_computing ? SOCKET_ACTIVE_POLL : SOCKET_INACTIVE_POLL);
@@ -118,6 +127,8 @@ namespace ws {
     // Compose request, use templates
     // TODO: request format on server
     // TODO: throw close if no channel
+    // TODO: Connection error => got closed channel?
+    // TODO: reconnection
     void Socket::setBuffer(const string &s, bool stream){
 
         this->clearParams();

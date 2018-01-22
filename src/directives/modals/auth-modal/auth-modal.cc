@@ -28,7 +28,8 @@ namespace Modal {
         namespace Events {
 
             void Submit(const char* args){
-                log_base("Modal::AuthModal::Events", "Submit detected");
+
+                log_base("Modal::AuthModal::Events", args);
 
                 AuthState::AuthActionDefinition::AuthAction data = json::parse(args);
 
@@ -81,6 +82,8 @@ namespace Modal {
                 Events::Reset();
 
                 json jDat = json::parse(arg);
+                
+                log_base("AUTHSTATE(Auth-modal)", arg);
 
                 switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
                     case AuthState::AUTHSIGNAL::LOGIN:

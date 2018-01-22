@@ -16,13 +16,13 @@ namespace States {
 
             void to_json(json& j, const AuthAction& aa) {
                 j = json{
-                        { "action", aa.action }, 
+                        { "type", aa.type }, 
                         { "user", aa.user }
                     };
             }
 
             void from_json(const json& j, AuthAction& aa) {
-                aa.action = j.at("action").get<AUTHSIGNAL>();
+                aa.type = j.at("type").get<string>();
                 aa.user = j.at("user").get<string>();
             }
 

@@ -16,7 +16,7 @@ namespace States {
 
         void receiveLoginAction(const char* args);
 
-        static Socket authSocket  ("users", receiveLoginAction);
+        static Socket* authSocket;
         static bool pending       = false;
         static bool loggedIn      = false;
         static char* cached       = 0;
@@ -43,9 +43,10 @@ namespace States {
         }
 
         void Bootstrap() {
+            authSocket = new Socket("users", receiveLoginAction);
 
             try {
-                authSocket.compute();
+                authSocket->compute();
             }catch(...) {
                 log_base("AuthState", "socket error");
             }
@@ -53,7 +54,8 @@ namespace States {
         }
 
         void Destroy() {
-            authSocket.stop();
+            authSocket->stop();
+            // delete
         }
 
 
@@ -66,39 +68,20 @@ namespace States {
         // empty args
         void receiveLoginAction(const char* args){
 
-            // try catch if json valid
-            // check is a valid json response
-            try {
-                json jIntern = json::parse(args);
-                
-                jIntern["attributes"]["action"] = AuthState::AUTHSIGNAL::LOGIN;
+            log_base("AuthState::LoginResponse", args);
 
-                // if success not found, handle exception
-                if(!jIntern.at("content").at("success").get<int>()){
+            json auth_response = json::parse(args);
+
+            AuthBaseDefinition::AuthBase auth_data {
+                AUTHSIGNAL::LOGIN,
+                false
+            };
+
+            auth_data.online = auth_response.at("online");                    
+
+            json report = auth_data;
                     
-                    jIntern["attributes"]["online"] = true;
-                    AuthUserDefinition::AuthUser auth_success = jIntern.at("attributes");
-                    json report = auth_success;
-                    
-                    notify(safestr::duplicate(report.dump().c_str()));
-                    
-
-                }
-
-            // catch (json::parse_error &e)
-            } catch (...) {
-
-                AuthBaseDefinition::AuthBase auth_base {
-                        AUTHSIGNAL::LOGIN,
-                        false
-                    };
-
-                json report = auth_base;
-                
-                notify(safestr::duplicate(report.dump().c_str()));
-
-                log_base("JSON::AuthState::Login", "Error parsing");
-            }
+            notify(safestr::duplicate(report.dump().c_str()));
 
             pending = false;
 
@@ -115,7 +98,7 @@ namespace States {
                 json request = auth;
 
                 log_base("Login", request.dump().c_str());
-                authSocket.setBuffer(request.dump(), false);
+                authSocket->setBuffer(request.dump(), false);
             }
 
         }

@@ -18,31 +18,33 @@ namespace ChatState {
     static typo_chats         chat_list;
     static typo_chat_watchers chat_watchers;
 
-    static Socket Channel("chats-stream", Sockets::NewChat);
+    static Socket *channel; 
 
     void Bootstrap(){
+        channel = new Socket("chats-stream", Sockets::NewChat);
+
         AuthState::Register("ChatState", Auth::State);
 
         try {
-            Channel.compute();
+            channel->compute();
         } catch(...) {
             log_base("ChatState", "socket error");
         }
     }
 
-    // Destroy => stop
+    // Destroy => stop & delete
 
     namespace Sockets {
         void Init(const char* user){
 
             cout<<user<<endl;
-            // if(!Channel){
+            // if(!channel){
                 json jReq;
                      jReq["type"] = "connect";
                      jReq["_id"] = user;
                      
                      
-                Channel.setBuffer(jReq.dump(), true);
+                channel->setBuffer(jReq.dump(), true);
 
                 cout<<"Socket initialized here"<<endl;
                 
@@ -194,7 +196,7 @@ namespace ChatState {
                  jReq["type"] = "create";
                  jReq["destination"] = jParam["destination"];
                  
-            Channel.setBuffer(jReq.dump(), true);
+            channel->setBuffer(jReq.dump(), true);
 
             safeptr::free_block(args);
         }
