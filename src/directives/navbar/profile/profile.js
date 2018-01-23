@@ -2,7 +2,7 @@ const ProfileNavLink = function(){
 
     const dropdownRef = "profile-dropdown-helper";
     const dropdownNameRef = "profile-dropdown-text";
-    const navbarRef = "nav-helper-ref";
+    const navbarRef = "navbar";
     const logoutRef = "nav-user-logout";
 
     var node = document.createElement("div");
@@ -29,7 +29,7 @@ const ProfileNavLink = function(){
 
     this.create = function() {
         // if dom not exist
-        window.getFirst(document, "#"+navbarRef).appendChild(node);
+        window.getFirst(document, navbarRef).appendChild(node);
         window.subscribeTo(window.getFirst(node, "#"+logoutRef), "click", eventLogout);
     }(); // calling itself
 

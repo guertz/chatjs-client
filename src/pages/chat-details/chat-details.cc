@@ -16,14 +16,22 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
+extern char _binary_src_pages_chat_details_chat_details_js_start[];
+
 namespace ChatDetails {
     const unsigned int MESSAGES = 10;
     static string chatStatus = "{ \"ready\": false, \"selected\": \"undefined\", \"last-message\": \"undefined\" }";
 
     void Bootstrap(){
+
+        WebUI::Execute(
+                safeptr::parse_asset(
+                    _binary_src_pages_chat_details_chat_details_js_start)
+            );
+
         WebUI::Register("ChatDetails::Submit", Events::Submit);
 
-        const string disable_form = "components.ChatDetails.disableInput()";
+        const string disable_form = "components.ChatDetails.disable()";
 
         ChatState::Chat::Register("ChatDetails::RefreshChats", Chat::State);
 
@@ -79,7 +87,7 @@ namespace ChatDetails {
                 jWrapper["_reference"] = jChatStatus["selected"].get<string>();
                 jWrapper["messages"]   = json::parse(oss.str());
 
-                const string js_chat = "components.ChatDetails.refreshAChat('" +
+                const string js_chat = "components.ChatDetails.populate('" +
                                             jWrapper.dump() +
                                         "')";
                                         
@@ -91,7 +99,7 @@ namespace ChatDetails {
         }
 
         void OpenChat(const string& args){
-            const char* js_enable = "components.ChatDetails.enableInput()";
+            const char* js_enable = "components.ChatDetails.enable()";
 
             json jChatInput = json::parse(args);
             

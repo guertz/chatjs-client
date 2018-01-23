@@ -3,6 +3,8 @@
 
 #include "directives/navbar/navbar.h" 
 #include "directives/modals/modals.h"
+#include "directives/toast/toast.h"
+
 #include "pages/chat-list/chat-list.h"
 #include "pages/chat-details/chat-details.h"
 
@@ -37,14 +39,16 @@ namespace App {
      *   - ChatList
      *   - ChatDetails 
      */
-    void Init() { // < TODO: static
+    void Init() {
+        
         // ChatState::Bootstrap();
         AuthState::Bootstrap();
         
         Navbar::Bootstrap();
         Modal::Bootstrap();
+        Toast::Bootstrap();
 
-        // ChatList::Bootstrap();
+        ChatList::Bootstrap();
         // ChatDetails::Bootstrap();
     }
 

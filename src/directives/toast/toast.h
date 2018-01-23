@@ -7,6 +7,8 @@
  */
 namespace Toast {
 
+    void Bootstrap();
+    
     namespace Events {
         /**
          * Mostra un alert di tipo toast che scompare automaticamente 

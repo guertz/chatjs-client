@@ -13,6 +13,7 @@
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
+#include "common/logger/logger.h"
 
 #include "states/chat-state/chat-state.h"
 
@@ -24,34 +25,30 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
-// ToastifyNewChat(safestr::duplicate(Chatters["jsonArgs"]["from"].dump().c_str()));
-// void ToastifyNewChat(const char* args){
-//     json jDat = json::parse(args);
-
-//     const char* BUNDLE = js::compact(80, 3, "makeAToast('E stata iniziata una chat con ", jDat["name"].get<string>().c_str(), "')");
-
-//     webview_dispatch(   WebUI::GetContext(), 
-//                         WebUI::Dispatch, 
-//                         safeptr::serialize(safestr::duplicate(BUNDLE))
-//                     );
-
-//     safeptr::free_block(BUNDLE);
-//     safeptr::free_block(args);
-// }
+extern char _binary_src_pages_chat_list_chat_list_js_start[];
 
 namespace ChatList {
     void Bootstrap(){
+
+        WebUI::Execute(
+                safeptr::parse_asset(
+                    _binary_src_pages_chat_list_chat_list_js_start)
+            );
+
         WebUI::Register("ChatList::NewChat", Events::NewChat);
         WebUI::Register("ChatList::UserSelected", Events::UserSelected);
 
         ChatState::Chats::Register("ChatList", Chats::State);
+        ChatState::Chat::Register("ChatList", Chat::State);
+
         AuthState::Register("ChatList", Auth::State);
     }
 
     namespace Events { 
 
         void NewChat(const string& argc) {
-            Modal::ChatModal::Events::Show();
+            log_base("ChatList::Events(NewChat)", argc);
+            // Modal::ChatModal::Events::Show();
         }
 
         void UserSelected(const string& arg){
@@ -111,17 +108,19 @@ namespace ChatList {
 
             cout<<oss.str()<<endl;
 
-            const string js_context = "components.ChatList.updateText('" + oss.str() + "')";
+            const string js_context = "components.ChatList.populate('" + oss.str() + "')";
             
             WebUI::Execute(js_context);
+
+            Toast::Events::Show("E' stata iniziata una nuova chat con ...");
             
         }
 
     }
 
     namespace Chat {
-        void State(const string& args){
-            
-        }
+        void State(){
+            Toast::Events::Show("E' stato ricevuto un nuovo messaggio da ....");
+        }   
     }
 }

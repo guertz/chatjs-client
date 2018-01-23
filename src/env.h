@@ -6,8 +6,11 @@
     // DEFAULT WITH DEBUG
     // DEFAULT GENERAL?
     #define DEBUG_MASK 1
-    #define WEBVIEW_DEBUG 0
+    #define WEBVIEW_DEBUG
+    #define WIN_CONSOLE
 
+#else
+    #define DEBUG_MASK 0
 #endif
 
 

@@ -1,83 +1,92 @@
-var Message = require('./message');
+const BubbleDom = function(message){
 
-var ChatDetails = function(global){
+    var bubbleDom = document.createElement('div');
+                    bubbleDom.className = "msg-bubble " + ((!message.isMe)? "opponent" : "");
 
-    var activeChat = false;
+                    bubbleDom.innerHTML = '<img src="' + message.avatar + '" alt="Avatar">' +
+                                          '<p class="text"></p>' +
+                                          '<span class="time"></span>';
 
-    var _templ = '<chat-messages>'+
-                 '</chat-messages>'+
-                 '<chat-form>' +
-                    '<form id="chat-form" disabled=true>' +
-                        '<div class="form-wrap w3-row">'+
-                            '<div class="w3-col m4" style="visibility: hidden;"><p></p></div>' +
-                            '<div class="w3-col w3-right" style="width: 100px">' +
-                                '<button class="w3-col w3-button w3-teal" type="submit">Invia</button>' +
-                            '</div>' +
-                            '<div class="w3-rest" >' +
-                                '<input class="w3-input" type="text" placeholder="scrivi qua il tuo messaggio" value="" />' +  
-                            '</div>' +
+                    window.getFirst(bubbleDom, "p.text").innerText = message.content;
+                    window.getFirst(bubbleDom, "span.time").innerText = message.time;
+
+    return bubbleDom;
+}
+
+const ChatDetailsFactory = function(){
+
+    var node = document.createElement("div");
+        node.innerHTML = 
+            '<chat-messages>'+
+            '</chat-messages>'+
+            '<chat-form>' +
+                '<form id="chat-form" disabled=true>' +
+                    '<div class="form-wrap w3-row">'+
+                        '<div class="w3-col m4" style="visibility: hidden;"><p></p></div>' +
+                        '<div class="w3-col w3-right" style="width: 100px">' +
+                            '<button class="w3-col w3-button w3-teal" type="submit">' + btnSendText + '</button>' +
                         '</div>' +
-                    '</form>' + 
-                 '</chat-form>';
+                        '<div class="w3-rest" >' +
+                            '<input class="w3-input" type="text" placeholder="' + inputPlaceholderText[0] + '" value="" />' +  
+                        '</div>' +
+                    '</div>' +
+                '</form>' + 
+            '</chat-form>';
 
-    var _virtual = document.createElement('div');
-        _virtual.innerHTML = _templ;
+    const btnSendText          = "Invia";
+    const inputPlaceholderText = [ "Seleziona una chat", "Scrivi qua il messaggio" ];
 
+    const chatTreeRef = window.getFirst(node, "chat-messages");
+    const formRef     = window.getFirst(node, "form#chat-form");
 
-    var _reference = document.querySelector("#chat-details-ref");
-        _reference.appendChild(_virtual);
+    var handleSubmit = function(event) {
+        event.preventDefault();
 
-    var _msg_list_ref = document.querySelectorAll("#chat-details-ref chat-messages")[0];
-    var _msg_form_ref = document.querySelectorAll("#chat-details-ref form#chat-form")[0];
-
-    this.push = function(__message) {
-
-        var message = JSON.parse(__message);
-
-        var domMessage = new Message(message);
-        _msg_list_ref.appendChild(domMessage);
+        window.external.invoke_(JSON.stringify(
+            {
+                fn: 'ChatDetails::Submit', 
+                params: { 
+                    text: window.getFirst(formRef, ".w3-input").value
+                }
+            }
+        ));
     }
 
-    this.refreshAChat = function(__chat) {
-        var chat = JSON.parse(__chat);
+    this.populate = function(_chat) {
 
-        _msg_list_ref.innerHTML = "";
-        this.activeChat = chat._reference;
+        chatTreeRef.innerHTML = "";
+        var   chat        = JSON.parse(_chat);
 
         for(var i=0; i<chat.messages.length; i++){
-            this.push(JSON.stringify(chat.messages[i]));
+           var domItem  = new BubbleDom(chat.messages[i]);
+               chatTreeRef.appendChild(domItem);
         }
     }
 
-    this.enableInput = function(){
-        _msg_form_ref.disabled = false;
-        _msg_form_ref.getElementsByClassName("w3-input")[0].setAttribute("placeholder", "Scrivi qui il tuo messaggio");
+    this.enable = function(){
+        formRef.disabled = false;
+        window.getFirst(formRef, ".w3-input")
+            .setAttribute("placeholder", inputPlaceholderText[1]);
     }
 
-    this.disableInput = function(){
-        _msg_form_ref.disabled = true;
-        _msg_form_ref.getElementsByClassName("w3-input")[0].setAttribute("placeholder", "Seleziona una chat per poter scrivere");
+    this.disable = function(){
+        formRef.disable = true;
+        window.getFirst(formRef, ".w3-input")
+            .setAttribute("placeholder", inputPlaceholderText[0]);
     }
 
-    this.sendAMessage = function(event){
-        event.preventDefault();
-
-        var content = _msg_form_ref.getElementsByClassName("w3-input")[0].value;
-        window.external.invoke_(JSON.stringify({fn: 'ChatDetails::Submit', params: { text: content}}));
-
+    this.destroy = function () {
+        // remove event + dom
     }
 
+    this.create = function() {
+        // if dom not exist
+        window.getFirst(document, "chat-details")
+              .appendChild(node);
 
-    _msg_form_ref.addEventListener('submit', this.sendAMessage);
-    this.enableInput();
+        window.subscribeTo(formRef, "submit", handleSubmit);
+    }(); // calling itself
+ 
+    window.components['ChatDetails'] = this;
 
-    window.components.ChatDetails = {
-        refreshAChat: this.refreshAChat,
-        push: this.push,
-        enableInput: this.enableInput,
-        disableInput: this.disableInput
-    };
-
-};
-
-module.exports = ChatDetails;
+}();

@@ -20,6 +20,10 @@ namespace ChatList {
         void NewChat(const std::string& args);
         void State(const std::string& arg);
     }
+
+    namespace Chat {
+        void State();
+    }
 }
 
 #endif

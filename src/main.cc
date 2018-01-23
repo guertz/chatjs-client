@@ -42,6 +42,7 @@
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
+#include "env.h"
 
 using namespace std;
 using namespace WebUI;
@@ -50,13 +51,17 @@ using namespace WebUI;
 // TODO: che sistema usa zserge per il log negli ambienti gui
 //       dove le shell non compaiono?
 //       serve il win main?
+// TODO: release && console non compare su linux giusto?
 int main() {
   #ifdef WIN32
-    // Aggancia il terminale su windows per poter aver accesso ai log
-    if(AttachConsole(ATTACH_PARENT_PROCESS) || AllocConsole()){
-      freopen("CONOUT$", "w", stdout);
-      freopen("CONOUT$", "w", stderr);
-    }
+  
+    #ifdef WIN_CONSOLE
+      // Aggancia il terminale su windows per poter aver accesso ai log
+      if(AttachConsole(ATTACH_PARENT_PROCESS) || AllocConsole()){
+        freopen("CONOUT$", "w", stdout);
+        freopen("CONOUT$", "w", stderr);
+      }
+    #endif
 
     // Configurazione socket aggiuntive richieste dalle piattaforme windows
     INT rc;
@@ -64,9 +69,8 @@ int main() {
 
     rc = WSAStartup(MAKEWORD(2, 2), &wsaData);
 
-    // TODO: validate if rc!=0
+    assert(!rc);
 
-    cout<<endl;
   #endif
 
   // Move all to app bootstrap?

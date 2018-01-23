@@ -2,6 +2,13 @@
 #define COMMON_LOGGER_LOGGER_H
 
 #include "env.h"
+
+enum TAG{
+  CSL = 0,
+  INFO = 1
+};
+
+
 // Con il metodo macro per notificare i cambiamenti della maschera a tutti i file
 // Bisogna ricompilare tutto. Oppure bisogna utilizzare il sistema a funzione log
 // che fa gli if sul momento
@@ -45,14 +52,10 @@
 #define log_details_void(log_msg)    { if(2 & DEBUG_MASK) { LOGGER(TAG::INFO, 2,   "", log_msg); } }
 #define log_details(attr, log_msg)   { if(2 & DEBUG_MASK) { LOGGER(TAG::INFO, 2, attr, log_msg); } }
 
-                                      // MASK = 4 però 3° tipo di log
+                                    // MASK = 4 però 3° tipo di log
 #define log_pedantic_void(log_msg)   { if(4 & DEBUG_MASK) { LOGGER(TAG::INFO, 3,   "", log_msg); } }
 #define log_pedantic(attr, log_msg)  { if(4 & DEBUG_MASK) { LOGGER(TAG::INFO, 3, attr, log_msg); } }
 
-enum TAG{
-  CSL = 0,
-  INFO = 1
-};
 
 void print_log(const TAG tag, const unsigned int level, const std::string& attr, const std::string& log_msg);
 

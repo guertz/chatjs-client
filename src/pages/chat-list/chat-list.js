@@ -1,45 +1,123 @@
-// TODO remember
-var ChatHelper  = require('./chat-helper/chat-helper.js')(window);
+const ChatListNode = function (avatarChat) {
 
-var Chat = require('./chat-node.js');
+    var node = document.createElement("li");
+        node.className = "w3-bar"
 
-var ChatList = function(global){
+        // XSS
+        node.innerHTML = 
+            '<img src="' + avatarChat.user.image + '" class="w3-bar-item w3-circle" style="width:85px">'+
+            '<div class="w3-bar-item">'+
+                '<span class="w3-large">' + avatarChat.user.name + '</span><br>'+
+                '<span>' + "..." + '</span>'+
+            '</div>';
 
-    var __t = document.createElement('ul');
-        __t.setAttribute('class','w3-ul');
+    // callback
 
-    var _reference = document.querySelector("#chat-list-ref");
-        _reference.appendChild(__t);
+    return node;
+}
 
-    var selectAUser = function(chatID){
-        return function(e){
-            window.external.invoke_(JSON.stringify({fn: 'ChatList::UserSelected', params: { ref: chatID}}));
+const ChatList = function(){
+
+    var node = document.createElement("div");
+        node.innerHTML = 
+            '<chat-helper>' +
+                '<ul class="w3-ul">' +
+                    '<div id="templ-chat-new">' +
+                        '<li class="w3-bar w3-teal" id="chat-helper-ref-new">' +
+                            '<div class="w3-bar-item w3-padding-small">' +
+                                '<span class="w3-xlarge w3-text-sand">' +
+                                    '<i class="fa fa-plus-circle" aria-hidden="true"></i>' +
+                                    ' Inizia una chat' +
+                                '</span>' +
+                            '</div>' + 
+                        '</li>' +
+                    '</div>' +
+                '</ul>' +
+            '</chat-helper>' +
+            '<chats-wrapper>' +
+                '<ul class="w3-ul">' +
+                '</ul>' +
+            '</chats-wrapper>';
+
+    // Dom reference ok?
+    // 
+    // TODO: handle click + destroy
+    const chatHelper = { 
+        ref:  window.getFirst(node, "chat-helper"),
+        newChat: {
+            ref: window.getFirst(node, "chat-helper #chat-helper-ref-new"),
+            handleClick: function() {
+                window.external.invoke_(JSON.stringify(
+                    {
+                        fn: 'ChatList::NewChat', 
+                        params: { }
+                    }
+                ));
+            }
         }
     };
 
-    // public methods
-    // check in c++ not duplicated chat
-    this.updateText = function(data){
+    const chatsWrapper = {
+        ref: window.getFirst(node, "chats-wrapper"),
+        list: window.getFirst(node, "chats-wrapper ul"),
+        currentEvents: [],
+        populate: function(_chats) {
 
-        // check json ok
-        var item = JSON.parse(data);
+            var currentIndex = 0;
 
-        _reference.firstChild.innerHTML = "";
+            window.forAll(chatsWrapper.list, "li", function(item){
+                if(currentIndex < chatsWrapper.currentEvents.length){
+                    window.unsubscribeTo(item, "click", chatsWrapper.currentEvents[currentIndex])
+                    currentIndex++;
+                }
+            });
+    
+            chatsWrapper.currentEvents = [];
+            chatsWrapper.list.innerHTML = "";
 
-        // every refetch remember to destroy all
-        for(var i=0; i<item.length; i++){
-            Chat.createNode(global, { user: item[i].from, reference: item[i].reference }, _reference.firstChild, selectAUser);
+            var chats = JSON.parse(_chats);
+
+            for(var index=0; index<item.length; index++){
+                var chatListNode = new ChatListNode( { user: item[index].from, reference: item[index].reference } );
+
+                    chatsWrapper.list.appendChild(chatListNode);
+                
+                var handleMethod = chatsWrapper.handleClick(chatListNode.reference),
+                    domEl = window.getnth(chatsWrapper.list, li, index);
+
+                    window.subscribeTo(domEl, "click", handleMethod);
+                    chatsWrapper.currentEvents.push(handleMethod);
+            }
+        },
+        handleClick: function(chatId) {
+
+            return function() {
+                window.external.invoke_(JSON.stringify(
+                    {
+                        fn: 'ChatList::UserSelected', 
+                        params: { 
+                            ref: chatId
+                        }
+                    }
+                ));
+            }
+
         }
     };
+    
+    this.populate = chatsWrapper.populate;
 
+    this.destroy = function () {
+        // remove events + dom
+    }
 
+    this.create = function() {
+        // if dom not exist
+        window.getFirst(document, "chat-list")
+              .appendChild(node);
 
-    // registering component globally
-    //      and exposing child methods
-    window.components.ChatList = {
-        updateText: this.updateText
-    };
-
-};
-
-module.exports = ChatList;
+        window.subscribeTo(chatHelper.newChat.ref, "click", chatHelper.newChat.handleClick);
+    }(); // calling itself
+ 
+    window.components['ChatList'] = this;
+}();

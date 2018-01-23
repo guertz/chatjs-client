@@ -17,7 +17,7 @@ DIR_BUILD_SPACE=.build
 #
 # Both has to be manually updated: see helpers at bottom
 ASSETS=	$(DIR_ASSETS_SRC)/index.html.o $(DIR_ASSETS_SRC)/appinit.js.o $(DIR_ASSETS_SRC)/style.css.o $(DIR_ASSETS_SRC)/stylew3.css.o \
-		src/app/app.ojs src/directives/modals/modals.ojs src/directives/modals/auth-modal/auth-modal.ojs src/directives/modals/chat-modal/chat-modal.ojs src/directives/navbar/navbar.ojs src/directives/navbar/profile/profile.ojs  
+		src/app/app.ojs src/directives/modals/auth-modal/auth-modal.ojs src/directives/modals/chat-modal/chat-modal.ojs src/directives/navbar/navbar.ojs src/directives/navbar/profile/profile.ojs src/directives/toast/toast.ojs src/directives/modals/modals.ojs src/pages/chat-details/chat-details.ojs src/pages/chat-list/chat-list.ojs
 
 # Compiled parts that compose the whole app
 APP=src/app/app.o src/common/base64/base64.o src/common/helpers/helpers.o src/common/logger/logger.o src/common/web-ui/web-ui.o src/directives/modals/auth-modal/auth-modal.o src/directives/modals/chat-modal/chat-modal.o src/directives/modals/connectivity/connectivity.o src/directives/modals/modals.o src/directives/navbar/navbar.o src/directives/navbar/profile/profile.o src/directives/toast/toast.o src/main.o src/pages/chat-details/chat-details.o src/pages/chat-list/chat-list.o src/protocol/sockets/definitions/request.o src/protocol/sockets/definitions/response.o src/protocol/sockets/easywsclient.o src/protocol/sockets/wscustom.o src/states/auth-state/auth-state.o src/states/auth-state/definitions/auth.o src/states/auth-state/definitions/user.o src/states/chat-state/chat-state.o
