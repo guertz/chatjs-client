@@ -18,42 +18,48 @@ namespace ChatState {
     static typo_chats         chat_list;
     static typo_chat_watchers chat_watchers;
 
-    static Socket *channel; 
+    static Socket *channel = 0; 
 
     void Bootstrap(){
-        channel = new Socket("chats-stream", Sockets::NewChat);
+        
+        try {
+            channel = new Socket(   "chats-stream", 
+                                    Sockets::NewChatSuccess, 
+                                    Sockets::NewChatError);
+        } catch(...) {
+            log_base("ChatState::Socket>>'chats-stream'", "Exception reported");
+        }
 
         AuthState::Register("ChatState", Auth::State);
 
-        try {
-            channel->compute();
-        } catch(...) {
-            log_base("ChatState", "socket error");
+
+    }
+
+    void Destroy () {
+        // Use method
+        if(channel){
+            delete channel;
+                   channel = 0;
         }
     }
 
-    // Destroy => stop & delete
-
     namespace Sockets {
-        void Init(const char* user){
+        void Init(const string user){
 
-            cout<<user<<endl;
             // if(!channel){
-                json jReq;
-                     jReq["type"] = "connect";
-                     jReq["_id"] = user;
-                     
-                     
-                channel->setBuffer(jReq.dump(), true);
 
-                cout<<"Socket initialized here"<<endl;
+            json connect_request = {{"type", "connect"}, {"user", user}};
+
+            RequestDefinition::Request request = RequestDefinition::createEmpty();
+                
+                request.content =  connect_request.dump();
+                
+            channel->setBuffer(request);
                 
             // }
-
-            safeptr::free_block(user);
         }
 
-        void NewMessage(const char* args){
+        void NewMessageSuccess(const string args){
 
             json jChat = json::parse(args);
 
@@ -76,45 +82,59 @@ namespace ChatState {
             safeptr::free_block(chat);
             safeptr::free_block(msg);
 
-            safeptr::free_block(args);
         }
 
-        void NewChat(const char* args){
+        void NewMessageError(const string error) {
 
-            // server return also destination per user with details
-            json jAuth    = json::parse(AuthState::getAuthStatus());
-            json Chatters = json::parse(args);
+        }
 
-            string referral = Chatters["reference"].get<string>();
+        void NewChatSuccess(const string args){
 
-            // todo, clean this mess
-            // not ok, should instead push to current list dispatched to component
-            chat_watchers[referral] = new Socket("chats/"+referral,  ChatState::Sockets::NewMessage);
+            const char* userInSession = AuthState::getAuthStatus();
 
-            json jChatJoin = R"(
-                        {
-                            "type": "join",
-                            "content": {
-                                "_id": "fakecontent"
+            json chat_args = json::parse(args);
+            string referral = chat_args.at("reference").get<string>();
+
+            if(userInSession){
+
+                json auth_user = json::parse(userInSession).at("content");
+                
+                auth_user.at("_id").get<string>();
+
+                try { 
+                    chat_watchers[referral] = new Socket("chats/"+referral,  ChatState::Sockets::NewMessageSuccess, NewMessageError);
+
+                    json chat_join_request{
+                            { "type", "join"},
+                            { "content", 
+                                { "_id", auth_user.at("_id").get<string>() }
                             }
-                        }
-                    )"_json;
+                        };
+                    
+                    RequestDefinition::Request request = RequestDefinition::createEmpty();
+                        request.content = chat_join_request.dump();
 
-                jChatJoin["content"]["_id"] = jAuth["_id"];
+                        chat_watchers[referral]->setBuffer(request);
 
-            chat_watchers[referral]->setBuffer(jChatJoin.dump(), true);  
+                } catch(...) {
+                    log_base(("ChatState::Socket>>'chats/" + referral + "'").c_str(), "Exception reported");
+                }
+            } 
 
             // destination is always me when receiving
             chat_details details;
                 details.reference = safestr::duplicate(referral.c_str());
-                details.destination = safestr::duplicate(Chatters["destination"].dump().c_str());
-                details.from = safestr::duplicate(Chatters["from"].dump().c_str());
-                details.creator = safestr::duplicate(Chatters["creator"].dump().c_str());
+                details.destination = safestr::duplicate(chat_args["destination"].dump().c_str());
+                details.from = safestr::duplicate(chat_args["from"].dump().c_str());
+                details.creator = safestr::duplicate(chat_args["creator"].dump().c_str());
 
             chat_list[referral] = details; // messages
             
-            ChatState::Chats::Notify(safestr::duplicate(args));
-            safeptr::free_block(args);
+            ChatState::Chats::Notify(safestr::duplicate(args.c_str()));
+        }
+
+        void NewChatError(const string args) {
+
         }
     }
 
@@ -140,28 +160,30 @@ namespace ChatState {
         }
 
         void SendAMessage(const char* args){
-    
+
+            const char* userInSession = AuthState::getAuthStatus();
     
             json jArgs = json::parse(args);
-            json jAuth = json::parse(AuthState::getAuthStatus());
 
-            json communicate = R"(
-                {
-                    "type": "send",
-                    "auth": {
-                        "key": "fakeauth"
-                    },
-                    "content": {
-                        "text": "fakemsg"
-                    }
-                }
-            )"_json;
+            // TODO, change on server because needs to validate as authenticated
+            //       this json structure changed
+            // 
+            //     Using auth headers + new content format
+            json communicate{
+                    {"type", "send"},
+                    {"text", jArgs["text"].get<string>()}
+                };
 
-            communicate["auth"]["key"] = jAuth["_id"].get<string>();
-            communicate["content"]["text"] = jArgs["text"].get<string>();
+            if(userInSession){
+                json auth_user = json::parse(userInSession).at("content");
 
+                RequestDefinition::Request request = 
+                    RequestDefinition::createAuthenticated(auth_user.at("_id").get<string>());
+                    
+                    request.content =  communicate.dump();
 
-            chat_watchers[jArgs["reference"].get<string>()]->setBuffer(communicate.dump(), true);  
+                chat_watchers[jArgs["reference"].get<string>()]->setBuffer(request);  
+            }
 
         }
 
@@ -187,18 +209,16 @@ namespace ChatState {
             safeptr::free_block(args);
         }
 
-        void StartAChat(const char* args){
+        void StartAChat(const string user_dest){
 
-            json jParam = json::parse(args);
+            json create_chat_request = {{"type", "create"}, {"destination", user_dest}};
 
-            // better data rapresentation with serializators
-            json jReq;
-                 jReq["type"] = "create";
-                 jReq["destination"] = jParam["destination"];
-                 
-            channel->setBuffer(jReq.dump(), true);
+            RequestDefinition::Request request = RequestDefinition::createEmpty();
+                
+                request.content =  create_chat_request.dump();
+                
+            channel->setBuffer(request);
 
-            safeptr::free_block(args);
         }
     }
 
@@ -210,7 +230,7 @@ namespace ChatState {
                 case AuthState::AUTHSIGNAL::LOGIN:
                     if(jDat["online"].get<bool>()){
                         
-                        Sockets::Init(safestr::duplicate(jDat["_id"].get<string>().c_str()));
+                        Sockets::Init(jDat["_id"].get<string>());
                     }
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:

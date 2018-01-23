@@ -39,6 +39,7 @@ namespace Modal {
             void Show();
 
             /** Metodo per nascondere il modale */
+            void Hide(const char* args);
             void Hide();
 
         }
@@ -74,7 +75,8 @@ namespace Modal {
             * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
             * il cambio di stato
             */
-            void RefreshUsers(const char* argc);
+            void RefreshUsersSuccess(const std::string argc);
+            void RefreshUsersError(const std::string argc);
         }
     }
 }

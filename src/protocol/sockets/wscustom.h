@@ -2,7 +2,12 @@
 #define WS_CUSTOM_H
 
 #include "easywsclient.h"
+
+#include "definitions/request.h"
+#include "definitions/response.h"
 #include "exceptions/exceptions.h"
+
+#include "env.h"
 
 #include <iostream>
 #include <thread>
@@ -13,32 +18,38 @@ using easywsclient::WebSocket;
 
 namespace ws{
 
+    typedef struct socket_args {
+        bool is_send;
+        string buffer;
+    } SocketArgs;
+
+    // NEXT: Reconnect
+    // NEXT: prevent null pointer on websocket
     class Socket {
+
         private:
-            bool is_stream;
-            bool is_send;
+
+            SocketArgs arguments;
             bool is_computing;
-
-            string buffer;
-
             WebSocket::pointer channel;
             thread watcher; 
 
-            void (*onmessage)(const char* ); 
+            void (*onmessage)(const string message); 
+            void (*onerror)(const string error);
 
-            void clearParams();
+            // _ private convention
+            void reset();
             void ThreadMain();
 
         public:
-            Socket(const string& s, void (*)(const char* ));
+            // will compute
+            Socket(const string& s, void (*onmessage)(const string message), void(*onerror)(const string error));
             ~Socket();
 
             void resume();
             void pause();
-            void stop();
 
-            void setBuffer(const string &s, bool stream);
-            void compute();
+            void setBuffer(const RequestDefinition::Request& request);
     };
 }
 

@@ -7,6 +7,7 @@
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
+#include "common/logger/logger.h"
 
 #include "states/auth-state/auth-state.h"
 
@@ -16,9 +17,17 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
+extern char _binary_src_directives_navbar_navbar_js_start[];
+
 namespace Navbar {
 
     void Bootstrap() {
+
+        WebUI::Execute(
+            safeptr::parse_asset(
+                _binary_src_directives_navbar_navbar_js_start)
+        );
+
         AuthState::Register("Navbar", State::Auth);
 
         Profile::RegisterLink();
@@ -31,13 +40,14 @@ namespace Navbar {
     namespace State {
 
         void Auth(const char* arg){
-            json jDat = json::parse(arg);
 
-            switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
+            json json_auth = json::parse(arg);
+
+            switch(json_auth.at("action").get<AuthState::AUTHSIGNAL>()){
                 case AuthState::AUTHSIGNAL::LOGIN:
 
-                    if(jDat["online"].get<bool>())
-                        Profile::Events::SetText(safestr::duplicate(jDat["name"].get<string>().c_str()));
+                    if(json_auth.at("online").get<bool>())
+                        Profile::Events::SetText(safestr::duplicate(json_auth.at("user").at("name").get<string>().c_str()));
 
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:

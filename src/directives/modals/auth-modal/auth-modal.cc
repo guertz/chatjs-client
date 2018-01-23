@@ -81,13 +81,11 @@ namespace Modal {
 
                 Events::Reset();
 
-                json jDat = json::parse(arg);
-                
-                log_base("AUTHSTATE(Auth-modal)", arg);
+                json json_auth = json::parse(arg);
 
-                switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
+                switch(json_auth["action"].get<AuthState::AUTHSIGNAL>()){
                     case AuthState::AUTHSIGNAL::LOGIN:
-                        if(jDat["online"].get<bool>()){
+                        if(json_auth["online"].get<bool>()){
                             AuthMethods::OnLoginSuccess();
                         } else {
                             AuthMethods::OnLoginErrors();

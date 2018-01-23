@@ -6,17 +6,12 @@
 using namespace std;
 namespace ws {
 
-    class SocketComputing: public exception {
-        virtual const char* what() const throw() {
-            return "Canale di comunicazione occupato.";
-        }
-    } ;
-
     class SocketTermination: public exception {
         virtual const char* what() const throw() {
             return "Canale di comunicazione interrotto.";
         }
-    } ;
+    };
+    
 }
 
 #endif

@@ -39,7 +39,7 @@ namespace App {
         // ChatState::Bootstrap();
         AuthState::Bootstrap();
         
-        // Navbar::Bootstrap();
+        Navbar::Bootstrap();
         Modal::Bootstrap();
 
         // ChatList::Bootstrap();

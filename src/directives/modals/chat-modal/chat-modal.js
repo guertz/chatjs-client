@@ -1,9 +1,10 @@
-// if(!document.getElementById(modalRef))
-module.exports = function ChatModal(global){
-    
-    var modalRef = "chat-modal";
+const ChatModalFactory = function() {
+    const domRef = "chat-modal";
+    var currentEvents = [];
 
-    var _templ = '<div id="'+ modalRef + '" class="w3-modal">' +
+    var node = document.createElement("div");
+        node.innerHTML = 
+            '<div id="'+ domRef + '" class="w3-modal">' +
                     '<div class="w3-modal-content">' +
                         '<div class="w3-container">' +
                             '<span class="w3-button w3-display-topright close-modal">&times</span>' +
@@ -14,86 +15,84 @@ module.exports = function ChatModal(global){
                     '</div>' +
                 '</div>';
 
-    // TODO: distribute this callback structure to safely store parameters
-    //       without pushing them to DOM
+    var hideEvent = function() {
+        window.external.invoke_(JSON.stringify(
+            {
+                fn: 'Modal::ChatModal::Hide', 
+                params: { }
+            }
+        ));
+    }
+
+    // This is a really good trick
     var handleClick = function(userId) {
         return function(){
             window.external.invoke_(JSON.stringify(
                 {
                     fn: 'Modal::ChatModal::NewChatOpen', 
                     params: { 
-                        user: { 
-                            _id: userId 
-                        }
+                        user: userId
                     }
                 }
             ));
         }
     }
     
-    var cleanListen = function(wrapper) {
-        var nodes = document.querySelectorAll("#"+modalRef+" .users-selector");
+    this.populate = function(data) {
 
-        for(var i = 0; i<nodes.length; i++){
-            // nodes[i].removeEventListener('click');
-        }
+        var currentIndex = 0;
 
-        if(wrapper){
+        window.forAll(node, "#"+domRef+" .uses-selector", function(item){
+            if(currentIndex < currentEvents.length){
+                window.unsubscribeTo(item, "click", currentEvents[currentIndex])
+                currentIndex++;
+            }
+        });
+
+        currentEvents = [];
+        var wrapper = window.getFirst(node, ".users-list-available")
             wrapper.innerHTML = "";
-        }
-    }
-
-    var populate = function(items) {
-        var wrapper = document.querySelectorAll("#"+modalRef+" .users-list-available")[0],
-            users   = JSON.parse(items); /**< Formato del tipo:
-                                           *  @include sockets/users-stream/refresh-users.json
-                                           */
-        cleanListen(wrapper);
+        
+        /** Formato del tipo:
+         *  @include sockets/users-stream/refresh-users.json
+         */
+        var users = JSON.parse(data);
 
         for(var index = 0; index < users.length; index++) {
 
-            var nodeId = "user-node-"+index;
+            //XSS
+            var el = document.createElement('div');
+                el.className += " users-selector w3-col s4 m3 l2";
+                el.innerHTML = 
+                    "<img src='" + users[index].image + "'  class='w3-bar-item w3-circle' style='width:55px'>" +
+                    "<p class='descriptor'>" + users[index].name + "</p>"
 
-            var userNode = document.createElement('div');
-                userNode.className += " users-selector w3-col s4 m3 l2";
-                userNode.id = nodeId;
+            // its return
+            wrapper.appendChild(el);
+            // get last?
+            var handleMethod = handleClick(users[index]._id),
+                domEl = window.getnth(node, "#"+domRef+" .uses-selector", index);
 
-                // TODO: Optimize UI/UX
-                userNode.innerHTML = '<img src="' + users[index].image + '" class="w3-bar-item w3-circle" style="width:55px">' +
-                                     '<p class="descriptor">'+
-                                        users[index].name +
-                                     '</p>';
-
-            wrapper.appendChild(userNode);
-
-            var copiedNode = document.getElementById(nodeId);
-                copiedNode.addEventListener('click', handleClick(users[index]._id));
+                window.subscribeTo(domEl, "click", handleMethod);
+                currentEvents.push(handleMethod);
 
         }
 
 
     }
 
-    // var destroy = function() {
-    //     if(modal){
-    //         modal.parentNode.removeChild(modalRef);
-    //     }
-    // }  
+    this.destroy = function () {
+        // remove events + close event
+        // remove dom reference
+        // close socket stream
+    }
 
+    this.create = function() {
+        // if dom not exist
+        document.body.appendChild(node);
+        window.subscribeTo(window.getFirst(node, ".close-modal"), "click", hideEvent);
+    }(); // calling itself
  
-    var _virtual = document.createElement('div');
-        _virtual.innerHTML = _templ;
-
-    document.body.appendChild(_virtual);
-
-    //detach listener on destroy
-    document.querySelectorAll("#"+modalRef+" .close-modal")[0].addEventListener('click', function(){
-        window.hideModal(modalRef); // TODO: Should bind to c++ event
-    });
-
-    window.modals['ChatModal'] = {
-        methods: {
-            populate: populate
-        }
-    }
-};
+    window.modals['ChatModal'] = this;
+    
+}(); // calling itself

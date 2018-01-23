@@ -19,6 +19,7 @@ using namespace std;
 using namespace WebUI;
 using namespace Helpers;
 using namespace States;
+using namespace ws;
 
 namespace Modal { 
 
@@ -27,26 +28,31 @@ namespace Modal {
         // Deve essere lo stesso valore presente nel file JS
         static const char* modalRef = "chat-modal"; /** Nome identificativo del modale chat */
 
-        static Socket *usersStream;
+        static Socket *usersStream = 0;
 
         void RegisterModal(){
-            usersStream = new Socket("users-stream", State::RefreshUsers);
 
+            try {
+                 usersStream = new Socket(  "users-stream", 
+                                            State::RefreshUsersSuccess, 
+                                            State::RefreshUsersError);
+            } catch(...) {
+                log_base("ChatModal::Socket>>'users-stream'", "Exception reported");
+            }
+
+            WebUI::Register("Modal::ChatModal::Hide", Events::Hide);
             WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
             
             ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
-            try {
-                usersStream->compute();
-            } catch(...) {
-                log_base("AuthState", "socket error");
-            }
-
         }
 
         void EraseModal () {
-            usersStream->stop();
-            // delete
+            // Use method
+            if(usersStream){
+                delete usersStream;
+                       usersStream = 0;
+            }
         }
 
         namespace Events { 
@@ -57,7 +63,7 @@ namespace Modal {
                 json jReq;
                     jReq.at("destination") = function.at("user").at("_id");
 
-                ChatState::Chats::StartAChat(safestr::duplicate(jReq.dump().c_str()));
+                ChatState::Chats::StartAChat(jReq.dump().c_str());
             }
 
             void Show() {
@@ -67,19 +73,24 @@ namespace Modal {
                 if(userInSession){
 
                     // TODO: check logging status
-                    json jUser = json::parse(userInSession);
+                    json auth_user = json::parse(userInSession).at("content");
+                    json populate_request = {{"type", "listen"}, {"user", auth_user.at("_id").get<string>()}};
 
-                    json jReq;
-                         jReq["type"] = "listen";
-                         jReq["user"]["_id"] = jUser["_id"];
-                
-                    // TODO: structuryze
-                    usersStream->setBuffer(jReq.dump(), true);
+                    RequestDefinition::Request request = RequestDefinition::createEmpty();
+                            
+                        request.content =  populate_request.dump();
+                        
+                    usersStream->setBuffer(request);
 
                     Modal::Events::ShowModalByRef(safestr::duplicate(modalRef));
                 }
 
                 safeptr::free_block(userInSession);
+            }
+
+            void Hide(const char* args) {
+                Hide();
+                safeptr::free_block(args);
             }
 
             void Hide() {
@@ -91,20 +102,18 @@ namespace Modal {
 
         namespace State {
 
-            void RefreshUsers(const char* args){
+            void RefreshUsersSuccess(const string success){
 
-                const char* js_action = js::compact(strlen(args) + 50, 3, 
-                                        "window.modals.ChatModal.methods.populate('", 
-                                            args, 
-                                        "')");
+                const string js_action = "window.modals.ChatModal.methods.populate('" +
+                                            success +
+                                        "')";
 
-                webview_dispatch(   
-                    WebUI::GetContext(), 
-                    WebUI::Dispatch, 
-                    safeptr::serialize(safestr::duplicate(js_action))
-                );   
+                WebUI::Execute(js_action.c_str()); 
+            }
 
-                safeptr::free_block(js_action); 
+            // TODO: remove all c_str make string
+            void RefreshUsersError(const string errors){
+                log_base("ChatModal::Socket>>'users-stream'", ("Received error: " +errors).c_str());
             }
             
             void Chats(const char* args){

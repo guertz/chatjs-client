@@ -1,8 +1,3 @@
-/**
- * "scoped" => "use strict"
- * (..js...)appjs;
- */
-
 const AuthModalFactory = function(){
 
     const domRef = "auth-modal";

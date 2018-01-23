@@ -31,6 +31,7 @@ namespace States {
             typedef struct AuthBase {
                 AUTHSIGNAL action;
                 bool online;
+                UserDefinition::User user;
             } AuthBase;
 
             void to_json(json& j, const AuthBase& ab);
@@ -39,15 +40,5 @@ namespace States {
 
         }
 
-        namespace AuthUserDefinition {
-            // optimize?
-            typedef struct AuthUser : AuthBaseDefinition::AuthBase, UserDefinition::User {
-
-            } AuthUser;
-
-            void to_json(json& j, const AuthUser& au);
-            void from_json(const json& j, AuthUser& au);
-
-        }
     }
 }

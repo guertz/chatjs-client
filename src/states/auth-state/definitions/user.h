@@ -9,9 +9,9 @@ namespace States {
         namespace UserDefinition {
 
             typedef struct User {
-                string name;
-                string image;
-                string _id;
+                string name = "";
+                string image = "";
+                string _id = "";
             } User;
 
             void to_json(json& j, const User& u);

@@ -1,9 +1,4 @@
-#include "easywsclient.h"
 #include "wscustom.h"
-#include "env.h"
-
-#include "definitions/request.h"
-#include "definitions/response.h"
 
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
@@ -22,63 +17,37 @@ namespace ws {
 
         this->is_computing = true;
 
-        //      => server chiude solo su errori
-        //         sempre il client a decidere
-        //         e iniziare le comunicazioni
-        //         NEXT: Schedule multiple requests
-        //         set is_stream in constructor?
-        //         activate compute only when needed or set default state to pause
-        //         Types: (2 classes)
-        //              - flow
-        //              - request & response
-        assert(this->channel);
         while(this->channel->getReadyState() != WebSocket::CLOSED) {
 
-            log_base("Socket", "Looping");
-
             if(this->is_computing) {
-                log_base("Socket", "Computing");
 
-                if(this->buffer.size() > 0 && !this->is_send) { 
-                    this->channel->send(this->buffer);
-                    this->is_send = true;
-                }
-                // I probably do not need an else
-                // } else {
+                if(this->arguments.buffer.size() > 0 && !this->arguments.is_send) { 
+                    this->channel->send(this->arguments.buffer);
+                    this->arguments.is_send = true;
+                } else
+                    this->reset();
+                
 
-                    this->channel->dispatch([this](const string& socketResponse) {
-                        
-                        log_base("received", socketResponse.c_str());
+                this->channel->dispatch([this](const string& json_response) {
+                    
+                    ResponseDefinition::Response response = json::parse(json_response);
 
-                        json json_response = json::parse(socketResponse);
-                        ws::ResponseDefinition::Response response = json_response;
+                    if(response.ok)
+                        this->onmessage(response.content);
+                    else
+                        this->onerror(response.error);
+                });
 
-                        this->clearParams();
-
-                        if(!this->is_stream)
-                            this->pause();
-
-                        this->onmessage(safestr::duplicate(json_response.at("content").dump().c_str()));
-                    });
-
-                // }
             }
 
             this->channel->poll(this->is_computing ? SOCKET_ACTIVE_POLL : SOCKET_INACTIVE_POLL);
 
         }
 
-        if(this->channel->getReadyState() == WebSocket::CLOSED ) {
-            
-            if(this->channel) {
-                delete this->channel;
-                    this->channel = 0;
-            }
-
-            if(this->is_computing){
-                SocketTermination exception;
-                throw exception;
-            }
+        // Il canale è stato terminato in modo inaspettato e non richiesto dall'utente
+        if(this->is_computing){
+            SocketTermination exception;
+            throw exception;
         }
 
     }
@@ -91,73 +60,55 @@ namespace ws {
         this->is_computing = true;
     }
 
-    // Group attrivutes
-    // Mutex on buffer (and its attribute)
-    // will loose data?
-    void Socket::clearParams() {
-        this->buffer = "";
-        this->is_send = false;
-        this->is_stream = false;
-        this->is_computing = false;
+    // Mutex arguments
+    // Mutex computing
+    void Socket::reset() {
+        this->arguments.buffer  = "";
+        this->arguments.is_send = false;
     }
 
-    // prevent stop on already stopped?
-    void Socket::stop() {
-        this->clearParams();
-        this->channel->close();
-        if(this->watcher.joinable()) this->watcher.join();
-    }
+    void Socket::setBuffer(const RequestDefinition::Request& request){
 
-    // prevent compute or setbuffer after stop
-    void Socket::compute() {
+        this->reset();
 
-        if(this->is_computing) {
-            ws::SocketComputing computing_exception;
-            throw computing_exception;
-        } else {
-            try {
-                this->watcher = std::thread(&Socket::ThreadMain, this);
-                this->watcher.detach();
-            } catch(const ws::SocketTermination& termination_exception ){
-                throw termination_exception;
-            }
-        }
-    }
+        json serialized_request = request;
 
-    // Compose request, use templates
-    // TODO: request format on server
-    // TODO: throw close if no channel
-    // TODO: Connection error => got closed channel?
-    // TODO: reconnection
-    void Socket::setBuffer(const string &s, bool stream){
-
-        this->clearParams();
-        this->is_stream = stream;
-        this->resume();
-
-        RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
-            auth_request.content = s;
-
-        // JSON_stringify
-        json json_auth_request = auth_request;
-
-        this->buffer = json_auth_request.dump();
+        this->arguments.buffer = serialized_request.dump();
     }
 
     Socket::~Socket(){
-        log_base("Socket", "destroy");
-        this->stop();
+
+        if(this->channel){
+            this->channel->close();
+            
+            if(this->watcher.joinable()) 
+                this->watcher.join();
+
+            delete this->channel;
+                   this->channel = 0;
+        }
+
     }
 
-    Socket::Socket(const string& s, void (*handler)(const char* )) {
+    Socket::Socket( const string& s, 
+                    void (*onmessage)(const string message), 
+                    void(*onerror)(const string error)) {
         
-        log_base("Socket", "create");
-        this->channel = WebSocket::from_url("ws://localhost:8000/" +s);
+        this->channel = WebSocket::from_url("ws://" + SERVER_HOST + ":" + SERVER_PORT + "/" +s);
 
-        this->onmessage = handler;
-        this->clearParams();
+        this->onmessage = onmessage;
+        this->onerror = onerror;
 
-        // if not channel
-        //  throw error
+        this->reset();
+        this->is_computing = true;
+
+        // handle thread channel not open exception
+        try {
+            this->watcher = std::thread(&Socket::ThreadMain, this);
+            this->watcher.detach();
+        } catch(const ws::SocketTermination& termination_exception ){
+            throw termination_exception;
+        }
+        
     }
 }

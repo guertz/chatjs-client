@@ -10,8 +10,9 @@ namespace ws {
 
         typedef struct Response {
             bool ok;
-            int error;
+            int status;
             string content;
+            string error;
         } Response;
 
         void to_json(json& j, const Response& u);

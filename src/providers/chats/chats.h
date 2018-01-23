@@ -24,12 +24,16 @@ namespace ChatState {
     typedef map<string, void(*)(const char* arg)> Methods;
 
     void Bootstrap();
+    void Destroy();
     
     namespace Sockets {
-        void Init(const char* );
-        void NewChat(const char* );
-        void NewMessage(const char *);
-        // clean 
+        void Init(const string );
+
+        void NewChatSuccess(const string);
+        void NewChatError(const string);
+
+        void NewMessageSuccess(const string);
+        void NewMessageError(const string);
     }
 
     namespace Chat {
@@ -43,7 +47,7 @@ namespace ChatState {
         void Register(string , void (*)(const char* ));
         void Notify(const char* );
         const typo_chats& Get();
-        void StartAChat(const char* );   
+        void StartAChat(const string );   
     }
 
     namespace Auth {

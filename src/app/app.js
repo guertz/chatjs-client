@@ -6,6 +6,10 @@ window.getAll = function(node, query) {
     return node.querySelectorAll(query);
 }
 
+window.getnth = function(node, query, nth){
+    return window.getAll(node, query)[nth];
+}
+
 window.getFirst = function(node, query) {
     return window.getAll(node, query)[0];
 }

@@ -30,40 +30,25 @@ namespace States {
 
         namespace AuthBaseDefinition {
 
+            // Default initializer for user
+            //      Even from response if error
+            //      With serialized string no problem
+
+            // if !user load default
             void to_json(json& j, const AuthBase& ab) {
                 j = json{
                         { "action", ab.action}, 
-                        { "online", ab.online}
+                        { "online", ab.online},
+                        { "user", ab.user } // json auto translate?
                     };
             }
 
             void from_json(const json& j, AuthBase& ab) {
                 ab.action = j.at("action").get<AUTHSIGNAL>();
                 ab.online = j.at("online").get<bool>();
+                ab.user   = j.at("user");
             }
 
-        }
-
-        namespace AuthUserDefinition {
-
-            // ERROR PRONE, REDUNDANT
-            void to_json(json& j, const AuthUser& au) {
-                j = json{
-                        { "action", au.action}, 
-                        { "online", au.online},
-                        { "name", au.name}, 
-                        { "image", au.image}, 
-                        { "_id", au._id}
-                    };
-            }
-
-            void from_json(const json& j, AuthUser& au) {
-                au.action = j.at("action").get<AUTHSIGNAL>();
-                au.online = j.at("online").get<bool>();
-                au.name = j.at("name").get<string>();
-                au.image = j.at("image").get<string>();
-                au._id = j.at("_id").get<string>();
-            }
         }
     }
 }

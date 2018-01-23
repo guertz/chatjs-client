@@ -12,18 +12,16 @@ using namespace std;
 using namespace Helpers;
 
 namespace States {
+    // static || inline (if not method interface)
     namespace AuthState {
 
-        void receiveLoginAction(const char* args);
-
-        static Socket* authSocket;
+        static Socket* authSocket = 0;
         static bool pending       = false;
         static bool loggedIn      = false;
         static char* cached       = 0;
 
         static Subscribers subscribed;
 
-        // Static || Inline
         void notify(const char* args){
             
             safeptr::free_block(cached);
@@ -38,24 +36,64 @@ namespace States {
 
         }
 
+        void LoginResponseSuccess(const string success) {
+
+            json auth_response = json::parse(success);
+            UserDefinition::User default_user;
+
+            AuthBaseDefinition::AuthBase auth_data {
+                AUTHSIGNAL::LOGIN,
+                auth_response.at("online"),
+                default_user
+            };
+
+            // alternative, server sends an error
+            //              server sends empty dummy format
+            if(auth_data.online)
+                auth_data.user = auth_response.at("user");
+            
+
+            json report = auth_data;
+            notify(safestr::duplicate(report.dump().c_str()));
+
+            pending = false;
+        }
+
+        void LoginResponseError(const string error) {
+
+            UserDefinition::User default_user;
+
+            AuthBaseDefinition::AuthBase auth_data {
+                AUTHSIGNAL::LOGIN,
+                false,
+                default_user
+            };
+
+            json report = auth_data;
+            notify(safestr::duplicate(report.dump().c_str()));
+
+            pending = false;
+        }
+
         const char* getAuthStatus(){
             return cached ? safestr::duplicate(cached) : 0;
         }
 
         void Bootstrap() {
-            authSocket = new Socket("users", receiveLoginAction);
-
+            
             try {
-                authSocket->compute();
+                authSocket = new Socket("users", LoginResponseSuccess, LoginResponseError);
             }catch(...) {
-                log_base("AuthState", "socket error");
+                log_base("AuthState::Socket>>'users'", "Exception reported");
             }
 
         }
 
         void Destroy() {
-            authSocket->stop();
-            // delete
+            if(authSocket){
+                delete authSocket;
+                       authSocket = 0;
+            }
         }
 
 
@@ -63,31 +101,7 @@ namespace States {
             subscribed[abc] = fn;
         }
 
-        // Static || Inline
-        // throw exception on auth failure
-        // empty args
-        void receiveLoginAction(const char* args){
-
-            log_base("AuthState::LoginResponse", args);
-
-            json auth_response = json::parse(args);
-
-            AuthBaseDefinition::AuthBase auth_data {
-                AUTHSIGNAL::LOGIN,
-                false
-            };
-
-            auth_data.online = auth_response.at("online");                    
-
-            json report = auth_data;
-                    
-            notify(safestr::duplicate(report.dump().c_str()));
-
-            pending = false;
-
-        }
-
-        void Login(AuthActionDefinition::AuthAction& auth){
+        void Login(AuthActionDefinition::AuthAction& auth_action){
             if(!pending && !loggedIn){
                 pending = true;
                 
@@ -95,18 +109,26 @@ namespace States {
                 //      1) request format
                 //      2) reponse format
                 //      3) auth request
-                json request = auth;
+                json json_auth = auth_action;
 
-                log_base("Login", request.dump().c_str());
-                authSocket->setBuffer(request.dump(), false);
+                RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
+                        auth_request.content = json_auth.dump();
+
+                authSocket->setBuffer(auth_request);
             }
 
         }
 
         void Logout(){
-            AuthBaseDefinition::AuthBase auth_base;
-                auth_base.action = AUTHSIGNAL::LOGOUT;
-                json report = auth_base;
+            UserDefinition::User default_user;
+
+            AuthBaseDefinition::AuthBase auth_base {
+                AUTHSIGNAL::LOGOUT,
+                false,
+                default_user
+            };
+            
+            json report = auth_base;
 
             notify(safestr::duplicate(report.dump().c_str()));
 
