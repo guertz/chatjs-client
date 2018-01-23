@@ -1,21 +1,16 @@
-#include<iostream>
-#include <map>
-
 #include "definitions/auth.h"
-
-using namespace std;
 
 namespace States {
     namespace AuthState {
 
-        typedef map<string, void(*)(const char* arg)> Subscribers;
+        typedef std::map<std::string, void(*)(const AuthBaseDefinition::AuthBase& )> Subscribers;
 
-        void Register(string abc, void (*fn)(const char* arg));
+        void Register(std::string abc, void (*fn)(const AuthBaseDefinition::AuthBase& ));
 
         void Logout();
         void Login(AuthActionDefinition::AuthAction& );
         void Bootstrap();
-        const char* getAuthStatus();
+        const UserDefinition::User& getAuthUser();
 
     }
 }

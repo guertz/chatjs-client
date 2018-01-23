@@ -1,8 +1,8 @@
-#include <iostream>
-#include <json.hpp>
+#ifndef PROTOCOL_SOCKETS_DEFINITIONS_RESPONSE_H
+#define PROTOCOL_SOCKETS_DEFINITIONS_RESPONSE_H
 
+#include <json.hpp>
 using nlohmann::json;
-using namespace std;
 
 namespace ws {
 
@@ -11,8 +11,8 @@ namespace ws {
         typedef struct Response {
             bool ok;
             int status;
-            string content;
-            string error;
+            std::string content;
+            std::string error;
         } Response;
 
         void to_json(json& j, const Response& u);
@@ -21,3 +21,5 @@ namespace ws {
 
     }
 }
+
+#endif

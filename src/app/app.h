@@ -1,3 +1,6 @@
+#ifndef APP_APP_H
+#define APP_APP_H
+
 /**
  * Componente principale incaricato della gestione delle varie parti dell'
  * applicazione. Le parti sono suddivise in:
@@ -23,7 +26,7 @@ namespace App {
          * @param[in] args Parametri della chiamata JS in formato JSON serialized
          * @return void
          */
-        void Ready(const char *args);
+        void Ready(const std::string& args);
     }
 
     /**
@@ -39,3 +42,5 @@ namespace App {
      */
     void Destroy();
 }
+
+#endif

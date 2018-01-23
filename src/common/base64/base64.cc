@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include "base64.h"
 
 namespace Base64 {

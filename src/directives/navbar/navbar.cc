@@ -1,8 +1,7 @@
-#include<iostream>
-#include<json.hpp>
+#include <iostream>
+#include <json.hpp>
 
 #include "navbar.h"
-
 #include "profile/profile.h"
 
 #include "common/web-ui/web-ui.h"
@@ -39,15 +38,13 @@ namespace Navbar {
 
     namespace State {
 
-        void Auth(const char* arg){
+        void Auth(const AuthState::AuthBaseDefinition::AuthBase& auth_data){
 
-            json json_auth = json::parse(arg);
-
-            switch(json_auth.at("action").get<AuthState::AUTHSIGNAL>()){
+            switch(auth_data.action){
                 case AuthState::AUTHSIGNAL::LOGIN:
 
-                    if(json_auth.at("online").get<bool>())
-                        Profile::Events::SetText(safestr::duplicate(json_auth.at("user").at("name").get<string>().c_str()));
+                    if(auth_data.online)
+                        Profile::Events::SetText(auth_data.user.name);
 
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:
@@ -57,7 +54,6 @@ namespace Navbar {
                     break;
             }
 
-            safeptr::free_block(arg);
         }
     }
 

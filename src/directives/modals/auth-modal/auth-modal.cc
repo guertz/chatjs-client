@@ -2,11 +2,11 @@
 #include <json.hpp>
 
 #include "auth-modal.h"
+#include "directives/modals/modals.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
-#include "directives/modals/modals.h"
 
 #include "states/auth-state/auth-state.h"
 
@@ -23,36 +23,32 @@ namespace Modal {
     namespace AuthModal {
 
         // Deve essere lo stesso valore presente nel file JS
-        static const char* modalRef = "auth-modal"; /** Nome identificativo del modale di autenticazione */
+        static const string modalRef = "auth-modal"; /** Nome identificativo del modale di autenticazione */
         
         namespace Events {
 
-            void Submit(const char* args){
+            void Submit(const string& args){
 
                 log_base("Modal::AuthModal::Events", args);
 
                 AuthState::AuthActionDefinition::AuthAction data = json::parse(args);
 
                 AuthState::Login(data);
-
-                safeptr::free_block(args);
             }
 
             void Reset(){
                 
-                const char* AUTH_RESET = js::compact(50, 1, "modals.AuthModal.reset()");
+                const string AUTH_RESET = "modals.AuthModal.reset()";
 
                 WebUI::Execute(AUTH_RESET);
-
-                safeptr::free_block(AUTH_RESET);
             }
 
             void Show() {
-                Modal::Events::ShowModalByRef(safestr::duplicate(modalRef));
+                Modal::Events::ShowModalByRef(modalRef);
             }
 
             void Hide() {
-                Modal::Events::HideModalByRef(safestr::duplicate(modalRef));
+                Modal::Events::HideModalByRef(modalRef);
             }
 
         }
@@ -77,15 +73,14 @@ namespace Modal {
 
         namespace State {
                 
-            void Auth(const char* arg){
+            void Auth(const AuthState::AuthBaseDefinition::AuthBase& auth_data){
 
                 Events::Reset();
 
-                json json_auth = json::parse(arg);
 
-                switch(json_auth["action"].get<AuthState::AUTHSIGNAL>()){
+                switch(auth_data.action){
                     case AuthState::AUTHSIGNAL::LOGIN:
-                        if(json_auth["online"].get<bool>()){
+                        if(auth_data.online){
                             AuthMethods::OnLoginSuccess();
                         } else {
                             AuthMethods::OnLoginErrors();
@@ -99,8 +94,6 @@ namespace Modal {
 
                         break;
                 }
-
-                safeptr::free_block(arg);
                 
             }
         }
@@ -113,12 +106,10 @@ namespace Modal {
 
             void OnLoginErrors() {
 
-                const char* AUTH_ERRORS = js::compact(50, 1, "modals.AuthModal.showErrors()");
+                const string AUTH_ERRORS = "modals.AuthModal.showErrors()";
 
                 WebUI::Execute(AUTH_ERRORS);
                 // Events::Reset
-
-                safeptr::free_block(AUTH_ERRORS);
 
             }
 

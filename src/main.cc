@@ -36,10 +36,12 @@
 #endif
 
 #include <iostream>
-#include <assert.h>
+#include <cassert>
+
+#include "app/app.h"
+
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
-#include "app/app.h"
 
 using namespace std;
 using namespace WebUI;

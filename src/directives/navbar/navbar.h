@@ -1,3 +1,8 @@
+#ifndef DIRECTIVES_NAVBAR_NAVBAR_H
+#define DIRECTIVES_NAVBAR_NAVBAR_H
+
+#include "states/auth-state/auth-state.h"
+
 /** 
  * Funzioni di supporto e metodi elementari e la gestione
  * delle voci presenti nella barra di navigazione superiore
@@ -34,6 +39,8 @@ namespace Navbar {
         * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
         * il cambio di stato
         */
-        void Auth(const char* argc);
+        void Auth(const States::AuthState::AuthBaseDefinition::AuthBase& );
     }
 }
+
+#endif

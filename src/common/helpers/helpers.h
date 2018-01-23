@@ -1,3 +1,6 @@
+#ifndef COMMON_HELPERS_HELPERS_H
+#define COMMON_HELPERS_HELPERS_H
+
 /** Funzioni di supporto per la gestione di stringhe, puntatori, etc. */
 namespace Helpers {    
     /** Funzioni di supporto per la gestione dei puntatori. */
@@ -84,3 +87,5 @@ namespace Helpers {
         
     }
 }
+
+#endif

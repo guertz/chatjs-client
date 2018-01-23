@@ -1,5 +1,7 @@
-#ifndef WS_CUSTOM_H
-#define WS_CUSTOM_H
+#ifndef PROTOCOL_SOCKETS_WSCUSTOM_H
+#define PROTOCOL_SOCKETS_WSCUSTOM_H
+
+#include <thread>
 
 #include "easywsclient.h"
 
@@ -9,33 +11,27 @@
 
 #include "env.h"
 
-#include <iostream>
-#include <thread>
-#include <stack>
-
-using namespace std;
-using easywsclient::WebSocket;
-
 namespace ws{
 
     typedef struct socket_args {
         bool is_send;
-        string buffer;
+        std::string buffer;
     } SocketArgs;
 
     // NEXT: Reconnect
     // NEXT: prevent null pointer on websocket
+    // Next: on channel error, cal onerror method with exception
     class Socket {
 
         private:
 
             SocketArgs arguments;
             bool is_computing;
-            WebSocket::pointer channel;
+            easywsclient::WebSocket::pointer channel;
             thread watcher; 
 
-            void (*onmessage)(const string message); 
-            void (*onerror)(const string error);
+            void (*onmessage)(const std::string message); 
+            void (*onerror)(const std::string error);
 
             // _ private convention
             void reset();
@@ -43,7 +39,7 @@ namespace ws{
 
         public:
             // will compute
-            Socket(const string& s, void (*onmessage)(const string message), void(*onerror)(const string error));
+            Socket(const std::string& s, void (*onmessage)(const std::string message), void(*onerror)(const std::string error));
             ~Socket();
 
             void resume();

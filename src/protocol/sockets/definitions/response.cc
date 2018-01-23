@@ -1,8 +1,6 @@
 #include <iostream>
-#include <json.hpp>
 #include "response.h"
 
-using nlohmann::json;
 using namespace std;
 
 namespace ws {

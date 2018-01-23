@@ -1,3 +1,6 @@
+#ifndef DIRECTIVES_TOAST_TOAST_H
+#define DIRECTIVES_TOAST_TOAST_H
+
 /** 
  * Funzioni di supporto per mostrare un alert di tipo Toast
  * sulla finestra.
@@ -11,6 +14,8 @@ namespace Toast {
          * @param[in] argc Contenuto da visualizzare all'interno dell'alert Toast
          *
          */
-        void Show(const char* argc);
+        void Show(const std::string& argc);
     }
 }
+
+#endif

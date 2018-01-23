@@ -1,19 +1,20 @@
-#include <iostream>
+#ifndef PROTOCOL_SOCKET_DEFINITIONS_REQUEST_H
+#define PROTOCOL_SOCKET_DEFINITIONS_REQUEST_H
+
 #include <json.hpp>
 
 using nlohmann::json;
-using namespace std;
 
 namespace ws {
 
     namespace RequestDefinition {
 
         typedef struct Request {
-            string AUTH;
-            string content;
+            std::string AUTH;
+            std::string content;
         } Request;
 
-        Request createAuthenticated(string auth);
+        Request createAuthenticated(std::string auth);
         Request createEmpty();
 
         void to_json(json& j, const Request& u);
@@ -22,3 +23,5 @@ namespace ws {
 
     }
 }
+
+#endif

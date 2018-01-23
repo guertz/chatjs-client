@@ -1,10 +1,8 @@
 #include <iostream>
 #include <json.hpp>
-#include "common/helpers/helpers.h"
 
 #include "user.h"
 
-using namespace Helpers::safestr;
 using nlohmann::json;
 using namespace std;
 
@@ -24,6 +22,12 @@ namespace States {
                 u.name = j.at("name").get<string>();
                 u.image = j.at("image").get<string>();
                 u._id = j.at("_id").get<string>();
+            }
+
+            void setDefault(User& u){
+                u.name = "";
+                u.image = "";
+                u._id = "";
             }
 
         }

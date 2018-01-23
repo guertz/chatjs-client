@@ -1,13 +1,18 @@
+#ifndef PAGES_CHAT_DETAILS_CHAT_DETAILS_H
+#define PAGES_CHAT_DETAILS_CHAT_DETAILS_H
+
 namespace ChatDetails {
 
     void Bootstrap();
 
     namespace Events {
-        void Submit(const char* );
-        void OpenChat(const char* );
+        void Submit(const std::string& );
+        void OpenChat(const std::string& );
     }
 
     namespace Chat {
-        void State(const char* );
+        void State();
     }
 }
+
+#endif

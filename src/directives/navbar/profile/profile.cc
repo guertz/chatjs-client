@@ -34,22 +34,17 @@ namespace Navbar {
         }
 
         namespace Events {
-            void Disconnect(const char* arg){
+            void Disconnect(const string& arg){
+
                 AuthState::Logout();
-                safeptr::free_block(arg);
             }
 
-            void SetText(const char* arg) {
-                const char* js_action = js::compact(70 + strlen(arg), 3, 
-                                            "window.navbar.ProfileLink.setText('", 
-                                                    arg,
-                                                "')");
+            void SetText(const string& arg) {
+                const string js_nav_link = "window.navbar.ProfileLink.setText('" + 
+                                                arg +
+                                            "')";
 
-                webview_dispatch(   
-                    WebUI::GetContext(), 
-                    WebUI::Dispatch, 
-                    safeptr::serialize(safestr::duplicate(js_action))
-                );
+                WebUI::Execute(js_nav_link);
             }
         }
     }

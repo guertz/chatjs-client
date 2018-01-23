@@ -1,9 +1,7 @@
+#ifndef COMMON_LOGGER_LOGGER_H
+#define COMMON_LOGGER_LOGGER_H
+
 #include "env.h"
-
-// Senza l'if? come avere maro più stabili?
-#ifndef LOGGER_LOGGER_H
-#define LOGGER_LOGGER_H
-
 // Con il metodo macro per notificare i cambiamenti della maschera a tutti i file
 // Bisogna ricompilare tutto. Oppure bisogna utilizzare il sistema a funzione log
 // che fa gli if sul momento
@@ -14,8 +12,8 @@
     print_log(                                  \
         static_cast<const TAG>(TYPE),           \
         static_cast<const unsigned int>(LEV),   \
-        reinterpret_cast<const char*>(ATTR),    \
-        reinterpret_cast<const char*>(LOG)      \
+        ATTR,                                   \
+        LOG                                     \
     );
 
 // file .h o .cc
@@ -56,6 +54,6 @@ enum TAG{
   INFO = 1
 };
 
-void print_log(const TAG tag, const unsigned int level, const char* attr, const char* log_msg);
+void print_log(const TAG tag, const unsigned int level, const std::string& attr, const std::string& log_msg);
 
 #endif

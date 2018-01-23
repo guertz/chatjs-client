@@ -18,7 +18,7 @@ const ChatModalFactory = function() {
     var hideEvent = function() {
         window.external.invoke_(JSON.stringify(
             {
-                fn: 'Modal::ChatModal::Hide', 
+                fn: 'Modal::ChatModal::Close', 
                 params: { }
             }
         ));

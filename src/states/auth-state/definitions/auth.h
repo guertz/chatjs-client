@@ -1,10 +1,8 @@
+#ifndef STATES_AUTH_STATE_DEFINITIONS_AUTH_H
+#define STATES_AUTH_STATE_DEFINITIONS_AUTH_H
 
-#include <iostream>
 #include <json.hpp>
 #include "user.h"
-
-using namespace std;
-using nlohmann::json;
 
 namespace States {
     namespace AuthState {
@@ -17,13 +15,13 @@ namespace States {
 
         namespace AuthActionDefinition {
             typedef struct AuthAction {
-                string type;
-                string user;
+                std::string type;
+                std::string user;
             } AuthAction;
 
-            void to_json(json& j, const AuthAction& aa);
+            void to_json(nlohmann::json& j, const AuthAction& aa);
 
-            void from_json(const json& j, AuthAction& aa);
+            void from_json(const nlohmann::json& j, AuthAction& aa);
 
         }
 
@@ -34,11 +32,13 @@ namespace States {
                 UserDefinition::User user;
             } AuthBase;
 
-            void to_json(json& j, const AuthBase& ab);
+            void to_json(nlohmann::json& j, const AuthBase& ab);
 
-            void from_json(const json& j, AuthBase& ab);
+            void from_json(const nlohmann::json& j, AuthBase& ab);
 
         }
 
     }
 }
+
+#endif

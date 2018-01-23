@@ -1,11 +1,11 @@
 #include <iostream>
 #include <json.hpp>
 
+#include "user.h"
 #include "auth.h"
 
 #include "common/helpers/helpers.h"
 
-using namespace Helpers::safestr;
 using nlohmann::json;
 using namespace std;
 

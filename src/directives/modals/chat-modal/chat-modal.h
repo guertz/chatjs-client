@@ -1,3 +1,6 @@
+#ifndef DIRECTIVES_MODALS_CHAT_MODAL_CHAT_MODAL_H
+#define DIRECTIVES_MODALS_CHAT_MODAL_CHAT_MODAL_H
+
 namespace Modal {
 
    /**
@@ -33,13 +36,14 @@ namespace Modal {
             * @param[in] argc Parametri della chiamata JS in formato JSON serialized
             * @return void
             */
-            void NewChatOpen(const char* argc);
+            void NewChatOpen(const std::string& argc);
 
             /** Metodo per mostrare il modale */
             void Show();
 
+            // TODO: Separete events, from method
             /** Metodo per nascondere il modale */
-            void Hide(const char* args);
+            void Close(const std::string& args);
             void Hide();
 
         }
@@ -61,7 +65,7 @@ namespace Modal {
             * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
             * il cambio di stato
             */
-            void Chats(const char* argc);
+            void Chats(const std::string& argc);
                        
            /** 
             * Metodo che ascolta in tempo reale eventi riguardanti lo stream di
@@ -80,3 +84,5 @@ namespace Modal {
         }
     }
 }
+
+#endif

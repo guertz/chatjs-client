@@ -1,5 +1,3 @@
-#include <iostream>
-
 #define SOCKET_ACTIVE_POLL 300
 #define SOCKET_INACTIVE_POLL 1000
 

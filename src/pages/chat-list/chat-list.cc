@@ -7,13 +7,14 @@
 
 #include "chat-list.h"
 #include "pages/chat-details/chat-details.h"
+
 #include "directives/modals/chat-modal/chat-modal.h"
+#include "directives/toast/toast.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
 
-#include "states/auth-state/auth-state.h"
-#include "providers/chats/chats.h"
+#include "states/chat-state/chat-state.h"
 
 
 using json = nlohmann::json;
@@ -49,64 +50,51 @@ namespace ChatList {
 
     namespace Events { 
 
-        void NewChat(const char* argc) {
+        void NewChat(const string& argc) {
             Modal::ChatModal::Events::Show();
-            safeptr::free_block(argc);
         }
 
-        void UserSelected(const char* arg){
-            ChatDetails::Events::OpenChat(safestr::duplicate(arg));
-            safeptr::free_block(arg);
+        void UserSelected(const string& arg){
+            ChatDetails::Events::OpenChat(arg);
         }
     }
 
     namespace Auth {
-        void State(const char* arg) {
+        void State(const AuthState::AuthBaseDefinition::AuthBase& auth_data) {
 
-            json jDat = json::parse(arg);
-            
-            switch(jDat["action"].get<AuthState::AUTHSIGNAL>()){
+            switch(auth_data.action){
                 case AuthState::AUTHSIGNAL::LOGIN:
-                    if(jDat["online"].get<bool>()){
+                    if(auth_data.online)
                         
-                        const char* BUNDLE = js::compact(80, 3, "makeAToast('Bentornato ", jDat["name"].get<string>().c_str(), "')");
-
-                        webview_dispatch(   WebUI::GetContext(), 
-                                            WebUI::Dispatch, 
-                                            safeptr::serialize(safestr::duplicate(BUNDLE))
-                                        );
-
-                        safeptr::free_block(BUNDLE);
-                    }
+                        Toast::Events::Show(auth_data.user.name);
+                    
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:
                 
                     break;
             }
-
-            safeptr::free_block(arg);
         }
     }
 
     namespace Chats {
-        void State(const char* args){
+        void State(const string& args){
 
             json newChat = json::parse(args);
-            const typo_chats chat_list = ChatState::Chats::Get();
+            const ChatState::typo_chats chat_list = ChatState::Chats::Get();
             
             ostringstream oss;
             oss<<"[";
             
             if(!chat_list.empty()){
                 
-                typo_chats::const_iterator it = chat_list.begin();
+                ChatState::typo_chats::const_iterator it = chat_list.begin();
 
                 while(it != chat_list.end()){
 
-                    chat_details chat = it->second;
+                    ChatState::chat_details chat = it->second;
 
                     json jChat;
-                        jChat["reference"] = safestr::duplicate(chat.reference);
+                        jChat["reference"] = chat.reference;
                         jChat["from"] = newChat["jsonArgs"]["from"];
 
                     it++;
@@ -123,18 +111,16 @@ namespace ChatList {
 
             cout<<oss.str()<<endl;
 
-            webview_dispatch(
-                WebUI::GetContext(),
-                WebUI::Dispatch,
-                safeptr::serialize(safestr::duplicate(("components.ChatList.updateText('"+oss.str()+"')").c_str()))
-            );
+            const string js_context = "components.ChatList.updateText('" + oss.str() + "')";
+            
+            WebUI::Execute(js_context);
             
         }
 
     }
 
     namespace Chat {
-        void State(const char* args){
+        void State(const string& args){
             
         }
     }

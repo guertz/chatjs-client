@@ -1,6 +1,8 @@
 #include <iostream>
+#include <map>
 #include <json.hpp>
-#include <assert.h>
+#include <cassert>
+#include <webview.h>
 
 #include "web-ui.h"
 
@@ -40,7 +42,7 @@ namespace WebUI {
     static Methods callbacks; /** Mappa in cui vengono memorizzate le associazioni 
                                     nome <=> puntatore a funzione (callback)*/
 
-    void Register(string callback_name, void (*callback_fn)(const char *)){
+    void Register(string callback_name, void (*callback_fn)(const string&)){
         callbacks[callback_name] = callback_fn;
     }
 
@@ -71,27 +73,22 @@ namespace WebUI {
                                                                     dal tipo di dato Methods che rappresenta
                                                                     l'oggetto contenente il puntatore a funzione */
         
+        // TODO: Strict cast to struct from json to check structure?
         if (fn_itr != callbacks.end())
-            fn_itr->second(safestr::duplicate(function.at("params").dump().c_str())); // Se iteratore valido invoco la funzione duplicato il buffer
+            fn_itr->second(function.at("params").dump()); // Se iteratore valido passo la stringa serializzata
 
-            // jArgs["params"].dump().c_str() [duplicate]
-            // unify js code
-            // unify c++ code
-
-            
-        // safeptr(args...)
+        // delete args
     }
 
-    Webview* Create(){
-        string prefix = "data:text/html,"; // Prefisso necessario quando viene caricato il file HTML 
-                                           // tramite stringa e non da file su disco. 
-                                           // Per dettagli fare riferimento alla libreria webview
-        
-        const char* kPrefix = safestr::duplicate(prefix.c_str());
-        const char* const BLOB = reinterpret_cast<const char* const>(&_binary_assets_index_html_start);
-        char* html = safestr::bufferizable(strlen(kPrefix)+strlen(BLOB));
+    Webview* Create() {
+        const char* prefix = "data:text/html,";  // Prefisso necessario quando viene caricato il file HTML 
+                                                 // tramite stringa e non da file su disco. 
+                                                 // Per dettagli fare riferimento alla libreria webview
 
-                strcat(html, kPrefix);
+        const char* const BLOB = reinterpret_cast<const char* const>(&_binary_assets_index_html_start);
+        char* html = safestr::bufferizable(strlen(prefix)+strlen(BLOB));
+
+                strcat(html, prefix);
                 strcat(html, BLOB); // concateno il codice html con il prefisso 
         
         webview.url = safestr::duplicate(html);
@@ -103,88 +100,86 @@ namespace WebUI {
                                // provvisoriamente per motivi di 
                                // responsiveness
 
+        webview.external_invoke_cb  = JsHCallback; // Registro il callback C++ al metodo invoke javascript
+
         // TODO: check success or exception (assert)
         webview_init(&webview); // Funzione per inizializzare oggetto webview
-        webview.external_invoke_cb  = JsHCallback; // Registro il callback C++ al metodo invoke javascript
+        
         
         WebUI::Register("WebUI::Log", WebUI::Log);
 
-        safeptr::free_block(kPrefix);
         safeptr::free_block(html);
 
         return &webview;
     }
 
-    // TODO: Optimizable params, w already known
     void Dispatch(Webview* w, void* voidPtrChar){
 
         char* args = safeptr::deserialize(voidPtrChar);
 
         webview_eval(w, args); // Momento in cui il codice javascript viene effettivamente
                                // valutato ed eseguito nel contesto della webview
-        
-        // safeptr::free_block(deserialized);
+        // TODO:
+        // safeptr::free_block(deserialized || voidPtrChar);
     }
 
     void Inject() {
         
-        // TODO: tipo dei puntatori
-        const char* const appinit = reinterpret_cast<const char* const>(&_binary_assets_appinit_js_start);
 
         const char* const stylew3 = reinterpret_cast<const char* const>(&_binary_assets_stylew3_css_start);
+        const char* js_style_w3   = js::compact(strlen(stylew3) + 25, 3, 
+                                                    "stylify(false, '", 
+                                                        stylew3, 
+                                                    "')"); 
 
-        // Required later
-        const char* const _c_style = reinterpret_cast<const char* const>(&_binary_assets_style_css_start);
-        unsigned char* const _u_style = reinterpret_cast<unsigned char* const>(&_binary_assets_style_css_start);
-        
         // workaround for multiline css sheet
-        const char* const style   = Base64::Encode(_u_style, strlen(_c_style), false).c_str();
+        const string style   = Base64::Encode(  
+                                    reinterpret_cast<unsigned char* const>(&_binary_assets_style_css_start), 
+                                    strlen(reinterpret_cast<const char* const>(&_binary_assets_style_css_start)),
+                                    false);
 
         // anche il css deve essere eseguito da una sorta di funzione javascript 
-        const char* kInjectableStyle = js::compact(strlen(style) + 25, 3, "stylify(true, '", style, "')");
-        const char* kInjectableStylew3 = js::compact(strlen(stylew3) + 25, 3, "stylify(false, '", stylew3, "')");
+        const string js_style = "stylify(true, '" + style + "')";
 
-        const char* appready = js::compact(15, 1, "appready()");
+        const string appready = "appready()";
 
-        webview_dispatch(&webview,Dispatch, js::prepare(appinit));
-        webview_dispatch(&webview,Dispatch, js::prepare(kInjectableStylew3));
-        webview_dispatch(&webview,Dispatch, js::prepare(kInjectableStyle));
-        webview_dispatch(&webview,Dispatch, js::prepare(appready));
-        
-        // safeptr::free_block(style);
-        safeptr::free_block(kInjectableStyle);
-        safeptr::free_block(kInjectableStylew3);
-        safeptr::free_block(appready);
+        // TODO webview Execute
+        Execute(safeptr::parse_asset(
+                _binary_assets_appinit_js_start));
+
+        Execute(js_style_w3);
+        Execute(js_style);
+        Execute(appready);
+
+        safeptr::free_block(js_style_w3);
 
     }
 
-    void Execute(const char* const action) {
-
+    void Execute(const char* const args){
+        // Dispatch distrugge dopo?
         webview_dispatch(
             &webview,
             Dispatch,
-            js::prepare(action)
+            js::prepare(args)
         );
     }
 
-    // TODO: const to prevent setting changes
-    Webview* GetContext(){
-        return &webview;
+    void Execute(const string& args) {
+
+        // TODO: il puntatore ad action viene distrutto automaticamente non appena
+        //       string action esce fuori dallo scope attuale
+        Execute(args.c_str());
+
     }
 
-    // TODO: Useless?
-    //       add firebug
-    //       debug in both data structure (quelle 2 lì web, web.priv?)
-    void Log(const char* argl) {
+    // Set debug filed + firebug
+    void Log(const string& argl) {
         json log_data = json::parse(argl);
 
         log_csl(
-                log_data.at("attr").get<string>().c_str(),
-                log_data.at("log_msg").get<string>().c_str()
+                log_data.at("attr").get<string>(),
+                log_data.at("log_msg").get<string>()
             );
-
-        safeptr::free_block(argl);
-
     }
 
     // namespace Events {

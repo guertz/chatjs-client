@@ -1,10 +1,9 @@
-#include<iostream>
-#include<cstring>
+#include <iostream>
 #include "logger.h"
 
 using namespace std;
 
-void print_log(const TAG tag, const unsigned int level, const char* attr, const char* log_msg) {
+void print_log(const TAG tag, const unsigned int level, const string& attr, const string& log_msg) {
 
     switch(tag) {
         // change color

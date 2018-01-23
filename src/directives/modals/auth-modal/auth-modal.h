@@ -1,3 +1,8 @@
+#ifndef DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
+#define DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
+
+#include "states/auth-state/auth-state.h"
+
 namespace Modal {
 
    /**
@@ -27,7 +32,7 @@ namespace Modal {
             * @param[in] argc Parametri della chiamata JS in formato JSON serialized
             * @return void
             */
-            void Submit(const char* argc);
+            void Submit(const std::string& argc);
 
            /**
             * Metodo che agisce su l'interfaccia e riporta il form al suo 
@@ -74,7 +79,7 @@ namespace Modal {
             * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
             * il cambio di stato
             */
-            void Auth(const char* argc);
+            void Auth(const States::AuthState::AuthBaseDefinition::AuthBase& );
         }
 
         /**
@@ -100,3 +105,5 @@ namespace Modal {
         }
     }
 }
+
+#endif

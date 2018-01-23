@@ -1,14 +1,14 @@
+
+#include <iostream>
+#include <thread>
+#include <thread>
+
 #include "wscustom.h"
 
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
-#include <iostream>
-#include <cstdlib>
-#include <thread>
-#include <unistd.h>
-#include <signal.h>
-
+using WebSocket = easywsclient::WebSocket;
 using namespace Helpers;
 
 namespace ws {

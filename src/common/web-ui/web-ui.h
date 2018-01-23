@@ -1,7 +1,8 @@
+#ifndef COMMON_WEB_UI_WEB_UI_H
+#define COMMON_WEB_UI_WEB_UI_H
+
 #include <map>
 #include <webview.h>
-
-using namespace std;
 
 /** Funzioni di supporto e metodi elementari e creazione della webview. */
 namespace WebUI {
@@ -13,7 +14,7 @@ namespace WebUI {
     /** 
      * Definizione della struttura dati map che mappa ad ogni stringa un puntatore a funzione.
      */
-    typedef map<string , void(*)(const char *argc)> Methods; 
+    typedef std::map<std::string , void(*)(const std::string& argc)> Methods; 
 
     /**
      * Registra sull'oggetto di tipo mappa ::Methods il puntatore a
@@ -24,7 +25,7 @@ namespace WebUI {
      * param callback_fn Puntatore a funzione del metodo da invocare
      * @return void
      */
-    void Register(string callback_name, void (*callback_fn)(const char *));
+    void Register(std::string callback_name, void (*callback_fn)(const std::string&));
     
     /**
      * Metodo per la creazione della finestra webview.
@@ -60,16 +61,10 @@ namespace WebUI {
      */
     void Dispatch(Webview *w, void *voidPtrChar );
     
+    void Execute(const std::string& args);
     void Execute(const char* const args);
-    
-    /**
-     * Metodo per ottenere il riferimento all'istanza della Webview creata.
-     *
-     * @return Webview*
-     */
-    Webview* GetContext();
 
-    void Log(const char* arg);
+    void Log(const std::string& arg);
 
     // namespace Events {
     //     void OnResize(const char* args);
@@ -77,3 +72,5 @@ namespace WebUI {
     
 
 }
+
+#endif

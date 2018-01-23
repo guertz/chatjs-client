@@ -1,3 +1,4 @@
+#include <iostream>
 #include "app.h"
 
 #include "directives/navbar/navbar.h" 
@@ -9,12 +10,13 @@
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
-#include "providers/chats/chats.h"
+#include "states/chat-state/chat-state.h"
 #include "states/auth-state/auth-state.h"
 
 using namespace WebUI;
 using namespace Helpers;
 using namespace States;
+using namespace std;
 
 extern char _binary_src_app_app_js_start[];
 
@@ -48,12 +50,11 @@ namespace App {
 
     namespace Events {
 
-        void Ready(const char *args) {
+        void Ready(const string& args) {
 
             log_base("App", "App event created");
             Init();
 
-            safeptr::free_block(args);
         }
 
     }

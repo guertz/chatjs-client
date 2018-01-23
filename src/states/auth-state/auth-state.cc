@@ -1,9 +1,11 @@
 #include <iostream>
-#include "auth-state.h"
-#include "protocol/sockets/wscustom.h"
-#include "common/helpers/helpers.h"
+#include <map>
 #include <json.hpp>
 
+#include "auth-state.h"
+#include "protocol/sockets/wscustom.h"
+
+#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
@@ -12,27 +14,25 @@ using namespace std;
 using namespace Helpers;
 
 namespace States {
+    
     // static || inline (if not method interface)
     namespace AuthState {
 
         static Socket* authSocket = 0;
         static bool pending       = false;
         static bool loggedIn      = false;
-        static char* cached       = 0;
+        
+        static UserDefinition::User authUser;
 
         static Subscribers subscribed;
 
-        void notify(const char* args){
+        void notify(const AuthBaseDefinition::AuthBase& auth_data){
             
-            safeptr::free_block(cached);
-            cached = safestr::duplicate(args);
+            authUser = auth_data.user;
 
-            for (const auto& item : subscribed) {
-                
-                (*item.second)(safestr::duplicate(args));
-            }
-
-            safeptr::free_block(args);
+            for (const auto& item : subscribed)
+                (*item.second)(auth_data);
+            
 
         }
 
@@ -52,9 +52,7 @@ namespace States {
             if(auth_data.online)
                 auth_data.user = auth_response.at("user");
             
-
-            json report = auth_data;
-            notify(safestr::duplicate(report.dump().c_str()));
+            notify(auth_data);
 
             pending = false;
         }
@@ -69,14 +67,13 @@ namespace States {
                 default_user
             };
 
-            json report = auth_data;
-            notify(safestr::duplicate(report.dump().c_str()));
+            notify(auth_data);
 
             pending = false;
         }
 
-        const char* getAuthStatus(){
-            return cached ? safestr::duplicate(cached) : 0;
+        const UserDefinition::User& getAuthUser(){
+            return authUser;
         }
 
         void Bootstrap() {
@@ -97,7 +94,7 @@ namespace States {
         }
 
 
-        void Register(string abc, void (*fn)(const char* arg)){
+        void Register(string abc, void (*fn)(const AuthBaseDefinition::AuthBase&)){
             subscribed[abc] = fn;
         }
 
@@ -127,10 +124,8 @@ namespace States {
                 false,
                 default_user
             };
-            
-            json report = auth_base;
 
-            notify(safestr::duplicate(report.dump().c_str()));
+            notify(auth_base);
 
         }
 

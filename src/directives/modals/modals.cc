@@ -1,14 +1,12 @@
 #include <iostream>
 #include <json.hpp>
 
-// Relative
 #include "modals.h"
 #include "auth-modal/auth-modal.h"
 #include "chat-modal/chat-modal.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
-
 
 using json = nlohmann::json;
 using namespace std;
@@ -40,38 +38,22 @@ namespace Modal {
 
     namespace Events {
 
-        void ShowModalByRef(const char* argc) {
+        void ShowModalByRef(const string& argc) {
 
-            const char* js_action = js::compact(50 + strlen(argc), 3, 
-                                        "window.showModal('",
-                                            argc,
-                                        "')");
+            const string js_hide_modal = "window.showModal('" +
+                                            argc +
+                                          "')";
 
-            webview_dispatch(   
-                WebUI::GetContext(),
-                WebUI::Dispatch, 
-                safeptr::serialize(safestr::duplicate(js_action))
-            );
-
-            safeptr::free_block(argc);
-            safeptr::free_block(js_action);
+            WebUI::Execute(js_hide_modal);
         }
 
-        void HideModalByRef(const char* argc) {
+        void HideModalByRef(const string& argc) {
 
-            const char* js_action = js::compact(50 + strlen(argc), 3, 
-                                        "window.hideModal('",
-                                            argc,
-                                        "')");
+            const string js_show_modal = "window.hideModal('" +
+                                            argc +
+                                          "')";
 
-            webview_dispatch(   
-                WebUI::GetContext(),
-                WebUI::Dispatch, 
-                safeptr::serialize(safestr::duplicate(js_action))
-            );
-
-            safeptr::free_block(argc);
-            safeptr::free_block(js_action);
+            WebUI::Execute(js_show_modal);
         }
         
     }
