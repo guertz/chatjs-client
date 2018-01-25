@@ -87,7 +87,7 @@ namespace ChatDetails {
                 jWrapper["_reference"] = jChatStatus["selected"].get<string>();
                 jWrapper["messages"]   = json::parse(oss.str());
 
-                const string js_chat = "components.ChatDetails.populate('" +
+                const string js_chat = "components.ChatDetails.populateChatDetails('" +
                                             jWrapper.dump() +
                                         "')";
                                         

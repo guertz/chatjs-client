@@ -52,7 +52,7 @@ const ChatDetailsFactory = function(){
         ));
     }
 
-    this.populate = function(_chat) {
+    this.populateChatDetails = function(_chat) {
 
         chatTreeRef.innerHTML = "";
         var   chat        = JSON.parse(_chat);

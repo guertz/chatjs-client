@@ -93,6 +93,12 @@ namespace Modal {
                         AuthMethods::OnLogout();
 
                         break;
+                    
+                    case AuthState::AUTHSIGNAL::ALL:
+                    default:
+                        // log_err (with color)
+                        log_base("AuthModal", "Bad format Request");
+                        break;
                 }
                 
             }

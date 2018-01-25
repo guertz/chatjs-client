@@ -36,40 +36,34 @@ namespace States {
 
         }
 
-        void LoginResponseSuccess(const string success) {
+        void ResponseSuccess(const string auth_response) {
 
-            json auth_response = json::parse(success);
-            UserDefinition::User default_user;
-
-            AuthBaseDefinition::AuthBase auth_data {
-                AUTHSIGNAL::LOGIN,
-                auth_response.at("online"),
-                default_user
-            };
-
-            // alternative, server sends an error
-            //              server sends empty dummy format
-            if(auth_data.online)
-                auth_data.user = auth_response.at("user");
+            AuthBaseDefinition::AuthBase auth_data = json::parse(auth_response);
             
-            notify(auth_data);
-
+            loggedIn = auth_data.online;
             pending = false;
+
+            notify(auth_data);
         }
 
-        void LoginResponseError(const string error) {
+        // Doesnt mean user is chicked out (check on return exception)
+        void ResponseError(const string error) {
 
             UserDefinition::User default_user;
 
+            // Cannot cast because of content undefined
             AuthBaseDefinition::AuthBase auth_data {
-                AUTHSIGNAL::LOGIN,
+                AUTHSIGNAL::ALL,
                 false,
                 default_user
             };
 
+            loggedIn = false;
+            pending = false;
+
             notify(auth_data);
 
-            pending = false;
+            
         }
 
         const UserDefinition::User& getAuthUser(){
@@ -79,7 +73,7 @@ namespace States {
         void Bootstrap() {
             
             try {
-                authSocket = new Socket("users", LoginResponseSuccess, LoginResponseError);
+                authSocket = new Socket("user", ResponseSuccess, ResponseError);
             }catch(...) {
                 log_base("AuthState::Socket>>'users'", "Exception reported");
             }
@@ -99,13 +93,11 @@ namespace States {
         }
 
         void Login(AuthActionDefinition::AuthAction& auth_action){
+
+            // assert
             if(!pending && !loggedIn){
                 pending = true;
                 
-                // Changes on server
-                //      1) request format
-                //      2) reponse format
-                //      3) auth request
                 json json_auth = auth_action;
 
                 RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
@@ -117,15 +109,43 @@ namespace States {
         }
 
         void Logout(){
-            UserDefinition::User default_user;
 
-            AuthBaseDefinition::AuthBase auth_base {
-                AUTHSIGNAL::LOGOUT,
-                false,
-                default_user
-            };
+            // TODO: prevent getAuth() to avoid inconsistent state
+            //       component will only be able to get authenticated user
+            //       by watching & handling changes from the provider stream
 
-            notify(auth_base);
+            // TODO: is it better to not use Sockets in component but only 
+            //       in providers?
+
+            // TODO: is it better to send AUTH header all the time or on 
+            //       the first message (init) that will keep trace of the
+            //       logged user
+            //      
+            //       Keeping states on server is worse because it will become
+            //       a structure like the current PHP application which are not
+            //       serverless considering the REST approach. And there will
+            //       to both watch login/logout events on server and both on 
+            //       client. Those cases should be studied in details, analyzing
+            //       it pros & cons and pick the slution to use everywhere
+
+            // TODO: prevent memory leaks (even on server)
+            // TODO: refactor definition to be the same as Login
+            if(!pending && loggedIn){
+                pending = true;
+
+                AuthActionDefinition::AuthAction auth_logout;
+
+                auth_logout.type = "logout";
+                // TODO: change to _id (this is not safe & clear)
+                auth_logout.user = "";
+
+                json json_auth = auth_logout;
+
+                RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
+                        auth_request.content = json_auth.dump();
+
+                authSocket->setBuffer(auth_request);
+            }
 
         }
 

@@ -47,8 +47,8 @@ namespace ChatList {
     namespace Events { 
 
         void NewChat(const string& argc) {
-            log_base("ChatList::Events(NewChat)", argc);
-            // Modal::ChatModal::Events::Show();
+            // log_base("ChatList::Events(NewChat)", argc);
+            Modal::ChatModal::Events::Show();
         }
 
         void UserSelected(const string& arg){
@@ -108,7 +108,7 @@ namespace ChatList {
 
             cout<<oss.str()<<endl;
 
-            const string js_context = "components.ChatList.populate('" + oss.str() + "')";
+            const string js_context = "components.ChatList.populateChatList('" + oss.str() + "')";
             
             WebUI::Execute(js_context);
 

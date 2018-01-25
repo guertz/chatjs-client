@@ -21,6 +21,8 @@ using namespace Helpers;
 using namespace States;
 using namespace ws;
 
+extern char _binary_src_directives_modals_chat_modal_chat_modal_js_start[];
+
 namespace Modal { 
 
     namespace ChatModal {
@@ -31,6 +33,11 @@ namespace Modal {
         static Socket *usersStream = 0;
 
         void RegisterModal(){
+
+            WebUI::Execute(
+                    safeptr::parse_asset(
+                        _binary_src_directives_modals_chat_modal_chat_modal_js_start)
+                );
 
             try {
                  usersStream = new Socket(  "users-stream", 
@@ -43,7 +50,7 @@ namespace Modal {
             WebUI::Register("Modal::ChatModal::Close", Events::Close);
             WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
             
-            ChatState::Chats::Register("Modal::ChatModal", State::Chats);
+            // ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
         }
 
@@ -72,9 +79,9 @@ namespace Modal {
 
                 if(auth_user._id.size()>0){
 
-                    json populate_request = {{"type", "listen"}, {"user", auth_user._id}};
+                    json populate_request = {{"type", "listen"}};
 
-                    RequestDefinition::Request request = RequestDefinition::createEmpty();
+                    RequestDefinition::Request request = RequestDefinition::createAuthenticated(auth_user._id);
                             
                         request.content =  populate_request.dump();
                         
@@ -100,16 +107,17 @@ namespace Modal {
 
             void RefreshUsersSuccess(const string success){
 
-                const string js_action = "window.modals.ChatModal.methods.populate('" +
+                const string js_action = "modals.ChatModal.populateChat('" +
                                             success +
                                         "')";
 
+                log_base("ChatModal@Execute", js_action);
                 WebUI::Execute(js_action); 
             }
 
             // TODO: remove all c_str make string
             void RefreshUsersError(const string errors){
-                log_base("ChatModal::Socket>>'users-stream'", "Received error: " +errors);
+                log_base("ChatModal::Socket@users-stream", "ERR" +errors);
             }
             
             void Chats(const string& args){

@@ -25,7 +25,7 @@ namespace Modal {
             );
 
         AuthModal::RegisterModal();
-        // ChatModal::RegisterModal();
+        ChatModal::RegisterModal();
     
     }
 

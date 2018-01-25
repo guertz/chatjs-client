@@ -10,7 +10,8 @@ namespace States {
 
         enum AUTHSIGNAL {
             LOGOUT = 0,
-            LOGIN = 1            
+            LOGIN = 1 ,
+            ALL = 2           
         };
 
         namespace AuthActionDefinition {

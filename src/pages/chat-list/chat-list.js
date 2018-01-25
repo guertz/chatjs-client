@@ -61,7 +61,7 @@ const ChatList = function(){
         ref: window.getFirst(node, "chats-wrapper"),
         list: window.getFirst(node, "chats-wrapper ul"),
         currentEvents: [],
-        populate: function(_chats) {
+        populateChat: function(_chats) {
 
             var currentIndex = 0;
 
@@ -105,7 +105,7 @@ const ChatList = function(){
         }
     };
     
-    this.populate = chatsWrapper.populate;
+    this.populateChatList = chatsWrapper.populateChat;
 
     this.destroy = function () {
         // remove events + dom
