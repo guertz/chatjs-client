@@ -12,6 +12,7 @@
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
+#include "states/users-state/users-state.h"
 #include "states/chat-state/chat-state.h"
 #include "states/auth-state/auth-state.h"
 
@@ -42,6 +43,7 @@ namespace App {
     void Init() {
         
         // ChatState::Bootstrap();
+        UsersState::Bootstrap();
         AuthState::Bootstrap();
         
         Navbar::Bootstrap();
@@ -50,6 +52,7 @@ namespace App {
 
         ChatList::Bootstrap();
         // ChatDetails::Bootstrap();
+        
     }
 
     namespace Events {
@@ -75,9 +78,17 @@ namespace App {
     }
 
     void Destroy() {
-
+        
         Navbar::Destroy();
         Modal::Destroy();
+
+        // Toast::Destroy();
+        // ChaList::Destroy();
+        // ChatDetails::Destroy();
+
+        // ChatState::Destroy();
+        UsersState::Destroy();
+        AuthState::Destroy();
         
     }
 }

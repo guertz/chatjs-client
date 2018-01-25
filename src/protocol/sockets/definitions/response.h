@@ -1,25 +1,29 @@
 #ifndef PROTOCOL_SOCKETS_DEFINITIONS_RESPONSE_H
 #define PROTOCOL_SOCKETS_DEFINITIONS_RESPONSE_H
 
+#include <iostream>
 #include <json.hpp>
-using nlohmann::json;
 
 namespace ws {
 
-    namespace ResponseDefinition {
+    class BaseResponse {
+        private:
+            void from_json(const nlohmann::json& );
 
-        typedef struct Response {
+        public:
             bool ok;
             int status;
             std::string content;
             std::string error;
-        } Response;
 
-        void to_json(json& j, const Response& u);
+            BaseResponse();
+            BaseResponse(const nlohmann::json& j);
+            BaseResponse(const std::string& serialized);
 
-        void from_json(const json& j, Response& u);
+            nlohmann::json to_json();
+            std::string serialize();
 
-    }
+    };
 }
 
 #endif

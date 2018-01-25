@@ -8,6 +8,7 @@
 #include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
+using json = nlohmann::json;
 using WebSocket = easywsclient::WebSocket;
 using namespace Helpers;
 
@@ -16,7 +17,8 @@ namespace ws {
     void Socket::ThreadMain(){
 
         this->is_computing = true;
-
+        // Server offline
+        // Node not exists
         while(this->channel->getReadyState() != WebSocket::CLOSED) {
 
             if(this->is_computing) {
@@ -31,7 +33,7 @@ namespace ws {
                 this->channel->dispatch([this](const string& json_response) {
                     
                     log_base("Received", json_response);
-                    ResponseDefinition::Response response = json::parse(json_response);
+                    BaseResponse response(json::parse(json_response));
 
                     if(response.ok)
                         this->onmessage(response.content);
@@ -68,11 +70,11 @@ namespace ws {
         this->arguments.is_send = false;
     }
 
-    void Socket::setBuffer(const RequestDefinition::Request& request){
+    void Socket::setBuffer(BaseRequest& request){
 
         this->reset();
 
-        json serialized_request = request;
+        json serialized_request = request.to_json();
 
         this->arguments.buffer = serialized_request.dump();
     }
@@ -107,7 +109,7 @@ namespace ws {
         this->onerror = onerror;
 
         this->reset();
-        this->is_computing = true;
+        this->is_computing = true; // || false?
 
         // handle thread channel not open exception
         try {

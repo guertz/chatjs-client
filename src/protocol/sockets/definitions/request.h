@@ -1,27 +1,28 @@
 #ifndef PROTOCOL_SOCKET_DEFINITIONS_REQUEST_H
 #define PROTOCOL_SOCKET_DEFINITIONS_REQUEST_H
 
+#include <iostream>
 #include <json.hpp>
-
-using nlohmann::json;
 
 namespace ws {
 
-    namespace RequestDefinition {
+    class BaseRequest {
+        private:
+            void from_json(const nlohmann::json& );
 
-        typedef struct Request {
+        public:
             std::string AUTH;
             std::string content;
-        } Request;
+        
+            BaseRequest();
+            BaseRequest(const std::string& serialized);
+            BaseRequest(const nlohmann::json& j);
 
-        Request createAuthenticated(std::string auth);
-        Request createEmpty();
-
-        void to_json(json& j, const Request& u);
-
-        void from_json(const json& j, Request& u);
-
-    }
+            
+            nlohmann::json to_json();
+            std::string serialize();
+            
+    };
 }
 
 #endif

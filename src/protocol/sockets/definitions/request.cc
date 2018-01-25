@@ -1,33 +1,36 @@
-#include <iostream>
 #include "request.h"
 
+using json = nlohmann::json;
 using namespace std;
 
 namespace ws {
 
-    namespace RequestDefinition {
+    BaseRequest::BaseRequest() {
+        this->AUTH = "";
+        this->content = "";
+    }
+    
+    BaseRequest::BaseRequest(const json& j) : BaseRequest() {
+        this->from_json(j);
+    }
 
-        Request createAuthenticated(string auth) {
-            Request base { auth, "{}" };
+    BaseRequest::BaseRequest(const string& serialized) : BaseRequest() {
+        this->from_json(json::parse(serialized));
+    }
 
-            return base;
-        }
+    void BaseRequest::from_json(const json& j){
+        this->AUTH = j.at("AUTH").get<string>();
+        this->content = j.at("content").dump();
+    }
 
-        Request createEmpty() {
-            return createAuthenticated("");
-        }
+    json BaseRequest::to_json(){
+        return json{ 
+            { "AUTH", this->AUTH },
+            { "content", json::parse(this->content) }
+        };
+    }
 
-        void to_json(json& j, const Request& u) {
-            j = json{ 
-                    { "AUTH", u.AUTH },
-                    { "content", json::parse(u.content) }
-                };
-        }
-
-        void from_json(const json& j, Request& u) {
-            u.AUTH = j.at("AUTH").get<string>();
-            u.content = j.at("content").dump();
-        }
-
+    string BaseRequest::serialize() {
+        return this->to_json().dump();
     }
 }

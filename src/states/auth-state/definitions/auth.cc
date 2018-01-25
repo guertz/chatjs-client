@@ -1,54 +1,29 @@
-#include <iostream>
-#include <json.hpp>
-
-#include "user.h"
 #include "auth.h"
 
-#include "common/helpers/helpers.h"
-
-using nlohmann::json;
 using namespace std;
-
 namespace States {
-    namespace AuthState {
+    namespace AuthState{
 
-        namespace AuthActionDefinition {
-
-            void to_json(json& j, const AuthAction& aa) {
-                j = json{
-                        { "type", aa.type }, 
-                        { "user", aa.user }
-                    };
-            }
-
-            void from_json(const json& j, AuthAction& aa) {
-                aa.type = j.at("type").get<string>();
-                aa.user = j.at("user").get<string>();
-            }
-
+        AUTHSIGNAL str_to_enum(const string& AUTH_ACTION){
+            if(AUTH_ACTION.compare("login") == 0)
+                return AUTHSIGNAL::LOGIN;
+            if(AUTH_ACTION.compare("logout") == 0)
+                return AUTHSIGNAL::LOGOUT;
+            
+            return AUTHSIGNAL::ALL;
         }
 
-        namespace AuthBaseDefinition {
+        string enum_to_str(const AUTHSIGNAL AUTH_ACTION){
 
-            // Default initializer for user
-            //      Even from response if error
-            //      With serialized string no problem
-
-            // if !user load default
-            void to_json(json& j, const AuthBase& ab) {
-                j = json{
-                        { "action", ab.action}, 
-                        { "online", ab.online},
-                        { "user", ab.user } // json auto translate?
-                    };
+            switch(AUTH_ACTION) {
+                case AUTHSIGNAL::LOGIN: 
+                    return "login";
+                case AUTHSIGNAL::LOGOUT:
+                    return "logout";
+                default:
+                    return "";
             }
-
-            void from_json(const json& j, AuthBase& ab) {
-                ab.action = j.at("action").get<AUTHSIGNAL>();
-                ab.online = j.at("online").get<bool>();
-                ab.user   = j.at("user");
-            }
-
         }
+
     }
 }

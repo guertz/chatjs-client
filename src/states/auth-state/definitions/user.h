@@ -1,25 +1,31 @@
 #ifndef STATES_AUTH_STATE_DEFINITIONS_USER_H
 #define STATES_AUTH_STATE_DEFINITIONS_USER_H
 
+#include <iostream>
 #include <json.hpp>
 
 namespace States {
     namespace AuthState {
-        namespace UserDefinition {
 
-            typedef struct User {
-                std::string name = "";
-                std::string image = "";
-                std::string _id = "";
-            } User;
+        class User {
+            private:
+                void from_json(const nlohmann::json& j);
 
-            void to_json(nlohmann::json& j, const User& u);
+            public:
+                std::string name;
+                std::string image;
+                std::string _id;
 
-            void from_json(const nlohmann::json& j, User& u);
+                User();
+                User(const nlohmann::json& j);
+                User(const std::string& serialized);
 
-            void setDefault(User& u);
-
-        }
+                nlohmann::json to_json();
+                std::string serialize();
+                
+                bool is_valid();
+        };
+        
     }
 }
 

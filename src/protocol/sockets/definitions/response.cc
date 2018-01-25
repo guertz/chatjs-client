@@ -1,28 +1,42 @@
-#include <iostream>
 #include "response.h"
 
+using json = nlohmann::json;
 using namespace std;
 
 namespace ws {
 
-    namespace ResponseDefinition {
+    BaseResponse::BaseResponse() {
+        this->ok      = false;
+        this->status  = 0;
+        this->content = "";
+        this->error   = "";
+    }
 
-        void to_json(json& j, const Response& u) {
-            j = json { 
-                        { "ok", u.ok },
-                        { "status", u.status }, 
-                        { "error", u.error},
-                        { "content", json::parse(u.content)}
-                     };
-        }
+    BaseResponse::BaseResponse(const nlohmann::json& j) : BaseResponse() {
+        this->from_json(j);
+    }
 
+    BaseResponse::BaseResponse(const std::string& serialized) : BaseResponse() {
+        this->from_json(json::parse(serialized));
+    }
 
-        void from_json(const json& j, Response& u)  {
-            u.ok = j.at("ok").get<bool>();
-            u.status = j.at("status").get<int>();
-            u.error = j.at("error").get<string>();
-            u.content = j.at("content").dump();
-        }
+    void BaseResponse::from_json(const nlohmann::json& j) {
+        this->ok = j.at("ok").get<bool>();
+        this->status = j.at("status").get<int>();
+        this->error = j.at("error").get<string>();
+        this->content = j.at("content").dump();
+    }
 
+    json BaseResponse::to_json() {
+        return json { 
+            { "ok", this->ok },
+            { "status", this->status }, 
+            { "error", this->error},
+            { "content", json::parse(this->content)}
+        };
+    }
+
+    string BaseResponse::serialize() {
+        return this->to_json().dump();
     }
 }

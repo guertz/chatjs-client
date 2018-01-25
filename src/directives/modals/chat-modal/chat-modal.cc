@@ -9,17 +9,14 @@
 #include "common/logger/logger.h"
 #include "common/web-ui/web-ui.h"
 
-#include "states/auth-state/auth-state.h"
+#include "states/users-state/users-state.h"
 #include "states/chat-state/chat-state.h"
-
-#include "protocol/sockets/wscustom.h"
 
 using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
 using namespace Helpers;
 using namespace States;
-using namespace ws;
 
 extern char _binary_src_directives_modals_chat_modal_chat_modal_js_start[];
 
@@ -30,7 +27,7 @@ namespace Modal {
         /** Nome identificativo del modale chat */
         static const string modalRef = "chat-modal";
 
-        static Socket *usersStream = 0;
+        
 
         void RegisterModal(){
 
@@ -39,27 +36,17 @@ namespace Modal {
                         _binary_src_directives_modals_chat_modal_chat_modal_js_start)
                 );
 
-            try {
-                 usersStream = new Socket(  "users-stream", 
-                                            State::RefreshUsersSuccess, 
-                                            State::RefreshUsersError);
-            } catch(...) {
-                log_base("ChatModal::Socket>>'users-stream'", "Exception reported");
-            }
 
             WebUI::Register("Modal::ChatModal::Close", Events::Close);
             WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
             
+            UsersState::Register("Modal::ChatModal", State::Users);
             // ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
         }
 
         void EraseModal () {
-            // Use method
-            if(usersStream){
-                delete usersStream;
-                       usersStream = 0;
-            }
+            
         }
 
         namespace Events { 
@@ -70,25 +57,12 @@ namespace Modal {
                 json jReq;
                     jReq.at("destination") = function.at("user").at("_id");
 
-                ChatState::Chats::StartAChat(jReq.dump());
+                // ChatState::Chats::StartAChat(jReq.dump());
             }
 
             void Show() {
-
-                const AuthState::UserDefinition::User auth_user = AuthState::getAuthUser();
-
-                if(auth_user._id.size()>0){
-
-                    json populate_request = {{"type", "listen"}};
-
-                    RequestDefinition::Request request = RequestDefinition::createAuthenticated(auth_user._id);
-                            
-                        request.content =  populate_request.dump();
-                        
-                    usersStream->setBuffer(request);
-
-                    Modal::Events::ShowModalByRef(modalRef);
-                }
+                State::Users();
+                Modal::Events::ShowModalByRef(modalRef);  
             }
 
             // Todo: JS Close bind Event
@@ -104,21 +78,19 @@ namespace Modal {
         }
 
         namespace State {
-
-            void RefreshUsersSuccess(const string success){
+            
+            void Users() {
+                const string serializedList = UsersState::getSerializedList();
 
                 const string js_action = "modals.ChatModal.populateChat('" +
-                                            success +
-                                        "')";
+                            serializedList +
+                        "')";
 
                 log_base("ChatModal@Execute", js_action);
                 WebUI::Execute(js_action); 
             }
 
-            // TODO: remove all c_str make string
-            void RefreshUsersError(const string errors){
-                log_base("ChatModal::Socket@users-stream", "ERR" +errors);
-            }
+
             
             void Chats(const string& args){
 

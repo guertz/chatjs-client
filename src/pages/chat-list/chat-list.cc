@@ -57,17 +57,24 @@ namespace ChatList {
     }
 
     namespace Auth {
-        void State(const AuthState::AuthBaseDefinition::AuthBase& auth_data) {
+        void State() {
+            
+            const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                  AuthState::User       auth_user   = AuthState::getAuthUser();
 
-            switch(auth_data.action){
+            switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:
-                    if(auth_data.online)
+                    if(auth_user.is_valid())
                         
-                        Toast::Events::Show(auth_data.user.name);
+                        Toast::Events::Show(auth_user.name);
                     
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:
                 
+                    break;
+                case AuthState::AUTHSIGNAL::ALL:
+                default:
+                    log_base("AuthModal", "Bad format Request");
                     break;
             }
         }

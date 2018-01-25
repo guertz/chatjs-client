@@ -66,21 +66,8 @@ namespace Modal {
             * il cambio di stato
             */
             void Chats(const std::string& argc);
+            void Users();
                        
-           /** 
-            * Metodo che ascolta in tempo reale eventi riguardanti lo stream di
-            * dati provenienti da un canale socket.
-            * Il canale Socket in questione è aperto all'url "users-stream" e
-            * riceve un messaggio in tempo reale ogni volta che la lista di
-            * utenti cambia invocando questo metodo.
-            *
-            * @include sockets/users-stream/refresh-users.json
-            *
-            * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
-            * il cambio di stato
-            */
-            void RefreshUsersSuccess(const std::string argc);
-            void RefreshUsersError(const std::string argc);
         }
     }
 }

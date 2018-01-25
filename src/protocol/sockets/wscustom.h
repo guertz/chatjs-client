@@ -45,7 +45,7 @@ namespace ws{
             void resume();
             void pause();
 
-            void setBuffer(const RequestDefinition::Request& request);
+            void setBuffer(BaseRequest& request);
     };
 }
 

@@ -39,7 +39,7 @@ namespace Navbar {
         * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
         * il cambio di stato
         */
-        void Auth(const States::AuthState::AuthBaseDefinition::AuthBase& );
+        void Auth();
     }
 }
 

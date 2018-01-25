@@ -38,19 +38,28 @@ namespace Navbar {
 
     namespace State {
 
-        void Auth(const AuthState::AuthBaseDefinition::AuthBase& auth_data){
+        void Auth(){
+                
+            const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                  AuthState::User       auth_user   = AuthState::getAuthUser();
 
-            switch(auth_data.action){
+            switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:
 
-                    if(auth_data.online)
-                        Profile::Events::SetText(auth_data.user.name);
+                    if(auth_user.is_valid())
+                        Profile::Events::SetText(auth_user.name);
 
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:
 
                     Profile::Events::SetText(safestr::duplicate("Profilo"));
 
+                    break;
+
+                case AuthState::AUTHSIGNAL::ALL:
+                default:
+                
+                    log_base("AuthModal", "Bad format Request");
                     break;
             }
 

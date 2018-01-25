@@ -57,7 +57,7 @@ namespace States {
         }
 
         namespace Auth {
-            void State(const States::AuthState::AuthBaseDefinition::AuthBase& );
+            void State();
         }
     }
 }

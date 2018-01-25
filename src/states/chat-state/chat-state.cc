@@ -2,7 +2,6 @@
 #include <map>
 #include <json.hpp>
 
-// and all the required definitions
 #include "chat-state.h"
 
 #include "protocol/sockets/wscustom.h"
@@ -55,11 +54,11 @@ namespace States {
 
                 json connect_request = {{"type", "connect"}, {"user", user}};
 
-                RequestDefinition::Request request = RequestDefinition::createEmpty();
+                // RequestDefinition::Request request = RequestDefinition::createEmpty();
                     
-                    request.content =  connect_request.dump();
+                //     request.content =  connect_request.dump();
                     
-                channel->setBuffer(request);
+                // channel->setBuffer(request);
                     
                 // }
             }
@@ -91,13 +90,13 @@ namespace States {
 
             void NewChatSuccess(const string args){
 
-                const AuthState::UserDefinition::User& auth_user = AuthState::getAuthUser();
+                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                      AuthState::User       auth_user   = AuthState::getAuthUser();
 
                 json chat_args = json::parse(args);
                 string referral = chat_args.at("reference").get<string>();
 
-                // class->isLogged
-                if(auth_user._id.size()>0){
+                if(auth_user.is_valid()){
 
                     try { 
                         chat_watchers[referral] = new Socket("chats/"+referral,  NewMessageSuccess, NewMessageError);
@@ -109,10 +108,10 @@ namespace States {
                                 }
                             };
                         
-                        RequestDefinition::Request request = RequestDefinition::createEmpty();
-                            request.content = chat_join_request.dump();
+                        // RequestDefinition::Request request = RequestDefinition::createEmpty();
+                        //     request.content = chat_join_request.dump();
 
-                            chat_watchers[referral]->setBuffer(request);
+                        //     chat_watchers[referral]->setBuffer(request);
 
                     } catch(...) {
                         log_base(("ChatState::Socket>>'chats/" + referral + "'").c_str(), "Exception reported");
@@ -157,7 +156,9 @@ namespace States {
 
             void SendAMessage(const string& args){
 
-                const AuthState::UserDefinition::User& auth_user = AuthState::getAuthUser();
+                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                      AuthState::User       auth_user   = AuthState::getAuthUser();
+
         
                 json jArgs = json::parse(args);
 
@@ -170,14 +171,14 @@ namespace States {
                         {"text", jArgs["text"].get<string>()}
                     };
 
-                if(auth_user._id.size()>0){
+                if(auth_user.is_valid()){
 
-                    RequestDefinition::Request request = 
-                        RequestDefinition::createAuthenticated(auth_user._id);
+                    // RequestDefinition::Request request = 
+                    //     RequestDefinition::createAuthenticated(auth_user._id);
                         
-                        request.content =  communicate.dump();
+                    //     request.content =  communicate.dump();
 
-                    chat_watchers[jArgs["reference"].get<string>()]->setBuffer(request);  
+                    // chat_watchers[jArgs["reference"].get<string>()]->setBuffer(request);  
                 }
 
             }
@@ -207,29 +208,38 @@ namespace States {
 
                 json create_chat_request = {{"type", "create"}, {"destination", user_dest}};
 
-                RequestDefinition::Request request = RequestDefinition::createEmpty();
+                // RequestDefinition::Request request = RequestDefinition::createEmpty();
                     
-                    request.content =  create_chat_request.dump();
+                //     request.content =  create_chat_request.dump();
                     
-                channel->setBuffer(request);
+                // channel->setBuffer(request);
 
             }
         }
 
         namespace Auth {
-            void State(const AuthState::AuthBaseDefinition::AuthBase& auth_data) {
+            void State() {
                 
-                switch(auth_data.action){
+                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                      AuthState::User       auth_user   = AuthState::getAuthUser();
+
+                switch(auth_action){
                     case AuthState::AUTHSIGNAL::LOGIN:
 
-                        if(auth_data.online)
-                            Sockets::Init(auth_data.user._id);
+                        if(auth_user.is_valid())
+                            Sockets::Init(auth_user._id);
                         
 
                         break;
                     case AuthState::AUTHSIGNAL::LOGOUT:
                     
                             // ChatState::Broker::clean();
+                        break;
+
+                    case AuthState::AUTHSIGNAL::ALL:
+                    default:
+                    
+                        log_base("AuthModal", "Bad format Request");
                         break;
                 }
                 

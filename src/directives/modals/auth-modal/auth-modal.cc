@@ -31,9 +31,9 @@ namespace Modal {
 
                 log_base("Modal::AuthModal::Events", args);
 
-                AuthState::AuthActionDefinition::AuthAction data = json::parse(args);
+                json fn_params = json::parse(args);
 
-                AuthState::Login(data);
+                AuthState::Login(fn_params.at("_id").get<string>());
             }
 
             void Reset(){
@@ -63,7 +63,7 @@ namespace Modal {
             WebUI::Register("Modal::AuthModal::Submit", Events::Submit);
             AuthState::Register("Modal::AuthModal", State::Auth);
 
-           Events::Show();
+            Events::Show();
             
         }
 
@@ -73,19 +73,22 @@ namespace Modal {
 
         namespace State {
                 
-            void Auth(const AuthState::AuthBaseDefinition::AuthBase& auth_data){
+            void Auth(){
 
                 Events::Reset();
 
+                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                      AuthState::User       auth_user   = AuthState::getAuthUser();
 
-                switch(auth_data.action){
+                switch(auth_action) {
+
                     case AuthState::AUTHSIGNAL::LOGIN:
-                        if(auth_data.online){
+
+                        if(auth_user.is_valid())
                             AuthMethods::OnLoginSuccess();
-                        } else {
+                        else
                             AuthMethods::OnLoginErrors();
-                        }
-                            
+                        
                         break;
 
                     case AuthState::AUTHSIGNAL::LOGOUT:

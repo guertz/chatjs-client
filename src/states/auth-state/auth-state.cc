@@ -15,65 +15,63 @@ using namespace Helpers;
 
 namespace States {
     
-    // static || inline (if not method interface)
     namespace AuthState {
 
         static Socket* authSocket = 0;
         static bool pending       = false;
-        static bool loggedIn      = false;
+        static bool logged        = false;
         
-        static UserDefinition::User authUser;
+        static Response::Auth authResponse;
 
         static Subscribers subscribed;
 
-        void notify(const AuthBaseDefinition::AuthBase& auth_data){
+        void notify(const Response::Auth& auth){
             
-            authUser = auth_data.user;
+            authResponse = auth;
 
             for (const auto& item : subscribed)
-                (*item.second)(auth_data);
-            
+                (*item.second)(); 
 
         }
 
-        void ResponseSuccess(const string auth_response) {
+        // TODO: pass json data?
+        //       pass serialized data
+        //       <template> with response type casting
+        //       move to sockets namespace
+        void ResponseSuccess(const string str_response) {
 
-            AuthBaseDefinition::AuthBase auth_data = json::parse(auth_response);
-            
-            loggedIn = auth_data.online;
+            Response::Auth auth_response(json::parse(str_response));
+            logged = auth_response.online;
             pending = false;
 
-            notify(auth_data);
+            notify(auth_response);
         }
 
-        // Doesnt mean user is chicked out (check on return exception)
-        void ResponseError(const string error) {
-
-            UserDefinition::User default_user;
+        void ResponseError(const string str_error) {
 
             // Cannot cast because of content undefined
-            AuthBaseDefinition::AuthBase auth_data {
-                AUTHSIGNAL::ALL,
-                false,
-                default_user
-            };
+            // Do i really need to handle auth::ALL
+            Response::Auth auth_response;
 
-            loggedIn = false;
+            logged = false;
             pending = false;
 
-            notify(auth_data);
-
-            
+            notify(auth_response);
         }
 
-        const UserDefinition::User& getAuthUser(){
-            return authUser;
+        AUTHSIGNAL getAuthAction() {
+            return authResponse.type;
+        }
+
+        User getAuthUser() {
+            return authResponse.user;
         }
 
         void Bootstrap() {
             
             try {
-                authSocket = new Socket("user", ResponseSuccess, ResponseError);
+                if(!authSocket)
+                    authSocket = new Socket("auth", ResponseSuccess, ResponseError);
             }catch(...) {
                 log_base("AuthState::Socket>>'users'", "Exception reported");
             }
@@ -88,22 +86,25 @@ namespace States {
         }
 
 
-        void Register(string abc, void (*fn)(const AuthBaseDefinition::AuthBase&)){
+        void Register(string abc, void (*fn)()){
             subscribed[abc] = fn;
         }
 
-        void Login(AuthActionDefinition::AuthAction& auth_action){
+        void Login(const string& AUTH_KEY){
 
             // assert
-            if(!pending && !loggedIn){
+            if(!pending && !logged){
                 pending = true;
                 
-                json json_auth = auth_action;
+                Request::Auth auth_request;
+                    auth_request.type = AUTHSIGNAL::LOGIN;
+                    auth_request.user = AUTH_KEY;
 
-                RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
-                        auth_request.content = json_auth.dump();
+                
+                BaseRequest socket_data;
+                            socket_data.content = auth_request.serialize();
 
-                authSocket->setBuffer(auth_request);
+                authSocket->setBuffer(socket_data);
             }
 
         }
@@ -130,21 +131,21 @@ namespace States {
 
             // TODO: prevent memory leaks (even on server)
             // TODO: refactor definition to be the same as Login
-            if(!pending && loggedIn){
+            if(!pending && logged){
                 pending = true;
 
-                AuthActionDefinition::AuthAction auth_logout;
 
-                auth_logout.type = "logout";
-                // TODO: change to _id (this is not safe & clear)
-                auth_logout.user = "";
+                Request::Auth auth_request;
+                    auth_request.type = AUTHSIGNAL::LOGOUT;
+                    // auth_request.user = "";
 
-                json json_auth = auth_logout;
+                
+                BaseRequest socket_data;
+                            socket_data.content = auth_request.serialize();
+                            socket_data.AUTH    = authResponse.user._id;
 
-                RequestDefinition::Request auth_request = RequestDefinition::createEmpty();
-                        auth_request.content = json_auth.dump();
+                authSocket->setBuffer(socket_data);
 
-                authSocket->setBuffer(auth_request);
             }
 
         }

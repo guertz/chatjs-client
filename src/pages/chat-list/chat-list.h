@@ -13,7 +13,7 @@ namespace ChatList {
     }
 
     namespace Auth {
-        void State(const States::AuthState::AuthBaseDefinition::AuthBase& );
+        void State();
     }
 
     namespace Chats {
