@@ -41,7 +41,7 @@ namespace Navbar {
         void Auth(){
                 
             const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                  AuthState::User       auth_user   = AuthState::getAuthUser();
+                             User       auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:

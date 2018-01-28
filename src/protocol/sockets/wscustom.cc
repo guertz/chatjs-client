@@ -96,7 +96,7 @@ namespace ws {
     Socket::Socket( const string& s, 
                     void (*onmessage)(const string message), 
                     void(*onerror)(const string error)) {
-        
+
         // TODO: speed up app launch putting channel creation in thread
         // TODO: best would be having custom callbacks per request
         //          mapped with their name/id in a <map> object

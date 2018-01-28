@@ -4,60 +4,52 @@
 #include <map>
 
 #include "definitions/chat.h"
+#include "definitions/chat-methods/request.h"
+#include "definitions/chat-methods/response.h"
+#include "definitions/chats-methods/request.h"
+#include "definitions/chats-methods/response.h"
 
 #include "protocol/sockets/wscustom.h"
-
-#include "states/auth-state/auth-state.h"
 
 namespace States {
 
     namespace ChatState {
 
-        typedef std::map<std::string, message_block> typo_chat; // as a Vector ? 
+        typedef std::map<std::string, ws::Socket*> SocketsMap;
 
-        typedef struct chat_details_data {
-            std::string reference;
-            std::string destination;
-            std::string from;
-            std::string creator;
-            typo_chat messages;
-        } chat_details;
-
-        typedef std::map<std::string, chat_details> typo_chats;
-        typedef std::map<std::string, ws::Socket*> typo_chat_watchers;
-
-        typedef std::map<std::string, void(*)(const std::string& arg)> Methods;
-        typedef std::map<std::string, void(*)()> Methods_void;
+        // No argument is fine (get last action);
+        typedef std::map<std::string, void(*)()> Subscribers;
 
         void Bootstrap();
         void Destroy();
         
-        namespace Sockets {
-            void Init(const std::string& );
+        // inline void Init(const std::string& );
 
-            void NewChatSuccess(const std::string);
-            void NewChatError(const std::string);
+        // OnLogout destroy chat on both side
+        namespace ChatMethods {
+            void Register(std::string , void (*)());
+            const Chat& getChatByRef(const std::string& );
 
-            void NewMessageSuccess(const std::string);
-            void NewMessageError(const std::string);
+            void SendAMessage(const std::string& );
+
+            inline void Notify();
+            inline void ResponseSuccess(const std::string);
+            inline void ResponseError(const std::string);
         }
 
-        namespace Chat {
-            void Register(string , void (*)());
-            void Notify();
-            const chat_details& Get(const string& );
-            void SendAMessage(const string& );
+        namespace ChatsMethods {
+            void Register(std::string , void (*)());
+            const Chats& getChatsByRef();
+
+            void StartAChat(const string& user_dest);
+
+            inline void Notify();
+            inline void ResponseSuccess(const std::string);
+            inline void ResponseError(const std::string);
         }
 
-        namespace Chats { 
-            void Register(string , void (*)(const string& ));
-            void Notify(const string& );
-            const typo_chats& Get();
-            void StartAChat(const string& );   
-        }
-
-        namespace Auth {
-            void State();
+        namespace State {
+            void Auth();
         }
     }
 }

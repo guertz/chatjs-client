@@ -43,8 +43,8 @@ namespace States {
             try {
                 if(!usersSocket)
                     usersSocket = new Socket(   "users-stream", 
-                                                Sockets::UsersStream::ResponseSuccess, 
-                                                Sockets::UsersStream::ResponseError);
+                                                UsersStream::ResponseSuccess, 
+                                                UsersStream::ResponseError);
             }catch(...) {
                 log_base("UsersState::Socket>>'users-stream'", "Exception reported");
             }
@@ -62,81 +62,80 @@ namespace States {
             return streamResponse.usersList;    
         }
 
-        namespace Sockets {
-            namespace UsersStream {
+        namespace UsersStream {
 
-                static bool streaming = false;
+            static bool streaming = false;
 
-                inline void Init(const string& AUTH) {
-                    
-                    if(!streaming){
-                        streaming = true;
+            inline void Init(const string& AUTH) {
                 
-                        Request::Stream stream_request;
-                            stream_request.type = STREAMSIGNAL::OPEN;
-
-                        
-                        BaseRequest socket_data;
-                            socket_data.content = stream_request.serialize();
-                            socket_data.AUTH = AUTH;
-
-                        usersSocket->setBuffer(socket_data);
-                        
-                    }
-                }
-
-                inline void Close() {
-
-                    if(streaming) {
-                        Request::Stream stream_request;
-                            stream_request.type = STREAMSIGNAL::CLOSE;
+                if(!streaming){
+                    streaming = true;
+            
+                    Request::Stream stream_request;
+                        stream_request.type = STREAMSIGNAL::OPEN;
 
                     
-                        BaseRequest socket_data;
-                            socket_data.content = stream_request.serialize();
+                    BaseRequest socket_data;
+                        socket_data.content = stream_request.serialize();
+                        socket_data.AUTH = AUTH;
 
-                        // streaming = false && after that compute = stop?
-                        usersSocket->setBuffer(socket_data);
-
-                        streaming = false;
-                    }
-
-                }
-
-                inline void ResponseSuccess(const string str_response) {
-
-                    // check reponse type and do action
-                    // update static variables data
-
-                    Response::Stream stream_response(json::parse(str_response));
-
-                    notify(stream_response);
-                }
-
-                inline void ResponseError(const string str_error) {
+                    usersSocket->setBuffer(socket_data);
                     
-                    // TODO: failure this variable will die
-                    //       but notify is copying first
-                    // Cannot cast because of content undefined
-                    Response::Stream stream_response;
-
-                    notify(stream_response);
                 }
             }
+
+            inline void Close() {
+
+                if(streaming) {
+                    Request::Stream stream_request;
+                        stream_request.type = STREAMSIGNAL::CLOSE;
+
+                
+                    BaseRequest socket_data;
+                        socket_data.content = stream_request.serialize();
+
+                    // streaming = false && after that compute = stop?
+                    usersSocket->setBuffer(socket_data);
+
+                    streaming = false;
+                }
+
+            }
+
+            inline void ResponseSuccess(const string str_response) {
+
+                // check reponse type and do action
+                // update static variables data
+
+                Response::Stream stream_response(json::parse(str_response));
+
+                notify(stream_response);
+            }
+
+            inline void ResponseError(const string str_error) {
+                
+                // TODO: failure this variable will die
+                //       but notify is copying first
+                // Cannot cast because of content undefined
+                Response::Stream stream_response;
+
+                notify(stream_response);
+            }
+        
         }
 
         namespace State {
             void Auth() {
 
                 const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                      AuthState::User       auth_user   = AuthState::getAuthUser();
+                                 User       auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action) {
 
                     case AuthState::AUTHSIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
-                            Sockets::UsersStream::Init(auth_user._id);
+                            UsersStream::Init(auth_user._id);
                         // else
                         //   no channel should be opened (useless)
 
@@ -144,7 +143,7 @@ namespace States {
 
                     case AuthState::AUTHSIGNAL::LOGOUT:
 
-                        Sockets::UsersStream::Close();
+                        UsersStream::Close();
 
                         break;
                     

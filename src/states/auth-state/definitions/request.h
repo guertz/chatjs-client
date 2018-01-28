@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <json.hpp>
-#include "auth.h"
+#include "types.h"
 
 namespace States {
     namespace AuthState {

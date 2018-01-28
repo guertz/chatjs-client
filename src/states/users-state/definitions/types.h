@@ -1,13 +1,11 @@
-#ifndef STATES_USERS_STATE_DEFINITIONS_AUTH_H
-#define STATES_USERS_STATE_DEFINITIONS_AUTH_H
+#ifndef STATES_USERS_STATE_DEFINITIONS_TYPES_H
+#define STATES_USERS_STATE_DEFINITIONS_TYPES_H
 
 #include <iostream>
 
 namespace States {
     namespace UsersState {
 
-        // Corrispond to type on server
-        // unify action && type keyword on server
         enum STREAMSIGNAL {
             CLOSE = 0,
             OPEN = 1

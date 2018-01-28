@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <json.hpp>
-#include "user.h"
-#include "auth.h"
+#include "models/user/user.h"
+#include "types.h"
 
 namespace States {
     namespace AuthState {

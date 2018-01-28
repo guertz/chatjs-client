@@ -38,8 +38,8 @@ namespace ChatList {
         WebUI::Register("ChatList::NewChat", Events::NewChat);
         WebUI::Register("ChatList::UserSelected", Events::UserSelected);
 
-        ChatState::Chats::Register("ChatList", Chats::State);
-        ChatState::Chat::Register("ChatList", Chat::State);
+        // ChatState::Chats::Register("ChatList", Chats::State);
+        // ChatState::Chat::Register("ChatList", Chat::State);
 
         AuthState::Register("ChatList", Auth::State);
     }
@@ -60,7 +60,7 @@ namespace ChatList {
         void State() {
             
             const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                  AuthState::User       auth_user   = AuthState::getAuthUser();
+                             User       auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:
@@ -80,54 +80,54 @@ namespace ChatList {
         }
     }
 
-    namespace Chats {
-        void State(const string& args){
+    // namespace Chats {
+    //     void State(const string& args){
 
-            json newChat = json::parse(args);
-            const ChatState::typo_chats chat_list = ChatState::Chats::Get();
+    //         json newChat = json::parse(args);
+    //         const ChatState::typo_chats chat_list = ChatState::Chats::Get();
             
-            ostringstream oss;
-            oss<<"[";
+    //         ostringstream oss;
+    //         oss<<"[";
             
-            if(!chat_list.empty()){
+    //         if(!chat_list.empty()){
                 
-                ChatState::typo_chats::const_iterator it = chat_list.begin();
+    //             ChatState::typo_chats::const_iterator it = chat_list.begin();
 
-                while(it != chat_list.end()){
+    //             while(it != chat_list.end()){
 
-                    ChatState::chat_details chat = it->second;
+    //                 ChatState::chat_details chat = it->second;
 
-                    json jChat;
-                        jChat["reference"] = chat.reference;
-                        jChat["from"] = newChat["jsonArgs"]["from"];
+    //                 json jChat;
+    //                     jChat["reference"] = chat.reference;
+    //                     jChat["from"] = newChat["jsonArgs"]["from"];
 
-                    it++;
+    //                 it++;
 
-                    oss<<jChat.dump();
+    //                 oss<<jChat.dump();
 
-                    if(it != chat_list.end())
-                        oss<<",";
+    //                 if(it != chat_list.end())
+    //                     oss<<",";
                     
-                }
-            }
+    //             }
+    //         }
 
-            oss<<"]";
+    //         oss<<"]";
 
-            cout<<oss.str()<<endl;
+    //         cout<<oss.str()<<endl;
 
-            const string js_context = "components.ChatList.populateChatList('" + oss.str() + "')";
+    //         const string js_context = "components.ChatList.populateChatList('" + oss.str() + "')";
             
-            WebUI::Execute(js_context);
+    //         WebUI::Execute(js_context);
 
-            Toast::Events::Show("E' stata iniziata una nuova chat con ...");
+    //         Toast::Events::Show("E' stata iniziata una nuova chat con ...");
             
-        }
+    //     }
 
-    }
+    // }
 
-    namespace Chat {
-        void State(){
-            Toast::Events::Show("E' stato ricevuto un nuovo messaggio da ....");
-        }   
-    }
+    // namespace Chat {
+    //     void State(){
+    //         Toast::Events::Show("E' stato ricevuto un nuovo messaggio da ....");
+    //     }   
+    // }
 }

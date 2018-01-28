@@ -33,7 +33,7 @@ namespace ChatDetails {
 
         const string disable_form = "components.ChatDetails.disable()";
 
-        ChatState::Chat::Register("ChatDetails::RefreshChats", Chat::State);
+        // ChatState::ChatMethods::Register("ChatDetails::RefreshChats", Chat::State);
 
         WebUI::Execute(disable_form);
     }
@@ -41,61 +41,61 @@ namespace ChatDetails {
     namespace Events {
         void Refresh(){
 
-            json jChatStatus = json::parse(chatStatus);
+            // json jChatStatus = json::parse(chatStatus);
 
-            if(strcmp(jChatStatus["selected"].get<string>().c_str(), "undefined") != 0){
+            // if(strcmp(jChatStatus["selected"].get<string>().c_str(), "undefined") != 0){
 
-                const ChatState::chat_details chat = ChatState::Chat::Get(jChatStatus["selected"].get<string>());
+            //     const ChatState::chat_details chat = ChatState::Chat::Get(jChatStatus["selected"].get<string>());
 
-                unsigned int counter = 0;
+            //     unsigned int counter = 0;
 
-                json jWrapper = R"(
-                    {
-                        "_reference": "fakecontent",
-                        "messages": "[]"
-                    }
-                )"_json;
+            //     json jWrapper = R"(
+            //         {
+            //             "_reference": "fakecontent",
+            //             "messages": "[]"
+            //         }
+            //     )"_json;
 
-                ostringstream oss;
-                oss<<"[";
+            //     ostringstream oss;
+            //     oss<<"[";
                     
-                ChatState::typo_chat::const_reverse_iterator _r_it = chat.messages.rbegin();
+            //     ChatState::typo_chat::const_reverse_iterator _r_it = chat.messages.rbegin();
 
-                while(_r_it != chat.messages.rend() && counter < MESSAGES){
+            //     while(_r_it != chat.messages.rend() && counter < MESSAGES){
 
-                    const ChatState::message_block msgx = _r_it->second;
+            //         const ChatState::message_block msgx = _r_it->second;
 
-                    json tmpMsg;
-                        tmpMsg["isMe"] = msgx.isMe;
-                        tmpMsg["avatar"] = msgx.avatar; // duplicate is better here?
-                        tmpMsg["content"] = msgx.content;
-                        tmpMsg["time"] = msgx.time;
+            //         json tmpMsg;
+            //             tmpMsg["isMe"] = msgx.isMe;
+            //             tmpMsg["avatar"] = msgx.avatar; // duplicate is better here?
+            //             tmpMsg["content"] = msgx.content;
+            //             tmpMsg["time"] = msgx.time;
 
-                    oss<<tmpMsg.dump();
+            //         oss<<tmpMsg.dump();
 
-                    jChatStatus["last-message"] = _r_it->first;
+            //         jChatStatus["last-message"] = _r_it->first;
 
-                    _r_it++;
-                    counter++;
+            //         _r_it++;
+            //         counter++;
 
-                    if(_r_it != chat.messages.rend() && counter < MESSAGES)
-                        oss<<",";
-                }
+            //         if(_r_it != chat.messages.rend() && counter < MESSAGES)
+            //             oss<<",";
+            //     }
 
-                oss<<"]";
+            //     oss<<"]";
 
-                jWrapper["_reference"] = jChatStatus["selected"].get<string>();
-                jWrapper["messages"]   = json::parse(oss.str());
+            //     jWrapper["_reference"] = jChatStatus["selected"].get<string>();
+            //     jWrapper["messages"]   = json::parse(oss.str());
 
-                const string js_chat = "components.ChatDetails.populateChatDetails('" +
-                                            jWrapper.dump() +
-                                        "')";
+            //     const string js_chat = "components.ChatDetails.populateChatDetails('" +
+            //                                 jWrapper.dump() +
+            //                             "')";
                                         
-                WebUI::Execute(js_chat);
+            //     WebUI::Execute(js_chat);
 
-                chatStatus = jChatStatus.dump();
+            //     chatStatus = jChatStatus.dump();
 
-            }
+            // }
         }
 
         void OpenChat(const string& args){
@@ -130,7 +130,7 @@ namespace ChatDetails {
             jExtern["reference"] = jChat["selected"].get<string>();
             jExtern["text"] = jArgs.at("text").get<string>();
 
-            ChatState::Chat::SendAMessage(jExtern.dump());
+            // ChatState::Chat::SendAMessage(jExtern.dump());
 
         }
     }

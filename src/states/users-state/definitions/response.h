@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <json.hpp>
-#include "stream.h"
+#include "types.h"
 
 namespace States {
     namespace UsersState {
