@@ -16,7 +16,8 @@
 
 #ifndef SERVER_ENV_ATTRIBUTES
 #define SERVER_ENV_ATTRIBUTES
-const std::string SERVER_HOST =  "localhost";
+const unsigned int MESSAGES   = 10;
+const std::string SERVER_HOST = "localhost";
 const std::string SERVER_PORT = "8000";
 #endif
 

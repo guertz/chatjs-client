@@ -40,6 +40,8 @@ namespace States {
         //       move to sockets namespace
         void ResponseSuccess(const string str_response) {
 
+            log_base("Auth", str_response);
+
             Response::Auth auth_response(json::parse(str_response));
             logged = auth_response.online;
             pending = false;
@@ -48,6 +50,8 @@ namespace States {
         }
 
         void ResponseError(const string str_error) {
+            
+            log_base("Auth", str_error);
 
             // Cannot cast because of content undefined
             // Do i really need to handle auth::ALL

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <json.hpp>
+#include <cassert>
 
 #include "chat-state.h"
 
@@ -20,193 +21,217 @@ using namespace States;
 namespace States {
     namespace ChatState {
 
-        static Chats        chats;
-        static SocketsMap   chats_socket;
-
-        // TODO: register in its proper namespace
-        static Socket *channel = 0; 
+        static Chats        chatsList;
+        static SocketsMap   socketsChatsList;
 
         void Bootstrap(){
-            
-            try {
-                channel = new Socket(   "chats-stream", 
-                                        ChatsMethods::ResponseSuccess, 
-                                        ChatsMethods::ResponseError);
-            } catch(...) {
-                log_base("ChatState::Socket>>'chats-stream'", "Exception reported");
-            }
-
+            log_base("ChatState", "Bootstrapping provider");
             AuthState::Register("ChatState", State::Auth);
-
-
         }
 
         void Destroy () {
-            // Use method
-            if(channel){
-                delete channel;
-                    channel = 0;
-            }
+            log_base("ChatState", "Destroying provider");
+            ChatsMethods::clean();
         }
-
-        // inline void Init(const string& user){
-
-            // if(!channel){
-
-            // json connect_request = {{"type", "connect"}, {"user", user}};
-
-            // RequestDefinition::Request request = RequestDefinition::createEmpty();
-                
-            //     request.content =  connect_request.dump();
-                
-            // channel->setBuffer(request);
-                
-            // }
-        // }
 
         namespace ChatMethods {
 
             Subscribers subscribed;
 
             void Register(std::string abc, void (*fn)()) {
+                log_base("ChatState::Chat>>Register", "Registering callback " + abc);
                 subscribed[abc] = fn;
             }
 
-            const Chat& getChatByRef(const std::string& referral) {
+            inline void InitAChat(const Chat& chat){
+
+                User auth_user = AuthState::getAuthUser();
+                
+                assert(auth_user.is_valid());
+
+                try { 
+                    socketsChatsList[chat.reference] = 
+                        new Socket( "chats/" + chat.reference,  
+                                    ResponseSuccess, 
+                                    ResponseError);
+
+                    Request::Chat chat_join;
+                        chat_join.type = TYPE::JOIN;
+
+                    BaseRequest socket_data;
+                        socket_data.content = chat_join.serialize();
+                        socket_data.AUTH = auth_user._id;
+
+                    assert(socketsChatsList[chat.reference]);
+
+                    socketsChatsList[chat.reference]->setBuffer(socket_data);
+
+                    log_base("ChatState::Chat>>Init", "Initializing 'chats/" + chat.reference + "'");
+
+                } catch(...) {
+                    log_base("ChatState::Chat>>Init", "Error 'chats/" + chat.reference + "'");
+                }
 
             }
 
-            void SendAMessage(const std::string& msg) {
-                // const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                //                  User       auth_user   = AuthState::getAuthUser();
+            void SendAMessage(const std::string& text) {
+                
+                const string referral = ChatsMethods::getCurrent(); 
+                User auth_user = AuthState::getAuthUser();
 
-        
-                // json jArgs = json::parse(args);
+                assert(auth_user.is_valid());
 
-                // // TODO, change on server because needs to validate as authenticated
-                // //       this json structure changed
-                // // 
-                // //     Using auth headers + new content format
-                // json communicate{
-                //         {"type", "send"},
-                //         {"text", jArgs["text"].get<string>()}
-                //     };
+                Request::Chat chat_send;
+                    chat_send.type = TYPE::SEND;
+                    chat_send.text = text;
+                                            
+                BaseRequest socket_data;
+                    socket_data.content = chat_send.serialize();
+                    socket_data.AUTH = auth_user._id;
 
-                // if(auth_user.is_valid()){
-
-                //     // RequestDefinition::Request request = 
-                //     //     RequestDefinition::createAuthenticated(auth_user._id);
-                        
-                //     //     request.content =  communicate.dump();
-
-                //     // chat_watchers[jArgs["reference"].get<string>()]->setBuffer(request);  
-                // }
+                assert(socketsChatsList[referral]);
+                socketsChatsList[referral]->setBuffer(socket_data);
+           
+                log_base("ChatState::Chat>>Sending", "Message '" + text + "'");
             }
 
             inline void Notify() {
+                log_base("ChatState::Chat>>Notify", "Detected changes");
                 for (const auto& item : subscribed) 
                     (*item.second)();
             }
 
             inline void ResponseSuccess(const string args){
 
-                // json jChat = json::parse(args);
+                log_base("ChatState::Chat>>Socket", "Response: '" + args + "'");
 
-                // const string chat = jChat["ref"].get<string>();
-                // const string msg = jChat["msg"].get<string>();
+                Response::Chat chat_send(args);
+                Message m(json::parse(args));
+                
+                chatsList[chat_send.ref].messages.push_back(m);
+                Notify();
 
-                // message_block t;
-
-                //     t.content = jChat["data"]["content"].get<string>();
-                //     t.status = ACK_LEVEL::WAITING;
-                //     t.isMe   = jChat["data"]["isMe"].get<bool>();   
-                //     t.avatar = jChat["data"]["sender"]["image"].get<string>();
-                //     t.time   = jChat["data"]["time"].get<string>();
-
-
-                // chat_list[chat].messages[msg] = t;
-
-                // ChatState::Chat::Notify();
             }
 
             inline void ResponseError(const string error) {
-
+                log_base("ChatState::Chat>>Socket", "Error: '" + error + "'");
             }
         }
 
         namespace ChatsMethods {
-            Subscribers subscribed;
+            static Subscribers subscribed;
+            static Socket *chatsSocket = 0;
+            static string currentChatRef;
 
             void Register(std::string abc, void (*fn)()) {
+                log_base("ChatState::Chats>>Register", "Registering callback " + abc);
                 subscribed[abc] = fn;
             }
 
-            const Chats& getChatsByRef() {
+            const string getSerializedChats() {
+                log_base("ChatState::Chats", "Requested serialized chats list");
 
+                json container;
+                ChatsWrapper::chats_to_json(chatsList, container);
+                return container.dump();
             }
+
+            void setCurrent(const string& reference) {
+                log_base("ChatState::Chats", "Setting reference to: " + reference);
+                currentChatRef = reference;
+                assert(currentChatRef.size());
+
+                ChatMethods::Notify();
+            }
+
+            const string getCurrent() {
+                return currentChatRef;
+            }
+
+            const string getCurrentChat() {
+                log_base("ChatState::Chats", "Requested serialized chat: '" + currentChatRef + "'");
+
+                if(currentChatRef.size() > 0)
+                    return chatsList[currentChatRef].serialize();
+
+                // Handle better if not valid?
+                return "";
+            }
+        
+            inline void Init(const string& AUTH) {
+                
+                log_base("ChatState::Chat>>Init", "Initializing chats");
+
+                if(!chatsSocket) {
+                    try {
+                        chatsSocket = new Socket( "chats-stream", 
+                                                  ResponseSuccess, 
+                                                  ResponseError);
+                    } catch(...) {
+                        log_base("ChatState::Socket>>'chats-stream'", "Exception reported");
+                    }
+
+                    Request::Chats connect_request;
+                        connect_request.type = TYPE::CONNECT;
+                        
+                    BaseRequest socket_data;
+                        socket_data.content = connect_request.serialize();
+                        socket_data.AUTH = AUTH;
+
+                    assert(chatsSocket);
+                    chatsSocket->setBuffer(socket_data);
+                        
+                }
+            }   
 
             inline void Notify() {
                 for (const auto& item : subscribed) 
                     (*item.second)();
             }
 
+            inline void clean () {
+                // destroy subsockets
+                if(chatsSocket){
+                    delete chatsSocket;
+                        chatsSocket = 0;
+                }
+            }
+
             inline void ResponseSuccess(const std::string success) {
+                log_base("ChatState", "## RESPONSE RECEIVED");
 
-                // const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                //                 User       auth_user   = AuthState::getAuthUser();
+                Response::Chats chat_response(success);
 
-                // json chat_args = json::parse(args);
-                // string referral = chat_args.at("reference").get<string>();
-
-                // if(auth_user.is_valid()){
-
-                //     try { 
-                //         chat_watchers[referral] = new Socket("chats/"+referral,  NewMessageSuccess, NewMessageError);
-
-                //         json chat_join_request{
-                //                 { "type", "join"},
-                //                 { "content", 
-                //                     { "_id", auth_user._id }
-                //                 }
-                //             };
-                        
-                //         // RequestDefinition::Request request = RequestDefinition::createEmpty();
-                //         //     request.content = chat_join_request.dump();
-
-                //         //     chat_watchers[referral]->setBuffer(request);
-
-                //     } catch(...) {
-                //         log_base(("ChatState::Socket>>'chats/" + referral + "'").c_str(), "Exception reported");
-                //     }
-                // } 
-
-                // // destination is always me when receiving
-                // // dump => because i need user data, view may need an update
-                // chat_details details;
-                //     details.reference = referral;
-                //     details.destination = chat_args["destination"].dump();
-                //     details.from = chat_args["from"].dump();
-                //     details.creator = chat_args["creator"].dump();
-
-                // chat_list[referral] = details;
+                Chat new_chat(success);
+                ChatMethods::InitAChat(new_chat);
+                chatsList[chat_response.reference] = new_chat;
                 
-                // ChatState::Chats::Notify(args);
+                ChatsMethods::Notify();
             }
 
             inline void ResponseError(const std::string error) {
 
             }
-        
 
+            // Chat with the same user
             void StartAChat(const string& user_dest){
 
-                json create_chat_request = {{"type", "create"}, {"destination", user_dest}};
+                User auth_user = AuthState::getAuthUser();
 
-                // RequestDefinition::Request request = RequestDefinition::createEmpty();
-                    
-                //     request.content =  create_chat_request.dump();
-                    
-                // channel->setBuffer(request);
+                Request::Chats create;
+                    create.type = TYPE::CREATE;
+                    create.destination = user_dest;
+
+                assert(auth_user.is_valid());
+                                                
+                BaseRequest socket_data;
+                    socket_data.content = create.serialize();
+                    socket_data.AUTH = auth_user._id;
+
+                assert(chatsSocket);
+                chatsSocket->setBuffer(socket_data);
+                
+            
 
             }
         }
@@ -221,14 +246,15 @@ namespace States {
                 switch(auth_action){
                     case AuthState::AUTHSIGNAL::LOGIN:
 
+                        log_base("ChatState::Chat>>State(Auth)", "Initializing after auth success received");
                         if(auth_user.is_valid())
-                            // Sockets::Init(auth_user._id);
+                            ChatsMethods::Init(auth_user._id);
                         
 
                         break;
                     case AuthState::AUTHSIGNAL::LOGOUT:
                     
-                            // ChatState::Broker::clean();
+                            ChatsMethods::clean();
                         break;
 
                     case AuthState::AUTHSIGNAL::ALL:

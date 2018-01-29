@@ -26,6 +26,7 @@ namespace ws{
         private:
 
             SocketArgs arguments;
+            std::string path;
             bool is_computing;
             easywsclient::WebSocket::pointer channel;
             thread watcher; 

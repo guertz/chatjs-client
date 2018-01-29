@@ -16,10 +16,14 @@ namespace ws {
  
     void Socket::ThreadMain(){
 
+        this->channel = WebSocket::from_url(this->path);
         this->is_computing = true;
-        // Server offline
-        // Node not exists
-        while(this->channel->getReadyState() != WebSocket::CLOSED) {
+
+        // Handle (connection errors):
+        //      - node not exists
+        //      - connection errors
+        assert(this->channel);
+        while(this->channel && this->channel->getReadyState() != WebSocket::CLOSED) {
 
             if(this->is_computing) {
 
@@ -32,7 +36,6 @@ namespace ws {
 
                 this->channel->dispatch([this](const string& json_response) {
                     
-                    log_base("Received", json_response);
                     BaseResponse response(json::parse(json_response));
 
                     if(response.ok)
@@ -97,13 +100,7 @@ namespace ws {
                     void (*onmessage)(const string message), 
                     void(*onerror)(const string error)) {
 
-        // TODO: speed up app launch putting channel creation in thread
-        // TODO: best would be having custom callbacks per request
-        //          mapped with their name/id in a <map> object
-        //       otherwise map action in response
-        //       Ability to specify auth for each request avoiding to recreate the socket
-        //          This is already ok??
-        this->channel = WebSocket::from_url("ws://" + SERVER_HOST + ":" + SERVER_PORT + "/" +s);
+        this->path = "ws://" + SERVER_HOST + ":" + SERVER_PORT + "/" +s;
 
         this->onmessage = onmessage;
         this->onerror = onerror;

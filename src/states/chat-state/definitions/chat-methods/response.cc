@@ -1,4 +1,5 @@
 #include "response.h"
+#include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using namespace std;

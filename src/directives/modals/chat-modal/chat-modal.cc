@@ -41,7 +41,6 @@ namespace Modal {
             WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
             
             UsersState::Register("Modal::ChatModal", State::Users);
-            // ChatState::Chats::Register("Modal::ChatModal", State::Chats);
 
         }
 
@@ -53,11 +52,8 @@ namespace Modal {
             void NewChatOpen(const string& args){
 
                 json function = json::parse(args);
-                
-                json jReq;
-                    jReq.at("destination") = function.at("user").at("_id");
 
-                // ChatState::Chats::StartAChat(jReq.dump());
+                ChatState::ChatsMethods::StartAChat(function.at("user").get<string>());
             }
 
             void Show() {
@@ -89,21 +85,7 @@ namespace Modal {
                 log_base("ChatModal@Execute", js_action);
                 WebUI::Execute(js_action); 
             }
-
-
-            
-            void Chats(const string& args){
-
-                json newChat = json::parse(args);
-                
-                if(strcmp(newChat["destination"].dump().c_str(), newChat["creator"].dump().c_str()) == 0){
-                    
-                    Events::Hide();
-                    
-                    // posso scrivere dopo socket stop?
-                    // MakeAToast ? 
-                }
-            }
+        
         }
     }
 }

@@ -77,13 +77,13 @@ const ChatList = function(){
 
             var chats = JSON.parse(_chats);
 
-            for(var index=0; index<item.length; index++){
-                var chatListNode = new ChatListNode( { user: item[index].from, reference: item[index].reference } );
+            for(var index=0; index<chats.length; index++){
+                var chatListNode = new ChatListNode( { user: chats[index].from, reference: chats[index].reference } );
 
                     chatsWrapper.list.appendChild(chatListNode);
                 
-                var handleMethod = chatsWrapper.handleClick(chatListNode.reference),
-                    domEl = window.getnth(chatsWrapper.list, li, index);
+                var handleMethod = chatsWrapper.handleClick(chats[index].reference),
+                    domEl = window.getnth(chatsWrapper.list, "li", index);
 
                     window.subscribeTo(domEl, "click", handleMethod);
                     chatsWrapper.currentEvents.push(handleMethod);

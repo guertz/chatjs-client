@@ -21,7 +21,7 @@ namespace States {
 
                 Message();
                 Message(const nlohmann::json& j);
-                // Messsage(const std::string& serialized);
+                Message(const std::string& serialized);
 
                 nlohmann::json to_json() const;
         };

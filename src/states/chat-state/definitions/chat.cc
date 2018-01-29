@@ -15,12 +15,14 @@ namespace States {
             this->destination = User(j.at("destination"));
             this->from = User(j.at("from"));
             this->creator = j.at("creator").get<string>();
-            MessagesWrapper::json_to_messages(j.at("messages"), this->messages);
+            try {
+                MessagesWrapper::json_to_messages(j.at("messages"), this->messages);
+            } catch(...) { }
         }
 
         Chat::Chat(const std::string& serialized) : Chat(json::parse(serialized)) { }
         
-        nlohmann::json Chat::to_json() const {
+        json Chat::to_json() const {
 
             // with a function, use return type
             //  or in static i can create objets?
@@ -34,6 +36,24 @@ namespace States {
                 { "creator", this->creator },
                 { "messages", j_vect }
             };
+
+        }
+
+        void ChatsWrapper::json_to_chats(const json& j, Chats& c_map) {
+            for (json::const_iterator it = j.cbegin(); it != j.cend(); ++it) {
+                
+                Chat c(it.value());
+
+                c_map[c.reference] = c;
+            }
+        }
+
+        void ChatsWrapper::chats_to_json(const Chats& c, json& j_map) {
+            j_map = json::parse("[]");
+
+            for (Chats::const_iterator it = c.cbegin(); it != c.cend(); ++it) {
+                j_map.push_back(it->second.to_json());
+            }
 
         }
 

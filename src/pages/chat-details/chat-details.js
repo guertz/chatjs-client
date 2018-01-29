@@ -3,11 +3,11 @@ const BubbleDom = function(message){
     var bubbleDom = document.createElement('div');
                     bubbleDom.className = "msg-bubble " + ((!message.isMe)? "opponent" : "");
 
-                    bubbleDom.innerHTML = '<img src="' + message.avatar + '" alt="Avatar">' +
+                    bubbleDom.innerHTML = '<img src="' + message.avatar.image + '" alt="Avatar">' +
                                           '<p class="text"></p>' +
                                           '<span class="time"></span>';
 
-                    window.getFirst(bubbleDom, "p.text").innerText = message.content;
+                    window.getFirst(bubbleDom, "p.text").innerText = message.text;
                     window.getFirst(bubbleDom, "span.time").innerText = message.time;
 
     return bubbleDom;
@@ -15,6 +15,9 @@ const BubbleDom = function(message){
 
 const ChatDetailsFactory = function(){
 
+    const btnSendText          = "Invia";
+    const inputPlaceholderText = [ "Seleziona una chat", "Scrivi qua il messaggio" ];
+    
     var node = document.createElement("div");
         node.innerHTML = 
             '<chat-messages>'+
@@ -32,9 +35,6 @@ const ChatDetailsFactory = function(){
                     '</div>' +
                 '</form>' + 
             '</chat-form>';
-
-    const btnSendText          = "Invia";
-    const inputPlaceholderText = [ "Seleziona una chat", "Scrivi qua il messaggio" ];
 
     const chatTreeRef = window.getFirst(node, "chat-messages");
     const formRef     = window.getFirst(node, "form#chat-form");

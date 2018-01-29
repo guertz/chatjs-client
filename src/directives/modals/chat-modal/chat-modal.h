@@ -65,7 +65,6 @@ namespace Modal {
             * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
             * il cambio di stato
             */
-            void Chats(const std::string& argc);
             void Users();
                        
         }

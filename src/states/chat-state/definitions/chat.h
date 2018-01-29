@@ -7,6 +7,7 @@
 #include "message.h"
 #include "models/json-item.h"
 #include "models/user/user.h"
+#include "common/logger/logger.h"
 
 namespace States {
     namespace ChatState {
@@ -30,6 +31,12 @@ namespace States {
         };
 
         typedef std::map<std::string,Chat> Chats;
+
+        class ChatsWrapper {
+            public:
+                static void json_to_chats(const nlohmann::json& j, Chats& c_map);
+                static void chats_to_json(const Chats& c, nlohmann::json& j_map);
+        };
     }
 }
 

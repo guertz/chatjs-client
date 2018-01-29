@@ -16,21 +16,16 @@ namespace States {
     namespace ChatState {
 
         typedef std::map<std::string, ws::Socket*> SocketsMap;
-
-        // No argument is fine (get last action);
         typedef std::map<std::string, void(*)()> Subscribers;
 
         void Bootstrap();
         void Destroy();
         
-        // inline void Init(const std::string& );
-
-        // OnLogout destroy chat on both side
         namespace ChatMethods {
             void Register(std::string , void (*)());
-            const Chat& getChatByRef(const std::string& );
+            inline void InitAChat(const Chat& chat);
 
-            void SendAMessage(const std::string& );
+            void SendAMessage(const std::string& text);
 
             inline void Notify();
             inline void ResponseSuccess(const std::string);
@@ -39,11 +34,19 @@ namespace States {
 
         namespace ChatsMethods {
             void Register(std::string , void (*)());
-            const Chats& getChatsByRef();
 
-            void StartAChat(const string& user_dest);
+            inline void Init(const std::string& AUTH);
+            
+            const string getSerializedChats();
+
+            void setCurrent(const std::string& reference);
+            const std::string getCurrent();
+            const std::string getCurrentChat();
+
+            void StartAChat(const std::string& user_dest);
 
             inline void Notify();
+            inline void clean();
             inline void ResponseSuccess(const std::string);
             inline void ResponseError(const std::string);
         }

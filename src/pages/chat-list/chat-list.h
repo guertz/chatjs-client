@@ -12,17 +12,9 @@ namespace ChatList {
         void NewChat(const std::string& arg);
     }
 
-    namespace Auth {
-        void State();
-    }
-
-    namespace Chats {
-        void NewChat(const std::string& args);
-        void State(const std::string& arg);
-    }
-
-    namespace Chat {
-        void State();
+    namespace State {
+        void Auth();
+        void Chats();
     }
 }
 

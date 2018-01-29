@@ -6,7 +6,6 @@
 #include <json.hpp>
 
 #include "chat-list.h"
-#include "pages/chat-details/chat-details.h"
 
 #include "directives/modals/chat-modal/chat-modal.h"
 #include "directives/toast/toast.h"
@@ -38,10 +37,9 @@ namespace ChatList {
         WebUI::Register("ChatList::NewChat", Events::NewChat);
         WebUI::Register("ChatList::UserSelected", Events::UserSelected);
 
-        // ChatState::Chats::Register("ChatList", Chats::State);
-        // ChatState::Chat::Register("ChatList", Chat::State);
+        ChatState::ChatsMethods::Register("ChatList", State::Chats);
 
-        AuthState::Register("ChatList", Auth::State);
+        AuthState::Register("ChatList", State::Auth);
     }
 
     namespace Events { 
@@ -52,12 +50,16 @@ namespace ChatList {
         }
 
         void UserSelected(const string& arg){
-            ChatDetails::Events::OpenChat(arg);
+
+            // log_base("ChatList@UserSelected", arg);
+
+            json event_args = json::parse(arg);
+            ChatState::ChatsMethods::setCurrent(event_args.at("ref").get<string>());
         }
     }
 
-    namespace Auth {
-        void State() {
+    namespace State {
+        void Auth() {
             
             const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
                              User       auth_user   = AuthState::getAuthUser();
@@ -78,56 +80,24 @@ namespace ChatList {
                     break;
             }
         }
+
+        void Chats() {
+
+
+            const string js_context = "components.ChatList.populateChatList('" +
+                                        ChatState::ChatsMethods::getSerializedChats() +
+                                      "')";
+            log_base("ChatList>>Refetch", js_context);
+            WebUI::Execute(js_context);
+
+            Toast::Events::Show("E stata iniziata una nuova chat.");
+            
+        }
+
+        void Chat(){
+            Toast::Events::Show("E stato ricevuto un messaggio.");
+        }
+
     }
 
-    // namespace Chats {
-    //     void State(const string& args){
-
-    //         json newChat = json::parse(args);
-    //         const ChatState::typo_chats chat_list = ChatState::Chats::Get();
-            
-    //         ostringstream oss;
-    //         oss<<"[";
-            
-    //         if(!chat_list.empty()){
-                
-    //             ChatState::typo_chats::const_iterator it = chat_list.begin();
-
-    //             while(it != chat_list.end()){
-
-    //                 ChatState::chat_details chat = it->second;
-
-    //                 json jChat;
-    //                     jChat["reference"] = chat.reference;
-    //                     jChat["from"] = newChat["jsonArgs"]["from"];
-
-    //                 it++;
-
-    //                 oss<<jChat.dump();
-
-    //                 if(it != chat_list.end())
-    //                     oss<<",";
-                    
-    //             }
-    //         }
-
-    //         oss<<"]";
-
-    //         cout<<oss.str()<<endl;
-
-    //         const string js_context = "components.ChatList.populateChatList('" + oss.str() + "')";
-            
-    //         WebUI::Execute(js_context);
-
-    //         Toast::Events::Show("E' stata iniziata una nuova chat con ...");
-            
-    //     }
-
-    // }
-
-    // namespace Chat {
-    //     void State(){
-    //         Toast::Events::Show("E' stato ricevuto un nuovo messaggio da ....");
-    //     }   
-    // }
 }

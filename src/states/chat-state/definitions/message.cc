@@ -17,7 +17,7 @@ namespace States {
             this->time = j.at("time").get<string>();
         }
 
-        // Message::Message(const string& serialized) : Message(json::parse(serialized)) { }
+        Message::Message(const string& serialized) : Message(json::parse(serialized)) { }
         
         json Message::to_json() const {
             return json{
@@ -28,7 +28,6 @@ namespace States {
             };
         }
 
-        // Put in chat or just use functions
         void MessagesWrapper::json_to_messages(const json& j, Messages& m_vect) {
             for (json::const_reverse_iterator it = j.crbegin(); it != j.crend(); ++it) {
                 
@@ -39,6 +38,7 @@ namespace States {
         }
 
         void MessagesWrapper::messages_to_json(const Messages& m, json& j_vect) {
+            j_vect = json::parse("[]");
 
             for (Messages::const_reverse_iterator it = m.crbegin(); it != m.crend(); ++it) {
                 j_vect.push_back((*it).to_json());

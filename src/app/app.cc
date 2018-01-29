@@ -42,16 +42,16 @@ namespace App {
      */
     void Init() {
         
-        // ChatState::Bootstrap();
-        UsersState::Bootstrap();
         AuthState::Bootstrap();
+        ChatState::Bootstrap();
+        UsersState::Bootstrap();
         
         Navbar::Bootstrap();
         Modal::Bootstrap();
         Toast::Bootstrap();
 
         ChatList::Bootstrap();
-        // ChatDetails::Bootstrap();
+        ChatDetails::Bootstrap();
         
     }
 
@@ -86,7 +86,7 @@ namespace App {
         // ChaList::Destroy();
         // ChatDetails::Destroy();
 
-        // ChatState::Destroy();
+        ChatState::Destroy();
         UsersState::Destroy();
         AuthState::Destroy();
         
