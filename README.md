@@ -8,34 +8,33 @@ Per mettere in comunicazione i componenti fa uso di un sistema di callback basat
 
 ## Folder Structure
 ```
-client/
 ├── .release                            # Release files & platform build
 ├── assets                              # Assets file (HTML/JS/CSS)
 ├── dependencies                        # Dependencies
 ├── docs                                # Documentation files
 └── src                                 # Source files
-    ├── app                             #   App main/bootstrapper
-    ├── common                          #   Utilities (helper, logger, ...)
+    ├── app                             # App main/bootstrapper
+    ├── common                          # Utilities (helper, logger, ...)
     │   ├── ...                         #
-    ├── directives                      #   Directives
-    │   ├── modals                      #   Modals (auth, chat, ...)
+    ├── directives                      # Directives
+    │   ├── modals                      # Modals (auth, chat, ...)
     │   │   ├── ...                     #
-    │   ├── navbar                      #   Navbar links (profile, ...)
+    │   ├── navbar                      # Navbar links (profile, ...)
     │   │   └── ...                     #
-    │   └── toast                       #   Toast
-    ├── models                          #   Data models
+    │   └── toast                       # Toast
+    ├── models                          # Data models
     │   └── ...                         #
-    ├── pages                           #   Components (chat-list, chat-details)
+    ├── pages                           # Components (chat-list, chat-details)
     │   ├── ...                         #
-    ├── protocol                        #   Protocolli di comunicazione
-    │   └── sockets                     #     Definizione Socket 
+    ├── protocol                        # Protocolli di comunicazione
+    │   └── sockets                     # Definizione Socket 
     │       ├── ...                     #
-    └── states                          #   Data providers
-        ├── auth-state                  #     Provider auth data
+    └── states                          # Data providers
+        ├── auth-state                  # Provider auth data
         │   └── ...                     #       
-        ├── chat-state                  #     Provider chat data
+        ├── chat-state                  # Provider chat data
         │   └── ...                     #
-        └── users-state                 #     Provider users data
+        └── users-state                 # Provider users data
             └── ...                     #
 ```
 ## Next steps
