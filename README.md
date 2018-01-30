@@ -42,11 +42,13 @@ $ make
 > **Sample**
 > - Enable all logs => MASK = 7
 
-+ `pedantic          # MASK = 4`
-+ `details           # MASK = 2`
-+ `base              # MASK = 1  `
-+ ```console         # sempre attivo in debug 
-                     # (invocato da JS window.consolelog)```
+```
++ pedantic      # MASK = 4
++ details       # MASK = 2
++ base          # MASK = 1
++ console       # sempre attivo in debug 
+                # (invocato da JS window.consolelog)
+```
 
 ## Documentation
 ```
