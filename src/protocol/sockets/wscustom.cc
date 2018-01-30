@@ -68,6 +68,8 @@ namespace ws {
 
     // Mutex arguments
     // Mutex computing
+    // Lock channel as well
+    // Boost & async event driven (Asio)
     void Socket::reset() {
         this->arguments.buffer  = "";
         this->arguments.is_send = false;
