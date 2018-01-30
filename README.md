@@ -33,18 +33,20 @@ $ make ENV=release
 
 ### Debug
 ```
-$make depend
-$make
+$ make depend
+$ make
 ```
 
 #### Available log levels
-> Le maschere di debug possono essere combinate per avere a disposizione più livelli di log contemporaneamente (ex. ALL = 7)
+> Le maschere di debug possono essere combinate per avere a disposizione più livelli di log contemporaneamente
+> **Sample**
+> - Enable all logs => MASK = 7
 
-+ pedantic          # MASK = 4
-+ details           # MASK = 2
-+ base              # MASK = 1  
-+ console           # sempre attivo in debug 
-                    # (invocato da JS window.consolelog)
++ `pedantic          # MASK = 4`
++ `details           # MASK = 2`
++ `base              # MASK = 1  `
++ ```console         # sempre attivo in debug 
+                     # (invocato da JS window.consolelog)```
 
 ## Documentation
 ```
@@ -83,7 +85,7 @@ $ doxygen
         └── users-state                 # Provider users data
             └── ...                     #
 ```
-## TODO
+## Next steps
 - [x] State refactoring
 - [ ] OOP (singleton & component will inherit states)
 - [ ] Websocket/Events poll loops like libuv
