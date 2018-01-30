@@ -7,7 +7,7 @@ Si interfaccia con un server di backend in nodejs tramite WebSockets con scambio
 Per mettere in comunicazione i componenti fa uso di un sistema di callback basato sui puntatori a funzione.
 
 ## Folder Structure
-
+```
 client/
 ├── .release                            # Release files & platform build
 ├── assets                              # Assets file (HTML/JS/CSS)
@@ -37,7 +37,7 @@ client/
         │   └── ...                     #
         └── users-state                 #     Provider users data
             └── ...                     #
-
+```
 ## Next steps
 + OOP
     - state are an extension of components
