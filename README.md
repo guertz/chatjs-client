@@ -39,8 +39,8 @@ $ make
 
 #### Available log levels
 > Le maschere di debug possono essere combinate per avere a disposizione più livelli di log contemporaneamente
-> **Sample**
-> - Enable all logs => MASK = 7
+**Sample**
+> - Enable all logs &rarr; MASK = 7
 
 ```
 + pedantic      # MASK = 4
