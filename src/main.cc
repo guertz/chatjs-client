@@ -3,28 +3,18 @@
  *
  * @author Matteo Guerzoni
  *
- * Esempio di chat in C++ realizzata attraverso tecnologie ibride e websockets.  
- * Chat.js è una dimostrazione di come il C++ possa essere un linguaggio da  
- * considerarsi alla pari dei "moderni linguaggi".
+ * Chatjs, è un'applicazione C++ di chat in tempo reale, cross-platform 
+ * dotata di interfaccia grafica realizzata in linguaggio di markup HTML
+ * e renderizzata sui browser engine nativi del dispositivo. 
+ * Si interfaccia con un server di backend in nodejs tramite WebSockets 
+ * con scambio di messaggi in formato JSON.
+ * Per mettere in comunicazione i componenti fa uso di un sistema di callback 
+ * basato sui puntatori a funzione.
  *
- * Attraverso la libreria webview realizzata da zserge e disponibile su github  
- * è stato possibile realizzare la User Interface in modo più semplice tramite  
- * i linguaggi HTML, JavaScript per gestire gli eventi notificati ad appositi  
- * metodi C++ incaricati delle fasi di elaborazione ed infine CSS per  
- * realizzare lo stile. 
- *
- * L'interoperabilità tra i vari componenti e metodi (C++/JS JS/C++ C++/C++)  
- * è stata resa possibile attraverso lo scambio di messaggi in formato JSON  
- * serializzato sotto forma di stringa. Infine l' applicazione comunica  
- * tramite la libreria easywsclient realizzata da dhbaird (sempre reperibile  
- * su github) con un server realizzato in nodejs incaricato di gestire la  
- * logica di un servizio di chat in tempo reale.  
- *
- * L'obiettivo è stato raggiunto ed è stata realizzata un applicazione  
- * realtime multipiattaforma leggera e che richiede pochissime dipendenze.  
- * Il lavoro tuttavia non è ancora completato e verrà portato avanti per  
- * per realizzare una struttura ancora più rigida e indipendente dal JS  
- * orientata ad oggetti
+ * Gli eventi nella webview vengono mappati in c++ come callback a specifiche
+ * funzioni che ricevono parametri in formato JSON serializzato e sono
+ * bidirezionali nel senso che da C++ possono essere invocati metodi Javascript
+ * e viceversa.
  * 
  * Vai alla definizione del file ::main 
  */
