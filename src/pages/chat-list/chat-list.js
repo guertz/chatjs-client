@@ -47,7 +47,7 @@ const ChatList = function(){
         newChat: {
             ref: window.getFirst(node, "chat-helper #chat-helper-ref-new"),
             handleClick: function() {
-                window.external.invoke_(JSON.stringify(
+                window.external.invoke(JSON.stringify(
                     {
                         fn: 'ChatList::NewChat', 
                         params: { }
@@ -92,7 +92,7 @@ const ChatList = function(){
         handleClick: function(chatId) {
 
             return function() {
-                window.external.invoke_(JSON.stringify(
+                window.external.invoke(JSON.stringify(
                     {
                         fn: 'ChatList::UserSelected', 
                         params: { 

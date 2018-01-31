@@ -42,7 +42,7 @@ const ChatDetailsFactory = function(){
     var handleSubmit = function(event) {
         event.preventDefault();
 
-        window.external.invoke_(JSON.stringify(
+        window.external.invoke(JSON.stringify(
             {
                 fn: 'ChatDetails::Submit', 
                 params: { 

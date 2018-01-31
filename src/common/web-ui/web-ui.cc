@@ -2,6 +2,8 @@
 #include <map>
 #include <json.hpp>
 #include <cassert>
+
+#define WEBVIEW_IMPLEMENTATION
 #include <webview.h>
 
 #include "web-ui.h"
@@ -143,14 +145,26 @@ namespace WebUI {
 
         const string appready = "appready()";
 
-        // TODO webview Execute
+        log_details("WebUI", "Pushing assets code");
+        log_pedantic("WebUI", "\t#Deploy appinit.js");
+        
         Execute(safeptr::parse_asset(
                 _binary_assets_appinit_js_start));
+        log_pedantic("WebUI", "\t#Complete appinit.js");
 
+        log_pedantic("WebUI", "\t#Deploy styleW3.css");
         Execute(js_style_w3);
-        Execute(js_style);
-        Execute(appready);
+        log_pedantic("WebUI", "\t#Complete styleW3.css");
 
+        log_pedantic("WebUI", "\t#Deploy style.css");
+        Execute(js_style);
+        log_pedantic("WebUI", "\t#Complete style.css");
+
+        log_pedantic("WebUI", "\t#Deploy appready.js");
+        Execute(appready);
+        log_pedantic("WebUI", "\t#Complete appready.js");
+
+        log_details("WebUI", "Completed assets push");
         safeptr::free_block(js_style_w3);
 
     }

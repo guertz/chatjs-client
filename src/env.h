@@ -3,9 +3,7 @@
 
 #ifdef DEBUG_MODE
 
-    // DEFAULT WITH DEBUG
-    // DEFAULT GENERAL?
-    #define DEBUG_MASK 1
+    #define DEBUG_MASK 7
     #define WEBVIEW_DEBUG
     #define WIN_CONSOLE
 
@@ -17,8 +15,14 @@
 #ifndef SERVER_ENV_ATTRIBUTES
 #define SERVER_ENV_ATTRIBUTES
 const unsigned int MESSAGES   = 10;
-const std::string SERVER_HOST = "localhost";
-const std::string SERVER_PORT = "8000";
+
+    #ifdef DEBUG_MODE
+        const std::string SERVER_HOST = "localhost";
+        const std::string SERVER_PORT = "8000";
+    #else
+        const std::string SERVER_HOST = "http://137.74.196.151";
+        const std::string SERVER_PORT = "8000";
+    #endif
 #endif
 
 

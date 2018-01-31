@@ -15,7 +15,7 @@ const ProfileNavLink = function(){
             '</div>';
     
     var eventLogout = function() {
-        window.external.invoke_(JSON.stringify(
+        window.external.invoke(JSON.stringify(
             {
                 fn: 'Navbar::Profile::Disconnect', 
                 params: { }

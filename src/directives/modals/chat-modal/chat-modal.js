@@ -16,7 +16,7 @@ const ChatModalFactory = function() {
                 '</div>';
 
     var hideEvent = function() {
-        window.external.invoke_(JSON.stringify(
+        window.external.invoke(JSON.stringify(
             {
                 fn: 'Modal::ChatModal::Close', 
                 params: { }
@@ -27,7 +27,7 @@ const ChatModalFactory = function() {
     // This is a really good trick
     var handleClick = function(userId) {
         return function(){
-            window.external.invoke_(JSON.stringify(
+            window.external.invoke(JSON.stringify(
                 {
                     fn: 'Modal::ChatModal::NewChatOpen', 
                     params: { 

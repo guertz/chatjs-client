@@ -31,7 +31,7 @@ const AuthModalFactory = function(){
         setDisabled(true);
 
         const val = window.getFirst(node, "input.userid").value;
-        window.external.invoke_(JSON.stringify(
+        window.external.invoke(JSON.stringify(
             {
                 fn: 'Modal::AuthModal::Submit', 
                 params: {

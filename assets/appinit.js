@@ -1,4 +1,18 @@
+window.consolelog = function(event, message) {
+    // create a type safe method that will always pass a string!!
+    window.external.invoke(JSON.stringify(
+        {
+            fn: 'WebUI::Log', 
+            params: { 
+                attr: event,
+                log_msg: message
+            }
+        }
+    ));  
+}
+
 window.stylify = function(multiline, css) {
+
     var style = document.createElement('style');
     var head = document.head || document.getElementsByTagName('head')[0];
     style.setAttribute('type', 'text/css');
@@ -10,21 +24,8 @@ window.stylify = function(multiline, css) {
     head.appendChild(style);
 }
 
-window.consolelog = function(event, message) {
-    // create a type safe method that will always pass a string!!
-    window.external.invoke_(JSON.stringify(
-        {
-            fn: 'WebUI::Log', 
-            params: { 
-                attr: event,
-                log_msg: message
-            }
-        }
-    ));  
-}
-
 window.appready = function() {
-    window.external.invoke_(JSON.stringify(
+    window.external.invoke(JSON.stringify(
         {
             fn: 'App::Ready', 
             params: { 
@@ -35,7 +36,7 @@ window.appready = function() {
 }
 
 /* var WebUIEventResize = function(){
-    window.external.invoke_(JSON.stringify(
+    window.external.invoke(JSON.stringify(
         {
             fn: 'WebUI::Resize', 
             params: {
