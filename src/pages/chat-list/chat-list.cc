@@ -6,6 +6,7 @@
 #include <json.hpp>
 
 #include "chat-list.h"
+#include "chat-list.hjs"
 
 #include "directives/modals/chat-modal/chat-modal.h"
 #include "directives/toast/toast.h"
@@ -24,15 +25,10 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
-extern char _binary_src_pages_chat_list_chat_list_js_start[];
-
 namespace ChatList {
     void Bootstrap(){
 
-        WebUI::Execute(
-                safeptr::parse_asset(
-                    _binary_src_pages_chat_list_chat_list_js_start)
-            );
+        WebUI::Execute(_src_pages_chat_list_chat_list_js);
 
         WebUI::Register("ChatList::NewChat", Events::NewChat);
         WebUI::Register("ChatList::UserSelected", Events::UserSelected);

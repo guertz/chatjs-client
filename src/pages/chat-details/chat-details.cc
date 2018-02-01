@@ -5,6 +5,7 @@
 
 #include "env.h"
 #include "chat-details.h"
+#include "chat-details.hjs"
 
 #include "common/web-ui/web-ui.h"
 #include "common/helpers/helpers.h"
@@ -17,8 +18,6 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
-extern char _binary_src_pages_chat_details_chat_details_js_start[];
-
 namespace ChatDetails {
     const unsigned int MESSAGES = 10;
 
@@ -29,10 +28,7 @@ namespace ChatDetails {
 
     void Bootstrap(){
 
-        WebUI::Execute(
-                safeptr::parse_asset(
-                    _binary_src_pages_chat_details_chat_details_js_start)
-            );
+        WebUI::Execute(_src_pages_chat_details_chat_details_js);
 
         WebUI::Register("ChatDetails::Submit", Events::Submit);
 

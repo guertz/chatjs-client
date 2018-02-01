@@ -2,6 +2,7 @@
 #include <json.hpp>
 
 #include "navbar.h"
+#include "navbar.hjs"
 #include "profile/profile.h"
 
 #include "common/web-ui/web-ui.h"
@@ -16,16 +17,11 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
-extern char _binary_src_directives_navbar_navbar_js_start[];
-
 namespace Navbar {
 
     void Bootstrap() {
 
-        WebUI::Execute(
-            safeptr::parse_asset(
-                _binary_src_directives_navbar_navbar_js_start)
-        );
+        WebUI::Execute(_src_directives_navbar_navbar_js);
 
         AuthState::Register("Navbar", State::Auth);
 

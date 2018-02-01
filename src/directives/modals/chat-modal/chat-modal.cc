@@ -2,6 +2,8 @@
 #include <json.hpp>
 
 #include "chat-modal.h"
+#include "chat-modal.hjs"
+
 #include "directives/modals/modals.h"
 #include "directives/toast/toast.h"
 
@@ -18,8 +20,6 @@ using namespace WebUI;
 using namespace Helpers;
 using namespace States;
 
-extern char _binary_src_directives_modals_chat_modal_chat_modal_js_start[];
-
 namespace Modal { 
 
     namespace ChatModal {
@@ -31,10 +31,7 @@ namespace Modal {
 
         void RegisterModal(){
 
-            WebUI::Execute(
-                    safeptr::parse_asset(
-                        _binary_src_directives_modals_chat_modal_chat_modal_js_start)
-                );
+            WebUI::Execute(_src_directives_modal_chat_modal_chat_modal_js);
 
 
             WebUI::Register("Modal::ChatModal::Close", Events::Close);

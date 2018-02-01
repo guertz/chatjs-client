@@ -3,21 +3,9 @@ TARGET=application
 
 # Directory containing the source files + js pages components
 DIR_SRC=src
-# Directory containing common assets files: index.html, css, js framework
-DIR_ASSETS=assets
-# Directory where to put binary translated resources (common assets files)
-DIR_ASSETS_SRC=$(DIR_SRC)/.assets
 
 # Directory containing the built application (could be debug or release)
 DIR_BUILD_SPACE=.build
-
-# Assets needed by the app to work
-#	1° line are the translated files from DIR_ASSETS
-#	2° line are app components connected to a .cc page or component
-#
-# Both has to be manually updated: see helpers at bottom
-ASSETS=	$(DIR_ASSETS_SRC)/index.html.o $(DIR_ASSETS_SRC)/appinit.js.o $(DIR_ASSETS_SRC)/style.css.o $(DIR_ASSETS_SRC)/stylew3.css.o \
-		src/app/app.ojs src/directives/modals/auth-modal/auth-modal.ojs src/directives/modals/chat-modal/chat-modal.ojs src/directives/navbar/navbar.ojs src/directives/navbar/profile/profile.ojs src/directives/toast/toast.ojs src/directives/modals/modals.ojs src/pages/chat-details/chat-details.ojs src/pages/chat-list/chat-list.ojs
 
 # Compiled parts that compose the whole app
 APP=src/app/app.o src/common/base64/base64.o src/common/helpers/helpers.o src/common/logger/logger.o src/common/web-ui/web-ui.o src/directives/modals/auth-modal/auth-modal.o src/directives/modals/chat-modal/chat-modal.o src/directives/modals/connectivity/connectivity.o src/directives/modals/modals.o src/directives/navbar/navbar.o src/directives/navbar/profile/profile.o src/directives/toast/toast.o src/main.o src/models/json-item.o src/models/user/user.o src/pages/chat-details/chat-details.o src/pages/chat-list/chat-list.o src/protocol/sockets/definitions/request.o src/protocol/sockets/definitions/response.o src/protocol/sockets/easywsclient.o src/protocol/sockets/wscustom.o src/states/auth-state/auth-state.o src/states/auth-state/definitions/request.o src/states/auth-state/definitions/response.o src/states/auth-state/definitions/types.o src/states/chat-state/chat-state.o src/states/chat-state/definitions/chat-methods/request.o src/states/chat-state/definitions/chat-methods/response.o src/states/chat-state/definitions/chat-methods/types.o src/states/chat-state/definitions/chat.o src/states/chat-state/definitions/chats-methods/request.o src/states/chat-state/definitions/chats-methods/response.o src/states/chat-state/definitions/chats-methods/types.o src/states/chat-state/definitions/message.o src/states/users-state/definitions/request.o src/states/users-state/definitions/response.o src/states/users-state/definitions/types.o src/states/users-state/users-state.o
@@ -69,7 +57,7 @@ endif
 # ----  BUILD  ---- #
 # ---- HELPERS ---- #
 # ----------------- #
-.PHONY: build clean-env init directories assets depend check-env refresh-app refresh-all refresh-assets
+.PHONY: build clean-env init directories depend check-env refresh-app
 
 # Example: run commands as following
 # *this is more safe then running default target make
@@ -126,22 +114,13 @@ init: clean-env
 directories:
 	mkdir -p $(DIR_BUILD_SPACE)
 
-# Translating common assets files
-assets:
-	test -d $(DIR_ASSETS_SRC) || mkdir -p $(DIR_ASSETS_SRC)
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/appinit.js.o   $(DIR_ASSETS)/appinit.js
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/index.html.o   $(DIR_ASSETS)/index.html
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/style.css.o    $(DIR_ASSETS)/style.css
-	ld -r -b binary -o $(DIR_ASSETS_SRC)/stylew3.css.o  $(DIR_ASSETS)/stylew3.css
-
 # Prepare application for build step
 # It generates the dependencies of the source files passed as a argument
 #
 # Parent phony targets:
 #	directories
 # 	init
-#	assets
-depend: directories init assets
+depend: directories init
 	g++ -I$(DIR_SRC) -std=c++11 -MM $(shell find $(DIR_SRC) -name "*.cc" $(NOPATH)) > depends
 
 # Command to test if the user is compiling the app for
@@ -164,61 +143,30 @@ check-env:
 #	clean
 #	build (see for advice)
 refresh-app: clean build
-
-# Build the application based on the target definition.
-# *It will refresh assets translated in depend step
-# 
-# Parent phony targets:
-#	assets
-#	build (see for advice)
-refresh-assets: assets build
-
-# Build the application based on the target definition.
-# *It will clean and recompile all APP objects
-# *It will refresh assets translated in depend step
-# 
-# Parent phony targets:
-#	assets
-#	refresh-app
-refresh-all: assets refresh-app
 	
 # ----------------- #
 # ----  CLEAN  ---- #
 # ---- HELPERS ---- #
 # ----------------- #
-.PHONY: clean clean-assets cleanall
+.PHONY: clean cleanall
 
 # Cleaning compiled parts of the app
-# *Excluding translated common assets
 clean: 
-	rm -rf $(shell find $(DIR_SRC) -name "*.o" -not -path "$(DIR_ASSETS_SRC)/*")
-
-# Cleaning translated resources of the app
-# *Excluding translated common assets
-clean-assets:
-	rm -rf $(shell find $(DIR_SRC) -name "*.ojs" -not -path "$(DIR_ASSETS_SRC)/*")
+	rm -rf $(shell find $(DIR_SRC) -name "*.o")
 
 # Cleaning everything up
 #
 # Parent phony targets:
-#	clean
-#	clean-assets
-cleanall: clean clean-assets
+#	cleanì
+cleanall: clean
 	rm -f depends
 	rm -rf $(DIR_BUILD_SPACE)
-	rm -rf $(DIR_ASSETS_SRC)
 
 # ----------------------- #
 # ---- APP PARTS LIST --- #
 # ----     HELPERS    --- #
 # ----------------------- #
-.PHONY: assets-files app-files
-
-# Display the list of translated assets file that compose the app
-# *see ASSETS
-# *list of translated/to translate files used as requirements (copy & paste is fine)
-assets-files:
-	find $(DIR_SRC) -name "*.js" $(NOPATH) | sed -e "s/.js/.ojs/g" | tr '\n' ' '
+.PHONY: app-files
 
 # Display the list of compiled object files that will compose the app
 # *see APP
@@ -236,13 +184,5 @@ app-files:
 # TARGET rule
 # *Depend on current OS
 # *Invoked by build that will also check the env
-$(TARGET): $(ASSETS) $(APP)
+$(TARGET): $(APP)
 	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) $(WEBVIEW_LDFLAGS) -o $(DIR_BUILD_SPACE)/$@
-
-# Omitted rule for compiling each dependencies as a object file
-# ... Using CXX & CXXFLAGS
-#	  Optimize to bundle assets to compiled .o component
-
-# Rule for translating each js file in a binary format
-%.ojs: %.js
-	ld -r -b binary -o $@ $<

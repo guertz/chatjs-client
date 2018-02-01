@@ -1,0 +1,3 @@
+const std::string _src_directives_navbar_navbar_js = R"(
+window.navbar = {};
+)";

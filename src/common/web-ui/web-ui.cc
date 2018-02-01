@@ -3,6 +3,11 @@
 #include <json.hpp>
 #include <cassert>
 
+#include "assets/appinit.hjs"
+#include "assets/index.hhtml"
+#include "assets/style.hcss"
+#include "assets/w3.hcss"
+
 #define WEBVIEW_IMPLEMENTATION
 #include <webview.h>
 
@@ -19,24 +24,6 @@ using namespace Helpers;
 #ifdef DEBUG_MODE
 #define FIRE_BUG "<script type='text/javascript' src='/local/path/to/firebug-lite.js'></script>"
 #endif
-
-// Simboli di riferimento per leggere il contenuto presente nei file binari 
-// generati tramite il comando ld e contenti le risorse dell'applicazione 
-// quali stile CSS, logica JS, struttura HTML.
-//
-// Questi file sono successivamente inclusi nella fase di compilazione come
-// file oggetto.
-//
-// Il nome della variabile (simbolo) dipende fortemente dalla posizione del 
-// file e da dove viene eseguito il comando ld
-
-extern char _binary_assets_index_html_start[]; /**< Riferimento inizio file index.html markup scheletro app */
-
-extern char _binary_assets_appinit_js_start[]; /**< Riferimento inizio file appinit basic js bindings */
-
-extern char _binary_assets_style_css_start[]; /**< Riferimento inizio file style.css stile personalizzato */
-
-extern char _binary_assets_stylew3_css_start[]; /**< Riferimento inizio file stylew3.css stile css base */
 
 namespace WebUI {
 
@@ -83,17 +70,12 @@ namespace WebUI {
     }
 
     Webview* Create() {
-        const char* prefix = "data:text/html,";  // Prefisso necessario quando viene caricato il file HTML 
+        const string prefix = "data:text/html," + _src_assets_index_html;  // Prefisso necessario quando viene caricato il file HTML 
                                                  // tramite stringa e non da file su disco. 
                                                  // Per dettagli fare riferimento alla libreria webview
 
-        const char* const BLOB = reinterpret_cast<const char* const>(&_binary_assets_index_html_start);
-        char* html = safestr::bufferizable(strlen(prefix)+strlen(BLOB));
 
-                strcat(html, prefix);
-                strcat(html, BLOB); // concateno il codice html con il prefisso 
-        
-        webview.url = safestr::duplicate(html);
+        webview.url = prefix.c_str();
         webview.title = "Chat.js";
         
         webview.width = 800;
@@ -110,8 +92,6 @@ namespace WebUI {
         
         WebUI::Register("WebUI::Log", WebUI::Log);
 
-        safeptr::free_block(html);
-
         return &webview;
     }
 
@@ -127,37 +107,33 @@ namespace WebUI {
 
     void Inject() {
         
-
-        const char* const stylew3 = reinterpret_cast<const char* const>(&_binary_assets_stylew3_css_start);
-        const char* js_style_w3   = js::compact(strlen(stylew3) + 25, 3, 
-                                                    "stylify(false, '", 
-                                                        stylew3, 
-                                                    "')"); 
+        const string style_w3   = "stylify(false, '" +
+                                    _src_assets_w3_css +
+                                "')"; 
 
         // workaround for multiline css sheet
-        const string style   = Base64::Encode(  
-                                    reinterpret_cast<unsigned char* const>(&_binary_assets_style_css_start), 
-                                    strlen(reinterpret_cast<const char* const>(&_binary_assets_style_css_start)),
+        const string style64   = Base64::Encode(  
+                                    reinterpret_cast<unsigned char* const>(safestr::duplicate(_src_assets_style_css.c_str())), 
+                                    _src_assets_style_css.size(),
                                     false);
 
         // anche il css deve essere eseguito da una sorta di funzione javascript 
-        const string js_style = "stylify(true, '" + style + "')";
+        const string style = "stylify(true, '" + style64 + "')";
 
         const string appready = "appready()";
 
         log_details("WebUI", "Pushing assets code");
         log_pedantic("WebUI", "\t#Deploy appinit.js");
         
-        Execute(safeptr::parse_asset(
-                _binary_assets_appinit_js_start));
+        Execute(_src_assets_appinit_js);
         log_pedantic("WebUI", "\t#Complete appinit.js");
 
         log_pedantic("WebUI", "\t#Deploy styleW3.css");
-        Execute(js_style_w3);
+        Execute(style_w3);
         log_pedantic("WebUI", "\t#Complete styleW3.css");
 
         log_pedantic("WebUI", "\t#Deploy style.css");
-        Execute(js_style);
+        Execute(style);
         log_pedantic("WebUI", "\t#Complete style.css");
 
         log_pedantic("WebUI", "\t#Deploy appready.js");
@@ -165,7 +141,6 @@ namespace WebUI {
         log_pedantic("WebUI", "\t#Complete appready.js");
 
         log_details("WebUI", "Completed assets push");
-        safeptr::free_block(js_style_w3);
 
     }
 

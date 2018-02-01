@@ -2,6 +2,8 @@
 #include <json.hpp>
 
 #include "modals.h"
+#include "modals.hjs"
+
 #include "auth-modal/auth-modal.h"
 #include "chat-modal/chat-modal.h"
 
@@ -13,16 +15,11 @@ using namespace std;
 using namespace WebUI;
 using namespace Helpers;
 
-extern char _binary_src_directives_modals_modals_js_start[];
-
 namespace Modal {
 
     void Bootstrap() {
         
-        WebUI::Execute(
-                safeptr::parse_asset(
-                    _binary_src_directives_modals_modals_js_start)
-            );
+        WebUI::Execute(_src_directives_modal_modal_js);
 
         AuthModal::RegisterModal();
         ChatModal::RegisterModal();

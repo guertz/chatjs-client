@@ -2,6 +2,8 @@
 #include <json.hpp>
 
 #include "auth-modal.h"
+#include "auth-modal.hjs"
+
 #include "directives/modals/modals.h"
 
 #include "common/web-ui/web-ui.h"
@@ -15,8 +17,6 @@ using namespace std;
 using namespace WebUI;
 using namespace Helpers;
 using namespace States;
-
-extern char _binary_src_directives_modals_auth_modal_auth_modal_js_start[];
 
 namespace Modal {
 
@@ -55,10 +55,7 @@ namespace Modal {
 
         void RegisterModal(){
 
-            WebUI::Execute(
-                    safeptr::parse_asset(
-                        _binary_src_directives_modals_auth_modal_auth_modal_js_start)
-                );
+            WebUI::Execute(_src_directives_modal_auth_modal_auth_modal_js);
             
             WebUI::Register("Modal::AuthModal::Submit", Events::Submit);
             AuthState::Register("Modal::AuthModal", State::Auth);
