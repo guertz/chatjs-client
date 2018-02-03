@@ -19,7 +19,7 @@ namespace States {
                 this->user   = User(j.at("user"));
             }
 
-            Auth::Auth(const string& serialized)
+            Auth::Auth(const std::string& serialized)
                 : Auth(json::parse(serialized)) { }
 
 

@@ -1,12 +1,11 @@
 #ifndef DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 #define DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 
-#include "states/auth-state/auth-state.h"
-
 namespace Modal {
 
    /**
     * Modale che permette ad un utente di autenticarsi.
+    * Per maggiore dettagli sulla struttura fare riferimento a ::components.md
     * Viene mostrato all'avvio della app e a seguito della disconnessione
     * dell'utente. La schermata di autenticazione si presenta come un
     * semplice form in cui l'utente deve inserire il proprio ID
@@ -15,30 +14,25 @@ namespace Modal {
 
        /**
         * Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire
-        * sulla finestra. Vengono ragruppati gli eventi che provengono da entrambe le
-        * direzioni ovvero:
-        * + Invocazione di metodi C++ che richiamano funzioni Javascript
-        * + Invocazioni dal Javascript a metodi C++
+        * sulla finestra.
         */
         namespace Events {
 
            /**
-            * Metodo invocato da JavaScript che notifica l'invio dei dati del form di
-            * autenticazione.
+            * Handler di evento JavaScript che notifica l'invio dei dati del form di
+            * autenticazione (submit).
             * Di seguito e riportata la struttura dati ricevuta dalla funzione
             *
             * @include modals/auth-modal-submit.json
             *
             * @param[in] argc Parametri della chiamata JS in formato JSON serialized
-            * @return void
+            *
             */
-            void Submit(const std::string& argc);
+           inline void Submit(const std::string& argc);
 
            /**
             * Metodo che agisce su l'interfaccia e riporta il form al suo 
             * stato di default.
-            *
-            * @return void
             */
             void Reset();
 
@@ -50,14 +44,10 @@ namespace Modal {
 
         }
         
-       /**
-        * Metodo di inizializzazione del modale
-        */
+       /** Metodo di inizializzazione del modale */
         void RegisterModal();
 
-       /**
-        * Metodo di distruzione del modale
-        */
+       /** Metodo di distruzione del modale */
         void EraseModal();
         
        /**
@@ -69,17 +59,8 @@ namespace Modal {
             * Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.
             * Dopo essere stato registrato viene notificato dal corrispondente provider
             * di eventuali cambiamenti di stato quali azioni di login e di logout
-            *
-            * Formato json evento authstate con parametri base
-            * @include auth/auth-base.json
-            *
-            * Formato json evento authstate con parametri login
-            * @include auth/auth-extended.json
-            *
-            * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
-            * il cambio di stato
             */
-            void Auth();
+            inline void Auth();
         }
 
         /**
@@ -88,20 +69,14 @@ namespace Modal {
          */
         namespace AuthMethods {
 
-            /**
-             * Metodo che viene invocato per notificare l'avvenuto login con successo.
-             */
-            void OnLoginSuccess();
+            /** Metodo che viene invocato per notificare l'avvenuto login con successo */
+            inline void OnLoginSuccess();
 
-            /**
-             * Metodo che viene invocato per notificare l'avvenuto login con errori.
-             */
-            void OnLoginErrors();
+            /** Metodo che viene invocato per notificare l'avvenuto login con errori */
+            inline void OnLoginErrors();
 
-            /**
-             * Metodo che viene invocato per notificare l'azione di logout
-             */
-            void OnLogout();
+            /** Metodo che viene invocato per notificare l'azione di logout */
+            inline void OnLogout();
         }
     }
 }

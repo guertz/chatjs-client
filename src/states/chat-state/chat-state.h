@@ -47,7 +47,7 @@ namespace States {
             void StartAChat(const std::string& user_dest);
 
             inline void Notify();
-            inline void clean();
+            inline void Clean();
             inline void ResponseSuccess(const std::string);
             inline void ResponseError(const std::string);
         }

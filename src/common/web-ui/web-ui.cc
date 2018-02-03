@@ -19,96 +19,61 @@
 using json = nlohmann::json;
 using namespace std;
 
-#ifdef DEBUG_MODE
+#ifdef WEBVIEW_DEBUG
 #define FIRE_BUG "<script type='text/javascript' src='/local/path/to/firebug-lite.js'></script>"
 #endif
 
 namespace WebUI {
 
-    static Webview webview; /** Oggetto del tipo di dato webview */
-    static Methods callbacks; /** Mappa in cui vengono memorizzate le associazioni 
-                                    nome <=> puntatore a funzione (callback)*/
-
-    void Register(string callback_name, void (*callback_fn)(const string&)){
-        callbacks[callback_name] = callback_fn;
-    }
-
-    /**
-     * Metodo che viene chiamato a seguido della chiamata alla funzione
-     * JavaScript invoke.
-     * È incaricato di cercare il puntatore a funzione mappato sull'oggetto map di tipo (::Methods)
-     * e registrato tramite il metodo (::Register) e nel caso fosse presente, invoca quest'ultima
-     * funzione.
-     *
-     * Questa funzione viene viene registrato nel metodo ::Create come parametro external_invoke_cb
-     * della struttura dati ::Webview
-     *
-     * Non è necessario definirla a livello di interfaccia dato che non è necessario
-     * che sia visibile agli altri file o parti che compongono l'applicazione
-     *
-     * @param[in] w Puntatore all'oggetto istanza Webview
-     * @param[in] args Array di caratteri contenenti il buffer json serializzato
-     *                 contenente nome della funzione da invocare e parametri da
-     *                 passare a quest'ultima
-     * @return void
+    /** 
+     * Oggetto del tipo di dato webview. 
+     * Rappresenta l'interfaccia dell'applicazione ed ha tempo di vita
+     * tutto il programma (**static**)
      */
-    void JsHCallback(Webview *w, const char *args) {
+    static Webview webview; 
+    static Methods callbacks;
 
-        json function = json::parse(args); /** oggetto json deserializzato */
-
-        Methods::iterator fn_itr = callbacks.find(function.at("fn")); /** Iteratore dell'oggetto map specializzato
-                                                                    dal tipo di dato Methods che rappresenta
-                                                                    l'oggetto contenente il puntatore a funzione */
-        
-        // TODO: Strict cast to struct from json to check structure?
-        if (fn_itr != callbacks.end())
-            fn_itr->second(function.at("params").dump()); // Se iteratore valido passo la stringa serializzata
-
-        // delete args
+    void Register(string cb_name, void (*cb_fn)(const string&)){
+        callbacks[cb_name] = cb_fn;
+        log_pedantic("WebUI", "Registered: " + cb_name);
     }
 
     Webview* Create() {
-        const string prefix = "data:text/html," + _src_assets_index_html;  // Prefisso necessario quando viene caricato il file HTML 
-                                                 // tramite stringa e non da file su disco. 
-                                                 // Per dettagli fare riferimento alla libreria webview
 
+        log_csl("WebUI", "Creating window");
+
+        const string prefix = "data:text/html," + _src_assets_index_html;
 
         webview.url = prefix.c_str();
         webview.title = "Chat.js";
         
         webview.width = 800;
         webview.height = 600;
-        webview.resizable = 0; // disabilito il resize della finestra  
-                               // provvisoriamente per motivi di 
-                               // responsiveness
+        webview.resizable = 0; // window resize disabled
 
-        webview.external_invoke_cb  = JsHCallback; // Registro il callback C++ al metodo invoke javascript
+        // Javascript => C++ Handler
+        webview.external_invoke_cb  = JsHCallback; 
+
+        // TODO: Firebug/Web inspector
+        #ifdef WEBVIEW_DEBUG
+            webview.debug = true;
+        #endif
 
         // TODO: check success or exception (assert)
-        webview_init(&webview); // Funzione per inizializzare oggetto webview
-        
-        
-        WebUI::Register("WebUI::Log", WebUI::Log);
+        webview_init(&webview);
 
         return &webview;
     }
 
-    void Dispatch(Webview* w, void* voidPtrChar){
-
-        webview_eval(w, reinterpret_cast<char*>(voidPtrChar)); 
-                               // Momento in cui il codice javascript viene effettivamente
-                               // valutato ed eseguito nel contesto della webview
-        
-        // handle pointer destruction
-    }
-
     void Inject() {
         
+        log_csl("WebUI", "[r] Injecting assets");
+
         const string style_w3   = "stylify(false, '" +
                                     _src_assets_w3_css +
                                 "')"; 
 
-        // workaround for multiline css sheet
+        // workaround for multiline css style sheet
         const string style64   = Base64::Encode(  
                                     reinterpret_cast<unsigned char* const>(
                                         const_cast<char*>(_src_assets_style_css
@@ -123,28 +88,61 @@ namespace WebUI {
 
         const string appready = "appready()";
 
-        log_details("WebUI", "Pushing assets code");
-        log_pedantic("WebUI", "\t#Deploy appinit.js");
-        
-        webview_eval(&webview, _src_assets_appinit_js.c_str());
-        log_pedantic("WebUI", "\t#Complete appinit.js");
+        // Fixing gdk_threads queue
+        log_pedantic("WebUI", "Deploy appinit.js [assets]");
+        Dispatch(&webview, _src_assets_appinit_js.c_str());
 
-        log_pedantic("WebUI", "\t#Deploy styleW3.css");
-        webview_eval(&webview, style_w3.c_str());
-        log_pedantic("WebUI", "\t#Complete styleW3.css");
+        log_pedantic("WebUI", "Deploy w3.css [assets]");
+        Dispatch(&webview, style_w3.c_str());
 
-        log_pedantic("WebUI", "\t#Deploy style.css");
-        webview_eval(&webview, style.c_str());
-        log_pedantic("WebUI", "\t#Complete style.css");
+        log_pedantic("WebUI", "Deploy style.css [assets]");
+        Dispatch(&webview, style.c_str());
 
-        log_pedantic("WebUI", "\t#Deploy appready.js");
+        log_pedantic("WebUI", "[r] App ready event");
         Execute(appready);
-        log_pedantic("WebUI", "\t#Complete appready.js");
 
-        log_details("WebUI", "Completed assets push");
+        log_details("WebUI", "[c] Injecting assets");
 
     }
 
+    inline void DispatchThread(Webview* w, void* voidPtrChar) {
+        Dispatch(w, reinterpret_cast<const char*>(voidPtrChar));
+    }
+
+    inline void Dispatch(Webview* w, const char* parsed_script) {
+
+        #ifndef WEBVIEW_DEBUG
+
+            char* __parsed_script_part = new char[LOG_LEN];
+            int   __parsed_script_size = strlen(parsed_script) < LOG_LEN ? 
+                                            strlen(parsed_script) : LOG_LEN;
+                strncpy(  __parsed_script_part, 
+                          parsed_script, 
+                          __parsed_script_size);
+
+            if(__parsed_script_size > LOG_LEN) {
+                __parsed_script_part[56] = '.';
+                __parsed_script_part[57] = '.';
+                __parsed_script_part[58] = '.';
+                __parsed_script_part[59] = '\0';
+            }
+
+            string parsed_script_part(__parsed_script_part);
+
+            log_csl("WebUI", parsed_script_part);
+
+            assert(__parsed_script_part);
+            // TODO: check i always deleted arrays when needed
+            delete[] __parsed_script_part;
+            __parsed_script_part = 0;
+
+        #endif
+
+        // Evaluating code inside the webview main ui thread
+        webview_eval(w, parsed_script);
+        
+        // TODO: pointers
+    }
 
     void Execute(const string& args) {
 
@@ -153,30 +151,31 @@ namespace WebUI {
 
         webview_dispatch(
             &webview,
-            Dispatch,
+            DispatchThread,
             content
         );
 
+        // TODO: pointers
+
     }
 
-    // Set debug filed + firebug
-    void Log(const string& argl) {
-        json log_data = json::parse(argl);
+    inline void JsHCallback(Webview *w, const char *args) {
 
-        log_csl(
-                log_data.at("attr").get<string>(),
-                log_data.at("log_msg").get<string>()
-            );
+        /** Dati callback in formato JSON deserializzato */
+        json function = json::parse(args); 
+        log_pedantic("WebUI", "Handling: " + function.at("fn").get<string>());
+
+        Methods::iterator fn_itr = callbacks.find(function.at("fn").get<string>());
+        
+        if (fn_itr == callbacks.end())
+            log_err("JsHandler", "Missing callback for: " + function.at("fn").get<string>());
+
+        assert(fn_itr !=  callbacks.end());
+        
+        fn_itr->second(function.at("params").get<string>());
+
+        // duplicate string instead of reference?
+        // TODO: pointers
     }
 
-    // namespace Events {
-    //     // do same thing as log
-    //     // has it been registered somewhere?
-    //     void OnResize(const char* args){
-    //         // json jArgs = json::parse(args);
-
-    //         // cout<<jArgs["params"].dump()<<endl;
-    //         // safeptr::free_block(args);
-    //     }
-    // }
 }

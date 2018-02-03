@@ -17,7 +17,8 @@ namespace States {
             this->time = j.at("time").get<string>();
         }
 
-        Message::Message(const string& serialized) : Message(json::parse(serialized)) { }
+        Message::Message(const std::string& serialized)
+             : Message(json::parse(serialized)) { }
         
         json Message::to_json() const {
             return json{

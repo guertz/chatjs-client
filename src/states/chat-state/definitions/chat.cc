@@ -20,7 +20,8 @@ namespace States {
 
         }
 
-        Chat::Chat(const std::string& serialized) : Chat(json::parse(serialized)) { }
+        Chat::Chat(const std::string& serialized) 
+            : Chat(json::parse(serialized)) { }
         
         json Chat::to_json() const {
 

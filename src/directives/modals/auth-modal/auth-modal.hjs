@@ -59,10 +59,10 @@ const AuthModalFactory = function(){
         // if dom not exist
         document.body.appendChild(node);
         window.subscribeTo(window.getFirst(node, "form"), "submit", submitEvent);
-    }(); // calling itself
+    }();
     
 
     window.modals["AuthModal"] = this;
 
-}(); // calling itself
+}();
 )";

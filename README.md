@@ -74,7 +74,7 @@ $ doxygen
     │   └── toast                       # Toast
     ├── models                          # Data models
     │   └── ...                         #
-    ├── pages                           # Components (chat-list, chat-details)
+    ├── pages                           # Partials (chat-list, chat-details)
     │   ├── ...                         #
     ├── protocol                        # Protocolli di comunicazione
     │   └── sockets                     # Definizione Socket 

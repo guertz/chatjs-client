@@ -2,6 +2,7 @@
 .release/
 .internal/
 src/.assets/
+docs/html
 *.o
 *.ojs
 depends

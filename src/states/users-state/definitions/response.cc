@@ -17,7 +17,7 @@ namespace States {
                 this->usersList = j.at("usersList").dump();
             }
 
-            Stream::Stream(const string& serialized) 
+            Stream::Stream(const std::string& serialized) 
                 : Stream(json::parse(serialized)) { }
 
             json Stream::to_json() const {

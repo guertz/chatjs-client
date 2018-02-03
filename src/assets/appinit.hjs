@@ -1,17 +1,4 @@
 const std::string _src_assets_appinit_js = R"(
-window.consolelog = function(event, message) {
-    // create a type safe method that will always pass a string!!
-    window.external.invoke(JSON.stringify(
-        {
-            fn: 'WebUI::Log', 
-            params: { 
-                attr: event,
-                log_msg: message
-            }
-        }
-    ));  
-}
-
 window.stylify = function(multiline, css) {
 
     var style = document.createElement('style');

@@ -17,15 +17,9 @@ const ChatModalFactory = function() {
                 '</div>';
 
     var hideEvent = function() {
-        window.external.invoke(JSON.stringify(
-            {
-                fn: 'Modal::ChatModal::Close', 
-                params: { }
-            }
-        ));
+        window.hideModal(domRef);
     }
 
-    // This is a really good trick
     var handleClick = function(userId) {
         return function(){
             window.external.invoke(JSON.stringify(
@@ -39,12 +33,8 @@ const ChatModalFactory = function() {
         }
     }
     
-    // TODO: problem with names (ChatList, ChatDetails?)
-    // better "use strict" js?
+    // TODO: namespace issue?
     this.populateChat = function(data) {
-
-        window.consolelog("chat-modal.js", "ready");
-
         var currentIndex = 0;
 
         window.forAll(node, "#"+domRef+" .users-selector", function(item){
@@ -58,9 +48,6 @@ const ChatModalFactory = function() {
         var wrapper = window.getFirst(node, ".users-list-available");
             wrapper.innerHTML = "";
         
-        /** Formato del tipo:
-         *  @include sockets/users-stream/refresh-users.json
-         */
         var users = JSON.parse(data);
 
         for(var index = 0; index < users.length; index++) {

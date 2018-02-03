@@ -15,7 +15,7 @@ namespace ws {
         this->content = j.at("content").dump();
     }
 
-    BaseRequest::BaseRequest(const string& serialized) 
+    BaseRequest::BaseRequest(const std::string& serialized) 
             : BaseRequest(json::parse(serialized)) { }
 
     json BaseRequest::to_json() const {

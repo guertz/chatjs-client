@@ -20,16 +20,29 @@ namespace States {
     namespace ChatState {
 
         static Chats        chatsList;
+
+        static Socket *chatsSocket = 0;
+
         static SocketsMap   socketsChatsList;
 
         void Bootstrap(){
             log_base("ChatState", "Bootstrapping provider");
+
+            chatsSocket = new Socket( "chats-stream", 
+                            ChatsMethods::ResponseSuccess, 
+                            ChatsMethods::ResponseError);
             AuthState::Register("ChatState", State::Auth);
         }
 
         void Destroy () {
             log_base("ChatState", "Destroying provider");
-            ChatsMethods::clean();
+            
+            ChatsMethods::Clean();
+
+            if(chatsSocket) {
+                delete chatsSocket;
+                chatsSocket = 0;
+            }
         }
 
         namespace ChatMethods {
@@ -115,7 +128,6 @@ namespace States {
 
         namespace ChatsMethods {
             static Subscribers subscribed;
-            static Socket *chatsSocket = 0;
             static string currentChatRef;
 
             void Register(std::string abc, void (*fn)()) {
@@ -159,25 +171,16 @@ namespace States {
                 
                 log_base("ChatState::Chat>>Init", "\t Initializing chats");
 
-                if(!chatsSocket) {
+                Request::Chats connect_request;
+                    connect_request.type = TYPE::CONNECT;
+                    
+                BaseRequest socket_data;
+                    socket_data.content = connect_request.serialize();
+                    socket_data.AUTH = AUTH;
 
-                    log_pedantic("ChatState@Init", "Before socket");
-                    chatsSocket = new Socket( "chats-stream", 
-                                                ResponseSuccess, 
-                                                ResponseError);
-                    log_pedantic("ChatState@Init", "After socket");
-
-                    Request::Chats connect_request;
-                        connect_request.type = TYPE::CONNECT;
+                assert(chatsSocket);
+                chatsSocket->setBuffer(socket_data);
                         
-                    BaseRequest socket_data;
-                        socket_data.content = connect_request.serialize();
-                        socket_data.AUTH = AUTH;
-
-                    assert(chatsSocket);
-                    chatsSocket->setBuffer(socket_data);
-                        
-                }
             }   
 
             inline void Notify() {
@@ -185,7 +188,7 @@ namespace States {
                     (*item.second)();
             }
 
-            inline void clean () {
+            inline void Clean () {
                 
                 // will map.clear destroy pointers?
                 // do i need pointers?
@@ -204,12 +207,6 @@ namespace States {
 
                 chatsList.clear();
                 currentChatRef = "";
-
-                if(chatsSocket){
-
-                    delete chatsSocket;
-                        chatsSocket = 0;
-                }
 
                 ChatsMethods::Notify();
                 ChatMethods::Notify();
@@ -273,7 +270,7 @@ namespace States {
                         break;
                     case AuthState::AUTHSIGNAL::LOGOUT:
                     
-                            ChatsMethods::clean();
+                            ChatsMethods::Clean();
                         break;
 
                     case AuthState::AUTHSIGNAL::ALL:

@@ -23,42 +23,23 @@ using namespace std;
 
 namespace App {
 
-    /** 
-     * Metodo interno di inizializzazione del componente.
-     * Viene invocato dopo che le risorse sono state
-     * caricate per poter avviare i componenti (dato il fatto
-     * che questi possono appoggiarsi a parti presenti nel JS)
-     * Vengono attivate le seguenti parti:
-     * + Servizi:
-     *   - ChatState
-     *   - AuthState
-     * + Componenti:
-     *   - Navbar
-     *   - Modal
-     *   - ChatList
-     *   - ChatDetails 
-     */
-    void Init() {
-        
-        AuthState::Bootstrap();
-        ChatState::Bootstrap();
-        UsersState::Bootstrap();
-        
-        Navbar::Bootstrap();
-        Modal::Bootstrap();
-        Toast::Bootstrap();
-
-        ChatList::Bootstrap();
-        ChatDetails::Bootstrap();
-        
-    }
-
     namespace Events {
 
-        void Ready(const string& args) {
+        inline void Ready(const string& args) {
 
-            log_base("App", "App event created");
-            Init();
+            log_pedantic("WebUI", "[c] App ready event");
+            log_details("App", "Ready => Initializing!");
+           
+            AuthState::Bootstrap();
+            ChatState::Bootstrap();
+            UsersState::Bootstrap();
+            
+            Navbar::Bootstrap();
+            Modal::Bootstrap();
+            Toast::Bootstrap();
+
+            ChatList::Bootstrap();
+            ChatDetails::Bootstrap();
 
         }
 
@@ -66,14 +47,16 @@ namespace App {
 
 
     void Bootstrap() {
-        WebUI::Register("App::Ready", Events::Ready);
+        log_details("App", "Bootstrap");
 
+        WebUI::Register("App::Ready", Events::Ready);
         WebUI::Execute(_src_app_app_js);
 
     }
 
     void Destroy() {
-        
+        log_details("App", "Destroy");
+
         Navbar::Destroy();
         Modal::Destroy();
 

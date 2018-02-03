@@ -20,23 +20,24 @@ namespace Modal {
 
     namespace AuthModal {
 
-        // Deve essere lo stesso valore presente nel file JS
-        static const string modalRef = "auth-modal"; /** Nome identificativo del modale di autenticazione */
-        
+        /** Nome identificativo del modale di autenticazione */
+        static const string modalRef = "auth-modal";  // Deve essere lo stesso valore presente nel file JS
+
+        static const string AUTH_RESET = "modals.AuthModal.reset()";
+        static const string AUTH_DESTROY = "modals.AuthModal.destroy()";
+        static const string AUTH_ERRORS = "modals.AuthModal.showErrors()";
+
         namespace Events {
 
-            void Submit(const string& args){
-
-                log_base("Modal::AuthModal::Events", args);
+            inline void Submit(const string& args){
+                log_pedantic("AuthModal::Submit", args);
 
                 json fn_params = json::parse(args);
-
                 AuthState::Login(fn_params.at("_id").get<string>());
             }
 
             void Reset(){
-                
-                const string AUTH_RESET = "modals.AuthModal.reset()";
+                log_pedantic("AuthModal::Reset", "");
 
                 WebUI::Execute(AUTH_RESET);
             }
@@ -52,6 +53,7 @@ namespace Modal {
         }
 
         void RegisterModal(){
+            log_details("AuthModal", "Create");
 
             WebUI::Execute(_src_directives_modal_auth_modal_auth_modal_js);
             
@@ -59,26 +61,27 @@ namespace Modal {
             AuthState::Register("Modal::AuthModal", State::Auth);
 
             Events::Show();
-            
         }
 
         void EraseModal () {
-            
+            log_details("AuthModal", "Erase");
+
+            WebUI::Execute(AUTH_DESTROY);
         }
 
         namespace State {
                 
-            void Auth(){
-
+            inline void Auth(){
+                log_pedantic("AuthModal::State::Auth", "Refreshing...");
+                
                 Events::Reset();
 
-                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                                 User       auth_user   = AuthState::getAuthUser();
+                const AuthState::AUTHSIGNAL 
+                            auth_action = AuthState::getAuthAction();
+                const User  auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action) {
-
                     case AuthState::AUTHSIGNAL::LOGIN:
-
                         if(auth_user.is_valid())
                             AuthMethods::OnLoginSuccess();
                         else
@@ -87,37 +90,24 @@ namespace Modal {
                         break;
 
                     case AuthState::AUTHSIGNAL::LOGOUT:
-
                         AuthMethods::OnLogout();
 
                         break;
-                    
-                    case AuthState::AUTHSIGNAL::ALL:
-                    default:
-                        // log_err (with color)
-                        log_base("AuthModal", "Bad format Request");
-                        break;
                 }
-                
             }
         }
 
         namespace AuthMethods {
 
-            void OnLoginSuccess() {
+            inline void OnLoginSuccess() {
                 Events::Hide();
             }
 
-            void OnLoginErrors() {
-
-                const string AUTH_ERRORS = "modals.AuthModal.showErrors()";
-
+            inline void OnLoginErrors() {
                 WebUI::Execute(AUTH_ERRORS);
-                // Events::Reset
-
             }
 
-            void OnLogout () {
+            inline void OnLogout () {
                 Events::Show();
             }
         }

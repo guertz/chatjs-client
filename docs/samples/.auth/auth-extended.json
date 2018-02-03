@@ -1,0 +1,7 @@
+{
+    ...auth-base,
+    "name": "string",
+    "_id": "string:16",
+    "image": "string:url",
+    "online": "bool"
+}

@@ -15,8 +15,13 @@
  * funzioni che ricevono parametri in formato JSON serializzato e sono
  * bidirezionali nel senso che da C++ possono essere invocati metodi Javascript
  * e viceversa.
- * 
- * Vai alla definizione del file ::main 
+ *
+ * Per sfogliare la documentazione, è consigliato partire dal metodo ::main  
+ * per poi continuare nelle due sezione:
+ * + Webview User Interface (::WebUI): in cui sono definiti i metodi principali  
+ * per la gestione della webview e a sua volta dell'interfaccia utenti
+ * + App (::App): in cui sono definiti i metodi e i moduli che compongono  
+ * l'applicazione stessa
  */
 
 // Librerie per la funzionalità dei websocket richieste dalle piattaforme windows
@@ -38,10 +43,6 @@ using namespace std;
 using namespace WebUI;
 
 
-// TODO: che sistema usa zserge per il log negli ambienti gui
-//       dove le shell non compaiono?
-//       serve il win main?
-// TODO: release && console non compare su linux giusto?
 int main() {
   #ifdef WIN32
   
@@ -53,7 +54,7 @@ int main() {
       }
     #endif
 
-    // Configurazione socket aggiuntive richieste dalle piattaforme windows
+    // Configurazione socket, API WIN32
     INT rc;
     WSADATA wsaData;
 
@@ -63,30 +64,25 @@ int main() {
 
   #endif
 
-  // Move all to app bootstrap?
-  Webview* webview = Create(); // WebUI::Create => Inizializzazione webview
+  Webview* webview = WebUI::Create(); // Inizializzazione webview
   
-  App::Bootstrap(); // Metodo inizializzare la app
-                    // Aspetterà a sua volta l'invocazione del callback di ready
-                    // Per caricare tutte le altre sezioni e componenti
+  App::Bootstrap(); // Metodo inizializzare moduli e componenti
+                    // dell'applicazione
   
-  Inject(); // WebUI::Inject => Injecting dello stile e degli script JS
-            // Inserito dopo App::Bootstrap perchè bootstrap registra il metodo
-            // di callback Ready invocato dopo aver iniettato queste risorse
+  WebUI::Inject(); // Vengono caricate le risorse di base 
+                   // (HTML, stili css, metodi Javascript)
 
-  log_base("WEB", "loop");
-  
+  log_csl("Main", "Entering application loop [Running]");
   while (webview_loop(webview, 1) == 0) 
-      ; // Application Loop
+      ; // Application Loop (blocking)
 
-  log_base("WEB", "error");
+  log_csl("Main", "Exit application loop [Exit]");
   webview_exit(webview);
 
   App::Destroy(); // Metodo Distruttore
   
   #ifdef WIN32
-    WSACleanup(); // Necessario sulle piattaforme windows
-                  // per terminare i socket
+    WSACleanup(); // Chiusura/pulizia socket, API WIN32
   #endif
 
   return 0;

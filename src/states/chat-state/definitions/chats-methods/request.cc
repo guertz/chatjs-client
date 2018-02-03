@@ -20,7 +20,8 @@ namespace States {
                     this->destination = j.at("destination").get<string>();
                 }
                 
-                Chats::Chats(const string& serialized) : Chats(json::parse(serialized)) { }
+                Chats::Chats(const std::string& serialized) 
+                    : Chats(json::parse(serialized)) { }
 
                 json Chats::to_json() const {
                     return json{

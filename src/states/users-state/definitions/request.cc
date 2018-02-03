@@ -15,7 +15,7 @@ namespace States {
                 this->type = str_to_enum(j.at("type").get<string>());
             }
 
-            Stream::Stream(const string& serialized) 
+            Stream::Stream(const std::string& serialized) 
                 : Stream(json::parse(serialized)) { }
 
 

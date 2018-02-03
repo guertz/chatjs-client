@@ -20,24 +20,17 @@ namespace Navbar {
      */
     void Destroy();
 
-    /**
-     * Spazio dei nomi relativo agli eventi generati da callbacks. Esempi 
-     * sono lo stato dell'autenticazione utente.
-     */
+   /** 
+    * Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.
+    * Dopo essere stato registrato viene notificato dal corrispondente provider
+    * di eventuali cambiamenti di stato quali azioni di login e di logout
+    */
     namespace State {
-        /** 
+        
+       /** 
         * Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.
         * Dopo essere stato registrato viene notificato dal corrispondente provider
         * di eventuali cambiamenti di stato quali azioni di login e di logout
-        *
-        * Formato json evento authstate con parametri base
-        * @include auth/auth-base.json
-        *
-        * Formato json evento authstate con parametri login
-        * @include auth/auth-extended.json
-        *
-        * @param[in] argc Stringa json serializzata contenente le informazioni riguardanti
-        * il cambio di stato
         */
         void Auth();
     }

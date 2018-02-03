@@ -1,6 +1,5 @@
 const std::string _src_app_app_js = R"(
-// move to appinit.js?
-// Initializing Objects
+// Basic inatializatios & Methods
 window.components = {};
 
 window.getAll = function(node, query) {

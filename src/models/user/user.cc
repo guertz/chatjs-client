@@ -17,7 +17,7 @@ User::User(const json& j) : User() {
     }
 }
 
-User::User(const string& serialized) 
+User::User(const std::string& serialized) 
     : User(json::parse(serialized)) { }
 
 json User::to_json() const {

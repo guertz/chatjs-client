@@ -1,5 +1,3 @@
 { 
-    "user": { 
-        "_id": "string:16" 
-    }
+    "user": "string:16" 
 }
