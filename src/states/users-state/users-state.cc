@@ -7,13 +7,11 @@
 
 #include "protocol/sockets/wscustom.h"
 
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using namespace ws;
 using namespace std;
-using namespace Helpers;
 
 namespace States {
     namespace UsersState {
@@ -40,14 +38,11 @@ namespace States {
             
             AuthState::Register("UsersState", State::Auth);
 
-            try {
-                if(!usersSocket)
-                    usersSocket = new Socket(   "users-stream", 
-                                                UsersStream::ResponseSuccess, 
-                                                UsersStream::ResponseError);
-            }catch(...) {
-                log_base("UsersState::Socket>>'users-stream'", "Exception reported");
-            }
+            if(!usersSocket)
+                usersSocket = new Socket(   "users-stream", 
+                                            UsersStream::ResponseSuccess, 
+                                            UsersStream::ResponseError);
+    
 
         }
 

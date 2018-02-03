@@ -5,12 +5,11 @@
 
 #include "wscustom.h"
 
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using WebSocket = easywsclient::WebSocket;
-using namespace Helpers;
+using namespace std;
 
 namespace ws {
  
@@ -22,7 +21,7 @@ namespace ws {
         // Handle (connection errors):
         //      - node not exists
         //      - connection errors
-        assert(this->channel);
+        // assert(this->channel);
         while(this->channel && this->channel->getReadyState() != WebSocket::CLOSED) {
 
             if(this->is_computing) {
@@ -52,8 +51,7 @@ namespace ws {
 
         // Il canale è stato terminato in modo inaspettato e non richiesto dall'utente
         if(this->is_computing){
-            SocketTermination exception;
-            throw exception;
+            this->onerror("Bad connection");
         }
 
     }
@@ -108,15 +106,10 @@ namespace ws {
         this->onerror = onerror;
 
         this->reset();
-        this->is_computing = true; // || false?
+        this->is_computing = true;
 
-        // handle thread channel not open exception
-        try {
-            this->watcher = std::thread(&Socket::ThreadMain, this);
-            this->watcher.detach();
-        } catch(const ws::SocketTermination& termination_exception ){
-            throw termination_exception;
-        }
+        this->watcher = std::thread(&Socket::ThreadMain, this);
+        this->watcher.detach();
         
     }
 }

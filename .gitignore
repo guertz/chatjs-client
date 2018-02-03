@@ -1,4 +1,5 @@
 .build/
+.release/
 .internal/
 src/.assets/
 *.o

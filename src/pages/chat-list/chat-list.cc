@@ -12,7 +12,6 @@
 #include "directives/toast/toast.h"
 
 #include "common/web-ui/web-ui.h"
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 #include "states/chat-state/chat-state.h"
@@ -22,7 +21,6 @@ using json = nlohmann::json;
 using namespace std;
 using namespace ws;
 using namespace WebUI;
-using namespace Helpers;
 using namespace States;
 
 namespace ChatList {
@@ -86,12 +84,14 @@ namespace ChatList {
             log_base("ChatList>>Refetch", js_context);
             WebUI::Execute(js_context);
 
-            Toast::Events::Show("E stata iniziata una nuova chat.");
+            // Non sempre
+            // Toast::Events::Show("E stata iniziata una nuova chat.");
             
         }
 
         void Chat(){
-            Toast::Events::Show("E stato ricevuto un messaggio.");
+            // Non sempre
+            // Toast::Events::Show("E stato ricevuto un messaggio.");
         }
 
     }

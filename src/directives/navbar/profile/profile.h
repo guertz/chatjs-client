@@ -8,7 +8,7 @@ namespace Navbar {
 
         namespace Events {
             void Disconnect(const std::string&);
-            void SetText(const std::string&);
+            void SetText(const std::string);
         }
 
 

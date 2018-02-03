@@ -13,13 +13,11 @@
 
 #include "web-ui.h"
 
-#include "common/helpers/helpers.h"
 #include "common/base64/base64.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using namespace std;
-using namespace Helpers;
 
 #ifdef DEBUG_MODE
 #define FIRE_BUG "<script type='text/javascript' src='/local/path/to/firebug-lite.js'></script>"
@@ -97,12 +95,11 @@ namespace WebUI {
 
     void Dispatch(Webview* w, void* voidPtrChar){
 
-        char* args = safeptr::deserialize(voidPtrChar);
-
-        webview_eval(w, args); // Momento in cui il codice javascript viene effettivamente
+        webview_eval(w, reinterpret_cast<char*>(voidPtrChar)); 
+                               // Momento in cui il codice javascript viene effettivamente
                                // valutato ed eseguito nel contesto della webview
-        // TODO:
-        // safeptr::free_block(deserialized || voidPtrChar);
+        
+        // handle pointer destruction
     }
 
     void Inject() {
@@ -113,7 +110,11 @@ namespace WebUI {
 
         // workaround for multiline css sheet
         const string style64   = Base64::Encode(  
-                                    reinterpret_cast<unsigned char* const>(safestr::duplicate(_src_assets_style_css.c_str())), 
+                                    reinterpret_cast<unsigned char* const>(
+                                        const_cast<char*>(_src_assets_style_css
+                                                            .c_str()
+                                                        )
+                                    ), 
                                     _src_assets_style_css.size(),
                                     false);
 
@@ -125,15 +126,15 @@ namespace WebUI {
         log_details("WebUI", "Pushing assets code");
         log_pedantic("WebUI", "\t#Deploy appinit.js");
         
-        Execute(_src_assets_appinit_js);
+        webview_eval(&webview, _src_assets_appinit_js.c_str());
         log_pedantic("WebUI", "\t#Complete appinit.js");
 
         log_pedantic("WebUI", "\t#Deploy styleW3.css");
-        Execute(style_w3);
+        webview_eval(&webview, style_w3.c_str());
         log_pedantic("WebUI", "\t#Complete styleW3.css");
 
         log_pedantic("WebUI", "\t#Deploy style.css");
-        Execute(style);
+        webview_eval(&webview, style.c_str());
         log_pedantic("WebUI", "\t#Complete style.css");
 
         log_pedantic("WebUI", "\t#Deploy appready.js");
@@ -144,20 +145,17 @@ namespace WebUI {
 
     }
 
-    void Execute(const char* const args){
-        // Dispatch distrugge dopo?
-        webview_dispatch(
-            &webview,
-            Dispatch,
-            js::prepare(args)
-        );
-    }
 
     void Execute(const string& args) {
 
-        // TODO: il puntatore ad action viene distrutto automaticamente non appena
-        //       string action esce fuori dallo scope attuale
-        Execute(args.c_str());
+        char *content = new char[args.size() +1];
+              strncpy(content, args.c_str(), args.size() +1);
+
+        webview_dispatch(
+            &webview,
+            Dispatch,
+            content
+        );
 
     }
 

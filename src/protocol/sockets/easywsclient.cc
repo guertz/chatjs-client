@@ -72,6 +72,8 @@
 
 #include "easywsclient.h"
 
+#include "common/logger/logger.h"
+
 using easywsclient::Callback_Imp;
 using easywsclient::BytesCallback_Imp;
 
@@ -90,7 +92,8 @@ socket_t hostname_connect(const std::string& hostname, int port) {
     snprintf(sport, 16, "%d", port);
     if ((ret = getaddrinfo(hostname.c_str(), sport, &hints, &result)) != 0)
     {
-      fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(ret));
+      // TODO: refactor
+      log_ws("(stderr)", "getaddrinfo: " + std::string(gai_strerror(ret)));
       return 1;
     }
     for(p = result; p != NULL; p = p->ai_next)
@@ -211,7 +214,7 @@ class _RealWebSocket : public easywsclient::WebSocket
                 rxbuf.resize(N);
                 closesocket(sockfd);
                 readyState = CLOSED;
-                fputs(ret < 0 ? "Connection error!\n" : "Connection closed!\n", stderr);
+                log_ws("(stderr)", ret < 0 ? "Connection error!" : "Connection closed!");
                 break;
             }
             else {
@@ -227,7 +230,7 @@ class _RealWebSocket : public easywsclient::WebSocket
             else if (ret <= 0) {
                 closesocket(sockfd);
                 readyState = CLOSED;
-                fputs(ret < 0 ? "Connection error!\n" : "Connection closed!\n", stderr);
+                log_ws("(stderr)", ret < 0 ? "Connection error!" : "Connection closed!");
                 break;
             }
             else {
@@ -331,7 +334,10 @@ class _RealWebSocket : public easywsclient::WebSocket
             }
             else if (ws.opcode == wsheader_type::PONG) { }
             else if (ws.opcode == wsheader_type::CLOSE) { close(); }
-            else { fprintf(stderr, "ERROR: Got unexpected WebSocket message.\n"); close(); }
+            else { 
+                log_ws("(stderr)", "ERROR: Got unexpected WebSocket message.");
+                close(); 
+            }
 
             rxbuf.erase(rxbuf.begin(), rxbuf.begin() + ws.header_size+(size_t)ws.N);
         }
@@ -428,11 +434,13 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
     int port;
     char path[128];
     if (url.size() >= 128) {
-      fprintf(stderr, "ERROR: url size limit exceeded: %s\n", url.c_str());
+      log_ws("(stderr)", "ERROR: url size limit exceeded: " + url);
+      // fprintf(stderr, "ERROR: url size limit exceeded: %s\n", url.c_str());
       return NULL;
     }
     if (origin.size() >= 200) {
-      fprintf(stderr, "ERROR: origin size limit exceeded: %s\n", origin.c_str());
+      log_ws("(stderr)", "ERROR: origin size limit exceeded: " + origin);
+      // fprintf(stderr, "ERROR: origin size limit exceeded: %s\n", origin.c_str());
       return NULL;
     }
     if (false) { }
@@ -449,13 +457,17 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
         path[0] = '\0';
     }
     else {
-        fprintf(stderr, "ERROR: Could not parse WebSocket url: %s\n", url.c_str());
+        log_ws("(stderr)", "ERROR: url size limit exceeded: " + url);
+        // fprintf(stderr, "ERROR: Could not parse WebSocket url: %s\n", url.c_str());
         return NULL;
     }
-    fprintf(stderr, "easywsclient: connecting: host=%s port=%d path=/%s\n", host, port, path);
+
+    log_ws("(stdout)", "easywsclient: connecting: host="+std::string(host)+" port="+std::to_string(port)+" path="+std::string(path));
+    // fprintf(stderr, "easywsclient: connecting: host=%s port=%d path=/%s\n", host, port, path);
     socket_t sockfd = hostname_connect(host, port);
     if (sockfd == INVALID_SOCKET) {
-        fprintf(stderr, "Unable to connect to %s:%d\n", host, port);
+        log_ws("(stderr)", "Unable to connect to "+std::string(host)+":"+std::to_string(port));
+        // fprintf(stderr, "Unable to connect to %s:%d\n", host, port);
         return NULL;
     }
     {
@@ -480,8 +492,16 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
         snprintf(line, 256, "\r\n"); ::send(sockfd, line, strlen(line), 0);
         for (i = 0; i < 2 || (i < 255 && line[i-2] != '\r' && line[i-1] != '\n'); ++i) { if (recv(sockfd, line+i, 1, 0) == 0) { return NULL; } }
         line[i] = 0;
-        if (i == 255) { fprintf(stderr, "ERROR: Got invalid status line connecting to: %s\n", url.c_str()); return NULL; }
-        if (sscanf(line, "HTTP/1.1 %d", &status) != 1 || status != 101) { fprintf(stderr, "ERROR: Got bad status connecting to %s: %s", url.c_str(), line); return NULL; }
+        if (i == 255) { 
+            log_ws("(stderr)", "ERROR: Got invalid status line connecting to: " + url);
+            // fprintf(stderr, "ERROR: Got invalid status line connecting to: %s\n", url.c_str()); 
+            return NULL; 
+        }
+        if (sscanf(line, "HTTP/1.1 %d", &status) != 1 || status != 101) { 
+            log_ws("(stderr)", "ERROR: Got bad status connecting to " + url); // + ":" + std::string(line));
+            // fprintf(stderr, "ERROR: Got bad status connecting to %s: %s", url.c_str(), line); 
+            return NULL; 
+        }
         // TODO: verify response headers,
         while (true) {
             for (i = 0; i < 2 || (i < 255 && line[i-2] != '\r' && line[i-1] != '\n'); ++i) { if (recv(sockfd, line+i, 1, 0) == 0) { return NULL; } }
@@ -496,7 +516,8 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
 #else
     fcntl(sockfd, F_SETFL, O_NONBLOCK);
 #endif
-    fprintf(stderr, "Connected to: %s\n", url.c_str());
+    log_ws("(stdout)", "Connected to: "+url);
+    // fprintf(stderr, "Connected to: %s\n", url.c_str());
     return easywsclient::WebSocket::pointer(new _RealWebSocket(sockfd, useMask));
 }
 

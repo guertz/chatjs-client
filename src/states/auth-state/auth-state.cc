@@ -5,13 +5,11 @@
 #include "auth-state.h"
 #include "protocol/sockets/wscustom.h"
 
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
 using namespace ws;
 using namespace std;
-using namespace Helpers;
 
 namespace States {
     
@@ -73,12 +71,8 @@ namespace States {
 
         void Bootstrap() {
             
-            try {
-                if(!authSocket)
-                    authSocket = new Socket("auth", ResponseSuccess, ResponseError);
-            }catch(...) {
-                log_base("AuthState::Socket>>'users'", "Exception reported");
-            }
+            if(!authSocket)
+                authSocket = new Socket("auth", ResponseSuccess, ResponseError);
 
         }
 
@@ -104,7 +98,7 @@ namespace States {
                     auth_request.type = AUTHSIGNAL::LOGIN;
                     auth_request.user = AUTH_KEY;
 
-                
+
                 BaseRequest socket_data;
                             socket_data.content = auth_request.serialize();
 

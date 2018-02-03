@@ -6,7 +6,6 @@
 #include "chat-state.h"
 
 #include "protocol/sockets/wscustom.h"
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 #include "states/auth-state/auth-state.h"
@@ -15,7 +14,6 @@
 using json = nlohmann::json;
 using namespace std;
 using namespace ws;
-using namespace Helpers;
 using namespace States;
 
 namespace States {
@@ -49,28 +47,25 @@ namespace States {
                 
                 assert(auth_user.is_valid());
 
-                try { 
-                    socketsChatsList[chat.reference] = 
-                        new Socket( "chats/" + chat.reference,  
-                                    ResponseSuccess, 
-                                    ResponseError);
+                socketsChatsList[chat.reference] = 
+                    new Socket( "chats/" + chat.reference,  
+                                ResponseSuccess, 
+                                ResponseError);
 
-                    Request::Chat chat_join;
-                        chat_join.type = TYPE::JOIN;
+                Request::Chat chat_join;
+                    chat_join.type = TYPE::JOIN;
 
-                    BaseRequest socket_data;
-                        socket_data.content = chat_join.serialize();
-                        socket_data.AUTH = auth_user._id;
+                BaseRequest socket_data;
+                    socket_data.content = chat_join.serialize();
+                    socket_data.AUTH = auth_user._id;
 
-                    assert(socketsChatsList[chat.reference]);
+                assert(socketsChatsList[chat.reference]);
 
-                    socketsChatsList[chat.reference]->setBuffer(socket_data);
+                socketsChatsList[chat.reference]->setBuffer(socket_data);
 
-                    log_base("ChatState::Chat>>Init", "Initializing 'chats/" + chat.reference + "'");
+                log_base("ChatState::Chat>>Init", "Initializing 'chats/" + chat.reference + "'");
 
-                } catch(...) {
-                    log_base("ChatState::Chat>>Init", "Error 'chats/" + chat.reference + "'");
-                }
+            
 
             }
 
@@ -148,28 +143,29 @@ namespace States {
                 return currentChatRef;
             }
 
+            bool isCurrentChat() {
+                return currentChatRef.size() > 0;
+            }
+
             const string getCurrentChat() {
                 log_base("ChatState::Chats", "Requested serialized chat: '" + currentChatRef + "'");
 
-                if(currentChatRef.size() > 0)
-                    return chatsList[currentChatRef].serialize();
+                assert(isCurrentChat());
+                return chatsList[currentChatRef].serialize();
 
-                // Handle better if not valid?
-                return "";
             }
         
             inline void Init(const string& AUTH) {
                 
-                log_base("ChatState::Chat>>Init", "Initializing chats");
+                log_base("ChatState::Chat>>Init", "\t Initializing chats");
 
                 if(!chatsSocket) {
-                    try {
-                        chatsSocket = new Socket( "chats-stream", 
-                                                  ResponseSuccess, 
-                                                  ResponseError);
-                    } catch(...) {
-                        log_base("ChatState::Socket>>'chats-stream'", "Exception reported");
-                    }
+
+                    log_pedantic("ChatState@Init", "Before socket");
+                    chatsSocket = new Socket( "chats-stream", 
+                                                ResponseSuccess, 
+                                                ResponseError);
+                    log_pedantic("ChatState@Init", "After socket");
 
                     Request::Chats connect_request;
                         connect_request.type = TYPE::CONNECT;
@@ -190,11 +186,33 @@ namespace States {
             }
 
             inline void clean () {
-                // destroy subsockets
+                
+                // will map.clear destroy pointers?
+                // do i need pointers?
+                // // unique || shared ptr?
+                for (SocketsMap::iterator it = socketsChatsList.begin(); it != socketsChatsList.end(); ++it) {
+                    log_base("Destroyer!!!!", it->first);
+                    if(it->second){
+                        delete it->second;
+                            it->second = 0;
+                    }
+
+                    // socketsChatsList.erase(it);
+                }
+
+                // // check size to know if actually deleated?
+
+                chatsList.clear();
+                currentChatRef = "";
+
                 if(chatsSocket){
+
                     delete chatsSocket;
                         chatsSocket = 0;
                 }
+
+                ChatsMethods::Notify();
+                ChatMethods::Notify();
             }
 
             inline void ResponseSuccess(const std::string success) {
@@ -240,13 +258,14 @@ namespace States {
         namespace State {
             void Auth() {
                 
+                log_pedantic("ChatState", "Auth state changed");
+
                 const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
                                  User       auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action){
                     case AuthState::AUTHSIGNAL::LOGIN:
 
-                        log_base("ChatState::Chat>>State(Auth)", "Initializing after auth success received");
                         if(auth_user.is_valid())
                             ChatsMethods::Init(auth_user._id);
                         
@@ -260,7 +279,6 @@ namespace States {
                     case AuthState::AUTHSIGNAL::ALL:
                     default:
                     
-                        log_base("AuthModal", "Bad format Request");
                         break;
                 }
                 

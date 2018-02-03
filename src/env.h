@@ -20,7 +20,7 @@ const unsigned int MESSAGES   = 10;
         const std::string SERVER_HOST = "localhost";
         const std::string SERVER_PORT = "8000";
     #else
-        const std::string SERVER_HOST = "http://137.74.196.151";
+        const std::string SERVER_HOST = "137.74.196.151";
         const std::string SERVER_PORT = "8000";
     #endif
 #endif

@@ -10,27 +10,19 @@ namespace ws {
         this->content = "";
     }
     
-    BaseRequest::BaseRequest(const json& j) : BaseRequest() {
-        this->from_json(j);
-    }
-
-    BaseRequest::BaseRequest(const string& serialized) : BaseRequest() {
-        this->from_json(json::parse(serialized));
-    }
-
-    void BaseRequest::from_json(const json& j){
+    BaseRequest::BaseRequest(const json& j) {
         this->AUTH = j.at("AUTH").get<string>();
         this->content = j.at("content").dump();
     }
 
-    json BaseRequest::to_json(){
+    BaseRequest::BaseRequest(const string& serialized) 
+            : BaseRequest(json::parse(serialized)) { }
+
+    json BaseRequest::to_json() const {
         return json{ 
             { "AUTH", this->AUTH },
             { "content", json::parse(this->content) }
         };
     }
 
-    string BaseRequest::serialize() {
-        return this->to_json().dump();
-    }
 }

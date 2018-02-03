@@ -5,34 +5,26 @@
 #include <json.hpp>
 #include "types.h"
 
+#include "models/json-item.h"
+
 namespace States {
     namespace AuthState {
 
-        // All extends IJSON virtual con i metodi di base
-        // Request e response poi espandono le apposite classi
         namespace Request {
             
-            class Auth {
-                private:
-                    void from_json(const nlohmann::json& j);
-
+            class Auth : public JsonItem {
+                
                 public:
                     AUTHSIGNAL  type;
                     std::string user; //  TODO: change to _id (since it is auth_key)
 
-                    Auth(); // => useless
-                    Auth(const nlohmann::json& j); // from_json
-                    Auth(const std::string& serialized);  // deserialize
+                    Auth();
+                    Auth(const nlohmann::json& j);
+                    Auth(const std::string& serialized);
 
-                    nlohmann::json to_json();
-                    std::string serialize();
+                    nlohmann::json to_json() const;
 
             };
-
-            // private attributes?
-            // specifying action type
-            // class Login  : Auth  {};
-            // class Logout : Auth  {};
 
         }
 

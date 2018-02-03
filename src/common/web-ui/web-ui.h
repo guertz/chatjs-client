@@ -62,7 +62,6 @@ namespace WebUI {
     void Dispatch(Webview *w, void *voidPtrChar );
     
     void Execute(const std::string& args);
-    void Execute(const char* const args);
 
     void Log(const std::string& arg);
 

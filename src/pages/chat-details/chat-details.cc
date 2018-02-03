@@ -8,18 +8,15 @@
 #include "chat-details.hjs"
 
 #include "common/web-ui/web-ui.h"
-#include "common/helpers/helpers.h"
 
 #include "states/chat-state/chat-state.h"
 
 using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
-using namespace Helpers;
 using namespace States;
 
 namespace ChatDetails {
-    const unsigned int MESSAGES = 10;
 
     const string CHAT_INACTIVE = "alert('Deve prima essere selezionata una chat')";
 
@@ -49,12 +46,14 @@ namespace ChatDetails {
     namespace State {
         void Chat(){
             
-            const string js_chat = "components.ChatDetails.populateChatDetails('" +
-                                        ChatState::ChatsMethods::getCurrentChat() +
-                                    "')";
+            if(ChatState::ChatsMethods::isCurrentChat()){
+                const string js_chat = "components.ChatDetails.populateChatDetails('" +
+                                            ChatState::ChatsMethods::getCurrentChat() +
+                                        "')";
 
-            WebUI::Execute(js_chat);
-            WebUI::Execute(ENABLE_FORM);
+                WebUI::Execute(js_chat);
+                WebUI::Execute(ENABLE_FORM);
+            }
 
         }
     }

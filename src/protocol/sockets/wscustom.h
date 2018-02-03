@@ -7,7 +7,6 @@
 
 #include "definitions/request.h"
 #include "definitions/response.h"
-#include "exceptions/exceptions.h"
 
 #include "env.h"
 
@@ -29,7 +28,7 @@ namespace ws{
             std::string path;
             bool is_computing;
             easywsclient::WebSocket::pointer channel;
-            thread watcher; 
+            std::thread watcher; 
 
             void (*onmessage)(const std::string message); 
             void (*onerror)(const std::string error);

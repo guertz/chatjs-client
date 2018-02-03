@@ -15,9 +15,9 @@ namespace States {
             this->destination = User(j.at("destination"));
             this->from = User(j.at("from"));
             this->creator = j.at("creator").get<string>();
-            try {
-                MessagesWrapper::json_to_messages(j.at("messages"), this->messages);
-            } catch(...) { }
+
+            MessagesWrapper::json_to_messages(j.at("messages"), this->messages);
+
         }
 
         Chat::Chat(const std::string& serialized) : Chat(json::parse(serialized)) { }
@@ -37,6 +37,10 @@ namespace States {
                 { "messages", j_vect }
             };
 
+        }
+
+        Chat::~Chat() {
+            this->messages.clear();
         }
 
         void ChatsWrapper::json_to_chats(const json& j, Chats& c_map) {

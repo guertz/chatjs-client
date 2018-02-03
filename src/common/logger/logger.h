@@ -4,8 +4,9 @@
 #include "env.h"
 
 enum TAG{
-  CSL = 0,
-  INFO = 1
+  CSL  = 0,
+  WS   = 1,
+  INFO = 2
 };
 
 
@@ -44,7 +45,12 @@ enum TAG{
 // 1                         LOW = 1
 // base
 
+// questo interno c++ per azioni javascript
+// per webview console.log posso usare quello webview integrato senza mia funzione
 #define log_csl(attr, log_msg)       { if(1 & DEBUG_MASK) { LOGGER(TAG::CSL, 0, attr, log_msg); } }
+#define  log_ws(attr, log_msg)       { if(1 & DEBUG_MASK) { LOGGER(TAG::WS,  0, attr, log_msg); } }
+
+// log_err (stderr)
 
 #define log_base_void(log_msg)       { if(1 & DEBUG_MASK) { LOGGER(TAG::INFO, 1,   "", log_msg); } }
 #define log_base(attr, log_msg)      { if(1 & DEBUG_MASK) { LOGGER(TAG::INFO, 1, attr, log_msg); } }

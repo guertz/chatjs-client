@@ -4,8 +4,7 @@ using json = nlohmann::json;
 using namespace std;
 
 json JsonItem::to_json() const {
-    json x = json::parse("{}");
-    return x ;
+    return json::parse("{}");
 }
 
 string JsonItem::serialize() const {

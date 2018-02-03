@@ -7,7 +7,6 @@
 #include "directives/modals/modals.h"
 #include "directives/toast/toast.h"
 
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 #include "common/web-ui/web-ui.h"
 
@@ -17,7 +16,6 @@
 using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
-using namespace Helpers;
 using namespace States;
 
 namespace Modal { 

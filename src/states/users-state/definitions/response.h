@@ -5,13 +5,13 @@
 #include <json.hpp>
 #include "types.h"
 
+#include "models/json-item.h"
+
 namespace States {
     namespace UsersState {
         namespace Response {
 
-            class Stream {
-                private:
-                    void from_json(const nlohmann::json& j);
+            class Stream : public JsonItem{
 
                 public:
                     STREAMSIGNAL type;
@@ -21,8 +21,7 @@ namespace States {
                     Stream(const nlohmann::json& j);
                     Stream(const std::string& serialized);
 
-                    nlohmann::json to_json();
-                    std::string serialize();
+                    nlohmann::json to_json() const;
                     
             };
 

@@ -12,22 +12,17 @@ namespace ws {
         this->error   = "";
     }
 
-    BaseResponse::BaseResponse(const nlohmann::json& j) : BaseResponse() {
-        this->from_json(j);
-    }
-
-    BaseResponse::BaseResponse(const std::string& serialized) : BaseResponse() {
-        this->from_json(json::parse(serialized));
-    }
-
-    void BaseResponse::from_json(const nlohmann::json& j) {
+    BaseResponse::BaseResponse(const nlohmann::json& j) {
         this->ok = j.at("ok").get<bool>();
         this->status = j.at("status").get<int>();
         this->error = j.at("error").get<string>();
         this->content = j.at("content").dump();
     }
 
-    json BaseResponse::to_json() {
+    BaseResponse::BaseResponse(const std::string& serialized) 
+        : BaseResponse(json::parse(serialized)) { }
+
+    json BaseResponse::to_json() const {
         return json { 
             { "ok", this->ok },
             { "status", this->status }, 
@@ -36,7 +31,4 @@ namespace ws {
         };
     }
 
-    string BaseResponse::serialize() {
-        return this->to_json().dump();
-    }
 }

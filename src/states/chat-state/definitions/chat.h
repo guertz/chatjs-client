@@ -25,6 +25,8 @@ namespace States {
                 Chat(const nlohmann::json& j);
                 Chat(const std::string& serialized);
 
+                ~Chat();
+
                 nlohmann::json to_json() const;
 
                

@@ -6,34 +6,26 @@
 #include "models/user/user.h"
 #include "types.h"
 
+#include "models/json-item.h"
+
 namespace States {
     namespace AuthState {
         namespace Response {
 
-            // String serializator and deserializator
-            // Virtual Methods
-            class Auth {
-                private:
-                    void from_json(const nlohmann::json& j);
+            class Auth : public JsonItem {
 
                 public:
                     AUTHSIGNAL type;
                     User user;
                     bool online;
 
-                    Auth(); // used for general case of errors
+                    Auth();
                     Auth(const nlohmann::json& j);
                     Auth(const std::string& serialized);
 
-                    nlohmann::json to_json();
-                    std::string serialize();
+                    nlohmann::json to_json() const;
                     
             };
-
-            // private attributes?
-            // specifying action type
-            // class Login  : Auth  {};
-            // class Logout : Auth  {};
 
         }
     }

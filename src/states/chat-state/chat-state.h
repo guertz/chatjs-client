@@ -37,10 +37,11 @@ namespace States {
 
             inline void Init(const std::string& AUTH);
             
-            const string getSerializedChats();
+            const std::string getSerializedChats();
 
             void setCurrent(const std::string& reference);
             const std::string getCurrent();
+            bool isCurrentChat();
             const std::string getCurrentChat();
 
             void StartAChat(const std::string& user_dest);

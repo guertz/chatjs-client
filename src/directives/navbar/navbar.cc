@@ -6,7 +6,6 @@
 #include "profile/profile.h"
 
 #include "common/web-ui/web-ui.h"
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 #include "states/auth-state/auth-state.h"
@@ -14,7 +13,6 @@
 using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
-using namespace Helpers;
 using namespace States;
 
 namespace Navbar {
@@ -48,7 +46,7 @@ namespace Navbar {
                     break;
                 case AuthState::AUTHSIGNAL::LOGOUT:
 
-                    Profile::Events::SetText(safestr::duplicate("Profilo"));
+                    Profile::Events::SetText("Profilo");
 
                     break;
 

@@ -5,12 +5,10 @@
 #include "toast.hjs"
 
 #include "common/web-ui/web-ui.h"
-#include "common/helpers/helpers.h"
 
 using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
-using namespace Helpers;
 
 namespace Toast {
 

@@ -11,7 +11,6 @@
 #include "pages/chat-details/chat-details.h"
 
 #include "common/web-ui/web-ui.h"
-#include "common/helpers/helpers.h"
 #include "common/logger/logger.h"
 
 #include "states/users-state/users-state.h"
@@ -19,7 +18,6 @@
 #include "states/auth-state/auth-state.h"
 
 using namespace WebUI;
-using namespace Helpers;
 using namespace States;
 using namespace std;
 

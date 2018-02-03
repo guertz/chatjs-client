@@ -3,12 +3,11 @@
 
 #include <iostream>
 #include <json.hpp>
+#include "models/json-item.h"
 
 namespace ws {
 
-    class BaseRequest {
-        private:
-            void from_json(const nlohmann::json& );
+    class BaseRequest : public JsonItem {
 
         public:
             std::string AUTH;
@@ -19,8 +18,7 @@ namespace ws {
             BaseRequest(const nlohmann::json& j);
 
             
-            nlohmann::json to_json();
-            std::string serialize();
+            nlohmann::json to_json() const;
             
     };
 }

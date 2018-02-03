@@ -13,32 +13,23 @@ namespace States {
                 // this->user // default constructor
             }
 
-            Auth::Auth(const json& j) : Auth() {
-                this->from_json(j);
-            }
-
-            Auth::Auth(const string& serialized) : Auth() {
-                json j = json::parse(serialized);
-                this->from_json(j);
-            }
-
-            void Auth::from_json(const json& j) {
+            Auth::Auth(const json& j) {
                 this->type = str_to_enum(j.at("type").get<string>());
                 this->online = j.at("online").get<bool>();
                 this->user   = User(j.at("user"));
             }
 
-            json Auth::to_json() {
+            Auth::Auth(const string& serialized)
+                : Auth(json::parse(serialized)) { }
+
+
+            json Auth::to_json() const {
 
                 return json{
                     { "type", enum_to_str(this->type)}, 
                     { "online", this->online},
                     { "user", this->user.to_json() }
                 };
-            }
-
-            string Auth::serialize() {
-                return this->to_json().dump();
             }
 
         }
