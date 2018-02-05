@@ -18,7 +18,8 @@ namespace States {
                     AUTHSIGNAL type;
                     User user;
                     bool online;
-
+                    std::string error;
+                    
                     Auth();
                     Auth(const nlohmann::json& j);
                     Auth(const std::string& serialized);

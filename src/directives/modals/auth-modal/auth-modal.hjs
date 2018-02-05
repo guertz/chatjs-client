@@ -46,8 +46,8 @@ const AuthModalFactory = function(){
         setDisabled(false);
     }
 
-    this.showErrors = function() {
-        alert("Controlla le credenziali inserite");
+    this.showErrors = function(err) {
+        alert(err);
     }
 
     this.destroy = function() {

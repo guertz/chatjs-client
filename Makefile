@@ -15,18 +15,22 @@ RELEASE_FLAGS= -DNDEBUG
 # Flags that will be added to CXXFLAGS for the debug build stage
 DEBUG_FLAGS= -g -DDEBUG_MODE -Wall -Wextra -pedantic
 
-# BUILD_FLAGS are setted to RELEASE_FLAGS by default
-BUILD_FLAGS=$(DEBUG_FLAGS)
-
 # Debug is enabled by default
 # 	for release: ENV=release
 ifeq ($(ENV),release)
-	# Overwriting build flags with RELEASE_FLAGS
 	BUILD_FLAGS=$(RELEASE_FLAGS)
 	ENV=release
-else	
+else
+	BUILD_FLAGS=$(DEBUG_FLAGS)
 	ENV=debug
 endif
+
+# Local server is enabled by default
+# 	for release: SERVER=remote
+ifeq ($(SERVER),remote)
+	BUILD_FLAGS += -DSERVER_REMOTE
+endif
+
 
 # Specifying compiler
 CXX=g++

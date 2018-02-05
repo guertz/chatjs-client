@@ -40,6 +40,9 @@ $ make
 ## Testing without a local server
 La compilazione in modalità release predispone che la app si interfacci con un server remoto piuttosto che su localhost
 permettendo così di provare l'applicazione senza necessariamente dover aver installato e lanciato il [server locale](https://github.com/Guertz/chatjs-server)
+Utenti di test:
+    + *devel*: bVENYJjcCe02Xrr8
+    + *leved*: 541YRimIyKmgOqbE
 
 #### Available log levels
 > Le maschere di debug possono essere combinate per avere a disposizione più livelli di log contemporaneamente

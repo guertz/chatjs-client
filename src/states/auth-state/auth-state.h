@@ -20,6 +20,7 @@ namespace States {
         
         AUTHSIGNAL  getAuthAction();
         User        getAuthUser();
+        std::string getAuthError();
 
     }
 }

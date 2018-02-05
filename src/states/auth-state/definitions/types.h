@@ -11,7 +11,7 @@ namespace States {
         enum AUTHSIGNAL {
             LOGOUT = 0,
             LOGIN = 1 ,
-            ALL = 2           
+            ALL = 2  // Refactor, remove all        
         };
 
         AUTHSIGNAL str_to_enum(const std::string& AUTH_ACTION);

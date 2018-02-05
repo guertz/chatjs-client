@@ -25,7 +25,6 @@ namespace Modals {
 
         static const string AUTH_RESET = "modals.AuthModal.reset()";
         static const string AUTH_DESTROY = "modals.AuthModal.destroy()";
-        static const string AUTH_ERRORS = "modals.AuthModal.showErrors()";
 
         namespace Events {
 
@@ -104,7 +103,7 @@ namespace Modals {
             }
 
             inline void OnLoginErrors() {
-                WebUI::Execute(AUTH_ERRORS);
+                WebUI::Execute("modals.AuthModal.showErrors('" + AuthState::getAuthError() + "')");
             }
 
             inline void OnLogout () {

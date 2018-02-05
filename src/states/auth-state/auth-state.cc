@@ -54,7 +54,8 @@ namespace States {
             // Cannot cast because of content undefined
             // Do i really need to handle auth::ALL
             Response::Auth auth_response;
-
+                           auth_response.error = str_error;
+                           
             logged = false;
             pending = false;
 
@@ -67,6 +68,10 @@ namespace States {
 
         User getAuthUser() {
             return authResponse.user;
+        }
+
+        std::string getAuthError() {
+            return authResponse.error;
         }
 
         void Bootstrap() {

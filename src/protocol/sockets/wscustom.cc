@@ -100,7 +100,7 @@ namespace ws {
                     void (*onmessage)(const string message), 
                     void(*onerror)(const string error)) {
 
-        this->path = "ws://" + SERVER_HOST + ":" + SERVER_PORT + "/" +s;
+        this->path = "ws://" + SERVER_HOST + "/" +s;
 
         this->onmessage = onmessage;
         this->onerror = onerror;
