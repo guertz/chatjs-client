@@ -4,8 +4,13 @@
 #include "logger.h"
 
 using namespace std;
+/**
+ * @brief Definizione sistema di logging
+ * @file logger.cc
+ */
 
-void print_log(const TAG tag, const unsigned int level, string attr, string log_msg) {
+/** Metodo interno per la stampa dei log */
+inline void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg) {
 
     string composed_message = "";
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/states/chat-state/definitions/chat-methods/response.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61a31ff85c95043c98241b02dc2a1804.html">states</a></li><li class="navelem"><a class="el" href="dir_1bb014f20795af1d5c8b6946a4058275.html">chat-state</a></li><li class="navelem"><a class="el" href="dir_bcb11a929f36192d66c5a1b912d22ee4.html">definitions</a></li><li class="navelem"><a class="el" href="dir_7b5b91421738d0f12b94cd03f63cf247.html">chat-methods</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">response.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="states_2chat-state_2definitions_2chat-methods_2response_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATES_CHAT_STATE_DEFINITIONS_CHATMETHODS_RESPONSE_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STATES_CHAT_STATE_DEFINITIONS_CHATMETHODS_RESPONSE_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;json.hpp&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="json-item_8h.html">models/json-item.h</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="chat-state_2definitions_2chat-methods_2types_8h.html">types.h</a>&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8h.html">models/user/user.h</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_states.html">States</a> {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span>ChatState {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">namespace </span>ChatMethods {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">namespace </span>Response {</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html">   18</a></span>&#160;                <span class="keyword">class </span><a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html">Chat</a> : <span class="keyword">public</span> <a class="code" href="class_json_item.html">JsonItem</a> {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                    <span class="keyword">public</span>:</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a0c4f5ca246b2c2aae9ba7440ab0ba8cd">   21</a></span>&#160;                        <a class="code" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2e">TYPE</a>  <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a0c4f5ca246b2c2aae9ba7440ab0ba8cd">type</a>;</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d12a42341020cb6f23fb7de3201d839">   22</a></span>&#160;                        std::string <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d12a42341020cb6f23fb7de3201d839">ref</a>;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d3e6950ca837c0a6baf297e3c4ee6a6">   23</a></span>&#160;                        std::string <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d3e6950ca837c0a6baf297e3c4ee6a6">text</a>;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a9e8461d30d4f51585188fee58d5c3af9">   24</a></span>&#160;                        std::string <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a9e8461d30d4f51585188fee58d5c3af9">time</a>;</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1ec6d5ee6cb1d2a70147b7bbfbad7535">   25</a></span>&#160;                        <span class="keywordtype">bool</span> <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1ec6d5ee6cb1d2a70147b7bbfbad7535">isMe</a>;</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a4932454b4cfaa70076e943c2aaadb647">   26</a></span>&#160;                        <a class="code" href="class_user.html">User</a> <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a4932454b4cfaa70076e943c2aaadb647">avatar</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a778c7f64c9888c44ac8dfeb7ab9c876f">Chat</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a778c7f64c9888c44ac8dfeb7ab9c876f">Chat</a>(<span class="keyword">const</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&amp; j);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a778c7f64c9888c44ac8dfeb7ab9c876f">Chat</a>(<span class="keyword">const</span> std::string&amp; serialized);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> <a class="code" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1f12c7ab561528310410846365dae880">to_json</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                };</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="class_json_item_html"><div class="ttname"><a href="class_json_item.html">JsonItem</a></div><div class="ttdef"><b>Definition:</b> <a href="json-item_8h_source.html#l00007">json-item.h:7</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html">States::ChatState::ChatMethods::Response::Chat</a></div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00018">response.h:18</a></div></div>
+<div class="ttc" id="chat-state_2definitions_2chat-methods_2types_8h_html"><div class="ttname"><a href="chat-state_2definitions_2chat-methods_2types_8h.html">types.h</a></div></div>
+<div class="ttc" id="namespace_states_html"><div class="ttname"><a href="namespace_states.html">States</a></div><div class="ttdef"><b>Definition:</b> <a href="auth-state_8cc_source.html#l00014">auth-state.cc:14</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a4932454b4cfaa70076e943c2aaadb647"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a4932454b4cfaa70076e943c2aaadb647">States::ChatState::ChatMethods::Response::Chat::avatar</a></div><div class="ttdeci">User avatar</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00026">response.h:26</a></div></div>
+<div class="ttc" id="class_user_html"><div class="ttname"><a href="class_user.html">User</a></div><div class="ttdef"><b>Definition:</b> <a href="user_8h_source.html#l00008">user.h:8</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a6d3e6950ca837c0a6baf297e3c4ee6a6"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d3e6950ca837c0a6baf297e3c4ee6a6">States::ChatState::ChatMethods::Response::Chat::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00023">response.h:23</a></div></div>
+<div class="ttc" id="user_8h_html"><div class="ttname"><a href="user_8h.html">user.h</a></div></div>
+<div class="ttc" id="json-item_8h_html"><div class="ttname"><a href="json-item_8h.html">json-item.h</a></div></div>
+<div class="ttc" id="namespace_states_1_1_chat_state_1_1_chat_methods_html_ae81d609c28c7991db144790ca1827e2e"><div class="ttname"><a href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2e">States::ChatState::ChatMethods::TYPE</a></div><div class="ttdeci">TYPE</div><div class="ttdef"><b>Definition:</b> <a href="chat-state_2definitions_2chat-methods_2types_8h_source.html#l00013">types.h:13</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a1f12c7ab561528310410846365dae880"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1f12c7ab561528310410846365dae880">States::ChatState::ChatMethods::Response::Chat::to_json</a></div><div class="ttdeci">nlohmann::json to_json() const</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8cc_source.html#l00032">response.cc:32</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a9e8461d30d4f51585188fee58d5c3af9"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a9e8461d30d4f51585188fee58d5c3af9">States::ChatState::ChatMethods::Response::Chat::time</a></div><div class="ttdeci">std::string time</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00024">response.h:24</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a1ec6d5ee6cb1d2a70147b7bbfbad7535"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1ec6d5ee6cb1d2a70147b7bbfbad7535">States::ChatState::ChatMethods::Response::Chat::isMe</a></div><div class="ttdeci">bool isMe</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00025">response.h:25</a></div></div>
+<div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a0c4f5ca246b2c2aae9ba7440ab0ba8cd"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a0c4f5ca246b2c2aae9ba7440ab0ba8cd">States::ChatState::ChatMethods::Response::Chat::type</a></div><div class="ttdeci">TYPE type</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00021">response.h:21</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a6d12a42341020cb6f23fb7de3201d839"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d12a42341020cb6f23fb7de3201d839">States::ChatState::ChatMethods::Response::Chat::ref</a></div><div class="ttdeci">std::string ref</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8h_source.html#l00022">response.h:22</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat_html_a778c7f64c9888c44ac8dfeb7ab9c876f"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a778c7f64c9888c44ac8dfeb7ab9c876f">States::ChatState::ChatMethods::Response::Chat::Chat</a></div><div class="ttdeci">Chat()</div><div class="ttdef"><b>Definition:</b> <a href="states_2chat-state_2definitions_2chat-methods_2response_8cc_source.html#l00015">response.cc:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

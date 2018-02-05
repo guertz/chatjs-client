@@ -3,22 +3,13 @@
 
 #include "env.h"
 /**
- *  @brief Sistema di logging.
- *  @file env.h
+ *  @brief Interfaccia sistema di logging.
+ *  @file logger.h
  *  Descrizione del funzionamento e configurazioni:
  *  + I log sono di default abilitati da (DEBUG_MASK > 0) env.h per dettagli
- *  + I livelli di log configurabili sono:
- *      - log_csl  sempre attivo da DEBUG_MASK
- *      - log_ws   sempre attivo da DEBUG_MASK
- *      - log_warn sempre attivo da DEBUG_MASK
- *      - log_err  sempre attivo da DEBUG_MASK
- *      - log_base configurabile a più livelli: 
- *          - base     (MASK = 1)
- *          - details  (MASK = 2)
- *          - pedantic (MASK = 4)
- *        è possibile creare una combinazione tra i livelli come:
- *          - base + details            (MASK = 3)
- *          - base + details + pedantic (MASK = 7)
+ *  + I livelli di log configurabili sono riportati in questo file.
+ *      Nel caso di ::log_base, ::log_details, ::log_pedantic è possibile 
+ *      combinare i livelli di debug mask per abilitare più logger contemporaneamente.
  */
 
 /** Tags per identificare il tipo di azione di log */
@@ -43,18 +34,24 @@ enum TAG{
     );
 
 // per metodi .cc, webview ha il suo sitema interno che dovrà essere rimpiazzato (zerge, logging system)
+/** ::log_csl      sempre attivo da DEBUG_MASK */
 #define log_csl(attr, log_msg)       { if(DEBUG_MASK) { LOGGER(TAG::CSL, 0, attr, log_msg); } }
+/** ::log_ws       sempre attivo da DEBUG_MASK */
 #define log_ws(attr, log_msg)        { if(DEBUG_MASK) { LOGGER(TAG::WS,  0, attr, log_msg); } }
 
+/** ::log_warn     sempre attivo da DEBUG_MASK */
 #define log_warn(attr, log_msg)      { if(DEBUG_MASK) { LOGGER(TAG::WARN,  0, attr, log_msg); } }
+/** ::log_err      sempre attivo da DEBUG_MASK */
 #define log_err(attr, log_msg)       { if(DEBUG_MASK) { LOGGER(TAG::ERR,   0, attr, log_msg); } }
 
 // Può essere customizzato per creare n livelli
+/** ::log_base     attivo con MASK = 1 */
 #define log_base(attr, log_msg)      { if(1 & DEBUG_MASK) { LOGGER(TAG::INFO, 1, attr, log_msg); } }
+/** ::log_details  attivo con MASK = 2 */
 #define log_details(attr, log_msg)   { if(2 & DEBUG_MASK) { LOGGER(TAG::INFO, 2, attr, log_msg); } }
+/** ::log_pedantic attivo con MASK = 4 */
 #define log_pedantic(attr, log_msg)  { if(4 & DEBUG_MASK) { LOGGER(TAG::INFO, 3, attr, log_msg); } }
 
-
-void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg);
+inline void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg);
 
 #endif

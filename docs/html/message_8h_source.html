@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/states/chat-state/definitions/message.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61a31ff85c95043c98241b02dc2a1804.html">states</a></li><li class="navelem"><a class="el" href="dir_1bb014f20795af1d5c8b6946a4058275.html">chat-state</a></li><li class="navelem"><a class="el" href="dir_bcb11a929f36192d66c5a1b912d22ee4.html">definitions</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">message.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="message_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATES_CHAT_STATE_DEFINITIONS_MESSAGE_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STATES_CHAT_STATE_DEFINITIONS_MESSAGE_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;json.hpp&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="json-item_8h.html">models/json-item.h</a>&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8h.html">models/user/user.h</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_states.html">States</a> {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">namespace </span>ChatState {</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_message.html">   14</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_states_1_1_chat_state_1_1_message.html">Message</a> : <span class="keyword">public</span> <a class="code" href="class_json_item.html">JsonItem</a>{</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">public</span>:</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_message.html#a4847172f17195aa7989953bdcd7d2852">   17</a></span>&#160;                std::string <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a4847172f17195aa7989953bdcd7d2852">text</a>;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_message.html#a2ad1d99b0d69f50dad7f5f636862ef9d">   18</a></span>&#160;                <span class="keywordtype">bool</span> <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a2ad1d99b0d69f50dad7f5f636862ef9d">isMe</a>; <span class="comment">// _is_me</span></div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_message.html#af1f05dfc90a789ceb17a7879cd4652f8">   19</a></span>&#160;                <a class="code" href="class_user.html">User</a> <a class="code" href="class_states_1_1_chat_state_1_1_message.html#af1f05dfc90a789ceb17a7879cd4652f8">avatar</a>; <span class="comment">// isn&#39;t it the user definition itself</span></div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_message.html#a643e8cb8c37439b59a92716e432c587c">   20</a></span>&#160;                std::string <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a643e8cb8c37439b59a92716e432c587c">time</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a93904aa18251713968a52069a31c54b4">Message</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a93904aa18251713968a52069a31c54b4">Message</a>(<span class="keyword">const</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&amp; j);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <a class="code" href="class_states_1_1_chat_state_1_1_message.html#a93904aa18251713968a52069a31c54b4">Message</a>(<span class="keyword">const</span> std::string&amp; serialized);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> <a class="code" href="class_states_1_1_chat_state_1_1_message.html#abb8077d77525a71764c79894e3a8fd22">to_json</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        };</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">   29</a></span>&#160;        <span class="keyword">typedef</span> std::vector&lt;Message&gt; <a class="code" href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">Messages</a>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_states_1_1_chat_state_1_1_messages_wrapper.html">   31</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_states_1_1_chat_state_1_1_messages_wrapper.html">MessagesWrapper</a> {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">public</span>:</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a276e8e192e7e8caea4a5286a88448c30">json_to_messages</a>(<span class="keyword">const</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&amp; j, <a class="code" href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">Messages</a>&amp; m_vect);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a501069a58af0d36952d4efa945d8f5e9">messages_to_json</a>(<span class="keyword">const</span> <a class="code" href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">Messages</a>&amp; m, <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&amp; j_vect);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        };</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="class_json_item_html"><div class="ttname"><a href="class_json_item.html">JsonItem</a></div><div class="ttdef"><b>Definition:</b> <a href="json-item_8h_source.html#l00007">json-item.h:7</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html">States::ChatState::Message</a></div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00014">message.h:14</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_messages_wrapper_html_a501069a58af0d36952d4efa945d8f5e9"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a501069a58af0d36952d4efa945d8f5e9">States::ChatState::MessagesWrapper::messages_to_json</a></div><div class="ttdeci">static void messages_to_json(const Messages &amp;m, nlohmann::json &amp;j_vect)</div><div class="ttdef"><b>Definition:</b> <a href="message_8cc_source.html#l00041">message.cc:41</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_a2ad1d99b0d69f50dad7f5f636862ef9d"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#a2ad1d99b0d69f50dad7f5f636862ef9d">States::ChatState::Message::isMe</a></div><div class="ttdeci">bool isMe</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00018">message.h:18</a></div></div>
+<div class="ttc" id="namespace_states_html"><div class="ttname"><a href="namespace_states.html">States</a></div><div class="ttdef"><b>Definition:</b> <a href="auth-state_8cc_source.html#l00014">auth-state.cc:14</a></div></div>
+<div class="ttc" id="class_user_html"><div class="ttname"><a href="class_user.html">User</a></div><div class="ttdef"><b>Definition:</b> <a href="user_8h_source.html#l00008">user.h:8</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_a643e8cb8c37439b59a92716e432c587c"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#a643e8cb8c37439b59a92716e432c587c">States::ChatState::Message::time</a></div><div class="ttdeci">std::string time</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00020">message.h:20</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_af1f05dfc90a789ceb17a7879cd4652f8"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#af1f05dfc90a789ceb17a7879cd4652f8">States::ChatState::Message::avatar</a></div><div class="ttdeci">User avatar</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00019">message.h:19</a></div></div>
+<div class="ttc" id="user_8h_html"><div class="ttname"><a href="user_8h.html">user.h</a></div></div>
+<div class="ttc" id="json-item_8h_html"><div class="ttname"><a href="json-item_8h.html">json-item.h</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_messages_wrapper_html"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_messages_wrapper.html">States::ChatState::MessagesWrapper</a></div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00031">message.h:31</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_messages_wrapper_html_a276e8e192e7e8caea4a5286a88448c30"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a276e8e192e7e8caea4a5286a88448c30">States::ChatState::MessagesWrapper::json_to_messages</a></div><div class="ttdeci">static void json_to_messages(const nlohmann::json &amp;j, Messages &amp;m_vect)</div><div class="ttdef"><b>Definition:</b> <a href="message_8cc_source.html#l00032">message.cc:32</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_a4847172f17195aa7989953bdcd7d2852"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#a4847172f17195aa7989953bdcd7d2852">States::ChatState::Message::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00017">message.h:17</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_abb8077d77525a71764c79894e3a8fd22"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#abb8077d77525a71764c79894e3a8fd22">States::ChatState::Message::to_json</a></div><div class="ttdeci">nlohmann::json to_json() const</div><div class="ttdef"><b>Definition:</b> <a href="message_8cc_source.html#l00023">message.cc:23</a></div></div>
+<div class="ttc" id="namespace_states_1_1_chat_state_html_a5e19084dc9afdc3cf71c63c3f30bde26"><div class="ttname"><a href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">States::ChatState::Messages</a></div><div class="ttdeci">std::vector&lt; Message &gt; Messages</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00029">message.h:29</a></div></div>
+<div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
+<div class="ttc" id="class_states_1_1_chat_state_1_1_message_html_a93904aa18251713968a52069a31c54b4"><div class="ttname"><a href="class_states_1_1_chat_state_1_1_message.html#a93904aa18251713968a52069a31c54b4">States::ChatState::Message::Message</a></div><div class="ttdeci">Message()</div><div class="ttdef"><b>Definition:</b> <a href="message_8cc_source.html#l00009">message.cc:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

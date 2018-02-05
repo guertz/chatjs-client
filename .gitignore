@@ -1,10 +1,6 @@
 .build/
-.release/
 .internal/
-src/.assets/
-docs/html
 *.o
-*.ojs
 depends
 
 # Windows image file caches

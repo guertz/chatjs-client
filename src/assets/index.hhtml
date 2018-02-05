@@ -1,3 +1,9 @@
+/**
+ * @brief Scheletro HTML di base app
+ * @file index.hhtml
+ */
+
+/** Scheletro HTML di base app */
 const std::string _src_assets_index_html = R"(
 <html>
     <head>

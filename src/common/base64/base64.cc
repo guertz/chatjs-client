@@ -1,6 +1,10 @@
 #include <iostream>
 #include "base64.h"
 
+/**
+ * @brief Definizione metodi per trasformare stringhe in formato base64
+ * @file base64.cc
+ */
 namespace Base64 {
     static const std::string base64_chars_ =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

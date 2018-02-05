@@ -21,11 +21,15 @@ using namespace WebUI;
 using namespace States;
 using namespace std;
 
+/**
+ * @brief Definizione "Core" applicazione, gestisce i vari sotto-moduli.
+ * @file app.cc
+ */
 namespace App {
 
     namespace Events {
 
-        inline void Ready(const string& args) {
+        inline void Ready(const std::string& args) {
 
             log_pedantic("WebUI", "[c] App ready event");
             log_details("App", "Ready => Initializing!");

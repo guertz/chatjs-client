@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js: Riferimenti per il file src/common/logger/logger.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_25d1182dda1aa0083aff74d9aff2597d.html">logger</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definizioni</a> &#124;
+<a href="#enum-members">Tipi enumerati (enum)</a> &#124;
+<a href="#func-members">Funzioni</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file logger.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interfaccia sistema di logging.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="env_8h_source.html">env.h</a>&quot;</code><br />
+</div>
+<p><a href="logger_8h_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definizioni</h2></td></tr>
+<tr class="memitem:ad609abbc63d40e5eb5fc620390f1b283"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(TYPE,  LEV,  ATTR,  LOG)</td></tr>
+<tr class="separator:ad609abbc63d40e5eb5fc620390f1b283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff188489154a3eba83ad4d1b147b4d0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a">log_csl</a>(attr,  log_msg)&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">TAG::CSL</a>, 0, attr, log_msg); } }</td></tr>
+<tr class="memdesc:aff188489154a3eba83ad4d1b147b4d0a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a" title="log_csl sempre attivo da DEBUG_MASK ">log_csl</a> sempre attivo da DEBUG_MASK  <a href="#aff188489154a3eba83ad4d1b147b4d0a">Continua...</a><br /></td></tr>
+<tr class="separator:aff188489154a3eba83ad4d1b147b4d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e5dbb405b1114a7be101bd4cb9bedf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf">log_ws</a>(attr,  log_msg)&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">TAG::WS</a>,  0, attr, log_msg); } }</td></tr>
+<tr class="memdesc:a48e5dbb405b1114a7be101bd4cb9bedf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf" title="log_ws sempre attivo da DEBUG_MASK ">log_ws</a> sempre attivo da DEBUG_MASK  <a href="#a48e5dbb405b1114a7be101bd4cb9bedf">Continua...</a><br /></td></tr>
+<tr class="separator:a48e5dbb405b1114a7be101bd4cb9bedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b308b66e21a210e1dd3faa5b78ce65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65">log_warn</a>(attr,  log_msg)&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">TAG::WARN</a>,  0, attr, log_msg); } }</td></tr>
+<tr class="memdesc:ab9b308b66e21a210e1dd3faa5b78ce65"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65" title="log_warn sempre attivo da DEBUG_MASK ">log_warn</a> sempre attivo da DEBUG_MASK  <a href="#ab9b308b66e21a210e1dd3faa5b78ce65">Continua...</a><br /></td></tr>
+<tr class="separator:ab9b308b66e21a210e1dd3faa5b78ce65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb89daecd11df134a85bf9de3f33bbc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1">log_err</a>(attr,  log_msg)&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">TAG::ERR</a>,   0, attr, log_msg); } }</td></tr>
+<tr class="memdesc:aeb89daecd11df134a85bf9de3f33bbc1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1" title="log_err sempre attivo da DEBUG_MASK ">log_err</a> sempre attivo da DEBUG_MASK  <a href="#aeb89daecd11df134a85bf9de3f33bbc1">Continua...</a><br /></td></tr>
+<tr class="separator:aeb89daecd11df134a85bf9de3f33bbc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4e06e664c15222dc61bbbb22da7331"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331">log_base</a>(attr,  log_msg)&#160;&#160;&#160;{ if(1 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 1, attr, log_msg); } }</td></tr>
+<tr class="memdesc:a3d4e06e664c15222dc61bbbb22da7331"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331" title="log_base attivo con MASK = 1 ">log_base</a> attivo con MASK = 1  <a href="#a3d4e06e664c15222dc61bbbb22da7331">Continua...</a><br /></td></tr>
+<tr class="separator:a3d4e06e664c15222dc61bbbb22da7331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83931080af29dedba9d80603b0a6085c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a>(attr,  log_msg)&#160;&#160;&#160;{ if(2 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 2, attr, log_msg); } }</td></tr>
+<tr class="memdesc:a83931080af29dedba9d80603b0a6085c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c" title="log_details attivo con MASK = 2 ">log_details</a> attivo con MASK = 2  <a href="#a83931080af29dedba9d80603b0a6085c">Continua...</a><br /></td></tr>
+<tr class="separator:a83931080af29dedba9d80603b0a6085c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bedbcea80379588d8d614e2ddc8669a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a">log_pedantic</a>(attr,  log_msg)&#160;&#160;&#160;{ if(4 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 3, attr, log_msg); } }</td></tr>
+<tr class="memdesc:a6bedbcea80379588d8d614e2ddc8669a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a" title="log_pedantic attivo con MASK = 4 ">log_pedantic</a> attivo con MASK = 4  <a href="#a6bedbcea80379588d8d614e2ddc8669a">Continua...</a><br /></td></tr>
+<tr class="separator:a6bedbcea80379588d8d614e2ddc8669a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Tipi enumerati (enum)</h2></td></tr>
+<tr class="memitem:a781b03b8eb5f35cf89f3c931ffa26e35"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a> { <br />
+&#160;&#160;<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a> = 0, 
+<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a> = 1, 
+<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a> = 2, 
+<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a> = 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a781b03b8eb5f35cf89f3c931ffa26e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tags per identificare il tipo di azione di log.  <a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">Continua...</a><br /></td></tr>
+<tr class="separator:a781b03b8eb5f35cf89f3c931ffa26e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:ae440878274e3666a6433c55db9c7be3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#ae440878274e3666a6433c55db9c7be3b">print_log</a> (const <a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a> tag, const unsigned int level, std::string attr, std::string log_msg)</td></tr>
+<tr class="memdesc:ae440878274e3666a6433c55db9c7be3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo interno per la stampa dei log.  <a href="#ae440878274e3666a6433c55db9c7be3b">Continua...</a><br /></td></tr>
+<tr class="separator:ae440878274e3666a6433c55db9c7be3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Interfaccia sistema di logging. </p>
+<p>Descrizione del funzionamento e configurazioni:</p><ul>
+<li>I log sono di default abilitati da (DEBUG_MASK &gt; 0) <a class="el" href="env_8h.html">env.h</a> per dettagli</li>
+<li>I livelli di log configurabili sono riportati in questo file. Nel caso di <a class="el" href="logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331" title="log_base attivo con MASK = 1 ">log_base</a>, <a class="el" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c" title="log_details attivo con MASK = 2 ">log_details</a>, <a class="el" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a" title="log_pedantic attivo con MASK = 4 ">log_pedantic</a> è possibile combinare i livelli di debug mask per abilitare più logger contemporaneamente. </li>
+</ul>
+
+<p class="definition">Definizione nel file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+</div><h2 class="groupheader">Documentazione delle definizioni</h2>
+<a id="a3d4e06e664c15222dc61bbbb22da7331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4e06e664c15222dc61bbbb22da7331">&#9670;&nbsp;</a></span>log_base</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_base</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(1 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 1, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331" title="log_base attivo con MASK = 1 ">log_base</a> attivo con MASK = 1 </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00049">49</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="aff188489154a3eba83ad4d1b147b4d0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff188489154a3eba83ad4d1b147b4d0a">&#9670;&nbsp;</a></span>log_csl</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_csl</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">TAG::CSL</a>, 0, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a" title="log_csl sempre attivo da DEBUG_MASK ">log_csl</a> sempre attivo da DEBUG_MASK </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00038">38</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="a83931080af29dedba9d80603b0a6085c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83931080af29dedba9d80603b0a6085c">&#9670;&nbsp;</a></span>log_details</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_details</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(2 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 2, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c" title="log_details attivo con MASK = 2 ">log_details</a> attivo con MASK = 2 </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00051">51</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="aeb89daecd11df134a85bf9de3f33bbc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb89daecd11df134a85bf9de3f33bbc1">&#9670;&nbsp;</a></span>log_err</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_err</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">TAG::ERR</a>,   0, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1" title="log_err sempre attivo da DEBUG_MASK ">log_err</a> sempre attivo da DEBUG_MASK </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00045">45</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="a6bedbcea80379588d8d614e2ddc8669a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bedbcea80379588d8d614e2ddc8669a">&#9670;&nbsp;</a></span>log_pedantic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_pedantic</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(4 &amp; <a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>, 3, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a" title="log_pedantic attivo con MASK = 4 ">log_pedantic</a> attivo con MASK = 4 </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00053">53</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="ab9b308b66e21a210e1dd3faa5b78ce65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9b308b66e21a210e1dd3faa5b78ce65">&#9670;&nbsp;</a></span>log_warn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_warn</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">TAG::WARN</a>,  0, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65" title="log_warn sempre attivo da DEBUG_MASK ">log_warn</a> sempre attivo da DEBUG_MASK </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00043">43</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="a48e5dbb405b1114a7be101bd4cb9bedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48e5dbb405b1114a7be101bd4cb9bedf">&#9670;&nbsp;</a></span>log_ws</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_ws</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">log_msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if(<a class="el" href="env_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) { <a class="el" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">LOGGER</a>(<a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">TAG::WS</a>,  0, attr, log_msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf" title="log_ws sempre attivo da DEBUG_MASK ">log_ws</a> sempre attivo da DEBUG_MASK </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00040">40</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="ad609abbc63d40e5eb5fc620390f1b283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad609abbc63d40e5eb5fc620390f1b283">&#9670;&nbsp;</a></span>LOGGER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOGGER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LEV, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ATTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LOG&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valore:</b><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#ae440878274e3666a6433c55db9c7be3b">print_log</a>(                                  \</div><div class="line">        static_cast&lt;const TAG&gt;(<a class="code" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2e">TYPE</a>),           \</div><div class="line">        static_cast&lt;const unsigned int&gt;(LEV),   \</div><div class="line">        ATTR,                                   \</div><div class="line">        LOG                                     \</div><div class="line">    );</div><div class="ttc" id="logger_8h_html_ae440878274e3666a6433c55db9c7be3b"><div class="ttname"><a href="logger_8h.html#ae440878274e3666a6433c55db9c7be3b">print_log</a></div><div class="ttdeci">void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg)</div><div class="ttdoc">Metodo interno per la stampa dei log. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8cc_source.html#l00013">logger.cc:13</a></div></div>
+<div class="ttc" id="namespace_states_1_1_chat_state_1_1_chat_methods_html_ae81d609c28c7991db144790ca1827e2e"><div class="ttname"><a href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2e">States::ChatState::ChatMethods::TYPE</a></div><div class="ttdeci">TYPE</div><div class="ttdef"><b>Definition:</b> <a href="chat-state_2definitions_2chat-methods_2types_8h_source.html#l00013">types.h:13</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00028">28</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione dei tipi enumerati</h2>
+<a id="a781b03b8eb5f35cf89f3c931ffa26e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a781b03b8eb5f35cf89f3c931ffa26e35">&#9670;&nbsp;</a></span>TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tags per identificare il tipo di azione di log. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><a id="a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"></a>CSL&#160;</td><td class="fielddoc"><p>Console, log relativo alla webview. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee"></a>WS&#160;</td><td class="fielddoc"><p>Websockets, log relativo ai websocket. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806"></a>INFO&#160;</td><td class="fielddoc"><p>Info, log per tracciare informazioni. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676"></a>WARN&#160;</td><td class="fielddoc"><p>Warning, log per tracciare possibili errori. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e"></a>ERR&#160;</td><td class="fielddoc"><p>Error, log per tracciare errori. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00016">16</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a>  = 0 ,</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a>   = 1 ,</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a> = 2 ,</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a> = 3 ,</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a>  = 4 </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00018">logger.h:18</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdoc">Info, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00019">logger.h:19</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00017">logger.h:17</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a></div><div class="ttdoc">Warning, log per tracciare possibili errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00020">logger.h:20</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a></div><div class="ttdoc">Error, log per tracciare errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00021">logger.h:21</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentazione delle funzioni</h2>
+<a id="ae440878274e3666a6433c55db9c7be3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae440878274e3666a6433c55db9c7be3b">&#9670;&nbsp;</a></span>print_log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_log </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a>&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>attr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>log_msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Metodo interno per la stampa dei log. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8cc_source.html#l00013">13</a> del file <a class="el" href="logger_8cc_source.html">logger.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                                                                                  {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">string</span> composed_message = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;           log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), <span class="charliteral">&#39;\n&#39;</span>), log_msg.end());</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// limit all lenght like web_ui.cc</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// color output cross-platform?</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">switch</span>(tag) {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">TAG::CSL</a>:</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            composed_message = <span class="stringliteral">&quot;[ CSL   @ &quot;</span> + attr + <span class="stringliteral">&quot;]: &quot;</span> + log_msg + <span class="stringliteral">&quot;.\n&quot;</span>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">TAG::WS</a>:</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            composed_message = <span class="stringliteral">&quot;[ WS    @ &quot;</span> + attr + <span class="stringliteral">&quot;]: &quot;</span> + log_msg + <span class="stringliteral">&quot;.\n&quot;</span>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">TAG::WARN</a>:</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            composed_message = <span class="stringliteral">&quot;[ WARN  @ &quot;</span> + attr + <span class="stringliteral">&quot;]: &quot;</span> + log_msg + <span class="stringliteral">&quot;.\n&quot;</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">TAG::ERR</a>:</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            composed_message = <span class="stringliteral">&quot;[ ERR   @ &quot;</span> + attr + <span class="stringliteral">&quot;]: &quot;</span> + log_msg + <span class="stringliteral">&quot;.\n&quot;</span>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">            #ifdef LOG_CERR</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                cerr&lt;&lt;composed_message;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">            #endif</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">TAG::INFO</a>:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            composed_message = <span class="stringliteral">&quot;[ INFO&quot;</span> + to_string(level) + <span class="stringliteral">&quot; @ &quot;</span> + attr + <span class="stringliteral">&quot;]: &quot;</span> + log_msg + <span class="stringliteral">&quot;.\n&quot;</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">default</span>:</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    cout&lt;&lt;composed_message;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00018">logger.h:18</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdoc">Info, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00019">logger.h:19</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00017">logger.h:17</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a></div><div class="ttdoc">Warning, log per tracciare possibili errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00020">logger.h:20</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a></div><div class="ttdoc">Error, log per tracciare errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00021">logger.h:21</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

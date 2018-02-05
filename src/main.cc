@@ -16,12 +16,11 @@
  * bidirezionali nel senso che da C++ possono essere invocati metodi Javascript
  * e viceversa.
  *
- * Per sfogliare la documentazione, è consigliato partire dal metodo ::main  
+ * Per sfogliare la documentazione, è consigliato partire dal metodo ::main
  * per poi continuare nelle due sezione:
- * + Webview User Interface (::WebUI): in cui sono definiti i metodi principali  
- * per la gestione della webview e a sua volta dell'interfaccia utenti
- * + App (::App): in cui sono definiti i metodi e i moduli che compongono  
- * l'applicazione stessa
+ * + WebUI: in cui sono definiti i metodi principali per la gestione della
+ * &nbsp; webview e a sua volta dell'interfaccia utente
+ * + App: in cui sono sono inizializzati i moduli dell'applicazione.
  */
 
 // Librerie per la funzionalità dei websocket richieste dalle piattaforme windows

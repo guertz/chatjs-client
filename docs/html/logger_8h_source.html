@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/common/logger/logger.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_25d1182dda1aa0083aff74d9aff2597d.html">logger</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">logger.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="logger_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef COMMON_LOGGER_LOGGER_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define COMMON_LOGGER_LOGGER_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="env_8h.html">env.h</a>&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">   16</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a>{</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">   17</a></span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a>  = 0 ,</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">   18</a></span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a>   = 1 ,</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">   19</a></span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a> = 2 ,</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">   20</a></span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a> = 3 ,</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">   21</a></span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a>  = 4 </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// logger.cc =&gt; metodo esterno, non bisogna ricompilare tutto</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Wrap with { }/( ) [per evitare dispersione o mal interpretazione del contenuto]</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283">   28</a></span>&#160;<span class="preprocessor">#define LOGGER(TYPE, LEV, ATTR, LOG)            \</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    print_log(                                  \</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">        static_cast&lt;const TAG&gt;(TYPE),           \</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">        static_cast&lt;const unsigned int&gt;(LEV),   \</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">        ATTR,                                   \</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        LOG                                     \</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    );</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// per metodi .cc, webview ha il suo sitema interno che dovrà essere rimpiazzato (zerge, logging system)</span></div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a">   38</a></span>&#160;<span class="comment"></span><span class="preprocessor">#define log_csl(attr, log_msg)       { if(DEBUG_MASK) { LOGGER(TAG::CSL, 0, attr, log_msg); } }</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf">   40</a></span>&#160;<span class="preprocessor">#define log_ws(attr, log_msg)        { if(DEBUG_MASK) { LOGGER(TAG::WS,  0, attr, log_msg); } }</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65">   43</a></span>&#160;<span class="preprocessor">#define log_warn(attr, log_msg)      { if(DEBUG_MASK) { LOGGER(TAG::WARN,  0, attr, log_msg); } }</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1">   45</a></span>&#160;<span class="preprocessor">#define log_err(attr, log_msg)       { if(DEBUG_MASK) { LOGGER(TAG::ERR,   0, attr, log_msg); } }</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// Può essere customizzato per creare n livelli</span></div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331">   49</a></span>&#160;<span class="comment"></span><span class="preprocessor">#define log_base(attr, log_msg)      { if(1 &amp; DEBUG_MASK) { LOGGER(TAG::INFO, 1, attr, log_msg); } }</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">   51</a></span>&#160;<span class="preprocessor">#define log_details(attr, log_msg)   { if(2 &amp; DEBUG_MASK) { LOGGER(TAG::INFO, 2, attr, log_msg); } }</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a">   53</a></span>&#160;<span class="preprocessor">#define log_pedantic(attr, log_msg)  { if(4 &amp; DEBUG_MASK) { LOGGER(TAG::INFO, 3, attr, log_msg); } }</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="logger_8h.html#ae440878274e3666a6433c55db9c7be3b">print_log</a>(<span class="keyword">const</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a> tag, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level, std::string attr, std::string log_msg);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a07d55d81a827eef869d9557446de00ee">WS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00018">logger.h:18</a></div></div>
+<div class="ttc" id="logger_8h_html_ae440878274e3666a6433c55db9c7be3b"><div class="ttname"><a href="logger_8h.html#ae440878274e3666a6433c55db9c7be3b">print_log</a></div><div class="ttdeci">void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg)</div><div class="ttdoc">Metodo interno per la stampa dei log. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8cc_source.html#l00013">logger.cc:13</a></div></div>
+<div class="ttc" id="env_8h_html"><div class="ttname"><a href="env_8h.html">env.h</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdoc">Info, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00019">logger.h:19</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00017">logger.h:17</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a74dac7ac23d5b810db6d4067f14e8676">WARN</a></div><div class="ttdoc">Warning, log per tracciare possibili errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00020">logger.h:20</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e">ERR</a></div><div class="ttdoc">Error, log per tracciare errori. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00021">logger.h:21</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a></div><div class="ttdeci">TAG</div><div class="ttdoc">Tags per identificare il tipo di azione di log. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00016">logger.h:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

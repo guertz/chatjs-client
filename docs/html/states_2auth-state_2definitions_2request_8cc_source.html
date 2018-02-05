@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/states/auth-state/definitions/request.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61a31ff85c95043c98241b02dc2a1804.html">states</a></li><li class="navelem"><a class="el" href="dir_c80b2ce0bc2c20908c11375c5bd7cf1f.html">auth-state</a></li><li class="navelem"><a class="el" href="dir_454bc1da967f3536c0d9628f110751da.html">definitions</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">request.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="states_2auth-state_2definitions_2request_8cc.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="states_2auth-state_2definitions_2request_8h.html">request.h</a>&quot;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="states_2auth-state_2definitions_2request_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">    3</a></span>&#160;<span class="keyword">using</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> = <a class="code" href="protocol_2sockets_2definitions_2request_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_states.html">States</a> {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">namespace </span>AuthState {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespace_states_1_1_auth_state_1_1_request.html">    9</a></span>&#160;        <span class="keyword">namespace </span>Request {</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a532a6400a50b1d875393bd22d7d06c04">   10</a></span>&#160;            <a class="code" href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Auth::Auth</a>() {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                this-&gt;type = <a class="code" href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a912a0acc360c06664549271c199dabaa">AUTHSIGNAL::ALL</a>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                this-&gt;user = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            }</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a1f5b716e0c354902c3c80490483aa892">   15</a></span>&#160;            <a class="code" href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Auth::Auth</a>(<span class="keyword">const</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&amp; j) {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                this-&gt;type = <a class="code" href="namespace_states_1_1_auth_state.html#a6fd25e07816c130c52023dc278709458">str_to_enum</a>(j.at(<span class="stringliteral">&quot;type&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;());</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                this-&gt;user = j.at(<span class="stringliteral">&quot;user&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;();</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a3d83d8c94214d12c51828358ffa8c85d">   20</a></span>&#160;            <a class="code" href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Auth::Auth</a>(<span class="keyword">const</span> std::string&amp; serialized) </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                : <a class="code" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html">Auth</a>(<a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>::parse(serialized)) { }</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a5f71b6d5bae203d0a03b9108448f1567">   24</a></span>&#160;            <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> <a class="code" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a5f71b6d5bae203d0a03b9108448f1567">Auth::to_json</a>()<span class="keyword"> const </span>{</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>{</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    { <span class="stringliteral">&quot;type&quot;</span>, <a class="code" href="namespace_states_1_1_auth_state.html#a7d6a42354b7d26eeabf1b67b91e563ad">enum_to_str</a>(this-&gt;<a class="code" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a7714ca897e4af462a56529a9319cb8e9">type</a>)}, </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    { <span class="stringliteral">&quot;user&quot;</span>, this-&gt;<a class="code" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a3054b4255b11d07476dbd04b85a88979">user</a> }</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                };</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="states_2auth-state_2definitions_2request_8h_html"><div class="ttname"><a href="states_2auth-state_2definitions_2request_8h.html">request.h</a></div></div>
+<div class="ttc" id="namespace_states_html"><div class="ttname"><a href="namespace_states.html">States</a></div><div class="ttdef"><b>Definition:</b> <a href="auth-state_8cc_source.html#l00014">auth-state.cc:14</a></div></div>
+<div class="ttc" id="class_states_1_1_auth_state_1_1_request_1_1_auth_html_a3054b4255b11d07476dbd04b85a88979"><div class="ttname"><a href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a3054b4255b11d07476dbd04b85a88979">States::AuthState::Request::Auth::user</a></div><div class="ttdeci">std::string user</div><div class="ttdef"><b>Definition:</b> <a href="states_2auth-state_2definitions_2request_8h_source.html#l00019">request.h:19</a></div></div>
+<div class="ttc" id="class_states_1_1_auth_state_1_1_request_1_1_auth_html_a5f71b6d5bae203d0a03b9108448f1567"><div class="ttname"><a href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a5f71b6d5bae203d0a03b9108448f1567">States::AuthState::Request::Auth::to_json</a></div><div class="ttdeci">nlohmann::json to_json() const</div><div class="ttdef"><b>Definition:</b> <a href="states_2auth-state_2definitions_2request_8cc_source.html#l00024">request.cc:24</a></div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="namespace_states_1_1_auth_state_html_a6867d22aff00870b28cfffd32819a870a912a0acc360c06664549271c199dabaa"><div class="ttname"><a href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a912a0acc360c06664549271c199dabaa">States::AuthState::ALL</a></div><div class="ttdef"><b>Definition:</b> <a href="auth-state_2definitions_2types_8h_source.html#l00014">types.h:14</a></div></div>
+<div class="ttc" id="namespace_states_1_1_auth_state_html_a6fd25e07816c130c52023dc278709458"><div class="ttname"><a href="namespace_states_1_1_auth_state.html#a6fd25e07816c130c52023dc278709458">States::AuthState::str_to_enum</a></div><div class="ttdeci">AUTHSIGNAL str_to_enum(const string &amp;AUTH_ACTION)</div><div class="ttdef"><b>Definition:</b> <a href="auth-state_2definitions_2types_8cc_source.html#l00007">types.cc:7</a></div></div>
+<div class="ttc" id="namespace_states_1_1_auth_state_html_a7d6a42354b7d26eeabf1b67b91e563ad"><div class="ttname"><a href="namespace_states_1_1_auth_state.html#a7d6a42354b7d26eeabf1b67b91e563ad">States::AuthState::enum_to_str</a></div><div class="ttdeci">string enum_to_str(const AUTHSIGNAL AUTH_ACTION)</div><div class="ttdef"><b>Definition:</b> <a href="auth-state_2definitions_2types_8cc_source.html#l00016">types.cc:16</a></div></div>
+<div class="ttc" id="protocol_2sockets_2definitions_2request_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="protocol_2sockets_2definitions_2request_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2request_8cc_source.html#l00003">request.cc:3</a></div></div>
+<div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
+<div class="ttc" id="class_states_1_1_auth_state_1_1_request_1_1_auth_html_a7714ca897e4af462a56529a9319cb8e9"><div class="ttname"><a href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a7714ca897e4af462a56529a9319cb8e9">States::AuthState::Request::Auth::type</a></div><div class="ttdeci">AUTHSIGNAL type</div><div class="ttdef"><b>Definition:</b> <a href="states_2auth-state_2definitions_2request_8h_source.html#l00018">request.h:18</a></div></div>
+<div class="ttc" id="namespace_modals_1_1_auth_modal_1_1_state_html_a646f790645edb078eb8d68b9c1709973"><div class="ttname"><a href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Modals::AuthModal::State::Auth</a></div><div class="ttdeci">void Auth()</div><div class="ttdoc">Metodo che ascolta in tempo reale eventi riguardanti l&amp;#39;autenticazione. </div><div class="ttdef"><b>Definition:</b> <a href="auth-modal_8cc_source.html#l00074">auth-modal.cc:74</a></div></div>
+<div class="ttc" id="class_states_1_1_auth_state_1_1_request_1_1_auth_html"><div class="ttname"><a href="class_states_1_1_auth_state_1_1_request_1_1_auth.html">States::AuthState::Request::Auth</a></div><div class="ttdef"><b>Definition:</b> <a href="states_2auth-state_2definitions_2request_8h_source.html#l00015">request.h:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

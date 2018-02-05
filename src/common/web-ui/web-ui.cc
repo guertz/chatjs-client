@@ -23,6 +23,10 @@ using namespace std;
 #define FIRE_BUG "<script type='text/javascript' src='/local/path/to/firebug-lite.js'></script>"
 #endif
 
+/**
+ * @brief Definizione Funzioni di supporto e metodi elementari e creazione della webview
+ * @file web-ui.cc
+ */
 namespace WebUI {
 
     /** 
@@ -33,7 +37,7 @@ namespace WebUI {
     static Webview webview; 
     static Methods callbacks;
 
-    void Register(string cb_name, void (*cb_fn)(const string&)){
+    void Register(std::string cb_name, void (*cb_fn)(const std::string&)){
         callbacks[cb_name] = cb_fn;
         log_pedantic("WebUI", "Registered: " + cb_name);
     }
@@ -144,7 +148,7 @@ namespace WebUI {
         // TODO: pointers
     }
 
-    void Execute(const string& args) {
+    void Execute(const std::string& args) {
 
         char *content = new char[args.size() +1];
               strncpy(content, args.c_str(), args.size() +1);

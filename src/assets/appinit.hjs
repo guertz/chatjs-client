@@ -1,3 +1,9 @@
+/**
+ * @brief Metodi Javascript elementari
+ * @file appinit.hjs
+ */
+
+/** Metodi Javascript elementari */
 const std::string _src_assets_appinit_js = R"(
 window.stylify = function(multiline, css) {
 

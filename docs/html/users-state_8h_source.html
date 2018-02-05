@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/states/users-state/users-state.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_61a31ff85c95043c98241b02dc2a1804.html">states</a></li><li class="navelem"><a class="el" href="dir_e336ebf66a2bc732353b6fdf9b0f0e6e.html">users-state</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">users-state.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="users-state_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATES_USERS_STATE_USERS_STATE_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STATES_USERS_STATE_USERS_STATE_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;definitions/types.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;definitions/request.h&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;definitions/response.h&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_states.html">States</a> {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">namespace </span>UsersState {</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">   11</a></span>&#160;        <span class="keyword">typedef</span> std::map&lt;std::string, void(*)()&gt; <a class="code" href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">Subscribers</a>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state.html#aa2c1884ecc24fbe72fc39fd37f64d2d8">Register</a>(std::string abc, <span class="keywordtype">void</span> (*)());</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state.html#a2df6f82c9758bc3eadf9865030333840">Bootstrap</a>();</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state.html#a91dd4a66e2f3f36dbf8cbb83ca1bc0e9">Destroy</a>();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">getSerializedList</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">namespace </span>UsersStream {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="comment">// Better ways?</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state_1_1_users_stream.html#af779e0b0e970812833cb654303634352">Init</a>(<span class="keyword">const</span> std::string&amp; );</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state_1_1_users_stream.html#a1ee0beaa937009c0c8f0b0f6ff68251f">Close</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state_1_1_users_stream.html#a515b5f605ba4dcb55893365d80e6f6d6">ResponseSuccess</a>(<span class="keyword">const</span> std::string str_response);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state_1_1_users_stream.html#a1428855ab8530e9b2b987e4e11bdc0ac">ResponseError</a>(<span class="keyword">const</span> std::string str_error);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">namespace </span>State {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606">Auth</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="namespace_states_1_1_users_state_html_a91dd4a66e2f3f36dbf8cbb83ca1bc0e9"><div class="ttname"><a href="namespace_states_1_1_users_state.html#a91dd4a66e2f3f36dbf8cbb83ca1bc0e9">States::UsersState::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00049">users-state.cc:49</a></div></div>
+<div class="ttc" id="namespace_states_html"><div class="ttname"><a href="namespace_states.html">States</a></div><div class="ttdef"><b>Definition:</b> <a href="auth-state_8cc_source.html#l00014">auth-state.cc:14</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_1_1_users_stream_html_a515b5f605ba4dcb55893365d80e6f6d6"><div class="ttname"><a href="namespace_states_1_1_users_state_1_1_users_stream.html#a515b5f605ba4dcb55893365d80e6f6d6">States::UsersState::UsersStream::ResponseSuccess</a></div><div class="ttdeci">void ResponseSuccess(const string str_response)</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00100">users-state.cc:100</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_1_1_state_html_ac6ef78dd898f6c0bc1f4f72de5e19606"><div class="ttname"><a href="namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606">States::UsersState::State::Auth</a></div><div class="ttdeci">void Auth()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00123">users-state.cc:123</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_html_a61256a5c2e41a9e86296d1b492760e78"><div class="ttname"><a href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">States::UsersState::getSerializedList</a></div><div class="ttdeci">const string &amp; getSerializedList()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00056">users-state.cc:56</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_html_a2df6f82c9758bc3eadf9865030333840"><div class="ttname"><a href="namespace_states_1_1_users_state.html#a2df6f82c9758bc3eadf9865030333840">States::UsersState::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00037">users-state.cc:37</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_1_1_users_stream_html_a1ee0beaa937009c0c8f0b0f6ff68251f"><div class="ttname"><a href="namespace_states_1_1_users_state_1_1_users_stream.html#a1ee0beaa937009c0c8f0b0f6ff68251f">States::UsersState::UsersStream::Close</a></div><div class="ttdeci">void Close()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00082">users-state.cc:82</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_html_aa2c1884ecc24fbe72fc39fd37f64d2d8"><div class="ttname"><a href="namespace_states_1_1_users_state.html#aa2c1884ecc24fbe72fc39fd37f64d2d8">States::UsersState::Register</a></div><div class="ttdeci">void Register(string abc, void(*fn)())</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00033">users-state.cc:33</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_html_ac7e274ad4735dc6af82c1cb20d2acbea"><div class="ttname"><a href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">States::UsersState::Subscribers</a></div><div class="ttdeci">std::map&lt; std::string, void(*)()&gt; Subscribers</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8h_source.html#l00011">users-state.h:11</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_1_1_users_stream_html_af779e0b0e970812833cb654303634352"><div class="ttname"><a href="namespace_states_1_1_users_state_1_1_users_stream.html#af779e0b0e970812833cb654303634352">States::UsersState::UsersStream::Init</a></div><div class="ttdeci">void Init(const string &amp;AUTH)</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00064">users-state.cc:64</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_1_1_users_stream_html_a1428855ab8530e9b2b987e4e11bdc0ac"><div class="ttname"><a href="namespace_states_1_1_users_state_1_1_users_stream.html#a1428855ab8530e9b2b987e4e11bdc0ac">States::UsersState::UsersStream::ResponseError</a></div><div class="ttdeci">void ResponseError(const string str_error)</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00110">users-state.cc:110</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

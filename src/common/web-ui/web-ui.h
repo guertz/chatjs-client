@@ -4,7 +4,10 @@
 #include <map>
 #include <webview.h>
 
-/** Funzioni di supporto e metodi elementari e creazione della webview. */
+/**
+ * @brief Interfaccia Funzioni di supporto e metodi elementari e creazione della webview
+ * @file web-ui.h
+ */
 namespace WebUI {
 
     /** Definizione tipo di dato struct webview in Webview.

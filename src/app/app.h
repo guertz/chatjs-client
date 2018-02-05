@@ -2,10 +2,13 @@
 #define APP_APP_H
 
 /**
- * @brief "Core" dell'applicazione incaricato di gestire i vari sotto-moduli.
- *
+ * @brief Interfaccia "Core" applicazione, gestisce i vari sotto-moduli.
+ * @file app.h
+ */
+ 
+/**
  * Principalmente le parti che compongono l'intera applicazione sono:
- * + Componenti grafici (components.md). Sono i componenti percepiti e  
+ * + Componenti grafici (components.h). Sono i componenti percepiti e  
  *   con cui l'utente interagisce. Si suddividono in due categorie:
  *   - Partials (/pages) ovvero componenti ben definiti e presenti per
  *     tutto il ciclo di vita dell'applicazione:

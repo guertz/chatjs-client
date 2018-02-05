@@ -1,3 +1,9 @@
+/**
+ * @brief Stile CSS Personalizzato
+ * @file style.hcss
+ */
+
+/** Stile CSS Personalizzato */
 const std::string _src_assets_style_css = R"(
 .dropdown {
     position: relative;

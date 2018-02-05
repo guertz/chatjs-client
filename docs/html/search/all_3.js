@@ -22,7 +22,7 @@ var searchData=
   ['chatswrapper',['ChatsWrapper',['../class_states_1_1_chat_state_1_1_chats_wrapper.html',1,'States::ChatState']]],
   ['clean',['Clean',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#a5dd4f72efa1dfdf96a257458ae4b9349',1,'States::ChatState::ChatsMethods']]],
   ['close',['CLOSE',['../namespace_states_1_1_users_state.html#a5c98edc5b687f9b30678dbfd42a08d9ea4f7e7c563f8ca530a6d1182a0f973cb0',1,'States::UsersState::CLOSE()'],['../namespace_states_1_1_users_state_1_1_users_stream.html#a1ee0beaa937009c0c8f0b0f6ff68251f',1,'States::UsersState::UsersStream::Close()']]],
-  ['components_2emd',['components.md',['../components_8md.html',1,'']]],
+  ['components_2eh',['components.h',['../components_8h.html',1,'']]],
   ['connect',['CONNECT',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#a54e6b62128dfd6e9bbeb3adedf42f30daf6456d80aee2b91d442fdb4ca42d17da',1,'States::ChatState::ChatsMethods']]],
   ['connectivity_2ecc',['connectivity.cc',['../connectivity_8cc.html',1,'']]],
   ['connectivity_2eh',['connectivity.h',['../connectivity_8h.html',1,'']]],
@@ -33,6 +33,5 @@ var searchData=
   ['csl',['CSL',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00',1,'logger.h']]],
   ['events',['Events',['../namespace_chat_details_1_1_events.html',1,'ChatDetails::Events'],['../namespace_chat_list_1_1_events.html',1,'ChatList::Events']]],
   ['chat_2ejs',['Chat.js',['../index.html',1,'']]],
-  ['components',['components',['../md_src_app_components.html',1,'']]],
   ['state',['State',['../namespace_chat_details_1_1_state.html',1,'ChatDetails::State'],['../namespace_chat_list_1_1_state.html',1,'ChatList::State']]]
 ];
