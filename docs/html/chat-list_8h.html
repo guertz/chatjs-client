@@ -73,8 +73,7 @@ $(function() {
 <div class="title">Riferimenti per il file chat-list.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;map&gt;</code><br />
-<code>#include &quot;<a class="el" href="wscustom_8h_source.html">providers/sockets/wscustom.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="auth-state_8h_source.html">states/auth-state/auth-state.h</a>&quot;</code><br />
 </div>
 <p><a href="chat-list_8h_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
@@ -84,26 +83,21 @@ Namespace</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_chat_list_1_1_events"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html">ChatList::Events</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_chat_list_1_1_auth"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_auth.html">ChatList::Auth</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_chat_list_1_1_chats"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_chats.html">ChatList::Chats</a></td></tr>
+<tr class="memitem:namespace_chat_list_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_state.html">ChatList::State</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
 <tr class="memitem:a6913a2e951c162b957396e1e457666ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list.html#a6913a2e951c162b957396e1e457666ed">ChatList::Bootstrap</a> ()</td></tr>
-<tr class="memdesc:a6913a2e951c162b957396e1e457666ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="namespace_chat_list.html#a6913a2e951c162b957396e1e457666ed">Continua...</a><br /></td></tr>
 <tr class="separator:a6913a2e951c162b957396e1e457666ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89f4944ba01e129cfb104e27dc9a6db2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a89f4944ba01e129cfb104e27dc9a6db2">ChatList::Events::UserSelected</a> (const char *arg)</td></tr>
-<tr class="separator:a89f4944ba01e129cfb104e27dc9a6db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f482d37bfca5a066a242004e8f71aeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a8f482d37bfca5a066a242004e8f71aeb">ChatList::Events::NewChat</a> (const char *argc)</td></tr>
-<tr class="separator:a8f482d37bfca5a066a242004e8f71aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b53d8b05ebf3743b81920a384985d9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_auth.html#a2b53d8b05ebf3743b81920a384985d9a">ChatList::Auth::State</a> (const char *arg)</td></tr>
-<tr class="separator:a2b53d8b05ebf3743b81920a384985d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bb169e0c1b6c8d2a2775c92705a9214"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_chats.html#a3bb169e0c1b6c8d2a2775c92705a9214">ChatList::Chats::NewChat</a> (const char *args)</td></tr>
-<tr class="separator:a3bb169e0c1b6c8d2a2775c92705a9214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abae7f29ff71d7352cb4e6ec5aa882827"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_chats.html#abae7f29ff71d7352cb4e6ec5aa882827">ChatList::Chats::State</a> (const char *args)</td></tr>
-<tr class="separator:abae7f29ff71d7352cb4e6ec5aa882827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd94586bc189c4a77d7d1fa10f9c39fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#acd94586bc189c4a77d7d1fa10f9c39fa">ChatList::Events::UserSelected</a> (const std::string &amp;arg)</td></tr>
+<tr class="separator:acd94586bc189c4a77d7d1fa10f9c39fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69e7d1b102e93064d86d76a354ce43ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a69e7d1b102e93064d86d76a354ce43ac">ChatList::Events::NewChat</a> (const std::string &amp;arg)</td></tr>
+<tr class="separator:a69e7d1b102e93064d86d76a354ce43ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9073703fe070937684befa41c6c280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_state.html#adf9073703fe070937684befa41c6c280">ChatList::State::Auth</a> ()</td></tr>
+<tr class="separator:adf9073703fe070937684befa41c6c280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba5eccde4c978e30bcfc71deefd564a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_state.html#aba5eccde4c978e30bcfc71deefd564a9">ChatList::State::Chats</a> ()</td></tr>
+<tr class="separator:aba5eccde4c978e30bcfc71deefd564a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

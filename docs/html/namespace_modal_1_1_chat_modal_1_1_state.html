@@ -78,80 +78,43 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a397f65ef5ecb5a9edca40aaeb18962a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_chat_modal_1_1_state.html#a397f65ef5ecb5a9edca40aaeb18962a1">RefreshUsers</a> (const char *argc)</td></tr>
-<tr class="memdesc:a397f65ef5ecb5a9edca40aaeb18962a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti lo stream di dati provenienti da un canale socket.  <a href="#a397f65ef5ecb5a9edca40aaeb18962a1">Continua...</a><br /></td></tr>
-<tr class="separator:a397f65ef5ecb5a9edca40aaeb18962a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b491e36bf8aede3f3bfa3ba6162a07e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_chat_modal_1_1_state.html#a7b491e36bf8aede3f3bfa3ba6162a07e">Chats</a> (const char *argc)</td></tr>
-<tr class="memdesc:a7b491e36bf8aede3f3bfa3ba6162a07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti lo stato della lista di chat attive come cambiamenti del contenuto di quest'ultima.  <a href="#a7b491e36bf8aede3f3bfa3ba6162a07e">Continua...</a><br /></td></tr>
-<tr class="separator:a7b491e36bf8aede3f3bfa3ba6162a07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b1e0944e8a92bddd692e4a6acf962da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_chat_modal_1_1_state.html#a7b1e0944e8a92bddd692e4a6acf962da">Users</a> ()</td></tr>
+<tr class="memdesc:a7b1e0944e8a92bddd692e4a6acf962da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti lo stato della lista di chat attive come cambiamenti del contenuto di quest'ultima.  <a href="#a7b1e0944e8a92bddd692e4a6acf962da">Continua...</a><br /></td></tr>
+<tr class="separator:a7b1e0944e8a92bddd692e4a6acf962da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Spazio dei nomi relativo agli eventi generati da callbacks. </p>
 <p>Esempi sono lo stato dell'autenticazione utente. </p>
 </div><h2 class="groupheader">Documentazione delle funzioni</h2>
-<a id="a7b491e36bf8aede3f3bfa3ba6162a07e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b491e36bf8aede3f3bfa3ba6162a07e">&#9670;&nbsp;</a></span>Chats()</h2>
+<a id="a7b1e0944e8a92bddd692e4a6acf962da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b1e0944e8a92bddd692e4a6acf962da">&#9670;&nbsp;</a></span>Users()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Modal::ChatModal::State::Chats </td>
+          <td class="memname">void Modal::ChatModal::State::Users </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>argc</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Metodo che ascolta in tempo reale eventi riguardanti lo stato della lista di chat attive come cambiamenti del contenuto di quest'ultima. </p>
-<p>Dopo essere stato registrato viene notificato dal corrispondente provider di eventuali cambiamenti di stato quali azioni di "inizio" di una nuova chat</p>
-<div class="fragment"><div class="line">{</div><div class="line">    &quot;reference&quot;: &quot;string:16&quot;,</div><div class="line">    &quot;destination&quot;: &quot;string:16&quot;,</div><div class="line">    &quot;from&quot;: &quot;string:16&quot;,</div><div class="line">    &quot;creator&quot;: &quot;string:16&quot;, // == from</div><div class="line">    &quot;jsonArgs&quot;: {</div><div class="line">        &quot;from&quot;: {</div><div class="line">            &quot;name&quot;: &quot;string&quot;,</div><div class="line">            &quot;image&quot;: &quot;string:url&quot;,</div><div class="line">            &quot;id&quot;: &quot;string:16&quot; // == from</div><div class="line">        },</div><div class="line">        &quot;destination&quot;: {</div><div class="line">            &quot;name&quot;: &quot;string&quot;,</div><div class="line">            &quot;image&quot;: &quot;string:url&quot;,</div><div class="line">            &quot;id&quot;: &quot;string:16&quot;</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>Stringa json serializzata contenente le informazioni riguardanti il cambio di stato </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definizione alla linea <a class="el" href="chat-modal_8cc_source.html#l00107">107</a> del file <a class="el" href="chat-modal_8cc_source.html">chat-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                        {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <a class="code" href="web__ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> newChat = json::parse(args);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                </div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">if</span>(strcmp(newChat[<span class="stringliteral">&quot;destination&quot;</span>].dump().c_str(), newChat[<span class="stringliteral">&quot;creator&quot;</span>].dump().c_str()) == 0){</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    </div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    <a class="code" href="namespace_modal_1_1_chat_modal_1_1_events.html#ac122deb6f3799ae70aba93973b2012bd">Events::Hide</a>();</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    <span class="comment">// posso scrivere dopo socket stop?</span></div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="comment">// MakeAToast ? </span></div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div><div class="ttc" id="namespace_modal_1_1_chat_modal_1_1_events_html_ac122deb6f3799ae70aba93973b2012bd"><div class="ttname"><a href="namespace_modal_1_1_chat_modal_1_1_events.html#ac122deb6f3799ae70aba93973b2012bd">Modal::ChatModal::Events::Hide</a></div><div class="ttdeci">void Hide()</div><div class="ttdoc">Metodo per nascondere il modale. </div><div class="ttdef"><b>Definition:</b> <a href="chat-modal_8cc_source.html#l00080">chat-modal.cc:80</a></div></div>
-<div class="ttc" id="web__ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web__ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00008">web_ui.cc:8</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a397f65ef5ecb5a9edca40aaeb18962a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a397f65ef5ecb5a9edca40aaeb18962a1">&#9670;&nbsp;</a></span>RefreshUsers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Modal::ChatModal::State::RefreshUsers </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>argc</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo che ascolta in tempo reale eventi riguardanti lo stream di dati provenienti da un canale socket. </p>
-<p>Il canale Socket in questione è aperto all'url "users-stream" e riceve un messaggio in tempo reale ogni volta che la lista di utenti cambia invocando questo metodo.</p>
-<div class="fragment"><div class="line">{</div><div class="line">    &quot;name&quot;: &quot;string&quot;,</div><div class="line">    &quot;image&quot;: &quot;string:url&quot;,</div><div class="line">    &quot;_id&quot;: &quot;string:16&quot;</div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>Stringa json serializzata contenente le informazioni riguardanti il cambio di stato </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definizione alla linea <a class="el" href="chat-modal_8cc_source.html#l00091">91</a> del file <a class="el" href="chat-modal_8cc_source.html">chat-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                               {</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* js_action = <a class="code" href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">js::compact</a>(strlen(args) + 50, 3, </div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                        <span class="stringliteral">&quot;window.modals.ChatModal.methods.populate(&#39;&quot;</span>, </div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                            args, </div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                        <span class="stringliteral">&quot;&#39;)&quot;</span>);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                webview_dispatch(   </div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <a class="code" href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a>(), </div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    <a class="code" href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a>, </div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <a class="code" href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">safeptr::serialize</a>(<a class="code" href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">safestr::duplicate</a>(js_action))</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                );   </div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(js_action); </div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div><div class="ttc" id="namespace_helpers_1_1safeptr_html_ac6e0c35d1c9b6e8c0529aa2e2e22550d"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">Helpers::safeptr::serialize</a></div><div class="ttdeci">void * serialize(char *voidPtrChar)</div><div class="ttdoc">Funzione wrapper di reinterpret da char a void. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00027">helpers.cc:27</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safeptr_html_a9ddcf89d56f8a8ed10343736f8ce7461"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">Helpers::safeptr::free_block</a></div><div class="ttdeci">void free_block(const char *&amp;kPtrChar)</div><div class="ttdoc"> Distruzione di un blocco puntatore a carattere. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00011">helpers.cc:11</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_a70f551c8ec74051818a6096aa62664fc"><div class="ttname"><a href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a></div><div class="ttdeci">void Dispatch(Webview *w, void *voidPtrChar)</div><div class="ttdoc">Metodo helper per eseguire istruzioni JavaScript sulla webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00126">web_ui.cc:126</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_ac732703a18b61f3cd75283fa6842d726"><div class="ttname"><a href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a></div><div class="ttdeci">Webview * GetContext()</div><div class="ttdoc">Metodo per ottenere il riferimento all&amp;#39;istanza della Webview creata. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00155">web_ui.cc:155</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safestr_html_a10a94ba2466747f8985ea97a19790d21"><div class="ttname"><a href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">Helpers::safestr::duplicate</a></div><div class="ttdeci">char * duplicate(const char *kPtrChar)</div><div class="ttdoc">Funzione helper per la duplicazione di un&amp;#39;array di caratteri. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00049">helpers.cc:49</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1js_html_affb4a15e6fe2dd916651c7311ae5b8e3"><div class="ttname"><a href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">Helpers::js::compact</a></div><div class="ttdeci">char * compact(const unsigned size, const unsigned int parts, const char *part...)</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00065">helpers.cc:65</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="chat-modal_8cc_source.html#l00064">64</a> del file <a class="el" href="chat-modal_8cc_source.html">chat-modal.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a>(<span class="stringliteral">&quot;ChatModal::State::Users&quot;</span>, <span class="stringliteral">&quot;Refreshing...&quot;</span>);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">string</span> serializedList = <a class="code" href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">UsersState::getSerializedList</a>();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">string</span> js_action = <span class="stringliteral">&quot;modals.ChatModal.populateChat(&#39;&quot;</span> +</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                            serializedList +</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <span class="stringliteral">&quot;&#39;)&quot;</span>;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <a class="code" href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a>(js_action); </div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div><div class="ttc" id="namespace_web_u_i_html_a13ae021c126057ed3e1006f6ac6022ad"><div class="ttname"><a href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a></div><div class="ttdeci">void Execute(const string &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00147">web-ui.cc:147</a></div></div>
+<div class="ttc" id="namespace_states_1_1_users_state_html_a61256a5c2e41a9e86296d1b492760e78"><div class="ttname"><a href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">States::UsersState::getSerializedList</a></div><div class="ttdeci">const string &amp; getSerializedList()</div><div class="ttdef"><b>Definition:</b> <a href="users-state_8cc_source.html#l00056">users-state.cc:56</a></div></div>
+<div class="ttc" id="logger_8h_html_a83931080af29dedba9d80603b0a6085c"><div class="ttname"><a href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a></div><div class="ttdeci">#define log_details(attr, log_msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00054">logger.h:54</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

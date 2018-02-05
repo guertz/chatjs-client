@@ -75,13 +75,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a9a979de60ba7bcb18b20d15ea24fb4d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_toast_1_1_events.html#a9a979de60ba7bcb18b20d15ea24fb4d9">Show</a> (const char *argc)</td></tr>
-<tr class="memdesc:a9a979de60ba7bcb18b20d15ea24fb4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostra un alert di tipo toast che scompare automaticamente dopo 3 secondi.  <a href="#a9a979de60ba7bcb18b20d15ea24fb4d9">Continua...</a><br /></td></tr>
-<tr class="separator:a9a979de60ba7bcb18b20d15ea24fb4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8e0603196aed57ea27470459ea4478c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_toast_1_1_events.html#ac8e0603196aed57ea27470459ea4478c">Show</a> (const string &amp;content)</td></tr>
+<tr class="separator:ac8e0603196aed57ea27470459ea4478c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a476ed7823f90429c3d184178b4ef94bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_toast_1_1_events.html#a476ed7823f90429c3d184178b4ef94bc">Show</a> (const std::string &amp;argc)</td></tr>
+<tr class="memdesc:a476ed7823f90429c3d184178b4ef94bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostra un alert di tipo toast che scompare automaticamente dopo 3 secondi.  <a href="#a476ed7823f90429c3d184178b4ef94bc">Continua...</a><br /></td></tr>
+<tr class="separator:a476ed7823f90429c3d184178b4ef94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentazione delle funzioni</h2>
-<a id="a9a979de60ba7bcb18b20d15ea24fb4d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a979de60ba7bcb18b20d15ea24fb4d9">&#9670;&nbsp;</a></span>Show()</h2>
+<a id="a476ed7823f90429c3d184178b4ef94bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a476ed7823f90429c3d184178b4ef94bc">&#9670;&nbsp;</a></span>Show() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -89,7 +91,7 @@ Funzioni</h2></td></tr>
         <tr>
           <td class="memname">void Toast::Events::Show </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>argc</em></td><td>)</td>
           <td></td>
         </tr>
@@ -104,13 +106,26 @@ Funzioni</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definizione alla linea <a class="el" href="toast_8cc_source.html#l00018">18</a> del file <a class="el" href="toast_8cc_source.html">toast.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                   {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span>* js_action = <a class="code" href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">js::compact</a>(30 + strlen(argc), 3, </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                            <span class="stringliteral">&quot;window.makeAToast(&#39;&quot;</span>,</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                argc,</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                            <span class="stringliteral">&quot;&#39;)&quot;</span>);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            webview_dispatch(   </div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <a class="code" href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a>(),</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <a class="code" href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a>, </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <a class="code" href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">safeptr::serialize</a>(<a class="code" href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">safestr::duplicate</a>(js_action))</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            );</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(argc);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(js_action);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div><div class="ttc" id="namespace_helpers_1_1safeptr_html_ac6e0c35d1c9b6e8c0529aa2e2e22550d"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">Helpers::safeptr::serialize</a></div><div class="ttdeci">void * serialize(char *voidPtrChar)</div><div class="ttdoc">Funzione wrapper di reinterpret da char a void. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00027">helpers.cc:27</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safeptr_html_a9ddcf89d56f8a8ed10343736f8ce7461"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">Helpers::safeptr::free_block</a></div><div class="ttdeci">void free_block(const char *&amp;kPtrChar)</div><div class="ttdoc"> Distruzione di un blocco puntatore a carattere. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00011">helpers.cc:11</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_a70f551c8ec74051818a6096aa62664fc"><div class="ttname"><a href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a></div><div class="ttdeci">void Dispatch(Webview *w, void *voidPtrChar)</div><div class="ttdoc">Metodo helper per eseguire istruzioni JavaScript sulla webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00126">web_ui.cc:126</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_ac732703a18b61f3cd75283fa6842d726"><div class="ttname"><a href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a></div><div class="ttdeci">Webview * GetContext()</div><div class="ttdoc">Metodo per ottenere il riferimento all&amp;#39;istanza della Webview creata. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00155">web_ui.cc:155</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safestr_html_a10a94ba2466747f8985ea97a19790d21"><div class="ttname"><a href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">Helpers::safestr::duplicate</a></div><div class="ttdeci">char * duplicate(const char *kPtrChar)</div><div class="ttdoc">Funzione helper per la duplicazione di un&amp;#39;array di caratteri. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00049">helpers.cc:49</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1js_html_affb4a15e6fe2dd916651c7311ae5b8e3"><div class="ttname"><a href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">Helpers::js::compact</a></div><div class="ttdeci">char * compact(const unsigned size, const unsigned int parts, const char *part...)</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00065">helpers.cc:65</a></div></div>
+</div>
+</div>
+<a id="ac8e0603196aed57ea27470459ea4478c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e0603196aed57ea27470459ea4478c">&#9670;&nbsp;</a></span>Show() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Toast::Events::Show </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>content</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="toast_8cc_source.html#l00022">22</a> del file <a class="el" href="toast_8cc_source.html">toast.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                        {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">string</span> js_toast = <span class="stringliteral">&quot;window.makeAToast(&#39;&quot;</span> +</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                        content +</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                    <span class="stringliteral">&quot;&#39;)&quot;</span>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a>(js_toast);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div><div class="ttc" id="namespace_web_u_i_html_a13ae021c126057ed3e1006f6ac6022ad"><div class="ttname"><a href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a></div><div class="ttdeci">void Execute(const string &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00147">web-ui.cc:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

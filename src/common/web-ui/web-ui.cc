@@ -120,7 +120,7 @@ namespace WebUI {
                           parsed_script, 
                           __parsed_script_size);
 
-            if(__parsed_script_size > LOG_LEN) {
+            if(strlen(parsed_script) > LOG_LEN) {
                 __parsed_script_part[56] = '.';
                 __parsed_script_part[57] = '.';
                 __parsed_script_part[58] = '.';
@@ -172,7 +172,7 @@ namespace WebUI {
 
         assert(fn_itr !=  callbacks.end());
         
-        fn_itr->second(function.at("params").get<string>());
+        fn_itr->second(function.at("params").dump());
 
         // duplicate string instead of reference?
         // TODO: pointers

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['thread_5fdata',['thread_data',['../structws_1_1thread__data.html',1,'ws']]]
+  ['message',['Message',['../class_states_1_1_chat_state_1_1_message.html',1,'States::ChatState']]],
+  ['messageswrapper',['MessagesWrapper',['../class_states_1_1_chat_state_1_1_messages_wrapper.html',1,'States::ChatState']]]
 ];

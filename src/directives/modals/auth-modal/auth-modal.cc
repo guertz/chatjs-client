@@ -16,7 +16,7 @@ using namespace std;
 using namespace WebUI;
 using namespace States;
 
-namespace Modal {
+namespace Modals {
 
     namespace AuthModal {
 
@@ -43,11 +43,11 @@ namespace Modal {
             }
 
             void Show() {
-                Modal::Events::ShowModalByRef(modalRef);
+                Modals::Events::ShowModalByRef(modalRef);
             }
 
             void Hide() {
-                Modal::Events::HideModalByRef(modalRef);
+                Modals::Events::HideModalByRef(modalRef);
             }
 
         }
@@ -57,8 +57,8 @@ namespace Modal {
 
             WebUI::Execute(_src_directives_modal_auth_modal_auth_modal_js);
             
-            WebUI::Register("Modal::AuthModal::Submit", Events::Submit);
-            AuthState::Register("Modal::AuthModal", State::Auth);
+            WebUI::Register("Modals::AuthModal::Submit", Events::Submit);
+            AuthState::Register("Modals::AuthModal", State::Auth);
 
             Events::Show();
         }

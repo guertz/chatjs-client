@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['auth_5fcomponent_5flist',['auth_component_list',['../namespace_auth_state.html#aaa7f2d47fd8f7b74aa18a9610a968067',1,'AuthState']]]
+  ['chats',['Chats',['../namespace_states_1_1_chat_state.html#a012433f173c5efc17398eea454af0378',1,'States::ChatState']]]
 ];

@@ -96,6 +96,9 @@ Funzioni</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Modal::AuthModal::AuthMethods::OnLoginErrors </td>
@@ -104,17 +107,17 @@ Funzioni</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Metodo che viene invocato per notificare l'avvenuto login con errori. </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00105">105</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                 {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* JS_MODAL_AUTH_ERRORS = <a class="code" href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">js::compact</a>(50, 1, <span class="stringliteral">&quot;alert(&#39;wrong attributes&#39;)&quot;</span>);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                webview_dispatch(   </div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    <a class="code" href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a>(),</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <a class="code" href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a>, </div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    <a class="code" href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">safeptr::serialize</a>(<a class="code" href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">safestr::duplicate</a>(JS_MODAL_AUTH_ERRORS))</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                );</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(JS_MODAL_AUTH_ERRORS);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div><div class="ttc" id="namespace_helpers_1_1safeptr_html_ac6e0c35d1c9b6e8c0529aa2e2e22550d"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#ac6e0c35d1c9b6e8c0529aa2e2e22550d">Helpers::safeptr::serialize</a></div><div class="ttdeci">void * serialize(char *voidPtrChar)</div><div class="ttdoc">Funzione wrapper di reinterpret da char a void. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00027">helpers.cc:27</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safeptr_html_a9ddcf89d56f8a8ed10343736f8ce7461"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">Helpers::safeptr::free_block</a></div><div class="ttdeci">void free_block(const char *&amp;kPtrChar)</div><div class="ttdoc"> Distruzione di un blocco puntatore a carattere. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00011">helpers.cc:11</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_a70f551c8ec74051818a6096aa62664fc"><div class="ttname"><a href="namespace_web_u_i.html#a70f551c8ec74051818a6096aa62664fc">WebUI::Dispatch</a></div><div class="ttdeci">void Dispatch(Webview *w, void *voidPtrChar)</div><div class="ttdoc">Metodo helper per eseguire istruzioni JavaScript sulla webview. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00126">web_ui.cc:126</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_ac732703a18b61f3cd75283fa6842d726"><div class="ttname"><a href="namespace_web_u_i.html#ac732703a18b61f3cd75283fa6842d726">WebUI::GetContext</a></div><div class="ttdeci">Webview * GetContext()</div><div class="ttdoc">Metodo per ottenere il riferimento all&amp;#39;istanza della Webview creata. </div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00155">web_ui.cc:155</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safestr_html_a10a94ba2466747f8985ea97a19790d21"><div class="ttname"><a href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">Helpers::safestr::duplicate</a></div><div class="ttdeci">char * duplicate(const char *kPtrChar)</div><div class="ttdoc">Funzione helper per la duplicazione di un&amp;#39;array di caratteri. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00049">helpers.cc:49</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1js_html_affb4a15e6fe2dd916651c7311ae5b8e3"><div class="ttname"><a href="namespace_helpers_1_1js.html#affb4a15e6fe2dd916651c7311ae5b8e3">Helpers::js::compact</a></div><div class="ttdeci">char * compact(const unsigned size, const unsigned int parts, const char *part...)</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00065">helpers.cc:65</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00106">106</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                        {</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a>(AUTH_ERRORS);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div><div class="ttc" id="namespace_web_u_i_html_a13ae021c126057ed3e1006f6ac6022ad"><div class="ttname"><a href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a></div><div class="ttdeci">void Execute(const string &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00147">web-ui.cc:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -123,6 +126,9 @@ Funzioni</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Modal::AuthModal::AuthMethods::OnLoginSuccess </td>
@@ -131,12 +137,17 @@ Funzioni</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Metodo che viene invocato per notificare l'avvenuto login con successo. </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00101">101</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                  {</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <a class="code" href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Events::Hide</a>();</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div><div class="ttc" id="namespace_modal_1_1_auth_modal_1_1_events_html_a97b8a7f03e82e58c75ed9b910762918f"><div class="ttname"><a href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Modal::AuthModal::Events::Hide</a></div><div class="ttdeci">void Hide()</div><div class="ttdoc">Metodo per nascondere il modale. </div><div class="ttdef"><b>Definition:</b> <a href="auth-modal_8cc_source.html#l00050">auth-modal.cc:50</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00102">102</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                         {</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Events::Hide</a>();</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div><div class="ttc" id="namespace_modal_1_1_auth_modal_1_1_events_html_a97b8a7f03e82e58c75ed9b910762918f"><div class="ttname"><a href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Modal::AuthModal::Events::Hide</a></div><div class="ttdeci">void Hide()</div><div class="ttdoc">Metodo per nascondere il modale. </div><div class="ttdef"><b>Definition:</b> <a href="auth-modal_8cc_source.html#l00049">auth-modal.cc:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -145,6 +156,9 @@ Funzioni</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Modal::AuthModal::AuthMethods::OnLogout </td>
@@ -153,12 +167,17 @@ Funzioni</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Metodo che viene invocato per notificare l'azione di logout. </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00119">119</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                             {</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <a class="code" href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Events::Show</a>();</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div><div class="ttc" id="namespace_modal_1_1_auth_modal_1_1_events_html_aca0c841447608691bd9208e63ab51fda"><div class="ttname"><a href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Modal::AuthModal::Events::Show</a></div><div class="ttdeci">void Show()</div><div class="ttdoc">Metodo per mostrare il modale. </div><div class="ttdef"><b>Definition:</b> <a href="auth-modal_8cc_source.html#l00046">auth-modal.cc:46</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00110">110</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                    {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Events::Show</a>();</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div><div class="ttc" id="namespace_modal_1_1_auth_modal_1_1_events_html_aca0c841447608691bd9208e63ab51fda"><div class="ttname"><a href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Modal::AuthModal::Events::Show</a></div><div class="ttdeci">void Show()</div><div class="ttdoc">Metodo per mostrare il modale. </div><div class="ttdef"><b>Definition:</b> <a href="auth-modal_8cc_source.html#l00045">auth-modal.cc:45</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

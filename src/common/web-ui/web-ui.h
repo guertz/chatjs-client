@@ -10,7 +10,7 @@ namespace WebUI {
     /** Definizione tipo di dato struct webview in Webview.
      *  Composta dagli attributi:
      *  + **title**: Titolo della finestra
-     *  + **url**: Url in fomato data:text/html,<html>...</html>
+     *  + **url**: Url in fomato data:text/html,...html
      *  + **width**
      *  + **height**
      *  + **resizable**

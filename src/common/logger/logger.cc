@@ -1,12 +1,17 @@
 #include <iostream>
+#include <algorithm>
+#include <string>
 #include "logger.h"
 
 using namespace std;
 
-void print_log(const TAG tag, const unsigned int level, const string& attr, const string& log_msg) {
+void print_log(const TAG tag, const unsigned int level, string attr, string log_msg) {
 
     string composed_message = "";
 
+           log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), '\n'), log_msg.end());
+
+    // limit all lenght like web_ui.cc
     // color output cross-platform?
     switch(tag) {
         

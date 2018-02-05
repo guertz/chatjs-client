@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['helpers',['Helpers',['../namespace_helpers.html',1,'']]],
-  ['js',['js',['../namespace_helpers_1_1js.html',1,'Helpers']]],
-  ['safeptr',['safeptr',['../namespace_helpers_1_1safeptr.html',1,'Helpers']]],
-  ['safestr',['safestr',['../namespace_helpers_1_1safestr.html',1,'Helpers']]]
+  ['chatdetails',['ChatDetails',['../namespace_chat_details.html',1,'']]],
+  ['chatlist',['ChatList',['../namespace_chat_list.html',1,'']]],
+  ['events',['Events',['../namespace_chat_details_1_1_events.html',1,'ChatDetails::Events'],['../namespace_chat_list_1_1_events.html',1,'ChatList::Events']]],
+  ['state',['State',['../namespace_chat_details_1_1_state.html',1,'ChatDetails::State'],['../namespace_chat_list_1_1_state.html',1,'ChatList::State']]]
 ];

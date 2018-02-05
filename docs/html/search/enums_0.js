@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ack_5flevel',['ACK_LEVEL',['../chat_8h.html#a163b02da955abcc41c04281ddba948a2',1,'chat.h']]],
-  ['authsignal',['AUTHSIGNAL',['../namespace_auth_state.html#ada375a7d4e6061956bf3524fd458a8ae',1,'AuthState']]]
+  ['authsignal',['AUTHSIGNAL',['../namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870',1,'States::AuthState']]]
 ];

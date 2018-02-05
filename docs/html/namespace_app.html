@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Componente principale incaricato della gestione delle varie parti dell' applicazione.  
+<p>"Core" dell'applicazione incaricato di gestire i vari sotto-moduli.  
 <a href="#details">Continua...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -81,24 +81,45 @@ Namespace</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a12b15f30e7c0a6f5a2ebf5b1b6dcb409">Init</a> ()</td></tr>
-<tr class="memdesc:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo interno di inizializzazione del componente.  <a href="#a12b15f30e7c0a6f5a2ebf5b1b6dcb409">Continua...</a><br /></td></tr>
-<tr class="separator:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">Bootstrap</a> ()</td></tr>
-<tr class="memdesc:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="#a7effd8d80a014a8ca3cdf39c2870c9e6">Continua...</a><br /></td></tr>
+<tr class="memdesc:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>.  <a href="#a7effd8d80a014a8ca3cdf39c2870c9e6">Continua...</a><br /></td></tr>
 <tr class="separator:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66dd2456f5144a9747d6ebb291d9ead4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">Destroy</a> ()</td></tr>
-<tr class="memdesc:a66dd2456f5144a9747d6ebb291d9ead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="#a66dd2456f5144a9747d6ebb291d9ead4">Continua...</a><br /></td></tr>
+<tr class="memdesc:a66dd2456f5144a9747d6ebb291d9ead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>.  <a href="#a66dd2456f5144a9747d6ebb291d9ead4">Continua...</a><br /></td></tr>
 <tr class="separator:a66dd2456f5144a9747d6ebb291d9ead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock"><p>Componente principale incaricato della gestione delle varie parti dell' applicazione. </p>
-<p>Le parti sono suddivise in:</p><ul>
-<li>Pagine (pages),</li>
-<li>Servizi (providers),</li>
-<li>Direttive (navbar, modals...)</li>
+<div class="textblock"><p>"Core" dell'applicazione incaricato di gestire i vari sotto-moduli. </p>
+<p>Principalmente le parti che compongono l'intera applicazione sono:</p><ul>
+<li>Componenti grafici (<a class="el" href="components_8md.html">components.md</a>). Sono i componenti percepiti e <br />
+ con cui l'utente interagisce. Si suddividono in due categorie:<ul>
+<li>Partials (/pages) ovvero componenti ben definiti e presenti per tutto il ciclo di vita dell'applicazione:<ul>
+<li><a class="el" href="namespace_chat_details.html">ChatDetails</a></li>
+<li><a class="el" href="namespace_chat_list.html">ChatList</a></li>
 </ul>
-<p>Pagine e direttive sono entrambe considerate componenti in un modo più generico </p>
+</li>
+<li>Direttive (/directives) componenti dinamici che non hanno una struttura rigida, ma che invece possono essere personalizzati e compaiono in determinati momenti o per determinate azioni:<ul>
+<li><a class="el" href="namespace_toast.html" title="Funzioni di supporto per mostrare un alert di tipo Toast sulla finestra. ">Toast</a></li>
+<li><a class="el" href="namespace_navbar.html" title="Funzioni di supporto e metodi elementari e la gestione delle voci presenti nella barra di navigazione...">Navbar</a></li>
+<li><a class="el" href="namespace_modals.html" title="Funzioni di supporto e metodi elementari e la gestione degli alert Modali. ">Modals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data states (<a class="el" href="namespace_states.html">States</a>). Si tratta della gestione dei dati, da come ottenere questi ultimi e alla struttura dati per come salvarli:<ul>
+<li>Data models. Struttura di un dato e come quest'ultimo viene rappresentato in memoria. In questo esempio di applicazione i dati sono principalmente tutte classi con attributi pubblici (Simile al concetto di struct ma con l'aggiunta di metodi per codificare/decodificare dati nel formato JSON. I tipi di dato base o condivisi sono presenti sotto la directory (/models) mentre quelli interni e più specializzati sono in apposite cartelle denominate (definitions/) e richiedono un necessario utilizzo dei namespace.<ul>
+<li><a class="el" href="class_json_item.html">JsonItem</a> definizione modello data JSON base</li>
+</ul>
+</li>
+<li>Data provider (/states). Fungono da contenitore per immagazzinare/caricare dati da fonti esterne (socket) e mantenerli in un formato consistente notificando di cambiamenti altri eventuali componti che ne fanno attraverso un sistema di callback.<ul>
+<li><a class="el" href="namespace_states_1_1_auth_state.html">States::AuthState</a></li>
+<li><a class="el" href="namespace_states_1_1_chat_state.html">States::ChatState</a></li>
+<li><a class="el" href="namespace_states_1_1_users_state.html">States::UsersState</a> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div><h2 class="groupheader">Documentazione delle funzioni</h2>
 <a id="a7effd8d80a014a8ca3cdf39c2870c9e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7effd8d80a014a8ca3cdf39c2870c9e6">&#9670;&nbsp;</a></span>Bootstrap()</h2>
@@ -115,14 +136,16 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>. </p>
+<p>Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>. </p>
 <p>Registra gli eventi di callback javascript:</p><ul>
-<li>Ready </li>
+<li>Ready Registra i vari servizi </li>
 </ul>
 
-<p class="definition">Definizione alla linea <a class="el" href="app_8cc_source.html#l00045">45</a> del file <a class="el" href="app_8cc_source.html">app.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                     {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="namespace_web_u_i.html#a6e5df5bc150bd5db5015fda2df19d9bb">WebUI::Register</a>(<span class="stringliteral">&quot;App::Ready&quot;</span>, <a class="code" href="namespace_app_1_1_events.html#a34427d3e5c1a6dd407410d1e6d716f33">Events::Ready</a>);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div><div class="ttc" id="namespace_app_1_1_events_html_a34427d3e5c1a6dd407410d1e6d716f33"><div class="ttname"><a href="namespace_app_1_1_events.html#a34427d3e5c1a6dd407410d1e6d716f33">App::Events::Ready</a></div><div class="ttdeci">void Ready(const char *args)</div><div class="ttdoc">Metodo invocato da JavaScript che notifica il caricamento avvenuto degli script e degli stili...</div><div class="ttdef"><b>Definition:</b> <a href="app_8cc_source.html#l00038">app.cc:38</a></div></div>
-<div class="ttc" id="namespace_web_u_i_html_a6e5df5bc150bd5db5015fda2df19d9bb"><div class="ttname"><a href="namespace_web_u_i.html#a6e5df5bc150bd5db5015fda2df19d9bb">WebUI::Register</a></div><div class="ttdeci">void Register(string callback_name, void(*callback_fn)(const char *))</div><div class="ttdoc">Variabile in cui vengono memorizzate le associazioni nome &lt;=&gt; puntatore a funzione (callback) ...</div><div class="ttdef"><b>Definition:</b> <a href="web__ui_8cc_source.html#l00046">web_ui.cc:46</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="app_8cc_source.html#l00049">49</a> del file <a class="el" href="app_8cc_source.html">app.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                     {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a>(<span class="stringliteral">&quot;App&quot;</span>, <span class="stringliteral">&quot;Bootstrap&quot;</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="namespace_web_u_i.html#a027b86e26ae6416edd4722f180d7b31f">WebUI::Register</a>(<span class="stringliteral">&quot;App::Ready&quot;</span>, <a class="code" href="namespace_app_1_1_events.html#aa24245c1ac23dbb62b329123de44ffd5">Events::Ready</a>);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a>(_src_app_app_js);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="ttc" id="namespace_web_u_i_html_a13ae021c126057ed3e1006f6ac6022ad"><div class="ttname"><a href="namespace_web_u_i.html#a13ae021c126057ed3e1006f6ac6022ad">WebUI::Execute</a></div><div class="ttdeci">void Execute(const string &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00147">web-ui.cc:147</a></div></div>
+<div class="ttc" id="namespace_app_1_1_events_html_aa24245c1ac23dbb62b329123de44ffd5"><div class="ttname"><a href="namespace_app_1_1_events.html#aa24245c1ac23dbb62b329123de44ffd5">App::Events::Ready</a></div><div class="ttdeci">void Ready(const string &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cc_source.html#l00028">app.cc:28</a></div></div>
+<div class="ttc" id="logger_8h_html_a83931080af29dedba9d80603b0a6085c"><div class="ttname"><a href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a></div><div class="ttdeci">#define log_details(attr, log_msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00054">logger.h:54</a></div></div>
+<div class="ttc" id="namespace_web_u_i_html_a027b86e26ae6416edd4722f180d7b31f"><div class="ttname"><a href="namespace_web_u_i.html#a027b86e26ae6416edd4722f180d7b31f">WebUI::Register</a></div><div class="ttdeci">void Register(string cb_name, void(*cb_fn)(const string &amp;))</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00036">web-ui.cc:36</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -141,53 +164,14 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>. </p>
+<p>Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>. </p>
 <p>Notifica tutti i sotto-componenti e servizi inizializzati </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="app_8cc_source.html#l00061">61</a> del file <a class="el" href="app_8cc_source.html">app.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                   {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar::Destroy</a>();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="namespace_modal.html#ad7ff8d94a023e0c0a02210864098953d">Modal::Destroy</a>();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        </div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div><div class="ttc" id="namespace_modal_html_ad7ff8d94a023e0c0a02210864098953d"><div class="ttname"><a href="namespace_modal.html#ad7ff8d94a023e0c0a02210864098953d">Modal::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Distrugge i componenti Modali. </div><div class="ttdef"><b>Definition:</b> <a href="modal_8cc_source.html#l00029">modal.cc:29</a></div></div>
-<div class="ttc" id="namespace_navbar_html_a3990948dcb77b595e2601bd23c371eb9"><div class="ttname"><a href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Distrugge le voci del menu. </div><div class="ttdef"><b>Definition:</b> <a href="navbar_8cc_source.html#l00026">navbar.cc:26</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a12b15f30e7c0a6f5a2ebf5b1b6dcb409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b15f30e7c0a6f5a2ebf5b1b6dcb409">&#9670;&nbsp;</a></span>Init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void App::Init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo interno di inizializzazione del componente. </p>
-<p>Viene invocato dopo che le risorse sono state caricate per poter avviare i componenti (dato il fatto che questi possono appoggiarsi a parti presenti nel JS) Vengono attivate le seguenti parti:</p><ul>
-<li>Servizi:<ul>
-<li><a class="el" href="namespace_chat_state.html">ChatState</a></li>
-<li><a class="el" href="namespace_auth_state.html">AuthState</a></li>
-</ul>
-</li>
-<li>Componenti:<ul>
-<li><a class="el" href="namespace_navbar.html" title="Funzioni di supporto e metodi elementari e la gestione delle voci presenti nella barra di navigazione...">Navbar</a></li>
-<li><a class="el" href="namespace_modal.html" title="Funzioni di supporto e metodi elementari e la gestione degli alert Modali. ">Modal</a></li>
-<li><a class="el" href="namespace_chat_list.html">ChatList</a></li>
-<li><a class="el" href="namespace_chat_details.html">ChatDetails</a> </li>
-</ul>
-</li>
-</ul>
-
-<p class="definition">Definizione alla linea <a class="el" href="app_8cc_source.html#l00049">49</a> del file <a class="el" href="app_8cc_source.html">app.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="namespace_chat_state.html#aac8d09fd3d60c378d96d184b5832b36b">ChatState::Bootstrap</a>();</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="namespace_auth_state.html#a0955329a310273616ee4a6d81978dc80">AuthState::Bootstrap</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        </div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="namespace_navbar.html#ae38c03ca276aef4b4561e5869a802f88">Navbar::Bootstrap</a>();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="namespace_modal.html#a769bb463c3fa996763f8cc3d45e6e5bf">Modal::Bootstrap</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="namespace_chat_list.html#a6913a2e951c162b957396e1e457666ed">ChatList::Bootstrap</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="namespace_chat_details.html#a6504ca0d851c990b4035f50db690f743">ChatDetails::Bootstrap</a>();</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div><div class="ttc" id="namespace_modal_html_a769bb463c3fa996763f8cc3d45e6e5bf"><div class="ttname"><a href="namespace_modal.html#a769bb463c3fa996763f8cc3d45e6e5bf">Modal::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Inizializza i componenti Modali quali: </div><div class="ttdef"><b>Definition:</b> <a href="modal_8cc_source.html#l00020">modal.cc:20</a></div></div>
-<div class="ttc" id="namespace_chat_state_html_aac8d09fd3d60c378d96d184b5832b36b"><div class="ttname"><a href="namespace_chat_state.html#aac8d09fd3d60c378d96d184b5832b36b">ChatState::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Metodo della registrazione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="chats_8cc_source.html#l00022">chats.cc:22</a></div></div>
-<div class="ttc" id="namespace_navbar_html_ae38c03ca276aef4b4561e5869a802f88"><div class="ttname"><a href="namespace_navbar.html#ae38c03ca276aef4b4561e5869a802f88">Navbar::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Inizializza le voci del menu, quali: </div><div class="ttdef"><b>Definition:</b> <a href="navbar_8cc_source.html#l00020">navbar.cc:20</a></div></div>
-<div class="ttc" id="namespace_chat_list_html_a6913a2e951c162b957396e1e457666ed"><div class="ttname"><a href="namespace_chat_list.html#a6913a2e951c162b957396e1e457666ed">ChatList::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Metodo della registrazione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="chat-list_8cc_source.html#l00041">chat-list.cc:41</a></div></div>
-<div class="ttc" id="namespace_chat_details_html_a6504ca0d851c990b4035f50db690f743"><div class="ttname"><a href="namespace_chat_details.html#a6504ca0d851c990b4035f50db690f743">ChatDetails::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Metodo della registrazione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="chat-details_8cc_source.html#l00023">chat-details.cc:23</a></div></div>
-<div class="ttc" id="namespace_auth_state_html_a0955329a310273616ee4a6d81978dc80"><div class="ttname"><a href="namespace_auth_state.html#a0955329a310273616ee4a6d81978dc80">AuthState::Bootstrap</a></div><div class="ttdeci">void Bootstrap()</div><div class="ttdoc">Metodo della registrazione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="authstate_8cc_source.html#l00060">authstate.cc:60</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="app_8cc_source.html#l00057">57</a> del file <a class="el" href="app_8cc_source.html">app.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                   {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a>(<span class="stringliteral">&quot;App&quot;</span>, <span class="stringliteral">&quot;Destroy&quot;</span>);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar::Destroy</a>();</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="namespace_modals.html#a664ba3f21dd0008213545dc018fd03ab">Modals::Destroy</a>();</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Toast::Destroy();</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// ChaList::Destroy();</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// ChatDetails::Destroy();</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">ChatState::Destroy</a>();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">UsersState::Destroy</a>();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">AuthState::Destroy</a>();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        </div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div><div class="ttc" id="logger_8h_html_a83931080af29dedba9d80603b0a6085c"><div class="ttname"><a href="logger_8h.html#a83931080af29dedba9d80603b0a6085c">log_details</a></div><div class="ttdeci">#define log_details(attr, log_msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00054">logger.h:54</a></div></div>
+<div class="ttc" id="namespace_app_html_a66dd2456f5144a9747d6ebb291d9ead4"><div class="ttname"><a href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">App::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Metodo della distruzione del componente App. </div><div class="ttdef"><b>Definition:</b> <a href="app_8cc_source.html#l00057">app.cc:57</a></div></div>
+<div class="ttc" id="namespace_modals_html_a664ba3f21dd0008213545dc018fd03ab"><div class="ttname"><a href="namespace_modals.html#a664ba3f21dd0008213545dc018fd03ab">Modals::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Distrugge i componenti Modali. </div><div class="ttdef"><b>Definition:</b> <a href="modals_8cc_source.html#l00053">modals.cc:53</a></div></div>
+<div class="ttc" id="namespace_navbar_html_a3990948dcb77b595e2601bd23c371eb9"><div class="ttname"><a href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Distrugge le voci del menu. </div><div class="ttdef"><b>Definition:</b> <a href="navbar_8cc_source.html#l00029">navbar.cc:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

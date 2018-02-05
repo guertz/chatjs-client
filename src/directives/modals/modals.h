@@ -4,7 +4,7 @@
 /** 
  * Funzioni di supporto e metodi elementari e la gestione degli alert Modali. 
  */
-namespace Modal {
+namespace Modals {
 
     /**
      * Raccolta di funzioni utili per visualizzare e nascondere modal
@@ -26,8 +26,8 @@ namespace Modal {
 
     /**
      * Inizializza i componenti Modali quali:
-     * + ::AuthModal
-     * + ::ChatModal
+     * + ::Modals::AuthModal
+     * + ::Modals::ChatModal
      */
     void Bootstrap();
 

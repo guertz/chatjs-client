@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messages',['messages',['../structchat__details__data.html#a348d263c0ed454231d0bb8b3fd951f1a',1,'chat_details_data::messages()'],['../namespace_chat_details.html#ae0ba4edc71833d8fdad762905e25b67a',1,'ChatDetails::MESSAGES()']]]
+  ['messages',['messages',['../class_states_1_1_chat_state_1_1_chat.html#a04da33ca5deed3eda7cc435b51a7c046',1,'States::ChatState::Chat']]]
 ];

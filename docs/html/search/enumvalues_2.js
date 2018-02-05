@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sent',['SENT',['../chat_8h.html#a163b02da955abcc41c04281ddba948a2af29619d9240b20155ab50bc3beb3947b',1,'chat.h']]]
+  ['err',['ERR',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e',1,'logger.h']]]
 ];

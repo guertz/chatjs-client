@@ -1,5 +1,20 @@
 var searchData=
 [
-  ['helpers_2ecc',['helpers.cc',['../helpers_8cc.html',1,'']]],
-  ['helpers_2eh',['helpers.h',['../helpers_8h.html',1,'']]]
+  ['chat_2ddetails_2ecc',['chat-details.cc',['../chat-details_8cc.html',1,'']]],
+  ['chat_2ddetails_2eh',['chat-details.h',['../chat-details_8h.html',1,'']]],
+  ['chat_2ddetails_2ehjs',['chat-details.hjs',['../chat-details_8hjs.html',1,'']]],
+  ['chat_2dlist_2ecc',['chat-list.cc',['../chat-list_8cc.html',1,'']]],
+  ['chat_2dlist_2eh',['chat-list.h',['../chat-list_8h.html',1,'']]],
+  ['chat_2dlist_2ehjs',['chat-list.hjs',['../chat-list_8hjs.html',1,'']]],
+  ['chat_2dmodal_2ecc',['chat-modal.cc',['../chat-modal_8cc.html',1,'']]],
+  ['chat_2dmodal_2eh',['chat-modal.h',['../chat-modal_8h.html',1,'']]],
+  ['chat_2dmodal_2ehjs',['chat-modal.hjs',['../chat-modal_8hjs.html',1,'']]],
+  ['chat_2dstate_2ecc',['chat-state.cc',['../chat-state_8cc.html',1,'']]],
+  ['chat_2dstate_2eh',['chat-state.h',['../chat-state_8h.html',1,'']]],
+  ['chat_2ecc',['chat.cc',['../chat_8cc.html',1,'']]],
+  ['chat_2eh',['chat.h',['../chat_8h.html',1,'']]],
+  ['components_2emd',['components.md',['../components_8md.html',1,'']]],
+  ['connectivity_2ecc',['connectivity.cc',['../connectivity_8cc.html',1,'']]],
+  ['connectivity_2eh',['connectivity.h',['../connectivity_8h.html',1,'']]],
+  ['connectivity_2ehjs',['connectivity.hjs',['../connectivity_8hjs.html',1,'']]]
 ];

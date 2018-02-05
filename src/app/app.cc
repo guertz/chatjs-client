@@ -35,7 +35,7 @@ namespace App {
             UsersState::Bootstrap();
             
             Navbar::Bootstrap();
-            Modal::Bootstrap();
+            Modals::Bootstrap();
             Toast::Bootstrap();
 
             ChatList::Bootstrap();
@@ -58,7 +58,7 @@ namespace App {
         log_details("App", "Destroy");
 
         Navbar::Destroy();
-        Modal::Destroy();
+        Modals::Destroy();
 
         // Toast::Destroy();
         // ChaList::Destroy();

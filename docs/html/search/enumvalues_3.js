@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waiting',['WAITING',['../chat_8h.html#a163b02da955abcc41c04281ddba948a2a757971c0bc5a1972d5f1b1be2c0e2087',1,'chat.h']]]
+  ['info',['INFO',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806',1,'logger.h']]]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['onloginerrors',['OnLoginErrors',['../namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a4954173a65adaffc86baa620164a8662',1,'Modal::AuthModal::AuthMethods']]],
-  ['onloginsuccess',['OnLoginSuccess',['../namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a9fc1e0ebe73c508b8e96f500ad603a21',1,'Modal::AuthModal::AuthMethods']]],
-  ['onlogout',['OnLogout',['../namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a2d4828499f6662046cb5459976243677',1,'Modal::AuthModal::AuthMethods']]],
-  ['openchat',['OpenChat',['../namespace_chat_details_1_1_events.html#a1d09e4595db7f4ab23934e4901f37171',1,'ChatDetails::Events']]]
+  ['pause',['pause',['../classws_1_1_socket.html#a819a954a0093fbf93cafbb23fc92cd34',1,'ws::Socket']]],
+  ['print_5flog',['print_log',['../logger_8cc.html#a59f78f38e4366e170801c6eea1d407dc',1,'print_log(const TAG tag, const unsigned int level, string attr, string log_msg):&#160;logger.cc'],['../logger_8h.html#ae440878274e3666a6433c55db9c7be3b',1,'print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg):&#160;logger.h']]]
 ];

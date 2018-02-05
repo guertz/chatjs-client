@@ -73,22 +73,26 @@ $(function() {
 <div class="title">Riferimenti per il file app.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="app_8h_source.html">app.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="navbar_8h_source.html">common/navbar/navbar.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="modal_8h_source.html">common/modal/modal.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;<a class="el" href="app_8h_source.html">app.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="app_8hjs_source.html">app.hjs</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="navbar_8h_source.html">directives/navbar/navbar.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="modals_8h_source.html">directives/modals/modals.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="toast_8h_source.html">directives/toast/toast.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="chat-list_8h_source.html">pages/chat-list/chat-list.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="chat-details_8h_source.html">pages/chat-details/chat-details.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="web__ui_8h_source.html">common/helpers/web_ui.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="helpers_8h_source.html">common/helpers/helpers.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="chats_8h_source.html">providers/chats/chats.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="authstate_8h_source.html">providers/session/authstate.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="web-ui_8h_source.html">common/web-ui/web-ui.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logger_8h_source.html">common/logger/logger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="users-state_8h_source.html">states/users-state/users-state.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="chat-state_8h_source.html">states/chat-state/chat-state.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth-state_8h_source.html">states/auth-state/auth-state.h</a>&quot;</code><br />
 </div>
 <p><a href="app_8cc_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespace</h2></td></tr>
 <tr class="memitem:namespace_app"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html">App</a></td></tr>
-<tr class="memdesc:namespace_app"><td class="mdescLeft">&#160;</td><td class="mdescRight">Componente principale incaricato della gestione delle varie parti dell' applicazione. <br /></td></tr>
+<tr class="memdesc:namespace_app"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Core" dell'applicazione incaricato di gestire i vari sotto-moduli. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_app_1_1_events"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app_1_1_events.html">App::Events</a></td></tr>
 <tr class="memdesc:namespace_app_1_1_events"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire sulla finestra. <br /></td></tr>
@@ -96,17 +100,13 @@ Namespace</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a12b15f30e7c0a6f5a2ebf5b1b6dcb409">App::Init</a> ()</td></tr>
-<tr class="memdesc:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo interno di inizializzazione del componente.  <a href="namespace_app.html#a12b15f30e7c0a6f5a2ebf5b1b6dcb409">Continua...</a><br /></td></tr>
-<tr class="separator:a12b15f30e7c0a6f5a2ebf5b1b6dcb409"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34427d3e5c1a6dd407410d1e6d716f33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app_1_1_events.html#a34427d3e5c1a6dd407410d1e6d716f33">App::Events::Ready</a> (const char *args)</td></tr>
-<tr class="memdesc:a34427d3e5c1a6dd407410d1e6d716f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo invocato da JavaScript che notifica il caricamento avvenuto degli script e degli stili.  <a href="namespace_app_1_1_events.html#a34427d3e5c1a6dd407410d1e6d716f33">Continua...</a><br /></td></tr>
-<tr class="separator:a34427d3e5c1a6dd407410d1e6d716f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24245c1ac23dbb62b329123de44ffd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app_1_1_events.html#aa24245c1ac23dbb62b329123de44ffd5">App::Events::Ready</a> (const string &amp;args)</td></tr>
+<tr class="separator:aa24245c1ac23dbb62b329123de44ffd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">App::Bootstrap</a> ()</td></tr>
-<tr class="memdesc:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">Continua...</a><br /></td></tr>
+<tr class="memdesc:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>.  <a href="namespace_app.html#a7effd8d80a014a8ca3cdf39c2870c9e6">Continua...</a><br /></td></tr>
 <tr class="separator:a7effd8d80a014a8ca3cdf39c2870c9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66dd2456f5144a9747d6ebb291d9ead4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">App::Destroy</a> ()</td></tr>
-<tr class="memdesc:a66dd2456f5144a9747d6ebb291d9ead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">Continua...</a><br /></td></tr>
+<tr class="memdesc:a66dd2456f5144a9747d6ebb291d9ead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della distruzione del componente <a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>.  <a href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">Continua...</a><br /></td></tr>
 <tr class="separator:a66dd2456f5144a9747d6ebb291d9ead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

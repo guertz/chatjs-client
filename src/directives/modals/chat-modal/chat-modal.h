@@ -1,11 +1,11 @@
 #ifndef DIRECTIVES_MODALS_CHAT_MODAL_CHAT_MODAL_H
 #define DIRECTIVES_MODALS_CHAT_MODAL_CHAT_MODAL_H
 
-namespace Modal {
+namespace Modals {
 
    /**
     * Modale che mostra una lista di utenti con cui iniziare una chat.
-    * Per maggiore dettagli sulla struttura fare riferimento a ::components.md
+    * Per maggiore dettagli sulla struttura fare riferimento a components.md
     * Viene mostrato a seguito di una richiesta da parte dell'utente autenticato
     */
     namespace ChatModal {

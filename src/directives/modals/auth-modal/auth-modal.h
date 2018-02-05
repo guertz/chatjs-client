@@ -1,11 +1,11 @@
 #ifndef DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 #define DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 
-namespace Modal {
+namespace Modals {
 
    /**
     * Modale che permette ad un utente di autenticarsi.
-    * Per maggiore dettagli sulla struttura fare riferimento a ::components.md
+    * Per maggiore dettagli sulla struttura fare riferimento a components.md
     * Viene mostrato all'avvio della app e a seguito della disconnessione
     * dell'utente. La schermata di autenticazione si presenta come un
     * semplice form in cui l'utente deve inserire il proprio ID

@@ -4,8 +4,9 @@
 #include "env.h"
 /**
  *  @brief Sistema di logging.
+ *  @file env.h
  *  Descrizione del funzionamento e configurazioni:
- *  + I log sono di default abilitati da (DEBUG_MASK > 0) ::env.h per dettagli
+ *  + I log sono di default abilitati da (DEBUG_MASK > 0) env.h per dettagli
  *  + I livelli di log configurabili sono:
  *      - log_csl  sempre attivo da DEBUG_MASK
  *      - log_ws   sempre attivo da DEBUG_MASK
@@ -54,6 +55,6 @@ enum TAG{
 #define log_pedantic(attr, log_msg)  { if(4 & DEBUG_MASK) { LOGGER(TAG::INFO, 3, attr, log_msg); } }
 
 
-void print_log(const TAG tag, const unsigned int level, const std::string& attr, const std::string& log_msg);
+void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg);
 
 #endif

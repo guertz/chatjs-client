@@ -75,14 +75,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a8f482d37bfca5a066a242004e8f71aeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a8f482d37bfca5a066a242004e8f71aeb">NewChat</a> (const char *argc)</td></tr>
-<tr class="separator:a8f482d37bfca5a066a242004e8f71aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89f4944ba01e129cfb104e27dc9a6db2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a89f4944ba01e129cfb104e27dc9a6db2">UserSelected</a> (const char *arg)</td></tr>
-<tr class="separator:a89f4944ba01e129cfb104e27dc9a6db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88ddff61dca27a862e40df650f48d45a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a88ddff61dca27a862e40df650f48d45a">NewChat</a> (const string &amp;argc)</td></tr>
+<tr class="separator:a88ddff61dca27a862e40df650f48d45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cba6583460778d42f4340a96eb14d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a18cba6583460778d42f4340a96eb14d9">UserSelected</a> (const string &amp;arg)</td></tr>
+<tr class="separator:a18cba6583460778d42f4340a96eb14d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd94586bc189c4a77d7d1fa10f9c39fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#acd94586bc189c4a77d7d1fa10f9c39fa">UserSelected</a> (const std::string &amp;arg)</td></tr>
+<tr class="separator:acd94586bc189c4a77d7d1fa10f9c39fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69e7d1b102e93064d86d76a354ce43ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_list_1_1_events.html#a69e7d1b102e93064d86d76a354ce43ac">NewChat</a> (const std::string &amp;arg)</td></tr>
+<tr class="separator:a69e7d1b102e93064d86d76a354ce43ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentazione delle funzioni</h2>
-<a id="a8f482d37bfca5a066a242004e8f71aeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f482d37bfca5a066a242004e8f71aeb">&#9670;&nbsp;</a></span>NewChat()</h2>
+<a id="a69e7d1b102e93064d86d76a354ce43ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69e7d1b102e93064d86d76a354ce43ac">&#9670;&nbsp;</a></span>NewChat() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -90,21 +94,38 @@ Funzioni</h2></td></tr>
         <tr>
           <td class="memname">void ChatList::Events::NewChat </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88ddff61dca27a862e40df650f48d45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ddff61dca27a862e40df650f48d45a">&#9670;&nbsp;</a></span>NewChat() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChatList::Events::NewChat </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>argc</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="chat-list_8cc_source.html#l00051">51</a> del file <a class="el" href="chat-list_8cc_source.html">chat-list.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                       {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="namespace_modal_1_1_chat_modal_1_1_events.html#a88a698837275080961948e4f026ff64a">Modal::ChatModal::Events::Show</a>();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(argc);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div><div class="ttc" id="namespace_helpers_1_1safeptr_html_a9ddcf89d56f8a8ed10343736f8ce7461"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">Helpers::safeptr::free_block</a></div><div class="ttdeci">void free_block(const char *&amp;kPtrChar)</div><div class="ttdoc"> Distruzione di un blocco puntatore a carattere. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00011">helpers.cc:11</a></div></div>
-<div class="ttc" id="namespace_modal_1_1_chat_modal_1_1_events_html_a88a698837275080961948e4f026ff64a"><div class="ttname"><a href="namespace_modal_1_1_chat_modal_1_1_events.html#a88a698837275080961948e4f026ff64a">Modal::ChatModal::Events::Show</a></div><div class="ttdeci">void Show()</div><div class="ttdoc">Metodo per mostrare il modale. </div><div class="ttdef"><b>Definition:</b> <a href="chat-modal_8cc_source.html#l00058">chat-modal.cc:58</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="chat-list_8cc_source.html#l00041">41</a> del file <a class="el" href="chat-list_8cc_source.html">chat-list.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                         {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="comment">// log_base(&quot;ChatList::Events(NewChat)&quot;, argc);</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="namespace_modals_1_1_chat_modal_1_1_events.html#a8b5f56d147a2a77c362c753852f5ce63">Modals::ChatModal::Events::Show</a>();</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div><div class="ttc" id="namespace_modals_1_1_chat_modal_1_1_events_html_a8b5f56d147a2a77c362c753852f5ce63"><div class="ttname"><a href="namespace_modals_1_1_chat_modal_1_1_events.html#a8b5f56d147a2a77c362c753852f5ce63">Modals::ChatModal::Events::Show</a></div><div class="ttdeci">void Show()</div><div class="ttdoc">Metodo per mostrare il modale. </div><div class="ttdef"><b>Definition:</b> <a href="chat-modal_8cc_source.html#l00037">chat-modal.cc:37</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a89f4944ba01e129cfb104e27dc9a6db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89f4944ba01e129cfb104e27dc9a6db2">&#9670;&nbsp;</a></span>UserSelected()</h2>
+<a id="acd94586bc189c4a77d7d1fa10f9c39fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd94586bc189c4a77d7d1fa10f9c39fa">&#9670;&nbsp;</a></span>UserSelected() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,17 +133,34 @@ Funzioni</h2></td></tr>
         <tr>
           <td class="memname">void ChatList::Events::UserSelected </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>arg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="chat-list_8cc_source.html#l00056">56</a> del file <a class="el" href="chat-list_8cc_source.html">chat-list.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                          {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="namespace_chat_details_1_1_events.html#a1d09e4595db7f4ab23934e4901f37171">ChatDetails::Events::OpenChat</a>(<a class="code" href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">safestr::duplicate</a>(arg));</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">safeptr::free_block</a>(arg);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div><div class="ttc" id="namespace_helpers_1_1safeptr_html_a9ddcf89d56f8a8ed10343736f8ce7461"><div class="ttname"><a href="namespace_helpers_1_1safeptr.html#a9ddcf89d56f8a8ed10343736f8ce7461">Helpers::safeptr::free_block</a></div><div class="ttdeci">void free_block(const char *&amp;kPtrChar)</div><div class="ttdoc"> Distruzione di un blocco puntatore a carattere. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00011">helpers.cc:11</a></div></div>
-<div class="ttc" id="namespace_chat_details_1_1_events_html_a1d09e4595db7f4ab23934e4901f37171"><div class="ttname"><a href="namespace_chat_details_1_1_events.html#a1d09e4595db7f4ab23934e4901f37171">ChatDetails::Events::OpenChat</a></div><div class="ttdeci">void OpenChat(const char *args)</div><div class="ttdef"><b>Definition:</b> <a href="chat-details_8cc_source.html#l00106">chat-details.cc:106</a></div></div>
-<div class="ttc" id="namespace_helpers_1_1safestr_html_a10a94ba2466747f8985ea97a19790d21"><div class="ttname"><a href="namespace_helpers_1_1safestr.html#a10a94ba2466747f8985ea97a19790d21">Helpers::safestr::duplicate</a></div><div class="ttdeci">char * duplicate(const char *kPtrChar)</div><div class="ttdoc">Funzione helper per la duplicazione di un&amp;#39;array di caratteri. </div><div class="ttdef"><b>Definition:</b> <a href="helpers_8cc_source.html#l00049">helpers.cc:49</a></div></div>
+</div>
+</div>
+<a id="a18cba6583460778d42f4340a96eb14d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18cba6583460778d42f4340a96eb14d9">&#9670;&nbsp;</a></span>UserSelected() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChatList::Events::UserSelected </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="chat-list_8cc_source.html#l00046">46</a> del file <a class="el" href="chat-list_8cc_source.html">chat-list.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                            {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="comment">// log_base(&quot;ChatList@UserSelected&quot;, arg);</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> event_args = json::parse(arg);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ac54878148970df945612069f5b2bd670">ChatState::ChatsMethods::setCurrent</a>(event_args.at(<span class="stringliteral">&quot;ref&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;());</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div><div class="ttc" id="namespace_states_1_1_chat_state_1_1_chats_methods_html_ac54878148970df945612069f5b2bd670"><div class="ttname"><a href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ac54878148970df945612069f5b2bd670">States::ChatState::ChatsMethods::setCurrent</a></div><div class="ttdeci">void setCurrent(const string &amp;reference)</div><div class="ttdef"><b>Definition:</b> <a href="chat-state_8cc_source.html#l00146">chat-state.cc:146</a></div></div>
+<div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

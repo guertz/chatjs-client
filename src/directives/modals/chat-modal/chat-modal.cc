@@ -17,7 +17,7 @@ using namespace std;
 using namespace WebUI;
 using namespace States;
 
-namespace Modal { 
+namespace Modals { 
 
     namespace ChatModal {
 
@@ -36,11 +36,11 @@ namespace Modal {
 
             void Show() {
                 State::Users(); // Refresh forzato
-                Modal::Events::ShowModalByRef(modalRef);  
+                Modals::Events::ShowModalByRef(modalRef);  
             }
 
             void Hide() {
-                Modal::Events::HideModalByRef(modalRef);    
+                Modals::Events::HideModalByRef(modalRef);    
             }            
         }
 
@@ -49,8 +49,8 @@ namespace Modal {
 
             WebUI::Execute(_src_directives_modal_chat_modal_chat_modal_js);
 
-            WebUI::Register("Modal::ChatModal::NewChatOpen", Events::NewChatOpen);
-            UsersState::Register("Modal::ChatModal", State::Users);
+            WebUI::Register("Modals::ChatModal::NewChatOpen", Events::NewChatOpen);
+            UsersState::Register("Modals::ChatModal", State::Users);
         }
 
         void EraseModal () {

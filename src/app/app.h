@@ -5,7 +5,7 @@
  * @brief "Core" dell'applicazione incaricato di gestire i vari sotto-moduli.
  *
  * Principalmente le parti che compongono l'intera applicazione sono:
- * + Componenti grafici (::components.md). Sono i componenti percepiti e  
+ * + Componenti grafici (components.md). Sono i componenti percepiti e  
  *   con cui l'utente interagisce. Si suddividono in due categorie:
  *   - Partials (/pages) ovvero componenti ben definiti e presenti per
  *     tutto il ciclo di vita dell'applicazione:
@@ -16,7 +16,7 @@
  *     e compaiono in determinati momenti o per determinate azioni:
  *     - ::Toast
  *     - ::Navbar
- *     - ::Modal
+ *     - ::Modals
  * + Data states (States). Si tratta della gestione dei dati, da come
  *   ottenere questi ultimi e alla struttura dati per come salvarli:
  *   - Data models. Struttura di un dato e come quest'ultimo viene
@@ -32,9 +32,9 @@
  *     dati da fonti esterne (socket) e mantenerli in un formato consistente
  *     notificando di cambiamenti altri eventuali componti che ne fanno attraverso
  *     un sistema di callback.
- *     - ::AuthState
- *     - ::ChatState
- *     - ::UsersState
+ *     - ::States::AuthState
+ *     - ::States::ChatState
+ *     - ::States::UsersState
  */
 namespace App {
     /**

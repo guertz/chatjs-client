@@ -34,7 +34,7 @@ const AuthModalFactory = function(){
         const val = window.getFirst(node, "input.userid").value;
         window.external.invoke(JSON.stringify(
             {
-                fn: 'Modal::AuthModal::Submit', 
+                fn: 'Modals::AuthModal::Submit', 
                 params: {
                     '_id': val
                 }

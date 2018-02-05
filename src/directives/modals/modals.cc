@@ -14,7 +14,7 @@ using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
 
-namespace Modal {
+namespace Modals {
 
     namespace Events {
 

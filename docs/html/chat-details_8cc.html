@@ -79,11 +79,11 @@ $(function() {
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;json.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="env_8h_source.html">env.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="chat-details_8h_source.html">chat-details.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="web__ui_8h_source.html">common/helpers/web_ui.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="helpers_8h_source.html">common/helpers/helpers.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="chats_8h_source.html">providers/chats/chats.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="authstate_8h_source.html">providers/session/authstate.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="chat-details_8hjs_source.html">chat-details.hjs</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="web-ui_8h_source.html">common/web-ui/web-ui.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="chat-state_8h_source.html">states/chat-state/chat-state.h</a>&quot;</code><br />
 </div>
 <p><a href="chat-details_8cc_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
@@ -93,7 +93,7 @@ Namespace</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_chat_details_1_1_events"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html">ChatDetails::Events</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_chat_details_1_1_chat"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_chat.html">ChatDetails::Chat</a></td></tr>
+<tr class="memitem:namespace_chat_details_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_state.html">ChatDetails::State</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -104,21 +104,20 @@ Ridefinizioni di tipo (typedef)</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
 <tr class="memitem:a6504ca0d851c990b4035f50db690f743"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details.html#a6504ca0d851c990b4035f50db690f743">ChatDetails::Bootstrap</a> ()</td></tr>
-<tr class="memdesc:a6504ca0d851c990b4035f50db690f743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo della registrazione del componente <a class="el" href="namespace_app.html" title="Componente principale incaricato della gestione delle varie parti dell&#39; applicazione. ">App</a>.  <a href="namespace_chat_details.html#a6504ca0d851c990b4035f50db690f743">Continua...</a><br /></td></tr>
 <tr class="separator:a6504ca0d851c990b4035f50db690f743"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad56bc95e4190403296a8007753937d2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#ad56bc95e4190403296a8007753937d2f">ChatDetails::Events::Refresh</a> ()</td></tr>
-<tr class="separator:ad56bc95e4190403296a8007753937d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d09e4595db7f4ab23934e4901f37171"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#a1d09e4595db7f4ab23934e4901f37171">ChatDetails::Events::OpenChat</a> (const char *args)</td></tr>
-<tr class="separator:a1d09e4595db7f4ab23934e4901f37171"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d31a58f5eeba4d7ad21880441032cc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#a9d31a58f5eeba4d7ad21880441032cc4">ChatDetails::Events::Submit</a> (const char *args)</td></tr>
-<tr class="separator:a9d31a58f5eeba4d7ad21880441032cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb6627a8810356300ec456f969b201e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_chat.html#acb6627a8810356300ec456f969b201e8">ChatDetails::Chat::State</a> (const char *emptyJson)</td></tr>
-<tr class="separator:acb6627a8810356300ec456f969b201e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade528651f918b7874a9090fdc3051972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#ade528651f918b7874a9090fdc3051972">ChatDetails::Events::Submit</a> (const string &amp;args)</td></tr>
+<tr class="separator:ade528651f918b7874a9090fdc3051972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe5dd9199419a6fe16322dde263a4e79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_state.html#abe5dd9199419a6fe16322dde263a4e79">ChatDetails::State::Chat</a> ()</td></tr>
+<tr class="separator:abe5dd9199419a6fe16322dde263a4e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variabili</h2></td></tr>
-<tr class="memitem:ae0ba4edc71833d8fdad762905e25b67a"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details.html#ae0ba4edc71833d8fdad762905e25b67a">ChatDetails::MESSAGES</a> = 10</td></tr>
-<tr class="separator:ae0ba4edc71833d8fdad762905e25b67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7121ae28c397c8fb7219882cc37d6b"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details.html#a9a7121ae28c397c8fb7219882cc37d6b">ChatDetails::CHAT_INACTIVE</a> = &quot;alert('Deve prima essere selezionata una chat')&quot;</td></tr>
+<tr class="separator:a9a7121ae28c397c8fb7219882cc37d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc71f78caffdea58d0f4fd643b27572"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details.html#a6fc71f78caffdea58d0f4fd643b27572">ChatDetails::ENABLE_FORM</a> = &quot;components.ChatDetails.enable()&quot;</td></tr>
+<tr class="separator:a6fc71f78caffdea58d0f4fd643b27572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf28a0eecb97576973d9f4c4671a93a2"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details.html#abf28a0eecb97576973d9f4c4671a93a2">ChatDetails::DISABLE_FORM</a> = &quot;components.ChatDetails.disable()&quot;</td></tr>
+<tr class="separator:abf28a0eecb97576973d9f4c4671a93a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
 <a id="ab701e3ac61a85b337ec5c1abaad6742d"></a>
@@ -128,7 +127,7 @@ Variabili</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="web__ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
+          <td class="memname">using <a class="el" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
         </tr>
       </table>
 </div><div class="memdoc">

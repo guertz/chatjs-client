@@ -24,7 +24,7 @@ const ChatModalFactory = function() {
         return function(){
             window.external.invoke(JSON.stringify(
                 {
-                    fn: 'Modal::ChatModal::NewChatOpen', 
+                    fn: 'Modals::ChatModal::NewChatOpen', 
                     params: { 
                         user: userId
                     }

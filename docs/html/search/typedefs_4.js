@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['typo_5fchat',['typo_chat',['../chats_8h.html#a69faac73c04ecf2be287ce42ac922cf0',1,'chats.h']]],
-  ['typo_5fchat_5fwatchers',['typo_chat_watchers',['../namespace_chat_state.html#a2e9d1ec91236683610a00b3bd91a4e87',1,'ChatState']]],
-  ['typo_5fchats',['typo_chats',['../chats_8h.html#a4e5fc401870b459e73b0dcf1dda68390',1,'chats.h']]]
+  ['websocket',['WebSocket',['../wscustom_8cc.html#a2dac83958a4e8d5195df42ba996c6787',1,'wscustom.cc']]],
+  ['webview',['Webview',['../namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615',1,'WebUI']]]
 ];

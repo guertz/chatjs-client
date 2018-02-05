@@ -5,7 +5,7 @@ Per un componente generico è possibile notare in comune:
     - **Events**: per metodi che effettuano cambiamenti all'interfaccia (Hanlder/Dispatcher)
     - **State**: per i metodi che fungono da callback per eventi di cambiamento allo stato dei dati
     >I metodi sono del tipo `inline` e hanno la convenzione di essere  chiamati *Auth* per *AuthState* o *Chat* per *ChatState*
-    - **<State>Methods**: per i metodi di supporto di un determinato state dei dati: *Auth* può avere in questa sezione i metodi `OnLoginSuccess`, `OnLoginError`. Sono inseriti in questa sezione per non sporcare altri parti del codice.
+    - **`State`Methods**: per i metodi di supporto di un determinato state dei dati: *Auth* può avere in questa sezione i metodi `OnLoginSuccess`, `OnLoginError`. Sono inseriti in questa sezione per non sporcare altri parti del codice.
 + Metodi comuni:
     - **Bootstrap**: che funge da costruttore (Carica il componente Javascript nel file .hjs e registra eventi di callback)
     - **Destroy**: che funge da distruttore

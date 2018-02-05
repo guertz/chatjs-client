@@ -67,26 +67,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="section author"><dt>Autore</dt><dd>Matteo Guerzoni</dd></dl>
-<p>Esempio di chat in C++ realizzata attraverso tecnologie ibride e websockets. <br />
-Chat.js è una dimostrazione di come il C++ possa essere un linguaggio da <br />
-considerarsi alla pari dei "moderni linguaggi".</p>
-<p>Attraverso la libreria webview realizzata da zserge e disponibile su github <br />
-è stato possibile realizzare la User Interface in modo più semplice tramite <br />
-i linguaggi HTML, JavaScript per gestire gli eventi notificati ad appositi <br />
-metodi C++ incaricati delle fasi di elaborazione ed infine CSS per <br />
-realizzare lo stile.</p>
-<p>L'interoperabilità tra i vari componenti e metodi (C++/JS JS/C++ C++/C++) <br />
-è stata resa possibile attraverso lo scambio di messaggi in formato JSON <br />
-serializzato sotto forma di stringa. Infine l' applicazione comunica <br />
-tramite la libreria easywsclient realizzata da dhbaird (sempre reperibile <br />
-su github) con un server realizzato in nodejs incaricato di gestire la <br />
-logica di un servizio di chat in tempo reale. <br />
- L'obiettivo è stato raggiunto ed è stata realizzata un applicazione <br />
-realtime multipiattaforma leggera e che richiede pochissime dipendenze. <br />
-Il lavoro tuttavia non è ancora completato e verrà portato avanti per <br />
-per realizzare una struttura ancora più rigida e indipendente dal JS <br />
-orientata ad oggetti</p>
-<p>Vai alla definizione del file <a class="el" href="main_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> </p>
+<p>Chatjs, è un'applicazione C++ di chat in tempo reale, cross-platform dotata di interfaccia grafica realizzata in linguaggio di markup HTML e renderizzata sui browser engine nativi del dispositivo. Si interfaccia con un server di backend in nodejs tramite WebSockets con scambio di messaggi in formato JSON. Per mettere in comunicazione i componenti fa uso di un sistema di callback basato sui puntatori a funzione.</p>
+<p>Gli eventi nella webview vengono mappati in c++ come callback a specifiche funzioni che ricevono parametri in formato JSON serializzato e sono bidirezionali nel senso che da C++ possono essere invocati metodi Javascript e viceversa.</p>
+<p>Per sfogliare la documentazione, è consigliato partire dal metodo <a class="el" href="main_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> <br />
+per poi continuare nelle due sezione:</p><ul>
+<li>Webview <a class="el" href="class_user.html">User</a> Interface (<a class="el" href="namespace_web_u_i.html" title="Funzioni di supporto e metodi elementari e creazione della webview. ">WebUI</a>): in cui sono definiti i metodi principali <br />
+per la gestione della webview e a sua volta dell'interfaccia utenti</li>
+<li><a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a> (<a class="el" href="namespace_app.html" title="&quot;Core&quot; dell&#39;applicazione incaricato di gestire i vari sotto-moduli. ">App</a>): in cui sono definiti i metodi e i moduli che compongono <br />
+l'applicazione stessa </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

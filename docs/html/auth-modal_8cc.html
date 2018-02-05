@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chat.js: Riferimenti per il file src/modals/auth-modal/auth-modal.cc</title>
+<title>Chat.js: Riferimenti per il file src/directives/modals/auth-modal/auth-modal.cc</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_683c936f19f5c8ebadb35ab7c71b946b.html">modals</a></li><li class="navelem"><a class="el" href="dir_dba1cbf3899a646aa8d65947dd72dc3f.html">auth-modal</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0c39e255813615dec2075f0bd0727212.html">directives</a></li><li class="navelem"><a class="el" href="dir_fec02e445b9436498c9da8662d02c747.html">modals</a></li><li class="navelem"><a class="el" href="dir_2328281f0867791fc78fd0233655026d.html">auth-modal</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -76,30 +76,31 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;json.hpp&gt;</code><br />
-<code>#include &quot;<a class="el" href="web__ui_8h_source.html">common/helpers/web_ui.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="helpers_8h_source.html">common/helpers/helpers.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="auth-modal_8h_source.html">auth-modal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="modal_8h_source.html">common/modal/modal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="authstate_8h_source.html">providers/session/authstate.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth-modal_8hjs_source.html">auth-modal.hjs</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="modals_8h_source.html">directives/modals/modals.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="web-ui_8h_source.html">common/web-ui/web-ui.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logger_8h_source.html">common/logger/logger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth-state_8h_source.html">states/auth-state/auth-state.h</a>&quot;</code><br />
 </div>
 <p><a href="auth-modal_8cc_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespace</h2></td></tr>
-<tr class="memitem:namespace_modal"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal.html">Modal</a></td></tr>
-<tr class="memdesc:namespace_modal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzioni di supporto e metodi elementari e la gestione degli alert Modali. <br /></td></tr>
+<tr class="memitem:namespace_modals"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals.html">Modals</a></td></tr>
+<tr class="memdesc:namespace_modals"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzioni di supporto e metodi elementari e la gestione degli alert Modali. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_modal_1_1_auth_modal"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal.html">Modal::AuthModal</a></td></tr>
-<tr class="memdesc:namespace_modal_1_1_auth_modal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modale che mostra l'autenticazione utente. <br /></td></tr>
+<tr class="memitem:namespace_modals_1_1_auth_modal"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal.html">Modals::AuthModal</a></td></tr>
+<tr class="memdesc:namespace_modals_1_1_auth_modal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modale che permette ad un utente di autenticarsi. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_modal_1_1_auth_modal_1_1_events"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_events.html">Modal::AuthModal::Events</a></td></tr>
-<tr class="memdesc:namespace_modal_1_1_auth_modal_1_1_events"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome identificativo del modale di autenticazione. <br /></td></tr>
+<tr class="memitem:namespace_modals_1_1_auth_modal_1_1_events"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html">Modals::AuthModal::Events</a></td></tr>
+<tr class="memdesc:namespace_modals_1_1_auth_modal_1_1_events"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire sulla finestra. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_modal_1_1_auth_modal_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_state.html">Modal::AuthModal::State</a></td></tr>
-<tr class="memdesc:namespace_modal_1_1_auth_modal_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi relativo agli eventi generati da callbacks. <br /></td></tr>
+<tr class="memitem:namespace_modals_1_1_auth_modal_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_state.html">Modals::AuthModal::State</a></td></tr>
+<tr class="memdesc:namespace_modals_1_1_auth_modal_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi relativo agli eventi generati da callbacks. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_modal_1_1_auth_modal_1_1_auth_methods"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html">Modal::AuthModal::AuthMethods</a></td></tr>
-<tr class="memdesc:namespace_modal_1_1_auth_modal_1_1_auth_methods"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi in cui vengono raggruppati metodi relativi ad eventi generati dallo state di autenticazione. <br /></td></tr>
+<tr class="memitem:namespace_modals_1_1_auth_modal_1_1_auth_methods"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html">Modals::AuthModal::AuthMethods</a></td></tr>
+<tr class="memdesc:namespace_modals_1_1_auth_modal_1_1_auth_methods"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi in cui vengono raggruppati metodi relativi ad eventi generati dallo state di autenticazione. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -109,36 +110,35 @@ Ridefinizioni di tipo (typedef)</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:ab6d18cd9c7a01a6aa83cf2595517659c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_events.html#ab6d18cd9c7a01a6aa83cf2595517659c">Modal::AuthModal::Events::Submit</a> (const char *argc)</td></tr>
-<tr class="memdesc:ab6d18cd9c7a01a6aa83cf2595517659c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo invocato da JavaScript che notifica l'invio dei dati del form di autenticazione.  <a href="namespace_modal_1_1_auth_modal_1_1_events.html#ab6d18cd9c7a01a6aa83cf2595517659c">Continua...</a><br /></td></tr>
-<tr class="separator:ab6d18cd9c7a01a6aa83cf2595517659c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae88f5abc8ebf4dbdc8b3a70cd28e8548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_events.html#ae88f5abc8ebf4dbdc8b3a70cd28e8548">Modal::AuthModal::Events::Reset</a> ()</td></tr>
-<tr class="memdesc:ae88f5abc8ebf4dbdc8b3a70cd28e8548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che agisce su l'interfaccia e riporta il form al suo stato di default.  <a href="namespace_modal_1_1_auth_modal_1_1_events.html#ae88f5abc8ebf4dbdc8b3a70cd28e8548">Continua...</a><br /></td></tr>
-<tr class="separator:ae88f5abc8ebf4dbdc8b3a70cd28e8548"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca0c841447608691bd9208e63ab51fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Modal::AuthModal::Events::Show</a> ()</td></tr>
-<tr class="memdesc:aca0c841447608691bd9208e63ab51fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per mostrare il modale.  <a href="namespace_modal_1_1_auth_modal_1_1_events.html#aca0c841447608691bd9208e63ab51fda">Continua...</a><br /></td></tr>
-<tr class="separator:aca0c841447608691bd9208e63ab51fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97b8a7f03e82e58c75ed9b910762918f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Modal::AuthModal::Events::Hide</a> ()</td></tr>
-<tr class="memdesc:a97b8a7f03e82e58c75ed9b910762918f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per nascondere il modale.  <a href="namespace_modal_1_1_auth_modal_1_1_events.html#a97b8a7f03e82e58c75ed9b910762918f">Continua...</a><br /></td></tr>
-<tr class="separator:a97b8a7f03e82e58c75ed9b910762918f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac32979fcf1be2ef80f9747b6148ad51e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal.html#ac32979fcf1be2ef80f9747b6148ad51e">Modal::AuthModal::RegisterModal</a> ()</td></tr>
-<tr class="memdesc:ac32979fcf1be2ef80f9747b6148ad51e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo di inizializzazione del modale.  <a href="namespace_modal_1_1_auth_modal.html#ac32979fcf1be2ef80f9747b6148ad51e">Continua...</a><br /></td></tr>
-<tr class="separator:ac32979fcf1be2ef80f9747b6148ad51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fe4eb6b30a28f8603d1ab45bbd12dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal.html#a6fe4eb6b30a28f8603d1ab45bbd12dcc">Modal::AuthModal::EraseModal</a> ()</td></tr>
-<tr class="memdesc:a6fe4eb6b30a28f8603d1ab45bbd12dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo di distruzione del modale.  <a href="namespace_modal_1_1_auth_modal.html#a6fe4eb6b30a28f8603d1ab45bbd12dcc">Continua...</a><br /></td></tr>
-<tr class="separator:a6fe4eb6b30a28f8603d1ab45bbd12dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82847478ef72d70e3b68e08f72d6c5d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_state.html#a82847478ef72d70e3b68e08f72d6c5d5">Modal::AuthModal::State::Auth</a> (const char *argc)</td></tr>
-<tr class="memdesc:a82847478ef72d70e3b68e08f72d6c5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.  <a href="namespace_modal_1_1_auth_modal_1_1_state.html#a82847478ef72d70e3b68e08f72d6c5d5">Continua...</a><br /></td></tr>
-<tr class="separator:a82847478ef72d70e3b68e08f72d6c5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fc1e0ebe73c508b8e96f500ad603a21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a9fc1e0ebe73c508b8e96f500ad603a21">Modal::AuthModal::AuthMethods::OnLoginSuccess</a> ()</td></tr>
-<tr class="memdesc:a9fc1e0ebe73c508b8e96f500ad603a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'avvenuto login con successo.  <a href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a9fc1e0ebe73c508b8e96f500ad603a21">Continua...</a><br /></td></tr>
-<tr class="separator:a9fc1e0ebe73c508b8e96f500ad603a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4954173a65adaffc86baa620164a8662"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a4954173a65adaffc86baa620164a8662">Modal::AuthModal::AuthMethods::OnLoginErrors</a> ()</td></tr>
-<tr class="memdesc:a4954173a65adaffc86baa620164a8662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'avvenuto login con errori.  <a href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a4954173a65adaffc86baa620164a8662">Continua...</a><br /></td></tr>
-<tr class="separator:a4954173a65adaffc86baa620164a8662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d4828499f6662046cb5459976243677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a2d4828499f6662046cb5459976243677">Modal::AuthModal::AuthMethods::OnLogout</a> ()</td></tr>
-<tr class="memdesc:a2d4828499f6662046cb5459976243677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'azione di logout.  <a href="namespace_modal_1_1_auth_modal_1_1_auth_methods.html#a2d4828499f6662046cb5459976243677">Continua...</a><br /></td></tr>
-<tr class="separator:a2d4828499f6662046cb5459976243677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901ebd0ebfa9e7fd457259de5a666422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#a901ebd0ebfa9e7fd457259de5a666422">Modals::AuthModal::Events::Submit</a> (const string &amp;args)</td></tr>
+<tr class="separator:a901ebd0ebfa9e7fd457259de5a666422"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81fb226ff05be3295d52e4249545fff6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#a81fb226ff05be3295d52e4249545fff6">Modals::AuthModal::Events::Reset</a> ()</td></tr>
+<tr class="memdesc:a81fb226ff05be3295d52e4249545fff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che agisce su l'interfaccia e riporta il form al suo stato di default.  <a href="namespace_modals_1_1_auth_modal_1_1_events.html#a81fb226ff05be3295d52e4249545fff6">Continua...</a><br /></td></tr>
+<tr class="separator:a81fb226ff05be3295d52e4249545fff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2658dd72e8696b1b4b7ac0ee9ac0ce5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#a2658dd72e8696b1b4b7ac0ee9ac0ce5d">Modals::AuthModal::Events::Show</a> ()</td></tr>
+<tr class="memdesc:a2658dd72e8696b1b4b7ac0ee9ac0ce5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per mostrare il modale.  <a href="namespace_modals_1_1_auth_modal_1_1_events.html#a2658dd72e8696b1b4b7ac0ee9ac0ce5d">Continua...</a><br /></td></tr>
+<tr class="separator:a2658dd72e8696b1b4b7ac0ee9ac0ce5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8383b6eb600d7f49e64a3dcffedede"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#a9e8383b6eb600d7f49e64a3dcffedede">Modals::AuthModal::Events::Hide</a> ()</td></tr>
+<tr class="memdesc:a9e8383b6eb600d7f49e64a3dcffedede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per nascondere il modale.  <a href="namespace_modals_1_1_auth_modal_1_1_events.html#a9e8383b6eb600d7f49e64a3dcffedede">Continua...</a><br /></td></tr>
+<tr class="separator:a9e8383b6eb600d7f49e64a3dcffedede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1320e13de2656e9a83ad290af2fdf71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal.html#ae1320e13de2656e9a83ad290af2fdf71">Modals::AuthModal::RegisterModal</a> ()</td></tr>
+<tr class="memdesc:ae1320e13de2656e9a83ad290af2fdf71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo di inizializzazione del modale.  <a href="namespace_modals_1_1_auth_modal.html#ae1320e13de2656e9a83ad290af2fdf71">Continua...</a><br /></td></tr>
+<tr class="separator:ae1320e13de2656e9a83ad290af2fdf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb269aa45723854314816cc82051a400"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal.html#abb269aa45723854314816cc82051a400">Modals::AuthModal::EraseModal</a> ()</td></tr>
+<tr class="memdesc:abb269aa45723854314816cc82051a400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo di distruzione del modale.  <a href="namespace_modals_1_1_auth_modal.html#abb269aa45723854314816cc82051a400">Continua...</a><br /></td></tr>
+<tr class="separator:abb269aa45723854314816cc82051a400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646f790645edb078eb8d68b9c1709973"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Modals::AuthModal::State::Auth</a> ()</td></tr>
+<tr class="memdesc:a646f790645edb078eb8d68b9c1709973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.  <a href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Continua...</a><br /></td></tr>
+<tr class="separator:a646f790645edb078eb8d68b9c1709973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41a0470c6e1efa6137fe00e3e839712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#ac41a0470c6e1efa6137fe00e3e839712">Modals::AuthModal::AuthMethods::OnLoginSuccess</a> ()</td></tr>
+<tr class="memdesc:ac41a0470c6e1efa6137fe00e3e839712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'avvenuto login con successo.  <a href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#ac41a0470c6e1efa6137fe00e3e839712">Continua...</a><br /></td></tr>
+<tr class="separator:ac41a0470c6e1efa6137fe00e3e839712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c26c9ead5a5cef2c4b61670a6da64b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#a4c26c9ead5a5cef2c4b61670a6da64b2">Modals::AuthModal::AuthMethods::OnLoginErrors</a> ()</td></tr>
+<tr class="memdesc:a4c26c9ead5a5cef2c4b61670a6da64b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'avvenuto login con errori.  <a href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#a4c26c9ead5a5cef2c4b61670a6da64b2">Continua...</a><br /></td></tr>
+<tr class="separator:a4c26c9ead5a5cef2c4b61670a6da64b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832a2618faecf17ac184637378b65e3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#a832a2618faecf17ac184637378b65e3e">Modals::AuthModal::AuthMethods::OnLogout</a> ()</td></tr>
+<tr class="memdesc:a832a2618faecf17ac184637378b65e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che viene invocato per notificare l'azione di logout.  <a href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#a832a2618faecf17ac184637378b65e3e">Continua...</a><br /></td></tr>
+<tr class="separator:a832a2618faecf17ac184637378b65e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
 <a id="ab701e3ac61a85b337ec5c1abaad6742d"></a>
@@ -148,12 +148,12 @@ Funzioni</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="web__ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
+          <td class="memname">using <a class="el" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00013">13</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
+<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00014">14</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
 
 </div>
 </div>

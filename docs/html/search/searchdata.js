@@ -1,15 +1,16 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijlmnoprstuw",
-  1: "acmstu",
-  2: "achmntuw",
-  3: "achmnptuw",
-  4: "abcdefghijlmnorsuw",
-  5: "_abcdfilmnorst",
-  6: "acjmtw",
-  7: "a",
-  8: "lrsw",
-  9: "c"
+  0: "_abcdefghijlmnoprstuw~",
+  1: "abcjmsu",
+  2: "abcmnstw",
+  3: "abcejlmnprtuw",
+  4: "abcdeghijlmnoprstu~",
+  5: "_abcdefimnorstu",
+  6: "cjmsw",
+  7: "ast",
+  8: "aceijlosw",
+  9: "dlsw",
+  10: "c"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "typedefs",
   7: "enums",
   8: "enumvalues",
-  9: "pages"
+  9: "defines",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Ridefinizioni di tipo (typedef)",
   7: "Tipi enumerati (enum)",
   8: "Valori del tipo enumerato",
-  9: "Pagine"
+  9: "Definizioni",
+  10: "Pagine"
 };
 

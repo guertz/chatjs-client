@@ -40,7 +40,7 @@ namespace ChatList {
 
         void NewChat(const string& argc) {
             // log_base("ChatList::Events(NewChat)", argc);
-            Modal::ChatModal::Events::Show();
+            Modals::ChatModal::Events::Show();
         }
 
         void UserSelected(const string& arg){

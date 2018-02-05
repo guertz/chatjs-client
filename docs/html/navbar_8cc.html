@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chat.js: Riferimenti per il file src/common/navbar/navbar.cc</title>
+<title>Chat.js: Riferimenti per il file src/directives/navbar/navbar.cc</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_efd7f7bd95fb4e0db6042bd73bd2774b.html">navbar</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0c39e255813615dec2075f0bd0727212.html">directives</a></li><li class="navelem"><a class="el" href="dir_343d08c2175db81994f97c6409fbaba6.html">navbar</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,10 +77,11 @@ $(function() {
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;json.hpp&gt;</code><br />
 <code>#include &quot;<a class="el" href="navbar_8h_source.html">navbar.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="profile_8h_source.html">navbar/profile/profile.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="web__ui_8h_source.html">common/helpers/web_ui.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="helpers_8h_source.html">common/helpers/helpers.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="authstate_8h_source.html">providers/session/authstate.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="navbar_8hjs_source.html">navbar.hjs</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="profile_8h_source.html">profile/profile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="web-ui_8h_source.html">common/web-ui/web-ui.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="logger_8h_source.html">common/logger/logger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth-state_8h_source.html">states/auth-state/auth-state.h</a>&quot;</code><br />
 </div>
 <p><a href="navbar_8cc_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
@@ -90,7 +91,7 @@ Namespace</h2></td></tr>
 <tr class="memdesc:namespace_navbar"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzioni di supporto e metodi elementari e la gestione delle voci presenti nella barra di navigazione superiore. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_navbar_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_navbar_1_1_state.html">Navbar::State</a></td></tr>
-<tr class="memdesc:namespace_navbar_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazione dei nomi relativo agli eventi generati da callbacks. <br /></td></tr>
+<tr class="memdesc:namespace_navbar_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -106,9 +107,9 @@ Funzioni</h2></td></tr>
 <tr class="memitem:a3990948dcb77b595e2601bd23c371eb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar::Destroy</a> ()</td></tr>
 <tr class="memdesc:a3990948dcb77b595e2601bd23c371eb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distrugge le voci del menu.  <a href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Continua...</a><br /></td></tr>
 <tr class="separator:a3990948dcb77b595e2601bd23c371eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b7c3d4687abcd8482ccc5298a107253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_navbar_1_1_state.html#a3b7c3d4687abcd8482ccc5298a107253">Navbar::State::Auth</a> (const char *argc)</td></tr>
-<tr class="memdesc:a3b7c3d4687abcd8482ccc5298a107253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.  <a href="namespace_navbar_1_1_state.html#a3b7c3d4687abcd8482ccc5298a107253">Continua...</a><br /></td></tr>
-<tr class="separator:a3b7c3d4687abcd8482ccc5298a107253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a543a67d2e41acc5bdb582bdbc3297572"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_navbar_1_1_state.html#a543a67d2e41acc5bdb582bdbc3297572">Navbar::State::Auth</a> ()</td></tr>
+<tr class="memdesc:a543a67d2e41acc5bdb582bdbc3297572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.  <a href="namespace_navbar_1_1_state.html#a543a67d2e41acc5bdb582bdbc3297572">Continua...</a><br /></td></tr>
+<tr class="separator:a543a67d2e41acc5bdb582bdbc3297572"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
 <a id="ab701e3ac61a85b337ec5c1abaad6742d"></a>
@@ -118,7 +119,7 @@ Funzioni</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="web__ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
+          <td class="memname">using <a class="el" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
         </tr>
       </table>
 </div><div class="memdoc">
