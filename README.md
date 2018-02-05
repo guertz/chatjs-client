@@ -11,11 +11,11 @@ Per mettere in comunicazione i componenti fa uso di un sistema di callback basat
 
 > Windows
 * Git bash on windows (for Makefile commands)
-* TDM-GCC 64
+* TDM-GCC 64 (mingw32-make, g++)
 
 > Linux
-* build-essentials (make, g++)
-* webview (webkit-gtk)
+* build-essential (make, g++)
+* libwebkit2gtk-4.0-dev
 
 ## Dependencies
 * [zserge/webview](https://github.com/zserge/webview)
@@ -37,6 +37,10 @@ $ make depend
 $ make
 ```
 
+## Testing without a local server
+La compilazione in modalità release predispone che la app si interfacci con un server remoto piuttosto che su localhost
+permettendo così di provare l'applicazione senza necessariamente dover aver installato e lanciato il [server locale](https://github.com/Guertz/chatjs-server)
+
 #### Available log levels
 > Le maschere di debug possono essere combinate per avere a disposizione più livelli di log contemporaneamente
 **Sample**
@@ -57,6 +61,7 @@ $ doxygen
 [Available online](https://guertz.github.io/chatjs-client/html/)
 
 ## Folder Structure
+> Per una descrizione dettagliata dei vari file [fare riferimento qui](https://guertz.github.io/chatjs-client/html/files.html)
 ```
 ├── .release                            # Release files & platform build
 ├── assets                              # Assets file (HTML/JS/CSS)
@@ -88,7 +93,8 @@ $ doxygen
             └── ...                     #
 ```
 ## Next steps
-- [x] State refactoring
+- [x] Code refactoring
+- [ ] OSX platform & release build
 - [ ] OOP (singleton & component will inherit states)
 - [ ] Websocket/Events poll loops like libuv
 - [ ] JavaScript document API binding

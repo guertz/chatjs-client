@@ -10,7 +10,7 @@ using namespace std;
  */
 
 /** Metodo interno per la stampa dei log */
-inline void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg) {
+void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg) {
 
     string composed_message = "";
 

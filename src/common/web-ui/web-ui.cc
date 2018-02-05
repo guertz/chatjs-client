@@ -115,6 +115,7 @@ namespace WebUI {
 
     inline void Dispatch(Webview* w, const char* parsed_script) {
 
+        #ifdef DEBUG_MODE
         #ifndef WEBVIEW_DEBUG
 
             char* __parsed_script_part = new char[LOG_LEN];
@@ -140,6 +141,7 @@ namespace WebUI {
             delete[] __parsed_script_part;
             __parsed_script_part = 0;
 
+        #endif
         #endif
 
         // Evaluating code inside the webview main ui thread

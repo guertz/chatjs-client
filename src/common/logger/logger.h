@@ -52,6 +52,6 @@ enum TAG{
 /** ::log_pedantic attivo con MASK = 4 */
 #define log_pedantic(attr, log_msg)  { if(4 & DEBUG_MASK) { LOGGER(TAG::INFO, 3, attr, log_msg); } }
 
-inline void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg);
+void print_log(const TAG tag, const unsigned int level, std::string attr, std::string log_msg);
 
 #endif
