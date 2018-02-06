@@ -213,11 +213,12 @@ namespace States {
             }
 
             inline void ResponseSuccess(const std::string success) {
-                log_base("ChatState", "## RESPONSE RECEIVED");
+                log_base("ChatState", success);
 
                 Response::Chats chat_response(success);
 
                 Chat new_chat(success);
+                log_base("ChatState", "## Before initi")
                 ChatMethods::InitAChat(new_chat);
                 chatsList[chat_response.reference] = new_chat;
                 

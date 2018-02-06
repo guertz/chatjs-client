@@ -13,7 +13,7 @@ Per mettere in comunicazione i componenti fa uso di un sistema di callback basat
 * Git bash on windows (for Makefile commands)
 * TDM-GCC 64 (mingw32-make, g++)
 
-> Linux
+> Linux (tested on linux mint 18.2-cinnamon-64)
 * build-essential (make, g++)
 * libwebkit2gtk-4.0-dev
 
@@ -44,7 +44,8 @@ $ make SERVER=remote
 ```
 
 ## Testing without a local server
-La compilazione in modalità release predispone che la app si interfacci con un server remoto piuttosto che su localhost
+> **Attenzione** Non è detto che il server sia sempre online e acceso.
+La compilazione in modalità **remote server** predispone che la app si interfacci con un server remoto piuttosto che su localhost
 permettendo così di provare l'applicazione senza necessariamente dover aver installato e lanciato il [server locale](https://github.com/Guertz/chatjs-server)
 Utenti di test:
 + *devel*: bVENYJjcCe02Xrr8
