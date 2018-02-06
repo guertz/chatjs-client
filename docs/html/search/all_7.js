@@ -1,6 +1,7 @@
 var searchData=
 [
   ['getauthaction',['getAuthAction',['../namespace_states_1_1_auth_state.html#a91da067a8d1a187d55cec55a9f6ba76f',1,'States::AuthState']]],
+  ['getautherror',['getAuthError',['../namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8',1,'States::AuthState']]],
   ['getauthuser',['getAuthUser',['../namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031',1,'States::AuthState']]],
   ['getcurrent',['getCurrent',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#ae23bb508121902b4efe21f168cf60231',1,'States::ChatState::ChatsMethods']]],
   ['getcurrentchat',['getCurrentChat',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#a9accc3ef703ceabbc887a4d66afcce8d',1,'States::ChatState::ChatsMethods']]],

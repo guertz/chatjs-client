@@ -1,9 +1,12 @@
 #ifndef DIRECTIVES_MODALS_MODALS_H
 #define DIRECTIVES_MODALS_MODALS_H
 
-/** 
- * Funzioni di supporto e metodi elementari e la gestione degli alert Modali. 
+/**
+ * @brief Interfaccia Modals, modale per iniziareuna chat
+ * @file modals.h
  */
+
+/** Funzioni di supporto e metodi elementari e la gestione degli alert Modali. */
 namespace Modals {
 
     /**
@@ -13,15 +16,15 @@ namespace Modals {
     namespace Events {
         /**
          * Mostra un modale.
-         * @param[in] argc Identificativo del modale da visualizzare 
+         * @param[in] args Identificativo del modale da visualizzare 
          */
-        void ShowModalByRef(const std::string& argc);
+        void ShowModalByRef(const std::string& args);
         
         /**
          * Nasconde un modale.
-         * @param[in] argc Identificativo del modale da nascondere 
+         * @param[in] args Identificativo del modale da nascondere 
          */
-        void HideModalByRef(const std::string& argc);
+        void HideModalByRef(const std::string& args);
     }
 
     /**

@@ -7,6 +7,6 @@ var searchData=
   ['eraselink',['EraseLink',['../namespace_navbar_1_1_profile.html#a19bfb47626e101b73c6adb80b9136ace',1,'Navbar::Profile']]],
   ['erasemodal',['EraseModal',['../namespace_modals_1_1_auth_modal.html#abb269aa45723854314816cc82051a400',1,'Modals::AuthModal::EraseModal()'],['../namespace_modals_1_1_chat_modal.html#ae163b678a9a3178e012e3e6029fd23ce',1,'Modals::ChatModal::EraseModal()']]],
   ['err',['ERR',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a0f886785b600b91048fcdc434c6b4a8e',1,'logger.h']]],
-  ['error',['error',['../classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770',1,'ws::BaseResponse']]],
+  ['error',['error',['../classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770',1,'ws::BaseResponse::error()'],['../class_states_1_1_auth_state_1_1_response_1_1_auth.html#a73b77e5aa2a139be535f809b14f12a77',1,'States::AuthState::Response::Auth::error()']]],
   ['execute',['Execute',['../namespace_web_u_i.html#aa0a173b2558de17879e1e6c09f014969',1,'WebUI']]]
 ];

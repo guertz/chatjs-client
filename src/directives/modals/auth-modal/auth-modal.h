@@ -1,6 +1,11 @@
 #ifndef DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 #define DIRECTIVES_MODALS_AUTH_MODAL_AUTH_MODAL_H
 
+/**
+ * @brief Interfaccia AuthModal, form autenticazione utente.
+ * @file auth-modal.h
+ */
+
 namespace Modals {
 
    /**
@@ -25,16 +30,16 @@ namespace Modals {
             *
             * @include modals/auth-modal-submit.json
             *
-            * @param[in] argc Parametri della chiamata JS in formato JSON serialized
+            * @param[in] args Parametri della chiamata JS in formato JSON serialized
             *
             */
-           inline void Submit(const std::string& argc);
+           inline void Submit(const std::string& args);
 
            /**
             * Metodo che agisce su l'interfaccia e riporta il form al suo 
             * stato di default.
             */
-            void Reset();
+            inline void Reset();
 
             /** Metodo per mostrare il modale */
             void Show();

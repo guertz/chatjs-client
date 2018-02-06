@@ -1,8 +1,6 @@
 #ifndef PAGES_CHAT_LIST_CHAT_LIST_H
 #define PAGES_CHAT_LIST_CHAT_LIST_H
 
-#include "states/auth-state/auth-state.h"
-
 namespace ChatList {
 
     void Bootstrap();

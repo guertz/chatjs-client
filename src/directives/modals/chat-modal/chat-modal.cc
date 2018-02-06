@@ -17,6 +17,11 @@ using namespace std;
 using namespace WebUI;
 using namespace States;
 
+/**
+ * @brief Definizione ChatModal, modale per iniziareuna chat
+ * @file chat-modal.cc
+ */
+
 namespace Modals { 
 
     namespace ChatModal {
@@ -27,8 +32,8 @@ namespace Modals {
         static const string CHAT_DESTROY = "modals.AuthModal.destroy()";
 
         namespace Events { 
-            inline void NewChatOpen(const string& args){
-                log_pedantic("ChatModal::Submit", args);
+            inline void NewChatOpen(const std::string& args){
+                log_pedantic("Modals::ChatModal::Submit", args);
 
                 json function = json::parse(args);
                 ChatState::ChatsMethods::StartAChat(function.at("user").get<string>());
@@ -45,7 +50,7 @@ namespace Modals {
         }
 
         void RegisterModal(){
-            log_details("ChatModal", "Create");
+            log_details("Modals::ChatModal", "Create");
 
             WebUI::Execute(_src_directives_modal_chat_modal_chat_modal_js);
 
@@ -54,7 +59,7 @@ namespace Modals {
         }
 
         void EraseModal () {
-            log_details("ChatModal", "Erase");
+            log_details("Modals::ChatModal", "Erase");
 
             WebUI::Execute(CHAT_DESTROY);
         }
@@ -62,8 +67,6 @@ namespace Modals {
         namespace State {
             
             inline void Users() {
-                log_details("ChatModal::State::Users", "Refreshing...");
-
                 const string serializedList = UsersState::getSerializedList();
 
                 const string js_action = "modals.ChatModal.populateChat('" +

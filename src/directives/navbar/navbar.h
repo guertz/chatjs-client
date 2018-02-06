@@ -1,7 +1,10 @@
 #ifndef DIRECTIVES_NAVBAR_NAVBAR_H
 #define DIRECTIVES_NAVBAR_NAVBAR_H
 
-#include "states/auth-state/auth-state.h"
+/**
+ * @brief Interfaccia Navbar, menù di navigazione superiore 
+ * @file navbar.h
+ */
 
 /** 
  * Funzioni di supporto e metodi elementari e la gestione
@@ -11,13 +14,11 @@ namespace Navbar {
 
     /**
      * Inizializza le voci del menu, quali:
-     * + Profilo
+     * + ::Navbar::Profile
      */
     void Bootstrap();
 
-    /**
-     * Distrugge le voci del menu
-     */
+    /** Distrugge le voci del menù */
     void Destroy();
 
    /** 
@@ -32,7 +33,7 @@ namespace Navbar {
         * Dopo essere stato registrato viene notificato dal corrispondente provider
         * di eventuali cambiamenti di stato quali azioni di login e di logout
         */
-        void Auth();
+        inline void Auth();
     }
 }
 

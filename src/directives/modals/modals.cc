@@ -14,25 +14,30 @@ using json = nlohmann::json;
 using namespace std;
 using namespace WebUI;
 
+/**
+ * @brief Definizione Modals, modale per iniziareuna chat
+ * @file modals.cc
+ */
+
 namespace Modals {
 
     namespace Events {
 
-        void ShowModalByRef(const string& argc) {
-            log_details("Modals::Show", argc);
+        void ShowModalByRef(const std::string& args) {
+            log_details("Modals::Show", args);
 
             const string js_hide_modal = "window.showModal('" +
-                                            argc +
+                                            args +
                                           "')";
 
             WebUI::Execute(js_hide_modal);
         }
 
-        void HideModalByRef(const string& argc) {
-            log_details("Modals::Hide", argc);
+        void HideModalByRef(const std::string& args) {
+            log_details("Modals::Hide", args);
 
             const string js_show_modal = "window.hideModal('" +
-                                            argc +
+                                            args +
                                           "')";
 
             WebUI::Execute(js_show_modal);

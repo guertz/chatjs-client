@@ -1,3 +1,9 @@
+/**
+ * @brief Componente Javascript toast.h
+ * @file toast.hjs
+ */
+
+/** Componente Javascript toast.h */
 const std::string _src_directives_toast_toast_js = R"(
 window.makeAToast = function(str) {
 

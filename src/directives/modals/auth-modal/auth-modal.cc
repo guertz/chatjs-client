@@ -16,6 +16,11 @@ using namespace std;
 using namespace WebUI;
 using namespace States;
 
+/**
+ * @brief Definizione AuthModal, form autenticazione utente.
+ * @file auth-modal.cc
+ */
+
 namespace Modals {
 
     namespace AuthModal {
@@ -28,15 +33,15 @@ namespace Modals {
 
         namespace Events {
 
-            inline void Submit(const string& args){
-                log_pedantic("AuthModal::Submit", args);
+            inline void Submit(const std::string& args){
+                log_pedantic("Modals::AuthModal::Submit", args);
 
                 json fn_params = json::parse(args);
                 AuthState::Login(fn_params.at("_id").get<string>());
             }
 
-            void Reset(){
-                log_pedantic("AuthModal::Reset", "");
+            inline void Reset(){
+                log_pedantic("Modals::AuthModal::Reset", "");
 
                 WebUI::Execute(AUTH_RESET);
             }
@@ -52,7 +57,7 @@ namespace Modals {
         }
 
         void RegisterModal(){
-            log_details("AuthModal", "Create");
+            log_details("Modals::AuthModal", "Create");
 
             WebUI::Execute(_src_directives_modal_auth_modal_auth_modal_js);
             
@@ -63,7 +68,7 @@ namespace Modals {
         }
 
         void EraseModal () {
-            log_details("AuthModal", "Erase");
+            log_details("Modals::AuthModal", "Erase");
 
             WebUI::Execute(AUTH_DESTROY);
         }
@@ -71,7 +76,7 @@ namespace Modals {
         namespace State {
                 
             inline void Auth(){
-                log_pedantic("AuthModal::State::Auth", "Refreshing...");
+                log_pedantic("Modals::AuthModal::State::Auth", "Refreshing...");
                 
                 Events::Reset();
 

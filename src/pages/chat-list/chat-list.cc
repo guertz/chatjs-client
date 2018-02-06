@@ -14,6 +14,8 @@
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
 
+
+#include "states/auth-state/auth-state.h"
 #include "states/chat-state/chat-state.h"
 
 
@@ -55,8 +57,9 @@ namespace ChatList {
     namespace State {
         void Auth() {
             
-            const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                             User       auth_user   = AuthState::getAuthUser();
+            const AuthState::AUTHSIGNAL 
+                        auth_action = AuthState::getAuthAction();
+            const User  auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:
@@ -68,10 +71,7 @@ namespace ChatList {
                 case AuthState::AUTHSIGNAL::LOGOUT:
                 
                     break;
-                case AuthState::AUTHSIGNAL::ALL:
-                default:
-                    log_base("AuthModal", "Bad format Request");
-                    break;
+
             }
         }
 

@@ -15,9 +15,15 @@ using namespace std;
 using namespace WebUI;
 using namespace States;
 
+/**
+ * @brief Definizione Navbar, menù di navigazione superiore 
+ * @file navbar.cc
+ */
+
 namespace Navbar {
 
     void Bootstrap() {
+        log_details("Navbar", "Bootstrap");
 
         WebUI::Execute(_src_directives_navbar_navbar_js);
 
@@ -27,15 +33,18 @@ namespace Navbar {
     }
 
     void Destroy() {
+        log_details("Navbar", "Destroy");
+
         Profile::EraseLink();
     }
 
     namespace State {
 
-        void Auth(){
+        inline void Auth(){
                 
-            const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                             User       auth_user   = AuthState::getAuthUser();
+            const AuthState::AUTHSIGNAL 
+                        auth_action = AuthState::getAuthAction();
+            const User  auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
                 case AuthState::AUTHSIGNAL::LOGIN:
@@ -44,17 +53,12 @@ namespace Navbar {
                         Profile::Events::SetText(auth_user.name);
 
                     break;
-                case AuthState::AUTHSIGNAL::LOGOUT:
 
+                case AuthState::AUTHSIGNAL::LOGOUT:
                     Profile::Events::SetText("Profilo");
 
                     break;
 
-                case AuthState::AUTHSIGNAL::ALL:
-                default:
-                
-                    log_base("AuthModal", "Bad format Request");
-                    break;
             }
 
         }
