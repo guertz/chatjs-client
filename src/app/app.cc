@@ -65,8 +65,8 @@ namespace App {
         Modals::Destroy();
 
         // Toast::Destroy();
-        // ChaList::Destroy();
-        // ChatDetails::Destroy();
+        ChaList::Destroy();
+        ChatDetails::Destroy();
 
         ChatState::Destroy();
         UsersState::Destroy();

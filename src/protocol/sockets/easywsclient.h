@@ -6,7 +6,7 @@
 //
 // To get the latest version:
 // wget https://raw.github.com/dhbaird/easywsclient/master/easywsclient.hpp
-// wget https://raw.github.com/dhbaird/easywsclient/master/easywsclient.cpp
+// wget https://raw.github.com/dhbaird/easywsclient/master/easywsclient.cpp (logging system got costumized)
 
 #include <string>
 #include <vector>

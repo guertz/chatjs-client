@@ -1,20 +1,22 @@
 #include <iostream>
-#include <string>
-#include <map>
 #include <json.hpp>
 
-#include "env.h"
 #include "chat-details.h"
 #include "chat-details.hjs"
 
 #include "common/web-ui/web-ui.h"
+#include "common/logger/logger.h"
 
 #include "states/chat-state/chat-state.h"
 
 using json = nlohmann::json;
 using namespace std;
-using namespace WebUI;
 using namespace States;
+
+/**
+ * @brief Definizione pagina ChatDetails in cui viene visualizzata la chat attiva
+ * @file chat-details.cc
+ */
 
 namespace ChatDetails {
 
@@ -23,7 +25,19 @@ namespace ChatDetails {
     const string ENABLE_FORM  = "components.ChatDetails.enable()";
     const string DISABLE_FORM = "components.ChatDetails.disable()";
 
-    void Bootstrap(){
+    namespace Events {
+
+        inline void Submit(const std::string& args){
+            log_pedantic("ChatDetails::Submit", args);
+
+            json form_args = json::parse(args);
+            ChatState::ChatMethods::SendAMessage(form_args.at("text").get<string>());
+
+        }
+    }
+
+    void Bootstrap() {
+        log_details("ChatDetails", "Bootstrap");
 
         WebUI::Execute(_src_pages_chat_details_chat_details_js);
 
@@ -33,19 +47,12 @@ namespace ChatDetails {
 
     }
 
-    namespace Events {
-
-        void Submit(const string& args){
-
-            json form_args = json::parse(args);
-            ChatState::ChatMethods::SendAMessage(form_args.at("text").get<string>());
-
-        }
+    void Destroy() {
+        log_details("ChatDetails", "Destroy");
     }
 
     namespace State {
-        void Chat(){
-            
+        inline void Chat(){
             if(ChatState::ChatsMethods::isCurrentChat()){
                 const string js_chat = "components.ChatDetails.populateChatDetails('" +
                                             ChatState::ChatsMethods::getCurrentChat() +
@@ -54,7 +61,6 @@ namespace ChatDetails {
                 WebUI::Execute(js_chat);
                 WebUI::Execute(ENABLE_FORM);
             }
-
         }
     }
 }

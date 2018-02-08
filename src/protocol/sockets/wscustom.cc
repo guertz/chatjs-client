@@ -6,36 +6,59 @@
 #include "wscustom.h"
 
 #include "common/logger/logger.h"
+#include "env.h"
 
 using json = nlohmann::json;
 using WebSocket = easywsclient::WebSocket;
 using namespace std;
 
+/**
+ * @brief Definizione protocollo di comunicazione Websocket
+ * @file wscustom.cc
+ */
+
+/*
+    Next:
+        - reconnect
+        - better error handling
+        - Mutex buffer, computing, channel (?)
+        - Boost & async event driven (Asio)
+*/
+
 namespace ws {
  
     void Socket::ThreadMain(){
 
+        // creazione di un canale websocket (vedi libreria easywsclient)
+        // viene effettuata nel thread così il thread UI non ne risente
+        //   per i tempi di handshaking
         this->channel = WebSocket::from_url(this->path);
+
+        // Abilitazione socket in modalità computing
         this->is_computing = true;
 
-        // Handle (connection errors):
-        //      - node not exists
-        //      - connection errors
-        // assert(this->channel);
+        // this->channel implica il controllo sul fatto che non vi siano errori di connessione
+        // e che il canale non sia stato chiuso dal server.
+        // Per errori si intende che:
+        //  - il canale di comunicazione sia stato creato
+        //  - il nodo (endpoint) esista
         while(this->channel && this->channel->getReadyState() != WebSocket::CLOSED) {
 
             if(this->is_computing) {
 
-                if(this->arguments.buffer.size() > 0 && !this->arguments.is_send) { 
-                    this->channel->send(this->arguments.buffer);
-                    this->arguments.is_send = true;
+                // Se buffer pieno o messaggio non inviato
+                if(this->buffer.content.size() > 0 && !this->buffer.is_send) { 
+                    // Invia messagio e setta flag inviato sul buffer
+                    this->channel->send(this->buffer.content);
+                    this->buffer.is_send = true;
                 } else
+                    // Alla risposta svuota il buffer se non è ancora stato fatto
                     this->reset();
                 
-
-                this->channel->dispatch([this](const string& json_response) {
+                // Dispatch ricezione risposta. Utilizzo lamba function condividento il contesto
+                this->channel->dispatch([this](const string& str_response) {
                     
-                    BaseResponse response(json::parse(json_response));
+                    BaseResponse response(str_response);
 
                     if(response.ok)
                         this->onmessage(response.content);
@@ -45,8 +68,8 @@ namespace ws {
 
             }
 
+            // Effettua poll a livello più lento e ignora operazioni read/write
             this->channel->poll(this->is_computing ? SOCKET_ACTIVE_POLL : SOCKET_INACTIVE_POLL);
-
         }
 
         // Il canale è stato terminato in modo inaspettato e non richiesto dall'utente
@@ -64,22 +87,15 @@ namespace ws {
         this->is_computing = true;
     }
 
-    // Mutex arguments
-    // Mutex computing
-    // Lock channel as well
-    // Boost & async event driven (Asio)
     void Socket::reset() {
-        this->arguments.buffer  = "";
-        this->arguments.is_send = false;
+        this->buffer.content  = "";
+        this->buffer.is_send = false;
     }
 
     void Socket::setBuffer(BaseRequest& request){
-
         this->reset();
 
-        json serialized_request = request.to_json();
-
-        this->arguments.buffer = serialized_request.dump();
+        this->buffer.content = request.serialize();
     }
 
     Socket::~Socket(){
@@ -96,11 +112,11 @@ namespace ws {
 
     }
 
-    Socket::Socket( const string& s, 
-                    void (*onmessage)(const string message), 
-                    void(*onerror)(const string error)) {
+    Socket::Socket( const std::string& node, 
+                    void (*onmessage)(const std::string message), 
+                    void(*onerror)(const std::string error)) {
 
-        this->path = "ws://" + SERVER_HOST + "/" +s;
+        this->path = "ws://" + SERVER_HOST + "/" + node;
 
         this->onmessage = onmessage;
         this->onerror = onerror;

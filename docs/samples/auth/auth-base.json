@@ -1,4 +1,0 @@
-{
-    "action": "LOGIN || LOGOUT", // AuthState::AUTHSIGNAL (enum)
-    "failure": "bool"
-}

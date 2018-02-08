@@ -26,7 +26,7 @@ namespace Modals {
             * con cui iniziare la chat.
             * Di seguito e riportata la struttura dati ricevuta dalla funzione
             *
-            * @include modals/chat-modal-submit.json
+            * @include modals/chat-modal/submit.json
             *
             * @param[in] args Parametri della chiamata JS in formato JSON serialized
             */

@@ -1,8 +1,4 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <sstream>
-#include <iterator>
 #include <json.hpp>
 
 #include "chat-list.h"
@@ -14,19 +10,38 @@
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
 
-
 #include "states/auth-state/auth-state.h"
 #include "states/chat-state/chat-state.h"
 
 
 using json = nlohmann::json;
 using namespace std;
-using namespace ws;
-using namespace WebUI;
 using namespace States;
 
+/**
+ * @brief Definizione pagina ChatList in cui vengono visualizzate la chat aperte
+ * @file chat-list.cc
+ */
+
 namespace ChatList {
+
+    namespace Events { 
+
+        inline void NewChat(const std::string& args) {
+            log_pedantic("ChatList::NewChat", args):
+            Modals::ChatModal::Events::Show();
+        }
+
+        inline void UserSelected(const std::string& args){
+            log_pedantic("ChatList::UserSelected", args);
+
+            json event_args = json::parse(arg);
+            ChatState::ChatsMethods::setCurrent(event_args.at("ref").get<string>());
+        }
+    }
+
     void Bootstrap(){
+        log_details("ChatList", "Bootstrap");
 
         WebUI::Execute(_src_pages_chat_list_chat_list_js);
 
@@ -38,60 +53,43 @@ namespace ChatList {
         AuthState::Register("ChatList", State::Auth);
     }
 
-    namespace Events { 
-
-        void NewChat(const string& argc) {
-            // log_base("ChatList::Events(NewChat)", argc);
-            Modals::ChatModal::Events::Show();
-        }
-
-        void UserSelected(const string& arg){
-
-            // log_base("ChatList@UserSelected", arg);
-
-            json event_args = json::parse(arg);
-            ChatState::ChatsMethods::setCurrent(event_args.at("ref").get<string>());
-        }
+    void Destroy() {
+        log_details("ChatList", "Destroy");
     }
 
     namespace State {
-        void Auth() {
-            
-            const AuthState::AUTHSIGNAL 
-                        auth_action = AuthState::getAuthAction();
-            const User  auth_user   = AuthState::getAuthUser();
+        
+        inline void Auth() {    
+            const AUTHSIGNAL auth_action = AuthState::getAuthAction();
+            const User       auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
-                case AuthState::AUTHSIGNAL::LOGIN:
+                case AUTHSIGNAL::LOGIN:
                     if(auth_user.is_valid())
                         
                         Toast::Events::Show(auth_user.name);
                     
                     break;
-                case AuthState::AUTHSIGNAL::LOGOUT:
-                
+                case AUTHSIGNAL::LOGOUT:
+                default: 
+
                     break;
 
             }
         }
 
-        void Chats() {
-
-
+        inline void Chats() {
             const string js_context = "components.ChatList.populateChatList('" +
                                         ChatState::ChatsMethods::getSerializedChats() +
                                       "')";
-            log_base("ChatList>>Refetch", js_context);
+                                      
             WebUI::Execute(js_context);
 
-            // Non sempre
-            // Toast::Events::Show("E stata iniziata una nuova chat.");
-            
+            Toast::Events::Show("E stata iniziata una nuova chat.");
         }
 
-        void Chat(){
-            // Non sempre
-            // Toast::Events::Show("E stato ricevuto un messaggio.");
+        inline void Chat(){
+            Toast::Events::Show("E stato ricevuto un messaggio.");
         }
 
     }

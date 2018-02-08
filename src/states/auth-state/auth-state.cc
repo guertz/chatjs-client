@@ -17,50 +17,40 @@ namespace States {
 
         static Socket* authSocket = 0;
         static bool pending       = false;
-        static bool logged        = false;
         
-        static Response::Auth authResponse;
+        static AuthResponse authResponse;
 
         static Subscribers subscribed;
 
-        void notify(const Response::Auth& auth){
+        void notify(){
             
-            authResponse = auth;
-
             for (const auto& item : subscribed)
                 (*item.second)(); 
 
         }
 
-        // TODO: pass json data?
-        //       pass serialized data
-        //       <template> with response type casting
-        //       move to sockets namespace
-        void ResponseSuccess(const string str_response) {
+        void ResponseSuccess(const std::string str_response) {
 
             log_base("Auth", str_response);
 
-            Response::Auth auth_response(json::parse(str_response));
-            logged = auth_response.online;
+            authResponse = AuthResponse(str_response);
             pending = false;
 
-            notify(auth_response);
+            notify();
         }
 
-        void ResponseError(const string str_error) {
+        void ResponseError(const std::string str_error) {
             
             log_base("Auth", str_error);
 
-            // Cannot cast because of content undefined
-            // Do i really need to handle auth::ALL
-            Response::Auth auth_response;
-                           auth_response.type  = AUTHSIGNAL::LOGIN; 
-                           auth_response.error = str_error;
+            AuthResponse response_errors;
+                         response_errors.type  = AUTHSIGNAL::LOGIN; 
+                         response_errors.error = str_error;
 
-            logged = false;
+            authResponse = response_errors;
             pending = false;
 
-            notify(auth_response);
+            notify();
         }
 
         AUTHSIGNAL getAuthAction() {
@@ -90,17 +80,17 @@ namespace States {
         }
 
 
-        void Register(string abc, void (*fn)()){
-            subscribed[abc] = fn;
+        void Register(std::string cb_name, void (*fn)()){
+            subscribed[cb_name] = fn;
         }
 
-        void Login(const string& AUTH_KEY){
+        void Login(const std::string& AUTH_KEY){
 
             // assert
-            if(!pending && !logged){
+            if(!pending && !authResponse.online){
                 pending = true;
                 
-                Request::Auth auth_request;
+                AuthRequest auth_request;
                     auth_request.type = AUTHSIGNAL::LOGIN;
                     auth_request.user = AUTH_KEY;
 
@@ -114,28 +104,9 @@ namespace States {
         }
 
         void Logout(){
+            // Observable to prevent inconsistent auth state
 
-            // TODO: prevent getAuth() to avoid inconsistent state
-            //       component will only be able to get authenticated user
-            //       by watching & handling changes from the provider stream
-
-            // TODO: is it better to not use Sockets in component but only 
-            //       in providers?
-
-            // TODO: is it better to send AUTH header all the time or on 
-            //       the first message (init) that will keep trace of the
-            //       logged user
-            //      
-            //       Keeping states on server is worse because it will become
-            //       a structure like the current PHP application which are not
-            //       serverless considering the REST approach. And there will
-            //       to both watch login/logout events on server and both on 
-            //       client. Those cases should be studied in details, analyzing
-            //       it pros & cons and pick the slution to use everywhere
-
-            // TODO: prevent memory leaks (even on server)
-            // TODO: refactor definition to be the same as Login
-            if(!pending && logged){
+            if(!pending && authResponse.online){
                 pending = true;
 
 

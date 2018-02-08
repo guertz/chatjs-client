@@ -122,12 +122,12 @@ namespace States {
         namespace State {
             void Auth() {
 
-                const AuthState::AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                                 User       auth_user   = AuthState::getAuthUser();
+                const AUTHSIGNAL auth_action = AuthState::getAuthAction();
+                const User       auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action) {
 
-                    case AuthState::AUTHSIGNAL::LOGIN:
+                    case AUTHSIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
                             UsersStream::Init(auth_user._id);
@@ -136,19 +136,12 @@ namespace States {
 
                         break;
 
-                    case AuthState::AUTHSIGNAL::LOGOUT:
+                    case AUTHSIGNAL::LOGOUT:
 
                         UsersStream::Close();
 
                         break;
                     
-                    case AuthState::AUTHSIGNAL::ALL:
-                    default:
-                    
-                        // if network crashed i would like to stop the stream
-                        // but the cannel is fuckedup
-                        log_base("AuthModal", "Bad format Request");
-                        break;
                 }
                 
             }

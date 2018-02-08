@@ -28,7 +28,7 @@ namespace Modals {
             * autenticazione (submit).
             * Di seguito e riportata la struttura dati ricevuta dalla funzione
             *
-            * @include modals/auth-modal-submit.json
+            * @include modals/auth-modal/submit.json
             *
             * @param[in] args Parametri della chiamata JS in formato JSON serialized
             *

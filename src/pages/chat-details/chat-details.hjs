@@ -1,3 +1,9 @@
+/**
+ * @brief Componente Javascript chat-details.h
+ * @file chat-details.hjs
+ */
+
+/** Componente Javascript chat-details.h */
 const std::string _src_pages_chat_details_chat_details_js = R"(
 const BubbleDom = function(message){
 

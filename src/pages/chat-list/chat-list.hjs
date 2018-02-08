@@ -1,3 +1,9 @@
+/**
+ * @brief Componente Javascript chat-list.h
+ * @file chat-list.hjs
+ */
+
+/** Componente Javascript chat-list.h */
 const std::string _src_pages_chat_list_chat_list_js = R"(
 const ChatListNode = function (avatarChat) {
 

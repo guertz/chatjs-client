@@ -1,10 +1,8 @@
 #ifndef STATES_AUTH_STATE_AUTH_STATE_H
 #define STATES_AUTH_STATE_AUTH_STATE_H
 
-#include "definitions/types.h"
 #include "models/user/user.h"
-#include "definitions/request.h"
-#include "definitions/response.h"
+#include "models/auth/auth.h"
 
 namespace States {
     namespace AuthState {
