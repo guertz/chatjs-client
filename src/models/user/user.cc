@@ -10,7 +10,7 @@ using json = nlohmann::json;
 using namespace std;
 
 User::User(){
-    log_pedantic("User@JsonItem", "Created");
+    log_C(TAG::OBJ, "User@JsonItem::Create", "");
 
     this->name  = "";
     this->_id   = "";
@@ -18,7 +18,7 @@ User::User(){
 }
 
 User::User(const json& j) : User() {
-    log_pedantic("User@JsonItem", "Created from json");
+    log_C(TAG::OBJ, "User@JsonItem::Create", "...json...");
 
     if(j.is_object()) {
         this->name = j.at("name").get<string>();
@@ -31,7 +31,7 @@ User::User(const std::string& serialized)
     : User(json::parse(serialized)) { }
 
 User::~User() {
-    log_pedantic("User@JsonItem", "Destroying");
+    log_C(TAG::OBJ, "User@JsonItem::Destroy", "");
 }
 
 json User::to_json() const {

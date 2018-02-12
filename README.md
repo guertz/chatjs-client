@@ -81,7 +81,9 @@ $ doxygen
     ├── app                             # App main/bootstrapper
     ├── common                          # Utilities (helper, logger, ...)
     │   ├── ...                         #
-    ├── directives                      # Directives
+    ├── components                      # App components
+    │   ├── chat-details                # ChatDetails view partial
+    │   ├── chat-list                   # ChatList view partial
     │   ├── modals                      # Modals (auth, chat, ...)
     │   │   ├── ...                     #
     │   ├── navbar                      # Navbar links (profile, ...)
@@ -89,18 +91,12 @@ $ doxygen
     │   └── toast                       # Toast
     ├── models                          # Data models
     │   └── ...                         #
-    ├── pages                           # Partials (chat-list, chat-details)
-    │   ├── ...                         #
     ├── protocol                        # Protocolli di comunicazione
     │   └── sockets                     # Definizione Socket 
-    │       ├── ...                     #
     └── states                          # Data providers
         ├── auth-state                  # Provider auth data
-        │   └── ...                     #       
         ├── chat-state                  # Provider chat data
-        │   └── ...                     #
         └── users-state                 # Provider users data
-            └── ...                     #
 ```
 ## Next steps
 - [x] Code refactoring

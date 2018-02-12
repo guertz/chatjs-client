@@ -24,10 +24,10 @@ string JsonItem::serialize() const {
 
 JsonItem::JsonItem() {
     obj_count++;
-    log_pedantic("CREATE JsonItem", "Json Objected count (actives: " + to_string(obj_count) + ")" );
+    log_C(TAG::OBJ, "JsonItem::Create", "count: " + to_string(obj_count) );
 }
 
 JsonItem::~JsonItem() {
     obj_count--;
-    log_pedantic("DESTROY JsonItem", "Json Objected count (actives: " + to_string(obj_count) + ")" );
+    log_C(TAG::OBJ, "JsonItem::Destroy", "count: " + to_string(obj_count) );
 }

@@ -12,14 +12,11 @@ using namespace std;
 namespace ws {
 
     BaseRequest::BaseRequest() {
-        log_pedantic("BaseRequest@JsonItem", "Created");
-
-        // this->AUTH = "";
-        // this->content = "";
+        log_C(TAG::OBJ, "BaseRequest@JsonItem::Create", "");
     }
     
     BaseRequest::BaseRequest(const json& j) {
-        log_pedantic("BaseRequest@JsonItem", "Created from json");
+        log_C(TAG::OBJ, "BaseRequest@JsonItem::Create", "...json...");
 
         this->AUTH = j.at("AUTH").get<string>();
         this->content = j.at("content").dump();
@@ -29,7 +26,7 @@ namespace ws {
             : BaseRequest(json::parse(serialized)) { }
 
     BaseRequest::~BaseRequest() {
-        log_pedantic("BaseRequest@JsonItem", "Destroying");
+        log_C(TAG::OBJ, "BaseRequest@JsonItem::Destroy", "");
     }
 
     json BaseRequest::to_json() const {
@@ -40,7 +37,7 @@ namespace ws {
     }
 
     BaseResponse::BaseResponse() {
-        log_pedantic("BaseResponse@JsonItem", "Created");
+        log_C(TAG::OBJ, "BaseResponse@JsonItem::Create", "");
 
         this->ok      = false;
         this->status  = 0;
@@ -49,7 +46,7 @@ namespace ws {
     }
 
     BaseResponse::BaseResponse(const nlohmann::json& j) {
-        log_pedantic("BaseResponse@JsonItem", "Created from json");
+        log_C(TAG::OBJ, "BaseResponse@JsonItem::Create", "...json...");
 
         this->ok = j.at("ok").get<bool>();
         this->status = j.at("status").get<int>();
@@ -61,7 +58,7 @@ namespace ws {
         : BaseResponse(json::parse(serialized)) { }
 
     BaseResponse::~BaseResponse() {
-        log_pedantic("BaseResponse@JsonItem", "Destroying");
+        log_C(TAG::OBJ, "BaseResponse@JsonItem::Destroy", "");
     }
 
     json BaseResponse::to_json() const {

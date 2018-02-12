@@ -36,7 +36,6 @@
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
-#include "env.h"
 
 using namespace std;
 using namespace WebUI;
@@ -71,11 +70,11 @@ int main() {
   WebUI::Inject(); // Vengono caricate le risorse di base 
                    // (HTML, stili css, metodi Javascript)
 
-  log_csl("Main", "Entering application loop [Running]");
+  log_A(TAB::CSL, "Main", "[r] running (App loop)");
   while (webview_loop(webview, 1) == 0) 
       ; // Application Loop (blocking)
 
-  log_csl("Main", "Exit application loop [Exit]");
+  log_A(TAB::CSL, "Main", "[c] completed (App loop)");
   webview_exit(webview);
 
   App::Destroy(); // Metodo Distruttore

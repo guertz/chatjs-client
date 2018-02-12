@@ -1,12 +1,12 @@
 
 #include <iostream>
+#include <string>
 #include <thread>
 #include <thread>
 
 #include "wscustom.h"
 
 #include "common/logger/logger.h"
-#include "env.h"
 
 using json = nlohmann::json;
 using WebSocket = easywsclient::WebSocket;
@@ -17,17 +17,24 @@ using namespace std;
  * @file wscustom.cc
  */
 
-/*
-    Next:
-        - reconnect
-        - better error handling
-        - Mutex buffer, computing, channel (?)
-        - Boost & async event driven (Asio)
-*/
+/** Tempo espresso in ms di polling per socket in ascolto */
+#define SOCKET_ACTIVE_POLL 300
+/** Tempo espresso in ms di polling per socket dormiente */
+#define SOCKET_INACTIVE_POLL 1000
+
+#define SERVERHOST "137.74.196.151:8000"
+#define LOCALHOST  "localhost:8000"
+
+// Improve
+//   - reconnect
+//   - errors
+//   - mutex on buffer, channel
+//   - asio
 
 namespace ws {
  
     void Socket::ThreadMain(){
+        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running");
 
         // creazione di un canale websocket (vedi libreria easywsclient)
         // viene effettuata nel thread così il thread UI non ne risente
@@ -51,14 +58,20 @@ namespace ws {
                     // Invia messagio e setta flag inviato sul buffer
                     this->channel->send(this->buffer.content);
                     this->buffer.is_send = true;
-                } else
-                    // Alla risposta svuota il buffer se non è ancora stato fatto
+                    log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running send");
+                } else {
+                    if(this->buffer.is_send)
+                        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[c] complete send");
+
+                    // Pulizia del buffer, invio & poll completato almeno una volta
                     this->reset();
-                
+                    
+                }
+
                 // Dispatch ricezione risposta. Utilizzo lamba function condividento il contesto
                 this->channel->dispatch([this](const string& str_response) {
-                    
                     BaseResponse response(str_response);
+                    log_A(TAG::WSS, this->endpoint + "::ThreadMain::Dispatch", "Status: " + to_string(response.status));
 
                     if(response.ok)
                         this->onmessage(response.content);
@@ -66,6 +79,8 @@ namespace ws {
                         this->onerror(response.error);
                 });
 
+            } else {
+                log_A(TAG::WSS, this->endpoint + "::ThreadMain", "KeepAlive");
             }
 
             // Effettua poll a livello più lento e ignora operazioni read/write
@@ -77,13 +92,16 @@ namespace ws {
             this->onerror("Bad connection");
         }
 
+        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] complete");
     }
 
     void Socket::pause() {
+        log_A(TAG::WSS, this->endpoint + "::Pause", "");
         this->is_computing = false;
     }
 
     void Socket::resume() {
+        log_A(TAG::WSS, this->endpoint + "::Resume", "");
         this->is_computing = true;
     }
 
@@ -92,23 +110,32 @@ namespace ws {
         this->buffer.is_send = false;
     }
 
-    void Socket::setBuffer(BaseRequest& request){
+    void Socket::setBuffer(const BaseRequest& request){
         this->reset();
-
         this->buffer.content = request.serialize();
+
+        log_A(TAG::WSS, this->endpoint + "::Buffer", this->buffer.content);
     }
 
     Socket::~Socket(){
 
+        log_A(TAG::WSS, this->endpoint + "::Destroy", "[r] running");
+
+        // Se il canale non è presente, è già stato terminato
         if(this->channel){
             this->channel->close();
             
+            // Join del thread per attendere la chiusura e distruzione in modo corretto
+            log_A(TAG::WSS, this->endpoint + "::Destroy", "Before thread");
             if(this->watcher.joinable()) 
                 this->watcher.join();
+            log_A(TAG::WSS, this->endpoint + "::Destroy", "After thread");
 
             delete this->channel;
                    this->channel = 0;
         }
+
+        log_A(TAG::WSS, this->endpoint + "::Destroy", "[c] complete");
 
     }
 
@@ -116,7 +143,15 @@ namespace ws {
                     void (*onmessage)(const std::string message), 
                     void(*onerror)(const std::string error)) {
 
-        this->path = "ws://" + SERVER_HOST + "/" + node;
+        this->endpoint = node;
+
+        #ifdef SERVER_REMOTE
+            this->path = "ws://" + #SERVERHOST + "/" + this->endpoint;
+        #else
+            this->path = "ws://" + #LOCALHOST + "/" + this->endpoint;
+        #endif
+
+        log_A(TAG::WSS, this->endpoint + "::Create", "");
 
         this->onmessage = onmessage;
         this->onerror = onerror;

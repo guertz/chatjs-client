@@ -3,12 +3,12 @@
 #include "app.h"
 #include "app.hjs"
 
-#include "directives/navbar/navbar.h" 
-#include "directives/modals/modals.h"
-#include "directives/toast/toast.h"
+#include "components/navbar/navbar.h" 
+#include "components/modals/modals.h"
+#include "components/toast/toast.h"
 
-#include "pages/chat-list/chat-list.h"
-#include "pages/chat-details/chat-details.h"
+#include "components/chat-list/chat-list.h"
+#include "components/chat-details/chat-details.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
@@ -31,8 +31,7 @@ namespace App {
 
         inline void Ready(const std::string& args) {
 
-            log_pedantic("WebUI", "[c] App ready event");
-            log_details("App", "Ready => Initializing!");
+            log_B(TAG::CMP, "App::Ready", args);
            
             AuthState::Bootstrap();
             ChatState::Bootstrap();
@@ -51,7 +50,7 @@ namespace App {
 
 
     void Bootstrap() {
-        log_details("App", "Bootstrap");
+        log_B(TAG::CMP, "App::Bootstrap", "");
 
         WebUI::Register("App::Ready", Events::Ready);
         WebUI::Execute(_src_app_app_js);
@@ -59,13 +58,13 @@ namespace App {
     }
 
     void Destroy() {
-        log_details("App", "Destroy");
+        log_B(TAG::CMP, "App::Destroy", "");
 
         Navbar::Destroy();
         Modals::Destroy();
 
         // Toast::Destroy();
-        ChaList::Destroy();
+        ChatList::Destroy();
         ChatDetails::Destroy();
 
         ChatState::Destroy();

@@ -13,133 +13,179 @@ using json = nlohmann::json;
 using namespace ws;
 using namespace std;
 
+/**
+ * @brief Definizione stato di autenticazione utenti
+ * @file users-state.cc
+ */
+
 namespace States {
+
     namespace UsersState {
 
-        static Socket *usersSocket = 0;
-        static Response::Stream streamResponse;
+        // Dichiarazione metodi non definiti a livello di interfaccia
 
+        /**
+         * Metodo per inizializzare il socket usersSocket a seguito dell'azione di login
+         *
+         * @param AUTH
+         */
+        inline void Init(const std::string& AUTH);
+
+        /** Metodo per chiudere il socket usersSocket a seguito dell'azione di logout */
+        inline void Close();
+
+        /**
+         * Metodo per gestire l'avvenuta ricezione nel corretto formato
+         * a seguito di un azione di tipo USERSSIGNAL sul canale di comunicazione
+         * socket usersSocket.
+         *
+         * @param str_response Messaggio di risposta in formato JSON serializzato
+         */
+        inline void ResponseSuccess(const std::string str_response);
+
+        /**
+         * Metodo per gestire l'avvenuta ricezione di un messaggio di errore a 
+         * seguito di un azione di tipo USERSSIGNAL sul canale di comunicazione
+         * socket usersSocket.
+         *
+         * @param str_error Messaggio di errore stringa testo
+         */
+        inline void ResponseError(const std::string str_error);
+        
+        /** 
+         * Metodo per notificare cambiamenti di stato ai componenti che
+         * hanno sottoscritto allo stato di users
+         */
+        inline void Notify();
+
+        // Variabile che contiene il puntatore al canale di comunicazione 
+        // websocket all'endpoint 'users-stream' e ha durata di vita per tutto il
+        // corso del programma
+        static Socket *usersSocket = 0;
+
+        // Variabile in cui viene mantenuto il contenuto a seguito di una risposta
+        // da parte del canale di comunicazione usersSocket
+        static UsersResponse usersResponse;
+
+        // Mappa dei componenti che sottoscrivono ad eventi relativi allo stato
+        // di autenticazione
         static Subscribers subscribed;
 
-        void notify(const Response::Stream& stream){
-            
-            streamResponse = stream;
+        // Determina se il canale è già in ascolto della lista di utenti
+        static bool pending = false;
 
-            for (const auto& item : subscribed)
-                (*item.second)();
-            
-        }
-        
-        void Register(string abc, void (*fn)()){
-            subscribed[abc] = fn;
+        void Register(std::string cb_name, void (*cb_fn)()) {
+            log_C(TAG::STA, "States::ChatState::Register", cb_name);
+
+            subscribed[cb_name] = cb_fn;
         }
 
         void Bootstrap() {
-            
+            log_B(TAG::STA, "States::ChatState::Bootstrap", "");
+
             AuthState::Register("UsersState", State::Auth);
 
-            if(!usersSocket)
-                usersSocket = new Socket(   "users-stream", 
-                                            UsersStream::ResponseSuccess, 
-                                            UsersStream::ResponseError);
-    
+            assert(!usersSocket);
+            usersSocket = new Socket( "users-stream", ResponseSuccess, ResponseError);
 
         }
 
         void Destroy() {
-            if(usersSocket){
-                delete usersSocket;
-                       usersSocket = 0;
-            }
-        }
+            log_B(TAG::STA, "States::ChatState::Destroy", "");
 
-        const string& getSerializedList() {
-            return streamResponse.usersList;    
-        }
-
-        namespace UsersStream {
-
-            static bool streaming = false;
-
-            inline void Init(const string& AUTH) {
-                
-                if(!streaming){
-                    streaming = true;
-            
-                    Request::Stream stream_request;
-                        stream_request.type = STREAMSIGNAL::OPEN;
-
-                    
-                    BaseRequest socket_data;
-                        socket_data.content = stream_request.serialize();
-                        socket_data.AUTH = AUTH;
-
-                    usersSocket->setBuffer(socket_data);
-                    
-                }
-            }
-
-            inline void Close() {
-
-                if(streaming) {
-                    Request::Stream stream_request;
-                        stream_request.type = STREAMSIGNAL::CLOSE;
-
-                
-                    BaseRequest socket_data;
-                        socket_data.content = stream_request.serialize();
-
-                    // streaming = false && after that compute = stop?
-                    usersSocket->setBuffer(socket_data);
-
-                    streaming = false;
-                }
-
-            }
-
-            inline void ResponseSuccess(const string str_response) {
-
-                // check reponse type and do action
-                // update static variables data
-
-                Response::Stream stream_response(json::parse(str_response));
-
-                notify(stream_response);
-            }
-
-            inline void ResponseError(const string str_error) {
-                
-                // TODO: failure this variable will die
-                //       but notify is copying first
-                // Cannot cast because of content undefined
-                Response::Stream stream_response;
-
-                notify(stream_response);
-            }
+            assert(usersSocket);
+            delete usersSocket;
+                   usersSocket = 0;
         
         }
 
+        const std::string& getSerializedList() {
+            return usersResponse.usersList;    
+        }
+        
+        inline void Init(const std::string& AUTH) {
+            log_B(TAG::STA, "States::ChatState::Init", AUTH);
+
+            assert(!pending);
+            pending = true;
+        
+            UsersRequest users_request;
+                    users_request.type = SIGNAL::OPEN;
+
+                
+            BaseRequest socket_data;
+                socket_data.content = users_request.serialize();
+                socket_data.AUTH = AUTH;
+
+                usersSocket->setBuffer(socket_data);
+             
+        }
+
+        inline void Close() {
+            log_B(TAG::STA, "States::ChatState::Close", "");
+
+            assert(pending);
+            UsersRequest users_request;
+                    users_request.type = SIGNAL::CLOSE;
+
+            
+            BaseRequest socket_data;
+                socket_data.content = stream_request.serialize();
+
+            // stop computing next
+            usersSocket->setBuffer(socket_data);
+            pending = false;
+
+        }
+
+        inline void Notify(){
+
+            log_B(TAG::STA, "States::ChatState::Notify", "State changes");
+
+            for (const auto& subscription : subscribed) {
+                log_C(TAG::STA, "States::ChatState::Notify", subscription.first);
+                (*subscription.second)(); 
+            }
+            
+        }
+
+        inline void ResponseSuccess(const std::string str_response) {
+            log_C(TAG::STA, "States::AuthState::Response", str_response);
+
+            usersResponse = UsersResponse(str_response);
+
+            Notify();
+        }
+
+        inline void ResponseError(const std::string str_error) {
+            
+            usersResponse = UsersResponse();
+
+            Notify();
+        }
+        
+        
+
         namespace State {
+
             void Auth() {
 
-                const AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                const User       auth_user   = AuthState::getAuthUser();
+                const AuthState::SIGNAL 
+                                auth_action = AuthState::getAuthAction();
+                const User      auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action) {
 
-                    case AUTHSIGNAL::LOGIN:
+                    case AuthState::SIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
                             UsersStream::Init(auth_user._id);
-                        // else
-                        //   no channel should be opened (useless)
 
                         break;
 
-                    case AUTHSIGNAL::LOGOUT:
+                    default:
 
                         UsersStream::Close();
-
                         break;
                     
                 }

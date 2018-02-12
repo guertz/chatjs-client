@@ -37,14 +37,15 @@ namespace WebUI {
     static Webview webview; 
     static Methods callbacks;
 
-    void Register(std::string cb_name, void (*cb_fn)(const std::string&)){
+    void Register(std::string cb_name, void (*cb_fn)(const std::string&)) {
+        log_C(TAG::CSL, "WebUI::Register", cb_name);
+
         callbacks[cb_name] = cb_fn;
-        log_pedantic("WebUI", "Registered: " + cb_name);
     }
 
     Webview* Create() {
 
-        log_csl("WebUI", "Creating window");
+        log_B(TAG::CSL, "WebUI::Create", "");
 
         const string prefix = "data:text/html," + _src_assets_index_html;
 
@@ -71,7 +72,7 @@ namespace WebUI {
 
     void Inject() {
         
-        log_csl("WebUI", "[r] Injecting assets");
+        log_B(TAG::CSL, "WebUI::Inject", "[r] running");
 
         const string style_w3   = "stylify(false, '" +
                                     _src_assets_w3_css +
@@ -93,19 +94,19 @@ namespace WebUI {
         const string appready = "appready()";
 
         // Fixing gdk_threads queue
-        log_pedantic("WebUI", "Deploy appinit.js [assets]");
+        log_C(TAG::CSL, "WebUI::Inject", "appinit.js");
         Dispatch(&webview, _src_assets_appinit_js.c_str());
 
-        log_pedantic("WebUI", "Deploy w3.css [assets]");
+        log_C(TAG::CSL, "WebUI::Inject", "w3.css");
         Dispatch(&webview, style_w3.c_str());
 
-        log_pedantic("WebUI", "Deploy style.css [assets]");
+        log_C(TAG::CSL, "WebUI::Inject", "style.css");
         Dispatch(&webview, style.c_str());
 
-        log_pedantic("WebUI", "[r] App ready event");
+        log_C(TAG::CSL, "WebUI::Inject", "appready.js");
         Execute(appready);
 
-        log_details("WebUI", "[c] Injecting assets");
+        log_B(TAG::CSL, "WebUI", "[c] completed");
 
     }
 
@@ -134,7 +135,7 @@ namespace WebUI {
 
             string parsed_script_part(__parsed_script_part);
 
-            log_csl("WebUI", parsed_script_part);
+            log_C(TAG::CSL, "WebUI::Dispatch", parsed_script_part);
 
             assert(__parsed_script_part);
             // TODO: check i always deleted arrays when needed
@@ -169,12 +170,10 @@ namespace WebUI {
 
         /** Dati callback in formato JSON deserializzato */
         json function = json::parse(args); 
-        log_pedantic("WebUI", "Handling: " + function.at("fn").get<string>());
+
+        log_C(TAG::CSL, "WebUI::JsHCallback", function.at("fn").get<string>());
 
         Methods::iterator fn_itr = callbacks.find(function.at("fn").get<string>());
-        
-        if (fn_itr == callbacks.end())
-            log_err("JsHandler", "Missing callback for: " + function.at("fn").get<string>());
 
         assert(fn_itr !=  callbacks.end());
         

@@ -3,54 +3,57 @@
 
 #include <map>
 
-#include "definitions/chat.h"
-#include "definitions/chat-methods/request.h"
-#include "definitions/chat-methods/response.h"
-#include "definitions/chats-methods/request.h"
-#include "definitions/chats-methods/response.h"
+#include "models/chat/chat.h"
+#include "models/socket/chat/chat.h"
+#include "models/socket/chats/chats.h"
 
-#include "protocol/sockets/wscustom.h"
 
 namespace States {
 
     namespace ChatState {
-
-        typedef std::map<std::string, ws::Socket*> SocketsMap;
+        
+        /** 
+        * Definizione della struttura map che associa ad ogni stringa 
+        * un puntatore a funzione. Viene utilizzata per gestire i componenti
+        * che sottoscrivono ad ascoltare gli eventi di questo stato e a
+        * notificare dei cambiamenti
+        */
         typedef std::map<std::string, void(*)()> Subscribers;
 
-        void Bootstrap();
-        void Destroy();
-        
         namespace ChatMethods {
-            void Register(std::string , void (*)());
-            inline void InitAChat(const Chat& chat);
+
+            /**
+            * Inserisce nella mappa dei subscribers ::Subscribers un evento di callback.
+            *
+            * @param[in] cb_name string contenente il nome di riferimento all'evento di callback
+            * @param[in] cb_fn Puntatore a funzione relativo all'evento di callback da invocare
+            * 
+            */
+            void Register(std::string cb_name, void (*cb_fn)());
 
             void SendAMessage(const std::string& text);
 
-            inline void Notify();
-            inline void ResponseSuccess(const std::string);
-            inline void ResponseError(const std::string);
         }
 
         namespace ChatsMethods {
             void Register(std::string , void (*)());
 
-            inline void Init(const std::string& AUTH);
-            
-            const std::string getSerializedChats();
-
-            void setCurrent(const std::string& reference);
-            const std::string getCurrent();
-            bool isCurrentChat();
-            const std::string getCurrentChat();
-
             void StartAChat(const std::string& user_dest);
 
-            inline void Notify();
-            inline void Clean();
-            inline void ResponseSuccess(const std::string);
-            inline void ResponseError(const std::string);
+            // Chats
+            const std::string getSerializedChats();
+
+            // Chat (current of chats)
+            void setCurrentChat(const std::string& reference);
+            bool isCurrentChat();
+
+            const std::string getCurrentChatRef();
+            const std::string getCurrentChat();
+
         }
+
+        void Bootstrap();
+        void Destroy();
 
         namespace State {
             void Auth();

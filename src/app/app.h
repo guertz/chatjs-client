@@ -10,11 +10,11 @@
  * Principalmente le parti che compongono l'intera applicazione sono:
  * + Componenti grafici (components.h). Sono i componenti percepiti e  
  *   con cui l'utente interagisce. Si suddividono in due categorie:
- *   - Partials (/pages) ovvero componenti ben definiti e presenti per
+ *   - Partials ovvero componenti ben definiti e presenti per
  *     tutto il ciclo di vita dell'applicazione:
  *     - ::ChatDetails
        - ::ChatList
- *   - Direttive (/directives) componenti dinamici che non hanno una
+ *   - Direttive ovvero componenti dinamici che non hanno una
  *     struttura rigida, ma che invece possono essere personalizzati
  *     e compaiono in determinati momenti o per determinate azioni:
  *     - ::Toast

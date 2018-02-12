@@ -14,10 +14,12 @@
 using json = nlohmann::json;
 using namespace std;
 using namespace ws;
-using namespace States;
 
 namespace States {
+
     namespace ChatState {
+
+        typedef std::map<std::string, ws::Socket*> SocketsMap;
 
         static Chats        chatsList;
 
@@ -26,7 +28,6 @@ namespace States {
         static SocketsMap   socketsChatsList;
 
         void Bootstrap(){
-            log_base("ChatState", "Bootstrapping provider");
 
             chatsSocket = new Socket( "chats-stream", 
                             ChatsMethods::ResponseSuccess, 
@@ -35,7 +36,6 @@ namespace States {
         }
 
         void Destroy () {
-            log_base("ChatState", "Destroying provider");
             
             ChatsMethods::Clean();
 
@@ -50,7 +50,6 @@ namespace States {
             Subscribers subscribed;
 
             void Register(std::string abc, void (*fn)()) {
-                log_base("ChatState::Chat>>Register", "Registering callback " + abc);
                 subscribed[abc] = fn;
             }
 
@@ -75,10 +74,7 @@ namespace States {
                 assert(socketsChatsList[chat.reference]);
 
                 socketsChatsList[chat.reference]->setBuffer(socket_data);
-
-                log_base("ChatState::Chat>>Init", "Initializing 'chats/" + chat.reference + "'");
-
-            
+     
 
             }
 
@@ -99,19 +95,14 @@ namespace States {
 
                 assert(socketsChatsList[referral]);
                 socketsChatsList[referral]->setBuffer(socket_data);
-           
-                log_base("ChatState::Chat>>Sending", "Message '" + text + "'");
             }
 
             inline void Notify() {
-                log_base("ChatState::Chat>>Notify", "Detected changes");
                 for (const auto& item : subscribed) 
                     (*item.second)();
             }
 
             inline void ResponseSuccess(const string args){
-
-                log_base("ChatState::Chat>>Socket", "Response: '" + args + "'");
 
                 Response::Chat chat_send(args);
                 Message m(json::parse(args));
@@ -122,7 +113,7 @@ namespace States {
             }
 
             inline void ResponseError(const string error) {
-                log_base("ChatState::Chat>>Socket", "Error: '" + error + "'");
+                
             }
         }
 
@@ -131,12 +122,11 @@ namespace States {
             static string currentChatRef;
 
             void Register(std::string abc, void (*fn)()) {
-                log_base("ChatState::Chats>>Register", "Registering callback " + abc);
+                
                 subscribed[abc] = fn;
             }
 
             const string getSerializedChats() {
-                log_base("ChatState::Chats", "Requested serialized chats list");
 
                 json container;
                 ChatsWrapper::chats_to_json(chatsList, container);
@@ -144,7 +134,6 @@ namespace States {
             }
 
             void setCurrent(const string& reference) {
-                log_base("ChatState::Chats", "Setting reference to: " + reference);
                 currentChatRef = reference;
                 assert(currentChatRef.size());
 
@@ -160,7 +149,6 @@ namespace States {
             }
 
             const string getCurrentChat() {
-                log_base("ChatState::Chats", "Requested serialized chat: '" + currentChatRef + "'");
 
                 assert(isCurrentChat());
                 return chatsList[currentChatRef].serialize();
@@ -168,8 +156,6 @@ namespace States {
             }
         
             inline void Init(const string& AUTH) {
-                
-                log_base("ChatState::Chat>>Init", "\t Initializing chats");
 
                 Request::Chats connect_request;
                     connect_request.type = TYPE::CONNECT;
@@ -194,7 +180,6 @@ namespace States {
                 // do i need pointers?
                 // // unique || shared ptr?
                 for (SocketsMap::iterator it = socketsChatsList.begin(); it != socketsChatsList.end(); ++it) {
-                    log_base("Destroyer!!!!", it->first);
                     if(it->second){
                         delete it->second;
                             it->second = 0;
@@ -213,12 +198,10 @@ namespace States {
             }
 
             inline void ResponseSuccess(const std::string success) {
-                log_base("ChatState", success);
 
                 Response::Chats chat_response(success);
 
                 Chat new_chat(success);
-                log_base("ChatState", "## Before initi")
                 ChatMethods::InitAChat(new_chat);
                 chatsList[chat_response.reference] = new_chat;
                 
@@ -255,23 +238,22 @@ namespace States {
 
         namespace State {
             void Auth() {
-                
-                log_pedantic("ChatState", "Auth state changed");
-
-                const AUTHSIGNAL auth_action = AuthState::getAuthAction();
-                const User       auth_user   = AuthState::getAuthUser();
+            
+                const AuthState::SIGNAL 
+                                auth_action = AuthState::getAuthAction();
+                const User      auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action){
-                    case AUTHSIGNAL::LOGIN:
+                    case AuthState::SIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
                             ChatsMethods::Init(auth_user._id);
-                        
-
-                        break;
-                    case AUTHSIGNAL::LOGOUT:
                     
-                            ChatsMethods::Clean();
+                        break;
+
+                    default:
+                    
+                        ChatsMethods::Clean();
                         break;
 
                 }

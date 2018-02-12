@@ -39,6 +39,7 @@ namespace ws{
     class Socket {
 
         private:
+            std::string endpoint;
             WsBuffer buffer; /**< Buffer data per channel*/
             std::string path; /**< URL per la connessione del websocket */
 
