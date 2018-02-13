@@ -19,9 +19,9 @@
 // #define WEBVIEW_DEBUG // TODO: it logs long string? (not if i cut on logger)
 
 #ifdef DEBUG_MODE
-
-    #define DEBUG_TASK 126
-    #define DEBUG_MASK 7
+    // refresh-app?
+    #define DEBUG_TASK 55
+    #define DEBUG_MASK 3
 
 #else
 

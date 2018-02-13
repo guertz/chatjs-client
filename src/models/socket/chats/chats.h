@@ -47,7 +47,7 @@ namespace ChatsSocket {
     class Response : public JsonItem {
 
         public:
-            TYPE  type; /**< Identificativo azione da risposta del server. */
+            SIGNAL  type; /**< Identificativo azione da risposta del server. */
             std::string reference; /** Codice identificativo chat */
             User destination; /**< Utente di destinazione */
             User from; /**< Utente da cui arriva il messaggio */

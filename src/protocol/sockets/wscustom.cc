@@ -92,6 +92,11 @@ namespace ws {
             this->onerror("Bad connection");
         }
 
+        if(this->channel) {
+            delete this->channel;
+                   this->channel = 0;
+        }
+
         log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] complete");
     }
 
@@ -119,23 +124,12 @@ namespace ws {
 
     Socket::~Socket(){
 
-        log_A(TAG::WSS, this->endpoint + "::Destroy", "[r] running");
+        log_A(TAG::WSS, this->endpoint + "::Destroy", "");
 
-        // Se il canale non è presente, è già stato terminato
+        // Se il canale non è presente è già stato terminato
         if(this->channel){
             this->channel->close();
-            
-            // Join del thread per attendere la chiusura e distruzione in modo corretto
-            log_A(TAG::WSS, this->endpoint + "::Destroy", "Before thread");
-            if(this->watcher.joinable()) 
-                this->watcher.join();
-            log_A(TAG::WSS, this->endpoint + "::Destroy", "After thread");
-
-            delete this->channel;
-                   this->channel = 0;
         }
-
-        log_A(TAG::WSS, this->endpoint + "::Destroy", "[c] complete");
 
     }
 
@@ -146,9 +140,9 @@ namespace ws {
         this->endpoint = node;
 
         #ifdef SERVER_REMOTE
-            this->path = "ws://" + #SERVERHOST + "/" + this->endpoint;
+            this->path = "ws://" + string(SERVERHOST) + "/" + this->endpoint;
         #else
-            this->path = "ws://" + #LOCALHOST + "/" + this->endpoint;
+            this->path = "ws://" + string(LOCALHOST) + "/" + this->endpoint;
         #endif
 
         log_A(TAG::WSS, this->endpoint + "::Create", "");

@@ -65,7 +65,7 @@ namespace States {
 
         // Variabile in cui viene mantenuto il contenuto a seguito di una risposta
         // da parte del canale di comunicazione usersSocket
-        static UsersResponse usersResponse;
+        static UsersSocket::Response usersResponse;
 
         // Mappa dei componenti che sottoscrivono ad eventi relativi allo stato
         // di autenticazione
@@ -109,8 +109,8 @@ namespace States {
             assert(!pending);
             pending = true;
         
-            UsersRequest users_request;
-                    users_request.type = SIGNAL::OPEN;
+            UsersSocket::Request users_request;
+                    users_request.type = UsersSocket::SIGNAL::OPEN;
 
                 
             BaseRequest socket_data;
@@ -125,12 +125,12 @@ namespace States {
             log_B(TAG::STA, "States::ChatState::Close", "");
 
             assert(pending);
-            UsersRequest users_request;
-                    users_request.type = SIGNAL::CLOSE;
+            UsersSocket::Request users_request;
+                    users_request.type = UsersSocket::SIGNAL::CLOSE;
 
             
             BaseRequest socket_data;
-                socket_data.content = stream_request.serialize();
+                socket_data.content = users_request.serialize();
 
             // stop computing next
             usersSocket->setBuffer(socket_data);
@@ -152,14 +152,14 @@ namespace States {
         inline void ResponseSuccess(const std::string str_response) {
             log_C(TAG::STA, "States::AuthState::Response", str_response);
 
-            usersResponse = UsersResponse(str_response);
+            usersResponse = UsersSocket::Response(str_response);
 
             Notify();
         }
 
         inline void ResponseError(const std::string str_error) {
             
-            usersResponse = UsersResponse();
+            usersResponse = UsersSocket::Response();
 
             Notify();
         }
@@ -170,22 +170,22 @@ namespace States {
 
             void Auth() {
 
-                const AuthState::SIGNAL 
+                const AuthSocket::SIGNAL 
                                 auth_action = AuthState::getAuthAction();
                 const User      auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action) {
 
-                    case AuthState::SIGNAL::LOGIN:
+                    case AuthSocket::SIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
-                            UsersStream::Init(auth_user._id);
+                            Init(auth_user._id);
 
                         break;
 
                     default:
 
-                        UsersStream::Close();
+                        Close();
                         break;
                     
                 }

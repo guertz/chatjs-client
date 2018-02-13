@@ -70,11 +70,11 @@ int main() {
   WebUI::Inject(); // Vengono caricate le risorse di base 
                    // (HTML, stili css, metodi Javascript)
 
-  log_A(TAB::CSL, "Main", "[r] running (App loop)");
+  log_A(TAG::CSL, "Main", "[r] running (App loop)");
   while (webview_loop(webview, 1) == 0) 
       ; // Application Loop (blocking)
 
-  log_A(TAB::CSL, "Main", "[c] completed (App loop)");
+  log_A(TAG::CSL, "Main", "[c] completed (App loop)");
   webview_exit(webview);
 
   App::Destroy(); // Metodo Distruttore

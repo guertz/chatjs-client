@@ -42,12 +42,12 @@ namespace Navbar {
 
         inline void Auth(){
                 
-            const AuthState::SIGNAL 
+            const AuthSocket::SIGNAL 
                             auth_action = AuthState::getAuthAction();
             const User      auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
-                case AuthState::SIGNAL::LOGIN:
+                case AuthSocket::SIGNAL::LOGIN:
 
                     if(auth_user.is_valid())
                         Profile::Events::SetText(auth_user.name);

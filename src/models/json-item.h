@@ -11,10 +11,8 @@
 /** Classe base da implementare per oggetti di tipo Json */
 class JsonItem {
 
-    public: 
-        JsonItem();
-        ~JsonItem();
-        
+    public:
+    
         /**
          * Metodo per trasformare l'oggetto in formato json
          *

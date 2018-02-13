@@ -20,27 +20,27 @@ void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_m
 
     switch(tag) {
         case TAG::INF:
-            composed_message = "[ INF@" + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ INF" + to_string(lev) + "@" + attr + " ]: " + log_msg + "\n";
             break;
 
         case TAG::CSL:
-            composed_message = "[ CSL@" + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ CSL" + to_string(lev) + "@" + attr + " ]: " + log_msg + "\n";
             break;
 
         case TAG::WSS:
-            composed_message = "[ WSS@" + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ WSS" + to_string(lev) + "@" + attr + " ]: " + log_msg + "\n";
             break;
 
         case TAG::OBJ:
-            composed_message = "[ OBJ@" + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ OBJ" + to_string(lev) + "@" + attr + " ]: " + log_msg + "\n";
             break;
 
         case TAG::CMP:
-            composed_message = "[ CMP@" + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ CMP" + to_string(lev) + "@" + attr + " ]: " + log_msg + "\n";
             break;
 
         case TAG::STA:
-            composed_message = "[ STA@ " + attr + " ]: " + log_msg + ".\n";
+            composed_message = "[ STA" + to_string(lev) + "@ " + attr + " ]: " + log_msg + "\n";
             break;
 
         default:

@@ -1,6 +1,11 @@
 #ifndef MODELS_SOCKET_CHAT_CHAT_H
 #define MODELS_SOCKET_CHAT_CHAT_H
 
+#include <iostream>
+#include <json.hpp>
+#include "models/json-item.h"
+#include "models/user/user.h"
+
 namespace ChatSocket {
 
     enum SIGNAL {
@@ -19,8 +24,10 @@ namespace ChatSocket {
             std::string text;
 
             Request();
+
             Request(const nlohmann::json& j);
             Request(const std::string& serialized);
+            ~Request();
 
             nlohmann::json to_json() const;
 
@@ -37,8 +44,10 @@ namespace ChatSocket {
             User avatar;
 
             Response();
+
             Response(const nlohmann::json& j);
             Response(const std::string& serialized);
+            ~Response();
 
             nlohmann::json to_json() const;
 

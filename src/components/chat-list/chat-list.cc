@@ -36,7 +36,7 @@ namespace ChatList {
             log_C(TAG::CMP, "ChatList::UserSelected", args);
 
             json event_args = json::parse(args);
-            ChatState::ChatsMethods::setCurrent(event_args.at("ref").get<string>());
+            ChatState::ChatsMethods::setCurrentChat(event_args.at("ref").get<string>());
         }
     }
 
@@ -60,12 +60,12 @@ namespace ChatList {
     namespace State {
         
         inline void Auth() {    
-            const AuthState::SIGNAL
+            const AuthSocket::SIGNAL
                             auth_action = AuthState::getAuthAction();
             const User      auth_user   = AuthState::getAuthUser();
 
             switch(auth_action){
-                case SIGNAL::LOGIN:
+                case AuthSocket::SIGNAL::LOGIN:
                     if(auth_user.is_valid())
                         
                         Toast::Events::Show(auth_user.name);

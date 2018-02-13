@@ -58,7 +58,7 @@ namespace States {
         
         // Variabile in cui viene mantenuto il contenuto a seguito di una risposta
         // da parte del canale di comunicazione authSocket
-        static AuthResponse authResponse;
+        static AuthSocket::Response authResponse;
 
         // Mappa dei componenti che sottoscrivono ad eventi relativi allo stato
         // di autenticazione
@@ -93,8 +93,8 @@ namespace States {
             // if(!pending && !authResponse.online){
             pending = true;
             
-            AuthRequest auth_request;
-                auth_request.type = SIGNAL::LOGIN;
+            AuthSocket::Request auth_request;
+                auth_request.type = AuthSocket::SIGNAL::LOGIN;
                 auth_request.user = AUTH_KEY;
 
 
@@ -114,8 +114,8 @@ namespace States {
             pending = true;
 
 
-            AuthRequest auth_request;
-                auth_request.type = SIGNAL::LOGOUT;
+            AuthSocket::Request auth_request;
+                auth_request.type = AuthSocket::SIGNAL::LOGOUT;
                 // auth_request.user = "";
 
             
@@ -128,7 +128,7 @@ namespace States {
 
         }
 
-        SIGNAL getAuthAction() {
+        AuthSocket::SIGNAL getAuthAction() {
             return authResponse.type;
         }
 
@@ -152,7 +152,7 @@ namespace States {
         inline void ResponseSuccess(const std::string str_response) {
             log_C(TAG::STA, "States::AuthState::Response", str_response);
 
-            authResponse = AuthResponse(str_response);
+            authResponse = AuthSocket::Response(str_response);
             pending = false;
 
             Notify();
@@ -161,10 +161,10 @@ namespace States {
         inline void ResponseError(const std::string str_error) {
             log_C(TAG::STA, "States::AuthState::Response", str_error);
 
-            AuthResponse response_errors;
-                         // Other action won't send errors
-                         response_errors.type  = SIGNAL::LOGIN; 
-                         response_errors.error = str_error;
+            AuthSocket::Response response_errors;
+                    // Other action won't send errors
+                    response_errors.type  = AuthSocket::SIGNAL::LOGIN; 
+                    response_errors.error = str_error;
 
             authResponse = response_errors;
             pending = false;

@@ -2,7 +2,7 @@
 #define STATES_AUTH_STATE_AUTH_STATE_H
 
 #include "models/user/user.h"
-#include "models/states/auth/auth.h"
+#include "models/socket/auth/auth.h"
 
 /**
  * @brief Interfaccia stato di autenticazione utenti
@@ -53,7 +53,7 @@ namespace States {
          *
          * @return SIGNAL
          */
-        SIGNAL  getAuthAction();
+        AuthSocket::SIGNAL  getAuthAction();
 
         /** 
          * Metodo per ottenere l'utente connesso 

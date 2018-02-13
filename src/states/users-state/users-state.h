@@ -1,7 +1,7 @@
 #ifndef STATES_USERS_STATE_USERS_STATE_H
 #define STATES_USERS_STATE_USERS_STATE_H
 
-#include "models/states/users/users.h"
+#include "models/socket/users/users.h"
 
 /**
  * @brief Interfaccia stato di autenticazione utenti

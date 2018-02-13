@@ -9,7 +9,6 @@
 #include "common/logger/logger.h"
 
 #include "states/auth-state/auth-state.h"
-#include "protocol/sockets/wscustom.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -20,6 +19,24 @@ namespace States {
     namespace ChatState {
 
         typedef std::map<std::string, ws::Socket*> SocketsMap;
+
+        namespace ChatMethods {
+            inline void InitAChat(const Chat& chat);
+            
+            inline void ResponseSuccess(const std::string);
+            inline void ResponseError(const std::string);
+            inline void Notify();
+        }
+
+        namespace ChatsMethods {
+            inline void Init(const std::string& AUTH);
+            inline void Clean();
+            
+            inline void ResponseSuccess(const std::string);
+            inline void ResponseError(const std::string);
+
+            inline void Notify();
+        }
 
         static Chats        chatsList;
 
@@ -64,8 +81,8 @@ namespace States {
                                 ResponseSuccess, 
                                 ResponseError);
 
-                Request::Chat chat_join;
-                    chat_join.type = TYPE::JOIN;
+                ChatSocket::Request chat_join;
+                    chat_join.type = ChatSocket::SIGNAL::JOIN;
 
                 BaseRequest socket_data;
                     socket_data.content = chat_join.serialize();
@@ -80,13 +97,13 @@ namespace States {
 
             void SendAMessage(const std::string& text) {
                 
-                const string referral = ChatsMethods::getCurrent(); 
+                const string referral = ChatsMethods::getCurrentChatRef(); 
                 User auth_user = AuthState::getAuthUser();
 
                 assert(auth_user.is_valid());
 
-                Request::Chat chat_send;
-                    chat_send.type = TYPE::SEND;
+                ChatSocket::Request chat_send;
+                    chat_send.type = ChatSocket::SIGNAL::SEND;
                     chat_send.text = text;
                                             
                 BaseRequest socket_data;
@@ -104,7 +121,7 @@ namespace States {
 
             inline void ResponseSuccess(const string args){
 
-                Response::Chat chat_send(args);
+                ChatSocket::Response chat_send(args);
                 Message m(json::parse(args));
                 
                 chatsList[chat_send.ref].messages.push_back(m);
@@ -133,14 +150,14 @@ namespace States {
                 return container.dump();
             }
 
-            void setCurrent(const string& reference) {
+            void setCurrentChat(const string& reference) {
                 currentChatRef = reference;
                 assert(currentChatRef.size());
 
                 ChatMethods::Notify();
             }
 
-            const string getCurrent() {
+            const string getCurrentChatRef() {
                 return currentChatRef;
             }
 
@@ -157,8 +174,8 @@ namespace States {
         
             inline void Init(const string& AUTH) {
 
-                Request::Chats connect_request;
-                    connect_request.type = TYPE::CONNECT;
+                ChatsSocket::Request connect_request;
+                    connect_request.type = ChatsSocket::SIGNAL::CONNECT;
                     
                 BaseRequest socket_data;
                     socket_data.content = connect_request.serialize();
@@ -199,7 +216,7 @@ namespace States {
 
             inline void ResponseSuccess(const std::string success) {
 
-                Response::Chats chat_response(success);
+                ChatsSocket::Response chat_response(success);
 
                 Chat new_chat(success);
                 ChatMethods::InitAChat(new_chat);
@@ -217,8 +234,8 @@ namespace States {
 
                 User auth_user = AuthState::getAuthUser();
 
-                Request::Chats create;
-                    create.type = TYPE::CREATE;
+                ChatsSocket::Request create;
+                    create.type = ChatsSocket::SIGNAL::CREATE;
                     create.destination = user_dest;
 
                 assert(auth_user.is_valid());
@@ -239,12 +256,12 @@ namespace States {
         namespace State {
             void Auth() {
             
-                const AuthState::SIGNAL 
+                const AuthSocket::SIGNAL 
                                 auth_action = AuthState::getAuthAction();
                 const User      auth_user   = AuthState::getAuthUser();
 
                 switch(auth_action){
-                    case AuthState::SIGNAL::LOGIN:
+                    case AuthSocket::SIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
                             ChatsMethods::Init(auth_user._id);
