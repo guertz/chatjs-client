@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['getauthaction',['getAuthAction',['../namespace_states_1_1_auth_state.html#a91da067a8d1a187d55cec55a9f6ba76f',1,'States::AuthState']]],
+  ['getauthaction',['getAuthAction',['../namespace_states_1_1_auth_state.html#ab820801e86e7a745684d4d2361d06e11',1,'States::AuthState']]],
   ['getautherror',['getAuthError',['../namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8',1,'States::AuthState']]],
   ['getauthuser',['getAuthUser',['../namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031',1,'States::AuthState']]],
-  ['getcurrent',['getCurrent',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#ae23bb508121902b4efe21f168cf60231',1,'States::ChatState::ChatsMethods']]],
-  ['getcurrentchat',['getCurrentChat',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#a9accc3ef703ceabbc887a4d66afcce8d',1,'States::ChatState::ChatsMethods']]],
-  ['getserializedchats',['getSerializedChats',['../namespace_states_1_1_chat_state_1_1_chats_methods.html#ac9c0d446c8abfb8eeb8dbb7daf89080d',1,'States::ChatState::ChatsMethods']]],
+  ['getcurrentchat',['getCurrentChat',['../namespace_states_1_1_chats_state.html#a07839dc0f2031a64240cb89910fa2466',1,'States::ChatsState']]],
+  ['getcurrentchatref',['getCurrentChatRef',['../namespace_states_1_1_chats_state.html#ac165f8aa592b686128a636184d2d5c47',1,'States::ChatsState']]],
+  ['getserializedchats',['getSerializedChats',['../namespace_states_1_1_chats_state.html#a207633c754353db3c17aea17a18d0f27',1,'States::ChatsState']]],
   ['getserializedlist',['getSerializedList',['../namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78',1,'States::UsersState']]]
 ];

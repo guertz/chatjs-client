@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['from',['from',['../class_states_1_1_chat_state_1_1_chat.html#a923d139490e300f7dc54619bf5feb1e2',1,'States::ChatState::Chat::from()'],['../class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a6315f46d57e327606740f2668a9934a2',1,'States::ChatState::ChatsMethods::Response::Chats::from()']]]
+  ['image',['image',['../class_user.html#a293c9893570650e14b9f8eb68fe707a1',1,'User']]],
+  ['is_5fsend',['is_send',['../structws_1_1socket__buff.html#abc15757231b84d9ef9723514cb0cc320',1,'ws::socket_buff']]],
+  ['isme',['isMe',['../class_message.html#a3c1d2546efec8b62f24f8e705189fdc6',1,'Message::isMe()'],['../class_chat_socket_1_1_chat_response.html#a3acb01b227da2ace15fd368844757e16',1,'ChatSocket::ChatResponse::isMe()']]]
 ];

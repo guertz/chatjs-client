@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['auth',['Auth',['../class_states_1_1_auth_state_1_1_request_1_1_auth.html',1,'States::AuthState::Request::Auth'],['../class_states_1_1_auth_state_1_1_response_1_1_auth.html',1,'States::AuthState::Response::Auth']]]
+  ['authrequest',['AuthRequest',['../class_auth_socket_1_1_auth_request.html',1,'AuthSocket']]],
+  ['authresponse',['AuthResponse',['../class_auth_socket_1_1_auth_response.html',1,'AuthSocket']]]
 ];

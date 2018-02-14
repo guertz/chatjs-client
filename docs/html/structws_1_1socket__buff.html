@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js: Riferimenti per la struct ws::socket_buff</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacews.html">ws</a></li><li class="navelem"><a class="el" href="structws_1_1socket__buff.html">socket_buff</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Attributi pubblici</a> &#124;
+<a href="structws_1_1socket__buff-members.html">Elenco di tutti i membri</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per la struct ws::socket_buff</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>"Buffer" su cui vengono scambiati i dati per effettuare la comunicazione socket.  
+ <a href="structws_1_1socket__buff.html#details">Continua...</a></p>
+
+<p><code>#include &lt;<a class="el" href="wscustom_8h_source.html">wscustom.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Attributi pubblici</h2></td></tr>
+<tr class="memitem:abc15757231b84d9ef9723514cb0cc320"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structws_1_1socket__buff.html#abc15757231b84d9ef9723514cb0cc320">is_send</a></td></tr>
+<tr class="memdesc:abc15757231b84d9ef9723514cb0cc320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametro che segnala la presenza di un messaggio nel buffer e di conseguenza si attende una risposta al poll successivo prima di resettare questo valore.  <a href="#abc15757231b84d9ef9723514cb0cc320">Continua...</a><br /></td></tr>
+<tr class="separator:abc15757231b84d9ef9723514cb0cc320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743d8ec0e94333af80155bf7c0df417c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structws_1_1socket__buff.html#a743d8ec0e94333af80155bf7c0df417c">content</a></td></tr>
+<tr class="memdesc:a743d8ec0e94333af80155bf7c0df417c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenuto da inviare sul canale socket di comunicazione.  <a href="#a743d8ec0e94333af80155bf7c0df417c">Continua...</a><br /></td></tr>
+<tr class="separator:a743d8ec0e94333af80155bf7c0df417c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>"Buffer" su cui vengono scambiati i dati per effettuare la comunicazione socket. </p>
+<p>Per garantire il corretto funzionamento, è consigliato effettuare un controllo esclusivo sugli accessi per evitare che due consumatori scrivano contemporaneamente più messaggi sullo stesso canale e vengano così mischiate o non gestite in modo corretto le comunicazioni. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="wscustom_8h_source.html#l00023">23</a> del file <a class="el" href="wscustom_8h_source.html">wscustom.h</a>.</p>
+</div><h2 class="groupheader">Documentazione dei membri dato</h2>
+<a id="a743d8ec0e94333af80155bf7c0df417c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743d8ec0e94333af80155bf7c0df417c">&#9670;&nbsp;</a></span>content</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ws::socket_buff::content</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contenuto da inviare sul canale socket di comunicazione. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="wscustom_8h_source.html#l00030">30</a> del file <a class="el" href="wscustom_8h_source.html">wscustom.h</a>.</p>
+
+</div>
+</div>
+<a id="abc15757231b84d9ef9723514cb0cc320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc15757231b84d9ef9723514cb0cc320">&#9670;&nbsp;</a></span>is_send</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ws::socket_buff::is_send</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parametro che segnala la presenza di un messaggio nel buffer e di conseguenza si attende una risposta al poll successivo prima di resettare questo valore. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="wscustom_8h_source.html#l00029">29</a> del file <a class="el" href="wscustom_8h_source.html">wscustom.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentazione per questa struct è stata generata a partire dal seguente file:<ul>
+<li>src/protocol/sockets/<a class="el" href="wscustom_8h_source.html">wscustom.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

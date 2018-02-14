@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat.js:  File sorgente src/components/modals/conn-modal/conn-modal.js.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Chat.js
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="dir_25344f6f9306535bc5738aa108464572.html">modals</a></li><li class="navelem"><a class="el" href="dir_a86fb60d68b3824a5c3926bf48e4a575.html">conn-modal</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">conn-modal.js.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="conn-modal_8js_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="conn-modal_8js_8h.html#a9eb265477b59fca0ea11fed1dce1ef0a">    7</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="conn-modal_8js_8h.html#a9eb265477b59fca0ea11fed1dce1ef0a">_src_components_modal_conn_modal_conn_modal_js</a> = R<span class="stringliteral">&quot;(</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">const ConnectivityModalFactory = function() {</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">    const domRef = &quot;connectivity-modal&quot;;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">    // z-index</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">    // error format (color red)</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">    var node = document.createElement(&quot;div&quot;);</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral">        node.innerHTML = </span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">            &#39;&lt;div id=&quot;&#39;+ domRef + &#39;&quot; class=&quot;w3-modal&quot;&gt;&#39; +</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">                    &#39;&lt;div class=&quot;w3-modal-content&quot;&gt;&#39; +</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">                        &#39;&lt;div class=&quot;w3-container&quot;&gt;&#39; +</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">                            &#39;&lt;h2&gt;Problemi di connessione&lt;/h2&gt;&#39; +</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">                        &#39;&lt;/div&gt;&#39; +</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral">                    &#39;&lt;/div&gt;&#39; +</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">                &#39;&lt;/div&gt;&#39;;</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">    </span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">    </span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">    this.destroy = function () {</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">        // remove dom reference</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">    }</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral">    this.create = function() {</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">        // if dom not exist</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">        document.body.appendChild(node);</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">    }();</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral"> </span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">    window.modals[&#39;ConnectivityModal&#39;] = this;</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral">    </span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">};</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">)&quot;;</span></div><div class="ttc" id="conn-modal_8js_8h_html_a9eb265477b59fca0ea11fed1dce1ef0a"><div class="ttname"><a href="conn-modal_8js_8h.html#a9eb265477b59fca0ea11fed1dce1ef0a">_src_components_modal_conn_modal_conn_modal_js</a></div><div class="ttdeci">const std::string _src_components_modal_conn_modal_conn_modal_js</div><div class="ttdoc">Componente Javascript conn-modal.h. </div><div class="ttdef"><b>Definition:</b> <a href="conn-modal_8js_8h_source.html#l00007">conn-modal.js.h:7</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

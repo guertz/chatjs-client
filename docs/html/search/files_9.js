@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['profile_2ecc',['profile.cc',['../profile_8cc.html',1,'']]],
-  ['profile_2eh',['profile.h',['../profile_8h.html',1,'']]],
-  ['profile_2ehjs',['profile.hjs',['../profile_8hjs.html',1,'']]]
+  ['socket_2ecc',['socket.cc',['../socket_8cc.html',1,'']]],
+  ['socket_2eh',['socket.h',['../socket_8h.html',1,'']]],
+  ['style_2ecss_2eh',['style.css.h',['../style_8css_8h.html',1,'']]]
 ];

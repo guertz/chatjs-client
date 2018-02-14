@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['log_5fbase',['log_base',['../logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331',1,'logger.h']]],
-  ['log_5fcsl',['log_csl',['../logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a',1,'logger.h']]],
-  ['log_5fdetails',['log_details',['../logger_8h.html#a83931080af29dedba9d80603b0a6085c',1,'logger.h']]],
-  ['log_5ferr',['log_err',['../logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1',1,'logger.h']]],
-  ['log_5fpedantic',['log_pedantic',['../logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a',1,'logger.h']]],
-  ['log_5fwarn',['log_warn',['../logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65',1,'logger.h']]],
-  ['log_5fws',['log_ws',['../logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf',1,'logger.h']]],
-  ['logger',['LOGGER',['../logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283',1,'logger.h']]],
+  ['lev',['LEV',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012',1,'logger.h']]],
+  ['localhost',['LOCALHOST',['../wscustom_8cc.html#acfc12278a87672861e438f8841a7a713',1,'wscustom.cc']]],
+  ['log_5fa',['log_A',['../logger_8h.html#a580de68ded570cc8bca31ae3edb0aaa4',1,'logger.h']]],
+  ['log_5fb',['log_B',['../logger_8h.html#abf7ac0eed934c82f22eb436003d89f14',1,'logger.h']]],
+  ['log_5fc',['log_C',['../logger_8h.html#aee1a3d8785b569717ee7b86adbc60418',1,'logger.h']]],
+  ['log_5flen',['LOG_LEN',['../logger_8h.html#af2a0fa359400979a265d34bed5dfe91d',1,'logger.h']]],
+  ['log_5fn',['log_n',['../logger_8h.html#aa9bb58a21642245d8d1639c917ae90ff',1,'logger.h']]],
+  ['loga',['LOGA',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af',1,'logger.h']]],
+  ['logb',['LOGB',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3',1,'logger.h']]],
+  ['logc',['LOGC',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b',1,'logger.h']]],
+  ['logger',['LOGGER',['../logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa',1,'logger.h']]],
   ['logger_2ecc',['logger.cc',['../logger_8cc.html',1,'']]],
   ['logger_2eh',['logger.h',['../logger_8h.html',1,'']]],
-  ['login',['LOGIN',['../namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a1a93a69f0358d68d9fa4b087e284aa1e',1,'States::AuthState::LOGIN()'],['../namespace_states_1_1_auth_state.html#ab0ad1bd22e51c2f3ef00e894fe0e50da',1,'States::AuthState::Login(const string &amp;AUTH_KEY)'],['../namespace_states_1_1_auth_state.html#af40cdb0b7e38a25f0474a1bc961281d9',1,'States::AuthState::Login(const std::string &amp;)']]],
-  ['logout',['LOGOUT',['../namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a79283538eb4c2aeedbc1cbbefc8a76db',1,'States::AuthState::LOGOUT()'],['../namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae',1,'States::AuthState::Logout()']]]
+  ['login',['Login',['../namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4',1,'States::AuthState::Login()'],['../namespace_auth_socket.html#a541538437c913afbac9ac573f342293baab3a50db73d51ac6095dff146cf89f8c',1,'AuthSocket::LOGIN()']]],
+  ['logn',['LOGN',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98',1,'logger.h']]],
+  ['logout',['Logout',['../namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae',1,'States::AuthState::Logout()'],['../namespace_auth_socket.html#a541538437c913afbac9ac573f342293ba141800aec7da32268b3cc1ef56a098b2',1,'AuthSocket::LOGOUT()']]]
 ];

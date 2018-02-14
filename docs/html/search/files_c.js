@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['toast_2ecc',['toast.cc',['../toast_8cc.html',1,'']]],
-  ['toast_2eh',['toast.h',['../toast_8h.html',1,'']]],
-  ['toast_2ehjs',['toast.hjs',['../toast_8hjs.html',1,'']]],
-  ['types_2ecc',['types.cc',['../auth-state_2definitions_2types_8cc.html',1,'(Namespace globale)'],['../chat-state_2definitions_2chat-methods_2types_8cc.html',1,'(Namespace globale)'],['../chat-state_2definitions_2chats-methods_2types_8cc.html',1,'(Namespace globale)'],['../users-state_2definitions_2types_8cc.html',1,'(Namespace globale)']]],
-  ['types_2eh',['types.h',['../auth-state_2definitions_2types_8h.html',1,'(Namespace globale)'],['../chat-state_2definitions_2chat-methods_2types_8h.html',1,'(Namespace globale)'],['../chat-state_2definitions_2chats-methods_2types_8h.html',1,'(Namespace globale)'],['../users-state_2definitions_2types_8h.html',1,'(Namespace globale)']]]
+  ['w3_2ecss_2eh',['w3.css.h',['../w3_8css_8h.html',1,'']]],
+  ['web_2dui_2ecc',['web-ui.cc',['../web-ui_8cc.html',1,'']]],
+  ['web_2dui_2eh',['web-ui.h',['../web-ui_8h.html',1,'']]],
+  ['wscustom_2ecc',['wscustom.cc',['../wscustom_8cc.html',1,'']]],
+  ['wscustom_2eh',['wscustom.h',['../wscustom_8h.html',1,'']]]
 ];

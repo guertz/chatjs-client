@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['webui',['WebUI',['../namespace_web_u_i.html',1,'']]],
-  ['ws',['ws',['../namespacews.html',1,'']]]
+  ['userssocket',['UsersSocket',['../namespace_users_socket.html',1,'']]]
 ];

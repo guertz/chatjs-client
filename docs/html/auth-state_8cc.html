@@ -74,6 +74,9 @@ $(function() {
 <div class="title">Riferimenti per il file auth-state.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Definizione stato di autenticazione utenti.  
+<a href="#details">Continua...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;json.hpp&gt;</code><br />
@@ -86,8 +89,12 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespace</h2></td></tr>
 <tr class="memitem:namespace_states"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states.html">States</a></td></tr>
+<tr class="memdesc:namespace_states"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi relativo ai vari state dei dati. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_states_1_1_auth_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html">States::AuthState</a></td></tr>
+<tr class="memdesc:namespace_states_1_1_auth_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stato di autenticazione utenti. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_states_1_1_auth_state_1_1_auth_socket_methods"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html">States::AuthState::AuthSocketMethods</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -97,30 +104,46 @@ Ridefinizioni di tipo (typedef)</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:afb1d07debeaff4258a9f46798320c4af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#afb1d07debeaff4258a9f46798320c4af">States::AuthState::notify</a> (const Response::Auth &amp;auth)</td></tr>
-<tr class="separator:afb1d07debeaff4258a9f46798320c4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dbecaed1c4c1226c2a7bc529f5c30aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a6dbecaed1c4c1226c2a7bc529f5c30aa">States::AuthState::ResponseSuccess</a> (const string str_response)</td></tr>
-<tr class="separator:a6dbecaed1c4c1226c2a7bc529f5c30aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56c834931dd2c7555890980b4ccd20cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a56c834931dd2c7555890980b4ccd20cd">States::AuthState::ResponseError</a> (const string str_error)</td></tr>
-<tr class="separator:a56c834931dd2c7555890980b4ccd20cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91da067a8d1a187d55cec55a9f6ba76f"><td class="memItemLeft" align="right" valign="top">AUTHSIGNAL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a91da067a8d1a187d55cec55a9f6ba76f">States::AuthState::getAuthAction</a> ()</td></tr>
-<tr class="separator:a91da067a8d1a187d55cec55a9f6ba76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f500b96867c231202e13927fc42e031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_user.html">User</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031">States::AuthState::getAuthUser</a> ()</td></tr>
-<tr class="separator:a4f500b96867c231202e13927fc42e031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99ede8406854fe788c19f96e945c4cb8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8">States::AuthState::getAuthError</a> ()</td></tr>
-<tr class="separator:a99ede8406854fe788c19f96e945c4cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453f0b2cb5243e9d577d3c97d11f3e16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a453f0b2cb5243e9d577d3c97d11f3e16">States::AuthState::Register</a> (std::string cb_name, void(*cb_fn)())</td></tr>
+<tr class="memdesc:a453f0b2cb5243e9d577d3c97d11f3e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce nella mappa dei subscribers <a class="el" href="namespace_states_1_1_auth_state.html#a69bd880df132ed4401cf0d8a3117e89c" title=" Definizione della struttura map che associa ad ogni stringa un puntatore a funzione. ">AuthState::Subscribers</a> un evento di callback.  <a href="namespace_states_1_1_auth_state.html#a453f0b2cb5243e9d577d3c97d11f3e16">Continua...</a><br /></td></tr>
+<tr class="separator:a453f0b2cb5243e9d577d3c97d11f3e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab55c1c5fe2d9e8e4add560b4dc85a1fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#ab55c1c5fe2d9e8e4add560b4dc85a1fa">States::AuthState::Bootstrap</a> ()</td></tr>
+<tr class="memdesc:ab55c1c5fe2d9e8e4add560b4dc85a1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per inizializzare il provider.  <a href="namespace_states_1_1_auth_state.html#ab55c1c5fe2d9e8e4add560b4dc85a1fa">Continua...</a><br /></td></tr>
 <tr class="separator:ab55c1c5fe2d9e8e4add560b4dc85a1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9de59ba622382e894a6d9a9a023d2541"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a9de59ba622382e894a6d9a9a023d2541">States::AuthState::Destroy</a> ()</td></tr>
+<tr class="memdesc:a9de59ba622382e894a6d9a9a023d2541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per distruggere il provider.  <a href="namespace_states_1_1_auth_state.html#a9de59ba622382e894a6d9a9a023d2541">Continua...</a><br /></td></tr>
 <tr class="separator:a9de59ba622382e894a6d9a9a023d2541"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a107d75f498c9627fd82c85f587f057f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a107d75f498c9627fd82c85f587f057f1">States::AuthState::Register</a> (string abc, void(*fn)())</td></tr>
-<tr class="separator:a107d75f498c9627fd82c85f587f057f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ad1bd22e51c2f3ef00e894fe0e50da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#ab0ad1bd22e51c2f3ef00e894fe0e50da">States::AuthState::Login</a> (const string &amp;AUTH_KEY)</td></tr>
-<tr class="separator:ab0ad1bd22e51c2f3ef00e894fe0e50da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e21c959d94a011d48abf9de9c0f9d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4">States::AuthState::Login</a> (const std::string &amp;AUTH)</td></tr>
+<tr class="memdesc:a99e21c959d94a011d48abf9de9c0f9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per effettuare il login.  <a href="namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4">Continua...</a><br /></td></tr>
+<tr class="separator:a99e21c959d94a011d48abf9de9c0f9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810363046ae8e416f0d398ee0f81ecae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae">States::AuthState::Logout</a> ()</td></tr>
+<tr class="memdesc:a810363046ae8e416f0d398ee0f81ecae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per effettuare logout dell'utente attualmente connesso.  <a href="namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae">Continua...</a><br /></td></tr>
 <tr class="separator:a810363046ae8e416f0d398ee0f81ecae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab820801e86e7a745684d4d2361d06e11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293b">AuthSocket::SIGNAL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#ab820801e86e7a745684d4d2361d06e11">States::AuthState::getAuthAction</a> ()</td></tr>
+<tr class="memdesc:ab820801e86e7a745684d4d2361d06e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per ottenere il tipo dell'ultima azione sullo stato di autenticazione utente.  <a href="namespace_states_1_1_auth_state.html#ab820801e86e7a745684d4d2361d06e11">Continua...</a><br /></td></tr>
+<tr class="separator:ab820801e86e7a745684d4d2361d06e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f500b96867c231202e13927fc42e031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_user.html">User</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031">States::AuthState::getAuthUser</a> ()</td></tr>
+<tr class="memdesc:a4f500b96867c231202e13927fc42e031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per ottenere l'utente connesso.  <a href="namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031">Continua...</a><br /></td></tr>
+<tr class="separator:a4f500b96867c231202e13927fc42e031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ede8406854fe788c19f96e945c4cb8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8">States::AuthState::getAuthError</a> ()</td></tr>
+<tr class="memdesc:a99ede8406854fe788c19f96e945c4cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per ritornare eventuali errori di autenticazione.  <a href="namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8">Continua...</a><br /></td></tr>
+<tr class="separator:a99ede8406854fe788c19f96e945c4cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4603c9572e1fcc84da206d7bfb063922"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state.html#a4603c9572e1fcc84da206d7bfb063922">States::AuthState::Notify</a> ()</td></tr>
+<tr class="memdesc:a4603c9572e1fcc84da206d7bfb063922"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Metodo per notificare cambiamenti di stato ai componenti che hanno sottoscritto allo stato di autenticazione  <a href="namespace_states_1_1_auth_state.html#a4603c9572e1fcc84da206d7bfb063922">Continua...</a><br /></td></tr>
+<tr class="separator:a4603c9572e1fcc84da206d7bfb063922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b499f4bc515d8c0126f522c2c4428c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#a2b499f4bc515d8c0126f522c2c4428c8">States::AuthState::AuthSocketMethods::ResponseSuccess</a> (const std::string str_response)</td></tr>
+<tr class="memdesc:a2b499f4bc515d8c0126f522c2c4428c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per gestire l'avvenuta ricezione nel corretto formato a seguito di un azione di tipo <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293b" title="Enum identificativo del tipo di azione che si sta compiendo. ">AuthSocket::SIGNAL</a> sul canale di comunicazione socket aperto.  <a href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#a2b499f4bc515d8c0126f522c2c4428c8">Continua...</a><br /></td></tr>
+<tr class="separator:a2b499f4bc515d8c0126f522c2c4428c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2483fd8d25defb1b69474f352c16397"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#af2483fd8d25defb1b69474f352c16397">States::AuthState::AuthSocketMethods::ResponseError</a> (const std::string str_error)</td></tr>
+<tr class="memdesc:af2483fd8d25defb1b69474f352c16397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per gestire l'avvenuta ricezione di un messaggio di errore a seguito di un azione di tipo <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293b" title="Enum identificativo del tipo di azione che si sta compiendo. ">AuthSocket::SIGNAL</a> sul canale di comunicazione socket aperto.  <a href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#af2483fd8d25defb1b69474f352c16397">Continua...</a><br /></td></tr>
+<tr class="separator:af2483fd8d25defb1b69474f352c16397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Definizione stato di autenticazione utenti. </p>
+
+<p class="definition">Definizione nel file <a class="el" href="auth-state_8cc_source.html">auth-state.cc</a>.</p>
+</div><h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
 <a id="ab701e3ac61a85b337ec5c1abaad6742d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab701e3ac61a85b337ec5c1abaad6742d">&#9670;&nbsp;</a></span>json</h2>
 

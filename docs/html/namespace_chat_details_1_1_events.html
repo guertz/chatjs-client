@@ -72,18 +72,21 @@ $(function() {
 <div class="title">Riferimenti per il namespace ChatDetails::Events</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire sulla finestra.  
+<a href="#details">Continua...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:ade528651f918b7874a9090fdc3051972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#ade528651f918b7874a9090fdc3051972">Submit</a> (const string &amp;args)</td></tr>
-<tr class="separator:ade528651f918b7874a9090fdc3051972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42ee66bc390aa6ab45ac80c39f59f7d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_chat_details_1_1_events.html#a42ee66bc390aa6ab45ac80c39f59f7d4">Submit</a> (const std::string &amp;args)</td></tr>
-<tr class="memdesc:a42ee66bc390aa6ab45ac80c39f59f7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler di evento JavaScript che notifica l'invio dei dati del form di autenticazione (submit).  <a href="#a42ee66bc390aa6ab45ac80c39f59f7d4">Continua...</a><br /></td></tr>
+<tr class="memdesc:a42ee66bc390aa6ab45ac80c39f59f7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler di evento JavaScript che notifica l'invio di un messaggio tramite il form.  <a href="#a42ee66bc390aa6ab45ac80c39f59f7d4">Continua...</a><br /></td></tr>
 <tr class="separator:a42ee66bc390aa6ab45ac80c39f59f7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentazione delle funzioni</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire sulla finestra. </p>
+</div><h2 class="groupheader">Documentazione delle funzioni</h2>
 <a id="a42ee66bc390aa6ab45ac80c39f59f7d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42ee66bc390aa6ab45ac80c39f59f7d4">&#9670;&nbsp;</a></span>Submit() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ee66bc390aa6ab45ac80c39f59f7d4">&#9670;&nbsp;</a></span>Submit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,40 +109,19 @@ Funzioni</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Handler di evento JavaScript che notifica l'invio dei dati del form di autenticazione (submit). </p>
+<p>Handler di evento JavaScript che notifica l'invio di un messaggio tramite il form. </p>
 <p>Di seguito e riportata la struttura dati ricevuta dalla funzione</p>
-<div class="fragment"><div class="line">{</div><div class="line">    &quot;userid&quot;: &quot;string:16&quot;</div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parametri</dt><dd>
+<div class="fragment"><div class="line">{</div><div class="line">    &quot;text&quot;: &quot;string&quot;</div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>Parametri della chiamata JS in formato JSON serialized </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definizione alla linea <a class="el" href="auth-modal_8cc_source.html#l00036">36</a> del file <a class="el" href="auth-modal_8cc_source.html">auth-modal.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                     {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a">log_pedantic</a>(<span class="stringliteral">&quot;Modals::AuthModal::Submit&quot;</span>, args);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> fn_params = json::parse(args);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="namespace_states_1_1_auth_state.html#ab0ad1bd22e51c2f3ef00e894fe0e50da">AuthState::Login</a>(fn_params.at(<span class="stringliteral">&quot;_id&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;());</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div><div class="ttc" id="namespace_states_1_1_auth_state_html_ab0ad1bd22e51c2f3ef00e894fe0e50da"><div class="ttname"><a href="namespace_states_1_1_auth_state.html#ab0ad1bd22e51c2f3ef00e894fe0e50da">States::AuthState::Login</a></div><div class="ttdeci">void Login(const string &amp;AUTH_KEY)</div><div class="ttdef"><b>Definition:</b> <a href="auth-state_8cc_source.html#l00097">auth-state.cc:97</a></div></div>
-<div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
-<div class="ttc" id="logger_8h_html_a6bedbcea80379588d8d614e2ddc8669a"><div class="ttname"><a href="logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a">log_pedantic</a></div><div class="ttdeci">#define log_pedantic(attr, log_msg)</div><div class="ttdoc">log_pedantic attivo con MASK = 4 </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00053">logger.h:53</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ade528651f918b7874a9090fdc3051972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade528651f918b7874a9090fdc3051972">&#9670;&nbsp;</a></span>Submit() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ChatDetails::Events::Submit </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definizione alla linea <a class="el" href="chat-details_8cc_source.html#l00038">38</a> del file <a class="el" href="chat-details_8cc_source.html">chat-details.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                       {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> form_args = json::parse(args);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <a class="code" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#af2d36a8fde350071b0e50442e36e4e6c">ChatState::ChatMethods::SendAMessage</a>(form_args.at(<span class="stringliteral">&quot;text&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;());</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div><div class="ttc" id="namespace_states_1_1_chat_state_1_1_chat_methods_html_af2d36a8fde350071b0e50442e36e4e6c"><div class="ttname"><a href="namespace_states_1_1_chat_state_1_1_chat_methods.html#af2d36a8fde350071b0e50442e36e4e6c">States::ChatState::ChatMethods::SendAMessage</a></div><div class="ttdeci">void SendAMessage(const std::string &amp;text)</div><div class="ttdef"><b>Definition:</b> <a href="chat-state_8cc_source.html#l00085">chat-state.cc:85</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="chat-details_8cc_source.html#l00033">33</a> del file <a class="el" href="chat-details_8cc_source.html">chat-details.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                 {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a>(<a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">TAG::CMP</a>, <span class="stringliteral">&quot;ChatDetails::Submit&quot;</span>, args);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> form_args = json::parse(args);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="namespace_states_1_1_chats_state_1_1_chat_methods.html#a583d8967f5929051354a79513280e75d">ChatsState::ChatMethods::SendAMessage</a>(form_args.at(<span class="stringliteral">&quot;text&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;());</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div><div class="ttc" id="logger_8h_html_aee1a3d8785b569717ee7b86adbc60418"><div class="ttname"><a href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a></div><div class="ttdeci">#define log_C(tag, attr, msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00062">logger.h:62</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a></div><div class="ttdoc">Components, per log relativo a componenti. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00041">logger.h:41</a></div></div>
+<div class="ttc" id="namespace_states_1_1_chats_state_1_1_chat_methods_html_a583d8967f5929051354a79513280e75d"><div class="ttname"><a href="namespace_states_1_1_chats_state_1_1_chat_methods.html#a583d8967f5929051354a79513280e75d">States::ChatsState::ChatMethods::SendAMessage</a></div><div class="ttdeci">void SendAMessage(const std::string text)</div><div class="ttdoc">Metodo per inviare un messaggio di testo sulla chat attualmente selezionata. </div><div class="ttdef"><b>Definition:</b> <a href="chats-state_8cc_source.html#l00195">chats-state.cc:195</a></div></div>
 <div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
 </div><!-- fragment -->
 </div>

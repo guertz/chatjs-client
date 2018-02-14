@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['send',['SEND',['../namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2eab45ae40b82bcee33c7e7bf7cf10b2884',1,'States::ChatState::ChatMethods']]]
+  ['wss',['WSS',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226',1,'logger.h']]]
 ];

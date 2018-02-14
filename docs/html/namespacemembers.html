@@ -66,19 +66,17 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>ALL
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a912a0acc360c06664549271c199dabaa">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2ea8b413fc5f49b33b9181fec5e7b736635">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a54e6b62128dfd6e9bbeb3adedf42f30da92510d18a84b277fd88dac67cec66252">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293ba23be5d6a039f7d4f610087c9d8591e1a">AuthSocket</a>
+, <a class="el" href="namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1a02be46ecf3961a0821251a7cd205e513">ChatSocket</a>
+, <a class="el" href="namespace_chats_socket.html#a9011491a364a81eb425c32c33d2f75b5af3ff8e045731c62f6521f7c2ed0fdc4b">ChatsSocket</a>
+, <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cba5363f84c558c45cef7a1da189ff087f4">UsersSocket</a>
 </li>
 <li>Auth()
 : <a class="el" href="namespace_chat_list_1_1_state.html#adf9073703fe070937684befa41c6c280">ChatList::State</a>
 , <a class="el" href="namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973">Modals::AuthModal::State</a>
 , <a class="el" href="namespace_navbar_1_1_state.html#a543a67d2e41acc5bdb582bdbc3297572">Navbar::State</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_state.html#a8ddeceec253902c8697406f7199f18d6">States::ChatState::State</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_state.html#a8ff66b5350d7860781d7a8af3c944d09">States::ChatsState::State</a>
 , <a class="el" href="namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606">States::UsersState::State</a>
-</li>
-<li>AUTHSIGNAL
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870">States::AuthState</a>
 </li>
 </ul>
 
@@ -91,7 +89,7 @@ $(function() {
 , <a class="el" href="namespace_modals.html#a655d3c8e9de84409a54aa94a256bd1e0">Modals</a>
 , <a class="el" href="namespace_navbar.html#ae38c03ca276aef4b4561e5869a802f88">Navbar</a>
 , <a class="el" href="namespace_states_1_1_auth_state.html#ab55c1c5fe2d9e8e4add560b4dc85a1fa">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state.html#ac1ec81f4cdbb1b5c2ca31ad12c50b634">States::ChatState</a>
+, <a class="el" href="namespace_states_1_1_chats_state.html#a01c7401bde5321e10180e467d9138488">States::ChatsState</a>
 , <a class="el" href="namespace_states_1_1_users_state.html#a2df6f82c9758bc3eadf9865030333840">States::UsersState</a>
 , <a class="el" href="namespace_toast.html#a187eb59c7c795f2b264dc347e9e82dec">Toast</a>
 </li>
@@ -108,22 +106,19 @@ $(function() {
 </li>
 <li>Chats()
 : <a class="el" href="namespace_chat_list_1_1_state.html#aba5eccde4c978e30bcfc71deefd564a9">ChatList::State</a>
-, <a class="el" href="namespace_states_1_1_chat_state.html#a012433f173c5efc17398eea454af0378">States::ChatState</a>
-</li>
-<li>Clean()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a5dd4f72efa1dfdf96a257458ae4b9349">States::ChatState::ChatsMethods</a>
 </li>
 <li>CLOSE
-: <a class="el" href="namespace_states_1_1_users_state.html#a5c98edc5b687f9b30678dbfd42a08d9ea4f7e7c563f8ca530a6d1182a0f973cb0">States::UsersState</a>
+: <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cba6af8a142fcfffda11c6375c71db75538">UsersSocket</a>
 </li>
-<li>Close()
-: <a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#a1ee0beaa937009c0c8f0b0f6ff68251f">States::UsersState::UsersStream</a>
+<li>CloseChannelSession()
+: <a class="el" href="namespace_states_1_1_chats_state_1_1_chats_socket_methods.html#a55db838c7fe5f58a4f77a80d9e6d0a66">States::ChatsState::ChatsSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a0c644821096f55b3687b4c43e8093401">States::UsersState::UsersSocketMethods</a>
 </li>
 <li>CONNECT
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a54e6b62128dfd6e9bbeb3adedf42f30daf6456d80aee2b91d442fdb4ca42d17da">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_chats_socket.html#a9011491a364a81eb425c32c33d2f75b5ac716e1e67a704e4ee06471551df94b54">ChatsSocket</a>
 </li>
 <li>CREATE
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a54e6b62128dfd6e9bbeb3adedf42f30dafca8ad7a114460f962cbd934abe60756">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_chats_socket.html#a9011491a364a81eb425c32c33d2f75b5af00b10245ee36ca90a6458c911955ac7">ChatsSocket</a>
 </li>
 <li>Create()
 : <a class="el" href="namespace_web_u_i.html#a2a6092fe8ec4e292475bb7df5bc69a02">WebUI</a>
@@ -134,10 +129,12 @@ $(function() {
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>Destroy()
 : <a class="el" href="namespace_app.html#a66dd2456f5144a9747d6ebb291d9ead4">App</a>
+, <a class="el" href="namespace_chat_details.html#a60905b1142a9c1ed951383c027d090f3">ChatDetails</a>
+, <a class="el" href="namespace_chat_list.html#a55b3e28854d0cd40d66c9c83e9b659a0">ChatList</a>
 , <a class="el" href="namespace_modals.html#a664ba3f21dd0008213545dc018fd03ab">Modals</a>
 , <a class="el" href="namespace_navbar.html#a3990948dcb77b595e2601bd23c371eb9">Navbar</a>
 , <a class="el" href="namespace_states_1_1_auth_state.html#a9de59ba622382e894a6d9a9a023d2541">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state.html#af3cefc0dc6fd5a77017518ff582e5616">States::ChatState</a>
+, <a class="el" href="namespace_states_1_1_chats_state.html#a422be6566dd86f18ad5d46b0568f6b48">States::ChatsState</a>
 , <a class="el" href="namespace_states_1_1_users_state.html#a91dd4a66e2f3f36dbf8cbb83ca1bc0e9">States::UsersState</a>
 </li>
 <li>DISABLE_FORM
@@ -163,10 +160,10 @@ $(function() {
 : <a class="el" href="namespace_base64.html#ae44d8ec6372b4d05176a2be9316a1bee">Base64</a>
 </li>
 <li>enum_to_str()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a7d6a42354b7d26eeabf1b67b91e563ad">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#a491204e6bb8751a5542543490fcbe173">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a994619f932b7540e9f6755a60d5e5068">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state.html#a307013a5c31734505948cd61fba38897">States::UsersState</a>
+: <a class="el" href="namespace_auth_socket.html#a80f2e2cd6bf9ce395a590e7f3bc789bd">AuthSocket</a>
+, <a class="el" href="namespace_chat_socket.html#a195bed3349d769107c4af8e2aa2b35fe">ChatSocket</a>
+, <a class="el" href="namespace_chats_socket.html#a87714be8a303c5f97893ecc2966469ab">ChatsSocket</a>
+, <a class="el" href="namespace_users_socket.html#a8cc07d33c49174c40cb65deb0310253c">UsersSocket</a>
 </li>
 <li>EraseLink()
 : <a class="el" href="namespace_navbar_1_1_profile.html#a19bfb47626e101b73c6adb80b9136ace">Navbar::Profile</a>
@@ -183,7 +180,7 @@ $(function() {
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>getAuthAction()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a91da067a8d1a187d55cec55a9f6ba76f">States::AuthState</a>
+: <a class="el" href="namespace_states_1_1_auth_state.html#ab820801e86e7a745684d4d2361d06e11">States::AuthState</a>
 </li>
 <li>getAuthError()
 : <a class="el" href="namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8">States::AuthState</a>
@@ -191,14 +188,14 @@ $(function() {
 <li>getAuthUser()
 : <a class="el" href="namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031">States::AuthState</a>
 </li>
-<li>getCurrent()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ae23bb508121902b4efe21f168cf60231">States::ChatState::ChatsMethods</a>
-</li>
 <li>getCurrentChat()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a9accc3ef703ceabbc887a4d66afcce8d">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_states_1_1_chats_state.html#a07839dc0f2031a64240cb89910fa2466">States::ChatsState</a>
+</li>
+<li>getCurrentChatRef()
+: <a class="el" href="namespace_states_1_1_chats_state.html#ac165f8aa592b686128a636184d2d5c47">States::ChatsState</a>
 </li>
 <li>getSerializedChats()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ac9c0d446c8abfb8eeb8dbb7daf89080d">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_states_1_1_chats_state.html#a207633c754353db3c17aea17a18d0f27">States::ChatsState</a>
 </li>
 <li>getSerializedList()
 : <a class="el" href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">States::UsersState</a>
@@ -218,25 +215,23 @@ $(function() {
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>Init()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a946ee20ea9eba0d8315119ff5bb7c0d9">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#af779e0b0e970812833cb654303634352">States::UsersState::UsersStream</a>
-</li>
-<li>InitAChat()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#a2a1d647dc6e722308605e9423958b190">States::ChatState::ChatMethods</a>
+<li>InitChannelSession()
+: <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods_1_1_chat_socket_methods.html#a1f17f3d779734f1345ad4364e5d883f8">States::ChatsState::ChatMethods::ChatSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chats_socket_methods.html#a9d3d47032a9ac99b165b220a9e421c74">States::ChatsState::ChatsSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a873f62492849d03e11dcc203ddd83d16">States::UsersState::UsersSocketMethods</a>
 </li>
 <li>Inject()
 : <a class="el" href="namespace_web_u_i.html#a336686d1be740ebc58cc3b01dafa9f8e">WebUI</a>
 </li>
 <li>isCurrentChat()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ab9ecf27f2595dcd42ec28bc5f81cb550">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_states_1_1_chats_state.html#ab527733cdc25ab9c5179f6196d217c3f">States::ChatsState</a>
 </li>
 </ul>
 
 
 <h3><a id="index_j"></a>- j -</h3><ul>
 <li>JOIN
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2eaf41be9ed86b7cb47ffd8eacd09f9071d">States::ChatState::ChatMethods</a>
+: <a class="el" href="namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1afe19929cf66a85ffa333f4f5ce4e3825">ChatSocket</a>
 </li>
 <li>JsHCallback()
 : <a class="el" href="namespace_web_u_i.html#ab41e3e1d14328c2ff47297c0272c8ad6">WebUI</a>
@@ -246,13 +241,13 @@ $(function() {
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>LOGIN
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a1a93a69f0358d68d9fa4b087e284aa1e">States::AuthState</a>
+: <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293baab3a50db73d51ac6095dff146cf89f8c">AuthSocket</a>
 </li>
 <li>Login()
-: <a class="el" href="namespace_states_1_1_auth_state.html#ab0ad1bd22e51c2f3ef00e894fe0e50da">States::AuthState</a>
+: <a class="el" href="namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4">States::AuthState</a>
 </li>
 <li>LOGOUT
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870a79283538eb4c2aeedbc1cbbefc8a76db">States::AuthState</a>
+: <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293ba141800aec7da32268b3cc1ef56a098b2">AuthSocket</a>
 </li>
 <li>Logout()
 : <a class="el" href="namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae">States::AuthState</a>
@@ -261,9 +256,6 @@ $(function() {
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>Messages
-: <a class="el" href="namespace_states_1_1_chat_state.html#a5e19084dc9afdc3cf71c63c3f30bde26">States::ChatState</a>
-</li>
 <li>Methods
 : <a class="el" href="namespace_web_u_i.html#ab5411520ffac09aff0ae5d1964f6b6b2">WebUI</a>
 </li>
@@ -272,20 +264,18 @@ $(function() {
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>NewChat()
-: <a class="el" href="namespace_chat_list_1_1_events.html#a88ddff61dca27a862e40df650f48d45a">ChatList::Events</a>
+: <a class="el" href="namespace_chat_list_1_1_events.html#a8676ff753c21a589f251b676f69a788c">ChatList::Events</a>
 </li>
 <li>NewChatOpen()
 : <a class="el" href="namespace_modals_1_1_chat_modal_1_1_events.html#a5678836353facc609fe5848b495779a7">Modals::ChatModal::Events</a>
 </li>
-<li>notify()
-: <a class="el" href="namespace_states_1_1_auth_state.html#afb1d07debeaff4258a9f46798320c4af">States::AuthState</a>
-</li>
 <li>Notify()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#a0a4f2ecca8431cdd18e332cfa3285807">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ad3372895c036b3671315d469cd556c96">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_states_1_1_auth_state.html#a4603c9572e1fcc84da206d7bfb063922">States::AuthState</a>
+, <a class="el" href="namespace_states_1_1_chats_state.html#a9c75388fea43dc3a32c459b58e39d5a7">States::ChatsState</a>
+, <a class="el" href="namespace_states_1_1_users_state.html#a931fa2c87dee9319c9874409670e25e4">States::UsersState</a>
 </li>
-<li>notify()
-: <a class="el" href="namespace_states_1_1_users_state.html#aeae18a7efa73ef8c51706ffb790d0333">States::UsersState</a>
+<li>NotifyCurrent()
+: <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods.html#a46ea8898bad55e1eb516986a4c1af0d4">States::ChatsState::ChatMethods</a>
 </li>
 </ul>
 
@@ -301,7 +291,7 @@ $(function() {
 : <a class="el" href="namespace_modals_1_1_auth_modal_1_1_auth_methods.html#a832a2618faecf17ac184637378b65e3e">Modals::AuthModal::AuthMethods</a>
 </li>
 <li>OPEN
-: <a class="el" href="namespace_states_1_1_users_state.html#a5c98edc5b687f9b30678dbfd42a08d9ea8a0d87ea2312200a28f61d1e132b4234">States::UsersState</a>
+: <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cba4982309e86a72ef3c3881e2bb0bebac7">UsersSocket</a>
 </li>
 </ul>
 
@@ -311,10 +301,10 @@ $(function() {
 : <a class="el" href="namespace_app_1_1_events.html#a20c982377b1abb6abbe79e39ffd870da">App::Events</a>
 </li>
 <li>Register()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a548fd02d83702f4ea856c28f68758e4c">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#afddf12662b268064a527957be5cfd22e">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a0c48eb55df16f12963a02310b8888285">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state.html#a2884ba10a5c2ab101c97ba744e8c50e3">States::UsersState</a>
+: <a class="el" href="namespace_states_1_1_auth_state.html#a453f0b2cb5243e9d577d3c97d11f3e16">States::AuthState</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods.html#a34d17a4a2effa8b641a01a24240f9d66">States::ChatsState::ChatMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state.html#a10b17f0b456e008afbe47e65db1152b2">States::ChatsState</a>
+, <a class="el" href="namespace_states_1_1_users_state.html#a4ddb311176c349b560864d1fb28eacc3">States::UsersState</a>
 , <a class="el" href="namespace_web_u_i.html#abf8af9e16a27db0cc729caca0f8eef90">WebUI</a>
 </li>
 <li>RegisterLink()
@@ -328,29 +318,29 @@ $(function() {
 : <a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#a81fb226ff05be3295d52e4249545fff6">Modals::AuthModal::Events</a>
 </li>
 <li>ResponseError()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a56c834931dd2c7555890980b4ccd20cd">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#aa519ec925cdd953a09e0d7e27f9e8e32">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a4e052d6956b760db5dfd958039ecd0a5">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#a1428855ab8530e9b2b987e4e11bdc0ac">States::UsersState::UsersStream</a>
+: <a class="el" href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#af2483fd8d25defb1b69474f352c16397">States::AuthState::AuthSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods_1_1_chat_socket_methods.html#ab17d8071500700368f51eed6a830a0fe">States::ChatsState::ChatMethods::ChatSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chats_socket_methods.html#a88bae0813861e43f836f9310108dc68c">States::ChatsState::ChatsSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a87118210e3ba3bfc438e39a18c72c0f1">States::UsersState::UsersSocketMethods</a>
 </li>
 <li>ResponseSuccess()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6dbecaed1c4c1226c2a7bc529f5c30aa">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#a1b323f5acdc84490c8acd430c451447e">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#aeca3f2fb04594472cd08ec80be4260e6">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#a515b5f605ba4dcb55893365d80e6f6d6">States::UsersState::UsersStream</a>
+: <a class="el" href="namespace_states_1_1_auth_state_1_1_auth_socket_methods.html#a2b499f4bc515d8c0126f522c2c4428c8">States::AuthState::AuthSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods_1_1_chat_socket_methods.html#a0029c0003ab8a11a9339e4652900653e">States::ChatsState::ChatMethods::ChatSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_chats_state_1_1_chats_socket_methods.html#a45bee9519c96f400103e0a49fa27297d">States::ChatsState::ChatsSocketMethods</a>
+, <a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#aa22b61a40db528e5b270598c158bb8e0">States::UsersState::UsersSocketMethods</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>SEND
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2eab45ae40b82bcee33c7e7bf7cf10b2884">States::ChatState::ChatMethods</a>
+: <a class="el" href="namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1a3d8ffa018139eea3346f89ed310fada3">ChatSocket</a>
 </li>
 <li>SendAMessage()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#af2d36a8fde350071b0e50442e36e4e6c">States::ChatState::ChatMethods</a>
+: <a class="el" href="namespace_states_1_1_chats_state_1_1_chat_methods.html#a583d8967f5929051354a79513280e75d">States::ChatsState::ChatMethods</a>
 </li>
-<li>setCurrent()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#ac54878148970df945612069f5b2bd670">States::ChatState::ChatsMethods</a>
+<li>setCurrentChat()
+: <a class="el" href="namespace_states_1_1_chats_state.html#aac9a60bb6a74cf55fa610e7e5a3fa3c6">States::ChatsState</a>
 </li>
 <li>SetText()
 : <a class="el" href="namespace_navbar_1_1_profile_1_1_events.html#a11590a694b8ce5a2053bf44385fc119a">Navbar::Profile::Events</a>
@@ -363,43 +353,32 @@ $(function() {
 <li>ShowModalByRef()
 : <a class="el" href="namespace_modals_1_1_events.html#ad5d3079c5a5b4b6bda81cae50c218c06">Modals::Events</a>
 </li>
-<li>SocketArgs
-: <a class="el" href="namespacews.html#ac9b54a3683ab3c4a5378125dad536d42">ws</a>
+<li>SIGNAL
+: <a class="el" href="namespace_auth_socket.html#a541538437c913afbac9ac573f342293b">AuthSocket</a>
+, <a class="el" href="namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1">ChatSocket</a>
+, <a class="el" href="namespace_chats_socket.html#a9011491a364a81eb425c32c33d2f75b5">ChatsSocket</a>
+, <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cb">UsersSocket</a>
 </li>
 <li>SocketsMap
-: <a class="el" href="namespace_states_1_1_chat_state.html#a76e6c74c27d5f96c7dcfa8a1b7437810">States::ChatState</a>
+: <a class="el" href="namespace_states_1_1_chats_state.html#a0bcfc12605272a7a8a18e92e0b0de2d4">States::ChatsState</a>
 </li>
 <li>StartAChat()
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a2e5ebd3823af419f4882ce9c4045ed30">States::ChatState::ChatsMethods</a>
+: <a class="el" href="namespace_states_1_1_chats_state.html#a1374dc8b8905c66340277bd5e2e1a560">States::ChatsState</a>
 </li>
 <li>str_to_enum()
-: <a class="el" href="namespace_states_1_1_auth_state.html#a6fd25e07816c130c52023dc278709458">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#a4a18d1152ff8d6b788da9695d3e17174">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a1b26072d07db7063b8865b46d7c8d723">States::ChatState::ChatsMethods</a>
-, <a class="el" href="namespace_states_1_1_users_state.html#ae42af3993441668504f97e4b42c1e704">States::UsersState</a>
-</li>
-<li>STREAMSIGNAL
-: <a class="el" href="namespace_states_1_1_users_state.html#a5c98edc5b687f9b30678dbfd42a08d9e">States::UsersState</a>
+: <a class="el" href="namespace_auth_socket.html#ac8b09f56e03cffd10289338ef5bfdad5">AuthSocket</a>
+, <a class="el" href="namespace_chat_socket.html#a09e165df8cc1b5c11efc73b5e530cba8">ChatSocket</a>
+, <a class="el" href="namespace_chats_socket.html#a75e0b9486088591b360f204ee92fb8c1">ChatsSocket</a>
+, <a class="el" href="namespace_users_socket.html#af5933c0d09cf1def2f470dd1dfc982b4">UsersSocket</a>
 </li>
 <li>Submit()
-: <a class="el" href="namespace_chat_details_1_1_events.html#ade528651f918b7874a9090fdc3051972">ChatDetails::Events</a>
+: <a class="el" href="namespace_chat_details_1_1_events.html#a42ee66bc390aa6ab45ac80c39f59f7d4">ChatDetails::Events</a>
 , <a class="el" href="namespace_modals_1_1_auth_modal_1_1_events.html#aaab982be2c2f1d7af5f649ac1742801a">Modals::AuthModal::Events</a>
-</li>
-<li>subscribed
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ab01072fc673eb4739f5b2c5b628cc5e6">States::ChatState::ChatMethods</a>
 </li>
 <li>Subscribers
 : <a class="el" href="namespace_states_1_1_auth_state.html#a69bd880df132ed4401cf0d8a3117e89c">States::AuthState</a>
-, <a class="el" href="namespace_states_1_1_chat_state.html#ae75181c0c8ea772e9f32a851723080f2">States::ChatState</a>
+, <a class="el" href="namespace_states_1_1_chats_state.html#a1aa8168b0a83cebfac5a9b1adbd43fb7">States::ChatsState</a>
 , <a class="el" href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">States::UsersState</a>
-</li>
-</ul>
-
-
-<h3><a id="index_t"></a>- t -</h3><ul>
-<li>TYPE
-: <a class="el" href="namespace_states_1_1_chat_state_1_1_chat_methods.html#ae81d609c28c7991db144790ca1827e2e">States::ChatState::ChatMethods</a>
-, <a class="el" href="namespace_states_1_1_chat_state_1_1_chats_methods.html#a54e6b62128dfd6e9bbeb3adedf42f30d">States::ChatState::ChatsMethods</a>
 </li>
 </ul>
 
@@ -409,7 +388,7 @@ $(function() {
 : <a class="el" href="namespace_modals_1_1_chat_modal_1_1_state.html#a4b00e7b235bda55a5935308de98b60e1">Modals::ChatModal::State</a>
 </li>
 <li>UserSelected()
-: <a class="el" href="namespace_chat_list_1_1_events.html#a18cba6583460778d42f4340a96eb14d9">ChatList::Events</a>
+: <a class="el" href="namespace_chat_list_1_1_events.html#aa75651413825ce22968d114880f13558">ChatList::Events</a>
 </li>
 </ul>
 
@@ -417,6 +396,9 @@ $(function() {
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>Webview
 : <a class="el" href="namespace_web_u_i.html#a9c400b172310dd01b515c51d27379615">WebUI</a>
+</li>
+<li>WsBuffer
+: <a class="el" href="namespacews.html#ade0bf1069867d11009c2ec1d3d8911ab">ws</a>
 </li>
 </ul>
 </div><!-- contents -->

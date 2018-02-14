@@ -1,6 +1,6 @@
 var searchData=
 [
   ['jshcallback',['JsHCallback',['../namespace_web_u_i.html#ab41e3e1d14328c2ff47297c0272c8ad6',1,'WebUI']]],
-  ['json_5fto_5fchats',['json_to_chats',['../class_states_1_1_chat_state_1_1_chats_wrapper.html#a5d6d6afdf611383170a7abffc25d440d',1,'States::ChatState::ChatsWrapper']]],
-  ['json_5fto_5fmessages',['json_to_messages',['../class_states_1_1_chat_state_1_1_messages_wrapper.html#a276e8e192e7e8caea4a5286a88448c30',1,'States::ChatState::MessagesWrapper']]]
+  ['json_5fto_5fchats',['json_to_chats',['../class_chats_wrapper.html#a466ee4ef41f80868995c36cf7f03139f',1,'ChatsWrapper']]],
+  ['json_5fto_5fmessages',['json_to_messages',['../class_messages_wrapper.html#a5fb53c9e066b5b5e739f635f67f954e0',1,'MessagesWrapper']]]
 ];

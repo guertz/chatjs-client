@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['chats',['Chats',['../namespace_states_1_1_chat_state.html#a012433f173c5efc17398eea454af0378',1,'States::ChatState']]]
+  ['chats',['Chats',['../chats_8h.html#aaa88e192072058df6f6b52e97a029975',1,'chats.h']]]
 ];

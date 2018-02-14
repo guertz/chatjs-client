@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['info',['INFO',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a748005382152808a72b1a9177d9dc806',1,'logger.h']]]
+  ['join',['JOIN',['../namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1afe19929cf66a85ffa333f4f5ce4e3825',1,'ChatSocket']]]
 ];

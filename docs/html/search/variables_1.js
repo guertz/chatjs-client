@@ -1,5 +1,5 @@
 var searchData=
 [
   ['auth',['AUTH',['../classws_1_1_base_request.html#ab07f9b7bcb84c817f0da39b37ff39c5e',1,'ws::BaseRequest']]],
-  ['avatar',['avatar',['../class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a4932454b4cfaa70076e943c2aaadb647',1,'States::ChatState::ChatMethods::Response::Chat::avatar()'],['../class_states_1_1_chat_state_1_1_message.html#af1f05dfc90a789ceb17a7879cd4652f8',1,'States::ChatState::Message::avatar()']]]
+  ['avatar',['avatar',['../class_message.html#a3a79f7a1639ba67a1704bd8c5f200187',1,'Message::avatar()'],['../class_chat_socket_1_1_chat_response.html#a707fc01730339db1eb6fda3f912c2109',1,'ChatSocket::ChatResponse::avatar()']]]
 ];

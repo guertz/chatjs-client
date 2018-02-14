@@ -75,14 +75,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>&gt;</code></p>
+<p>Interfaccia classe <a class="el" href="classws_1_1_base_response.html" title="Interfaccia classe ws::BaseResponse per socket communication (Json) ">ws::BaseResponse</a> per socket communication (Json)  
+ <a href="classws_1_1_base_response.html#details">Continua...</a></p>
+
+<p><code>#include &lt;<a class="el" href="socket_8h_source.html">socket.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagramma delle classi per ws::BaseResponse</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classws_1_1_base_response.png" usemap="#ws::BaseResponse_map" alt=""/>
   <map id="ws::BaseResponse_map" name="ws::BaseResponse_map">
-<area href="class_json_item.html" alt="JsonItem" shape="rect" coords="0,0,116,24"/>
+<area href="class_json_item.html" title="Classe base da implementare per oggetti di tipo Json. " alt="JsonItem" shape="rect" coords="0,0,116,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -94,26 +97,35 @@ Membri pubblici</h2></td></tr>
 <tr class="separator:af63dc91794dc5d1e0c919112b0111d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73c257ec96b0705aa012d0682183a259"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a73c257ec96b0705aa012d0682183a259">BaseResponse</a> (const std::string &amp;serialized)</td></tr>
 <tr class="separator:a73c257ec96b0705aa012d0682183a259"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84ede1423d29cf3603dc45e169ce292d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a84ede1423d29cf3603dc45e169ce292d">to_json</a> () const</td></tr>
-<tr class="separator:a84ede1423d29cf3603dc45e169ce292d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9787fa41b3adb81fb789aa8ea20f0a46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a9787fa41b3adb81fb789aa8ea20f0a46">~BaseResponse</a> ()</td></tr>
+<tr class="separator:a9787fa41b3adb81fb789aa8ea20f0a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a1190c5d5adbcafdd1971c578e4e10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#ac1a1190c5d5adbcafdd1971c578e4e10">to_json</a> () const</td></tr>
+<tr class="memdesc:ac1a1190c5d5adbcafdd1971c578e4e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per trasformare l'oggetto in formato json.  <a href="#ac1a1190c5d5adbcafdd1971c578e4e10">Continua...</a><br /></td></tr>
+<tr class="separator:ac1a1190c5d5adbcafdd1971c578e4e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_json_item"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_json_item')"><img src="closed.png" alt="-"/>&#160;Membri pubblici ereditati da <a class="el" href="class_json_item.html">JsonItem</a></td></tr>
-<tr class="memitem:a776dd989b7cb52ce804350bdc31853c1 inherit pub_methods_class_json_item"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a776dd989b7cb52ce804350bdc31853c1">serialize</a> () const</td></tr>
-<tr class="separator:a776dd989b7cb52ce804350bdc31853c1 inherit pub_methods_class_json_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b3978802243d25b475b218209997e7 inherit pub_methods_class_json_item"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a06b3978802243d25b475b218209997e7">serialize</a> () const</td></tr>
+<tr class="memdesc:a06b3978802243d25b475b218209997e7 inherit pub_methods_class_json_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per trasformare l'oggetto in formato stringa (json serializzato)  <a href="class_json_item.html#a06b3978802243d25b475b218209997e7">Continua...</a><br /></td></tr>
+<tr class="separator:a06b3978802243d25b475b218209997e7 inherit pub_methods_class_json_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Attributi pubblici</h2></td></tr>
 <tr class="memitem:a5dd04f77ea59a3463c3a5d4c8c9881be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a></td></tr>
+<tr class="memdesc:a5dd04f77ea59a3463c3a5d4c8c9881be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valore che indica se la risposta ha avuto esito positivo o no.  <a href="#a5dd04f77ea59a3463c3a5d4c8c9881be">Continua...</a><br /></td></tr>
 <tr class="separator:a5dd04f77ea59a3463c3a5d4c8c9881be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91cdb68f67560a51ae2423931f87ed64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a></td></tr>
+<tr class="memdesc:a91cdb68f67560a51ae2423931f87ed64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valore che indica lo stato/esito della risposta.  <a href="#a91cdb68f67560a51ae2423931f87ed64">Continua...</a><br /></td></tr>
 <tr class="separator:a91cdb68f67560a51ae2423931f87ed64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04739748d4f1c58196a8629e741d4722"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a></td></tr>
+<tr class="memdesc:a04739748d4f1c58196a8629e741d4722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenuto della risposta in formato json serializzato string.  <a href="#a04739748d4f1c58196a8629e741d4722">Continua...</a><br /></td></tr>
 <tr class="separator:a04739748d4f1c58196a8629e741d4722"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f51c82ee12dce20dcd06101c6a6770"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a></td></tr>
+<tr class="memdesc:a68f51c82ee12dce20dcd06101c6a6770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Messaggio di errore della risposta.  <a href="#a68f51c82ee12dce20dcd06101c6a6770">Continua...</a><br /></td></tr>
 <tr class="separator:a68f51c82ee12dce20dcd06101c6a6770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock">
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html#l00010">10</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>.</p>
+<div class="textblock"><p>Interfaccia classe <a class="el" href="classws_1_1_base_response.html" title="Interfaccia classe ws::BaseResponse per socket communication (Json) ">ws::BaseResponse</a> per socket communication (Json) </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8h_source.html#l00035">35</a> del file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 </div><h2 class="groupheader">Documentazione dei costruttori e dei distruttori</h2>
 <a id="a811b8fb5b4bde46137fbf4958d5e90b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a811b8fb5b4bde46137fbf4958d5e90b5">&#9670;&nbsp;</a></span>BaseResponse() <span class="overload">[1/3]</span></h2>
@@ -130,11 +142,11 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html#l00008">8</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html">response.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                               {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a>      = <span class="keyword">false</span>;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a>  = 0;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a> = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a>   = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div><div class="ttc" id="classws_1_1_base_response_html_a68f51c82ee12dce20dcd06101c6a6770"><div class="ttname"><a href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse::error</a></div><div class="ttdeci">std::string error</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00016">response.h:16</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00014">response.h:14</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a04739748d4f1c58196a8629e741d4722"><div class="ttname"><a href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse::content</a></div><div class="ttdeci">std::string content</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00015">response.h:15</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00013">response.h:13</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="socket_8cc_source.html#l00039">39</a> del file <a class="el" href="socket_8cc_source.html">socket.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                               {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a>(<a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">TAG::OBJ</a>, <span class="stringliteral">&quot;BaseResponse@JsonItem::Create&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a>      = <span class="keyword">false</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a>  = 0;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div><div class="ttc" id="logger_8h_html_aee1a3d8785b569717ee7b86adbc60418"><div class="ttname"><a href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a></div><div class="ttdeci">#define log_C(tag, attr, msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00062">logger.h:62</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdoc">Valore che indica lo stato/esito della risposta. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00039">socket.h:39</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdoc">Valore che indica se la risposta ha avuto esito positivo o no. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00038">socket.h:38</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -154,11 +166,13 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html#l00015">15</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html">response.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                    {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a> = j.at(<span class="stringliteral">&quot;ok&quot;</span>).get&lt;<span class="keywordtype">bool</span>&gt;();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a> = j.at(<span class="stringliteral">&quot;status&quot;</span>).get&lt;<span class="keywordtype">int</span>&gt;();</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a> = j.at(<span class="stringliteral">&quot;error&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a> = j.at(<span class="stringliteral">&quot;content&quot;</span>).dump();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div><div class="ttc" id="classws_1_1_base_response_html_a68f51c82ee12dce20dcd06101c6a6770"><div class="ttname"><a href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse::error</a></div><div class="ttdeci">std::string error</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00016">response.h:16</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00014">response.h:14</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a04739748d4f1c58196a8629e741d4722"><div class="ttname"><a href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse::content</a></div><div class="ttdeci">std::string content</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00015">response.h:15</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00013">response.h:13</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="socket_8cc_source.html#l00046">46</a> del file <a class="el" href="socket_8cc_source.html">socket.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                    {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a>(<a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">TAG::OBJ</a>, <span class="stringliteral">&quot;BaseResponse@JsonItem::Create&quot;</span>, <span class="stringliteral">&quot;...json...&quot;</span>);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a> = j.at(<span class="stringliteral">&quot;ok&quot;</span>).get&lt;<span class="keywordtype">bool</span>&gt;();</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a> = j.at(<span class="stringliteral">&quot;status&quot;</span>).get&lt;<span class="keywordtype">int</span>&gt;();</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a> = j.at(<span class="stringliteral">&quot;error&quot;</span>).get&lt;<span class="keywordtype">string</span>&gt;();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        this-&gt;<a class="code" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a> = j.at(<span class="stringliteral">&quot;content&quot;</span>).dump();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div><div class="ttc" id="logger_8h_html_aee1a3d8785b569717ee7b86adbc60418"><div class="ttname"><a href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a></div><div class="ttdeci">#define log_C(tag, attr, msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00062">logger.h:62</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a68f51c82ee12dce20dcd06101c6a6770"><div class="ttname"><a href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse::error</a></div><div class="ttdeci">std::string error</div><div class="ttdoc">Messaggio di errore della risposta. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00041">socket.h:41</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdoc">Valore che indica lo stato/esito della risposta. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00039">socket.h:39</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a04739748d4f1c58196a8629e741d4722"><div class="ttname"><a href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse::content</a></div><div class="ttdeci">std::string content</div><div class="ttdoc">Contenuto della risposta in formato json serializzato string. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00040">socket.h:40</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdoc">Valore che indica se la risposta ha avuto esito positivo o no. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00038">socket.h:38</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -178,14 +192,35 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html#l00022">22</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html">response.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        : <a class="code" href="classws_1_1_base_response.html#a811b8fb5b4bde46137fbf4958d5e90b5">BaseResponse</a>(json::parse(serialized)) { }</div><div class="ttc" id="classws_1_1_base_response_html_a811b8fb5b4bde46137fbf4958d5e90b5"><div class="ttname"><a href="classws_1_1_base_response.html#a811b8fb5b4bde46137fbf4958d5e90b5">ws::BaseResponse::BaseResponse</a></div><div class="ttdeci">BaseResponse()</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8cc_source.html#l00008">response.cc:8</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="socket_8cc_source.html#l00055">55</a> del file <a class="el" href="socket_8cc_source.html">socket.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        : <a class="code" href="classws_1_1_base_response.html#a811b8fb5b4bde46137fbf4958d5e90b5">BaseResponse</a>(json::parse(serialized)) { }</div><div class="ttc" id="classws_1_1_base_response_html_a811b8fb5b4bde46137fbf4958d5e90b5"><div class="ttname"><a href="classws_1_1_base_response.html#a811b8fb5b4bde46137fbf4958d5e90b5">ws::BaseResponse::BaseResponse</a></div><div class="ttdeci">BaseResponse()</div><div class="ttdef"><b>Definition:</b> <a href="socket_8cc_source.html#l00039">socket.cc:39</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9787fa41b3adb81fb789aa8ea20f0a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9787fa41b3adb81fb789aa8ea20f0a46">&#9670;&nbsp;</a></span>~BaseResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ws::BaseResponse::~BaseResponse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8cc_source.html#l00058">58</a> del file <a class="el" href="socket_8cc_source.html">socket.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a>(<a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">TAG::OBJ</a>, <span class="stringliteral">&quot;BaseResponse@JsonItem::Destroy&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="ttc" id="logger_8h_html_aee1a3d8785b569717ee7b86adbc60418"><div class="ttname"><a href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a></div><div class="ttdeci">#define log_C(tag, attr, msg)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00062">logger.h:62</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentazione delle funzioni membro</h2>
-<a id="a84ede1423d29cf3603dc45e169ce292d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84ede1423d29cf3603dc45e169ce292d">&#9670;&nbsp;</a></span>to_json()</h2>
+<a id="ac1a1190c5d5adbcafdd1971c578e4e10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a1190c5d5adbcafdd1971c578e4e10">&#9670;&nbsp;</a></span>to_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,7 +229,7 @@ Attributi pubblici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> ws::BaseResponse::to_json </td>
+          <td class="memname"><a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> ws::BaseResponse::to_json </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -207,13 +242,16 @@ Attributi pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplementa <a class="el" href="class_json_item.html#a7443fc6e76e937927116930a73af542a">JsonItem</a>.</p>
+<p>Metodo per trasformare l'oggetto in formato json. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>Oggetto Json rappresentativo della classe </dd></dl>
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html#l00025">25</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html">response.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                     {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> { </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            { <span class="stringliteral">&quot;ok&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a> },</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            { <span class="stringliteral">&quot;status&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a> }, </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            { <span class="stringliteral">&quot;error&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a>},</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            { <span class="stringliteral">&quot;content&quot;</span>, json::parse(this-&gt;<a class="code" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a>)}</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        };</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div><div class="ttc" id="classws_1_1_base_response_html_a68f51c82ee12dce20dcd06101c6a6770"><div class="ttname"><a href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse::error</a></div><div class="ttdeci">std::string error</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00016">response.h:16</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00014">response.h:14</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a04739748d4f1c58196a8629e741d4722"><div class="ttname"><a href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse::content</a></div><div class="ttdeci">std::string content</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00015">response.h:15</a></div></div>
-<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdef"><b>Definition:</b> <a href="protocol_2sockets_2definitions_2response_8h_source.html#l00013">response.h:13</a></div></div>
+<p>Reimplementa <a class="el" href="class_json_item.html#a46392181f02ecde08eb681b6e162c8f1">JsonItem</a>.</p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8cc_source.html#l00062">62</a> del file <a class="el" href="socket_8cc_source.html">socket.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                             {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> { </div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            { <span class="stringliteral">&quot;ok&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ok</a> },</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            { <span class="stringliteral">&quot;status&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">status</a> }, </div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            { <span class="stringliteral">&quot;error&quot;</span>, this-&gt;<a class="code" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">error</a>},</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            { <span class="stringliteral">&quot;content&quot;</span>, json::parse(this-&gt;<a class="code" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">content</a>)}</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        };</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div><div class="ttc" id="classws_1_1_base_response_html_a68f51c82ee12dce20dcd06101c6a6770"><div class="ttname"><a href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse::error</a></div><div class="ttdeci">std::string error</div><div class="ttdoc">Messaggio di errore della risposta. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00041">socket.h:41</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a91cdb68f67560a51ae2423931f87ed64"><div class="ttname"><a href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse::status</a></div><div class="ttdeci">int status</div><div class="ttdoc">Valore che indica lo stato/esito della risposta. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00039">socket.h:39</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a04739748d4f1c58196a8629e741d4722"><div class="ttname"><a href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse::content</a></div><div class="ttdeci">std::string content</div><div class="ttdoc">Contenuto della risposta in formato json serializzato string. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00040">socket.h:40</a></div></div>
+<div class="ttc" id="classws_1_1_base_response_html_a5dd04f77ea59a3463c3a5d4c8c9881be"><div class="ttname"><a href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse::ok</a></div><div class="ttdeci">bool ok</div><div class="ttdoc">Valore che indica se la risposta ha avuto esito positivo o no. </div><div class="ttdef"><b>Definition:</b> <a href="socket_8h_source.html#l00038">socket.h:38</a></div></div>
 <div class="ttc" id="web-ui_8cc_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="web-ui_8cc_source.html#l00019">web-ui.cc:19</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -231,7 +269,9 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html#l00015">15</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>.</p>
+<p>Contenuto della risposta in formato json serializzato string. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8h_source.html#l00040">40</a> del file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -247,7 +287,9 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html#l00016">16</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>.</p>
+<p>Messaggio di errore della risposta. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8h_source.html#l00041">41</a> del file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +305,9 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html#l00013">13</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>.</p>
+<p>Valore che indica se la risposta ha avuto esito positivo o no. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8h_source.html#l00038">38</a> del file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -279,13 +323,15 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html#l00014">14</a> del file <a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a>.</p>
+<p>Valore che indica lo stato/esito della risposta. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="socket_8h_source.html#l00039">39</a> del file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
 <hr/>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>
-<li>src/protocol/sockets/definitions/<a class="el" href="protocol_2sockets_2definitions_2response_8h_source.html">response.h</a></li>
-<li>src/protocol/sockets/definitions/<a class="el" href="protocol_2sockets_2definitions_2response_8cc_source.html">response.cc</a></li>
+<li>src/models/socket/<a class="el" href="socket_8h_source.html">socket.h</a></li>
+<li>src/models/socket/<a class="el" href="socket_8cc_source.html">socket.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

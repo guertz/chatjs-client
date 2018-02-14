@@ -70,6 +70,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Classe base da implementare per oggetti di tipo Json.  
+ <a href="class_json_item.html#details">Continua...</a></p>
+
 <p><code>#include &lt;<a class="el" href="json-item_8h_source.html">json-item.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagramma delle classi per JsonItem</div>
@@ -77,41 +80,44 @@ Diagramma delle classi per JsonItem</div>
  <div class="center">
   <img src="class_json_item.png" usemap="#JsonItem_map" alt=""/>
   <map id="JsonItem_map" name="JsonItem_map">
-<area href="class_states_1_1_auth_state_1_1_request_1_1_auth.html" alt="States::AuthState::Request::Auth" shape="rect" coords="301,56,592,80"/>
-<area href="class_states_1_1_auth_state_1_1_response_1_1_auth.html" alt="States::AuthState::Response::Auth" shape="rect" coords="301,112,592,136"/>
-<area href="class_states_1_1_chat_state_1_1_chat.html" alt="States::ChatState::Chat" shape="rect" coords="301,168,592,192"/>
-<area href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html" alt="States::ChatState::ChatMethods::Request::Chat" shape="rect" coords="301,224,592,248"/>
-<area href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html" alt="States::ChatState::ChatMethods::Response::Chat" shape="rect" coords="301,280,592,304"/>
-<area href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html" alt="States::ChatState::ChatsMethods::Request::Chats" shape="rect" coords="301,336,592,360"/>
-<area href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html" alt="States::ChatState::ChatsMethods::Response::Chats" shape="rect" coords="301,392,592,416"/>
-<area href="class_states_1_1_chat_state_1_1_message.html" alt="States::ChatState::Message" shape="rect" coords="301,448,592,472"/>
-<area href="class_states_1_1_users_state_1_1_request_1_1_stream.html" alt="States::UsersState::Request::Stream" shape="rect" coords="301,504,592,528"/>
-<area href="class_states_1_1_users_state_1_1_response_1_1_stream.html" alt="States::UsersState::Response::Stream" shape="rect" coords="301,560,592,584"/>
-<area href="class_user.html" alt="User" shape="rect" coords="301,616,592,640"/>
-<area href="classws_1_1_base_request.html" alt="ws::BaseRequest" shape="rect" coords="301,672,592,696"/>
-<area href="classws_1_1_base_response.html" alt="ws::BaseResponse" shape="rect" coords="301,728,592,752"/>
+<area href="class_auth_socket_1_1_auth_request.html" title="Interfaccia classe AuthSocket::AuthRequest (Json) " alt="AuthSocket::AuthRequest" shape="rect" coords="185,56,360,80"/>
+<area href="class_auth_socket_1_1_auth_response.html" title="Interfaccia classe AuthSocket::AuthResponse (Json) " alt="AuthSocket::AuthResponse" shape="rect" coords="185,112,360,136"/>
+<area href="class_chat.html" title="Interfaccia classe Chat (JSON) " alt="Chat" shape="rect" coords="185,168,360,192"/>
+<area href="class_chat_socket_1_1_chat_request.html" title="Interfaccia classe ChatSocket::ChatRequest (Json) " alt="ChatSocket::ChatRequest" shape="rect" coords="185,224,360,248"/>
+<area href="class_chat_socket_1_1_chat_response.html" title="Interfaccia classe ChatSocket::ChatResponse (Json) " alt="ChatSocket::ChatResponse" shape="rect" coords="185,280,360,304"/>
+<area href="class_chats_socket_1_1_chats_request.html" title="Interfaccia classe ChatsSocket::ChatsRequest (Json) " alt="ChatsSocket::ChatsRequest" shape="rect" coords="185,336,360,360"/>
+<area href="class_chats_socket_1_1_chats_response.html" title="Interfaccia classe ChatsSocket::ChatsResponse (Json) " alt="ChatsSocket::ChatsResponse" shape="rect" coords="185,392,360,416"/>
+<area href="class_message.html" title="Interfaccia classe messaggio (JSON) " alt="Message" shape="rect" coords="185,448,360,472"/>
+<area href="class_user.html" title="Interfaccia classe User (Json) " alt="User" shape="rect" coords="185,504,360,528"/>
+<area href="class_users_socket_1_1_users_request.html" title="Interfaccia classe UsersSocket::UsersRequest (Json) " alt="UsersSocket::UsersRequest" shape="rect" coords="185,560,360,584"/>
+<area href="class_users_socket_1_1_users_response.html" title="Interfaccia classe UsersSocket::UsersResponse (Json) " alt="UsersSocket::UsersResponse" shape="rect" coords="185,616,360,640"/>
+<area href="classws_1_1_base_request.html" title="Interfaccia classe ws::BaseRequest per socket communication (Json) " alt="ws::BaseRequest" shape="rect" coords="185,672,360,696"/>
+<area href="classws_1_1_base_response.html" title="Interfaccia classe ws::BaseResponse per socket communication (Json) " alt="ws::BaseResponse" shape="rect" coords="185,728,360,752"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
-<tr class="memitem:a7443fc6e76e937927116930a73af542a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a7443fc6e76e937927116930a73af542a">to_json</a> () const</td></tr>
-<tr class="separator:a7443fc6e76e937927116930a73af542a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a776dd989b7cb52ce804350bdc31853c1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a776dd989b7cb52ce804350bdc31853c1">serialize</a> () const</td></tr>
-<tr class="separator:a776dd989b7cb52ce804350bdc31853c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46392181f02ecde08eb681b6e162c8f1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a46392181f02ecde08eb681b6e162c8f1">to_json</a> () const</td></tr>
+<tr class="memdesc:a46392181f02ecde08eb681b6e162c8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per trasformare l'oggetto in formato json.  <a href="#a46392181f02ecde08eb681b6e162c8f1">Continua...</a><br /></td></tr>
+<tr class="separator:a46392181f02ecde08eb681b6e162c8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b3978802243d25b475b218209997e7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_item.html#a06b3978802243d25b475b218209997e7">serialize</a> () const</td></tr>
+<tr class="memdesc:a06b3978802243d25b475b218209997e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per trasformare l'oggetto in formato stringa (json serializzato)  <a href="#a06b3978802243d25b475b218209997e7">Continua...</a><br /></td></tr>
+<tr class="separator:a06b3978802243d25b475b218209997e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock">
-<p class="definition">Definizione alla linea <a class="el" href="json-item_8h_source.html#l00007">7</a> del file <a class="el" href="json-item_8h_source.html">json-item.h</a>.</p>
+<div class="textblock"><p>Classe base da implementare per oggetti di tipo Json. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="json-item_8h_source.html#l00012">12</a> del file <a class="el" href="json-item_8h_source.html">json-item.h</a>.</p>
 </div><h2 class="groupheader">Documentazione delle funzioni membro</h2>
-<a id="a776dd989b7cb52ce804350bdc31853c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a776dd989b7cb52ce804350bdc31853c1">&#9670;&nbsp;</a></span>serialize()</h2>
+<a id="a06b3978802243d25b475b218209997e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b3978802243d25b475b218209997e7">&#9670;&nbsp;</a></span>serialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string JsonItem::serialize </td>
+          <td class="memname">std::string JsonItem::serialize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -119,13 +125,16 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="json-item_8cc_source.html#l00010">10</a> del file <a class="el" href="json-item_8cc_source.html">json-item.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                                 {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_json_item.html#a7443fc6e76e937927116930a73af542a">to_json</a>().dump();</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div><div class="ttc" id="class_json_item_html_a7443fc6e76e937927116930a73af542a"><div class="ttname"><a href="class_json_item.html#a7443fc6e76e937927116930a73af542a">JsonItem::to_json</a></div><div class="ttdeci">virtual nlohmann::json to_json() const</div><div class="ttdef"><b>Definition:</b> <a href="json-item_8cc_source.html#l00006">json-item.cc:6</a></div></div>
+<p>Metodo per trasformare l'oggetto in formato stringa (json serializzato) </p>
+<dl class="section return"><dt>Restituisce</dt><dd>stringa serializzata json rappresentativo della classe </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="json-item_8cc_source.html#l00019">19</a> del file <a class="el" href="json-item_8cc_source.html">json-item.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                    {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_json_item.html#a46392181f02ecde08eb681b6e162c8f1">to_json</a>().dump();</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="class_json_item_html_a46392181f02ecde08eb681b6e162c8f1"><div class="ttname"><a href="class_json_item.html#a46392181f02ecde08eb681b6e162c8f1">JsonItem::to_json</a></div><div class="ttdeci">virtual nlohmann::json to_json() const</div><div class="ttdoc">Metodo per trasformare l&amp;#39;oggetto in formato json. </div><div class="ttdef"><b>Definition:</b> <a href="json-item_8cc_source.html#l00015">json-item.cc:15</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a7443fc6e76e937927116930a73af542a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7443fc6e76e937927116930a73af542a">&#9670;&nbsp;</a></span>to_json()</h2>
+<a id="a46392181f02ecde08eb681b6e162c8f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46392181f02ecde08eb681b6e162c8f1">&#9670;&nbsp;</a></span>to_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +143,7 @@ Membri pubblici</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="web-ui_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> JsonItem::to_json </td>
+          <td class="memname"><a class="el" href="users-state_8cc.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> JsonItem::to_json </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -147,10 +156,13 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplementata in <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1f12c7ab561528310410846365dae880">States::ChatState::ChatMethods::Response::Chat</a>, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a91b4d11efff929c56b0450429ab9f0ea">States::ChatState::ChatsMethods::Response::Chats</a>, <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#ad074bcce678f4876b8f12c6e27896bbc">States::ChatState::Chat</a>, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html#a61ada00595078fe40e65c9446bfd3c82">States::ChatState::ChatMethods::Request::Chat</a>, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#acdb69d456aa1e92096b990dc45de21b5">States::ChatState::ChatsMethods::Request::Chats</a>, <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#adbec29c073e82de03b224b5c596255c3">States::AuthState::Response::Auth</a>, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#abb8077d77525a71764c79894e3a8fd22">States::ChatState::Message</a>, <a class="el" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a5f71b6d5bae203d0a03b9108448f1567">States::AuthState::Request::Auth</a>, <a class="el" href="class_states_1_1_users_state_1_1_request_1_1_stream.html#a1f922ed4af58b9199fdb3debb2b4da43">States::UsersState::Request::Stream</a>, <a class="el" href="class_states_1_1_users_state_1_1_response_1_1_stream.html#ac72a87970f83b1c977dd153a12fe9746">States::UsersState::Response::Stream</a>, <a class="el" href="classws_1_1_base_response.html#a84ede1423d29cf3603dc45e169ce292d">ws::BaseResponse</a>, <a class="el" href="classws_1_1_base_request.html#a28206a0e57c790e53a199d1ae04d0b04">ws::BaseRequest</a>, e <a class="el" href="class_user.html#acede374f93e0db3c46de227112690df5">User</a>.</p>
+<p>Metodo per trasformare l'oggetto in formato json. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>Oggetto Json rappresentativo della classe </dd></dl>
 
-<p class="definition">Definizione alla linea <a class="el" href="json-item_8cc_source.html#l00006">6</a> del file <a class="el" href="json-item_8cc_source.html">json-item.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;                             {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">return</span> json::parse(<span class="stringliteral">&quot;{}&quot;</span>);</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div></div><!-- fragment -->
+<p>Reimplementata in <a class="el" href="class_auth_socket_1_1_auth_response.html#a38056ccb65a02e47a21aac737e102f68">AuthSocket::AuthResponse</a>, <a class="el" href="class_chat_socket_1_1_chat_response.html#a2c3a18a2d3625abfa6d7bf03635746b9">ChatSocket::ChatResponse</a>, <a class="el" href="class_chats_socket_1_1_chats_response.html#af72f66846ba200308bb599d9a0b2c603">ChatsSocket::ChatsResponse</a>, <a class="el" href="class_users_socket_1_1_users_response.html#a184bc780896ac284263277a2f0d246f1">UsersSocket::UsersResponse</a>, <a class="el" href="classws_1_1_base_response.html#ac1a1190c5d5adbcafdd1971c578e4e10">ws::BaseResponse</a>, <a class="el" href="class_auth_socket_1_1_auth_request.html#ae66700b7489c653f68361ce05d5033c9">AuthSocket::AuthRequest</a>, <a class="el" href="class_chat_socket_1_1_chat_request.html#a95d5ce404cfb3e6c409012072281762b">ChatSocket::ChatRequest</a>, <a class="el" href="class_chats_socket_1_1_chats_request.html#a6cb1de529a09c7c0802240b66e81d2d6">ChatsSocket::ChatsRequest</a>, <a class="el" href="class_users_socket_1_1_users_request.html#af3fa1b48a8951367c23ca16bdf33fe71">UsersSocket::UsersRequest</a>, <a class="el" href="class_chat.html#a1c71afa68c93740ea91d88d7edc6c81d">Chat</a>, <a class="el" href="class_message.html#a48b3e7ef15b2ec4b0ebedb514c772e5a">Message</a>, <a class="el" href="classws_1_1_base_request.html#ad2e666ea24942eff5809468ece3b03c4">ws::BaseRequest</a>, e <a class="el" href="class_user.html#a3118630e74497be7c48ec510b9fa81e5">User</a>.</p>
+
+<p class="definition">Definizione alla linea <a class="el" href="json-item_8cc_source.html#l00015">15</a> del file <a class="el" href="json-item_8cc_source.html">json-item.cc</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                     {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> json::parse(<span class="stringliteral">&quot;{}&quot;</span>);</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>La documentazione per questa classe è stata generata a partire dai seguenti file:<ul>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['open',['OPEN',['../namespace_states_1_1_users_state.html#a5c98edc5b687f9b30678dbfd42a08d9ea8a0d87ea2312200a28f61d1e132b4234',1,'States::UsersState']]]
+  ['send',['SEND',['../namespace_chat_socket.html#a5345a53534397cb71be0bf8bb113d3c1a3d8ffa018139eea3346f89ed310fada3',1,'ChatSocket']]],
+  ['sta',['STA',['../logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de',1,'logger.h']]]
 ];

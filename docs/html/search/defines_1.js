@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['log_5fbase',['log_base',['../logger_8h.html#a3d4e06e664c15222dc61bbbb22da7331',1,'logger.h']]],
-  ['log_5fcsl',['log_csl',['../logger_8h.html#aff188489154a3eba83ad4d1b147b4d0a',1,'logger.h']]],
-  ['log_5fdetails',['log_details',['../logger_8h.html#a83931080af29dedba9d80603b0a6085c',1,'logger.h']]],
-  ['log_5ferr',['log_err',['../logger_8h.html#aeb89daecd11df134a85bf9de3f33bbc1',1,'logger.h']]],
-  ['log_5fpedantic',['log_pedantic',['../logger_8h.html#a6bedbcea80379588d8d614e2ddc8669a',1,'logger.h']]],
-  ['log_5fwarn',['log_warn',['../logger_8h.html#ab9b308b66e21a210e1dd3faa5b78ce65',1,'logger.h']]],
-  ['log_5fws',['log_ws',['../logger_8h.html#a48e5dbb405b1114a7be101bd4cb9bedf',1,'logger.h']]],
-  ['logger',['LOGGER',['../logger_8h.html#ad609abbc63d40e5eb5fc620390f1b283',1,'logger.h']]]
+  ['localhost',['LOCALHOST',['../wscustom_8cc.html#acfc12278a87672861e438f8841a7a713',1,'wscustom.cc']]],
+  ['log_5fa',['log_A',['../logger_8h.html#a580de68ded570cc8bca31ae3edb0aaa4',1,'logger.h']]],
+  ['log_5fb',['log_B',['../logger_8h.html#abf7ac0eed934c82f22eb436003d89f14',1,'logger.h']]],
+  ['log_5fc',['log_C',['../logger_8h.html#aee1a3d8785b569717ee7b86adbc60418',1,'logger.h']]],
+  ['log_5flen',['LOG_LEN',['../logger_8h.html#af2a0fa359400979a265d34bed5dfe91d',1,'logger.h']]],
+  ['log_5fn',['log_n',['../logger_8h.html#aa9bb58a21642245d8d1639c917ae90ff',1,'logger.h']]],
+  ['logger',['LOGGER',['../logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa',1,'logger.h']]]
 ];

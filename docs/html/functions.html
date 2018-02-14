@@ -72,16 +72,18 @@ $(function() {
 
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>Auth()
-: <a class="el" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a532a6400a50b1d875393bd22d7d06c04">States::AuthState::Request::Auth</a>
-, <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#a1aa95c996fff15e5cc30dc316f649719">States::AuthState::Response::Auth</a>
-</li>
 <li>AUTH
 : <a class="el" href="classws_1_1_base_request.html#ab07f9b7bcb84c817f0da39b37ff39c5e">ws::BaseRequest</a>
 </li>
+<li>AuthRequest()
+: <a class="el" href="class_auth_socket_1_1_auth_request.html#a2c4d6c0cd94e098bdf8421d5e2e170b5">AuthSocket::AuthRequest</a>
+</li>
+<li>AuthResponse()
+: <a class="el" href="class_auth_socket_1_1_auth_response.html#a1b3efd80310e1cb04fb09277533e0982">AuthSocket::AuthResponse</a>
+</li>
 <li>avatar
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a4932454b4cfaa70076e943c2aaadb647">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#af1f05dfc90a789ceb17a7879cd4652f8">States::ChatState::Message</a>
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a707fc01730339db1eb6fda3f912c2109">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_message.html#a3a79f7a1639ba67a1704bd8c5f200187">Message</a>
 </li>
 </ul>
 
@@ -93,48 +95,54 @@ $(function() {
 <li>BaseResponse()
 : <a class="el" href="classws_1_1_base_response.html#a811b8fb5b4bde46137fbf4958d5e90b5">ws::BaseResponse</a>
 </li>
-<li>buffer
-: <a class="el" href="structws_1_1socket__args.html#aa23b69020bc59eaa931fb293b6496834">ws::socket_args</a>
-</li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>Chat()
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#ac040bbb0d2864d42dc4bdb8697936f84">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html#aa64c5404c56fca634d7c59c7f3505823">States::ChatState::ChatMethods::Request::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a56f3471b06e36b204a7fedfe9eb8ec7e">States::ChatState::ChatMethods::Response::Chat</a>
+: <a class="el" href="class_chat.html#a4427e061b727c06cccca9626cc0cf9c8">Chat</a>
 </li>
-<li>Chats()
-: <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#a8e0af45dbe9733bc06f22a7f6429a7b3">States::ChatState::ChatsMethods::Request::Chats</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#aa6d1e3f5672fe8504132753087aa6392">States::ChatState::ChatsMethods::Response::Chats</a>
+<li>ChatRequest()
+: <a class="el" href="class_chat_socket_1_1_chat_request.html#af823d9e392a93bf5a83b1c7de9ef8e5b">ChatSocket::ChatRequest</a>
+</li>
+<li>ChatResponse()
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a9bac9990e253ea0cdbd6cb3a25c474ed">ChatSocket::ChatResponse</a>
 </li>
 <li>chats_to_json()
-: <a class="el" href="class_states_1_1_chat_state_1_1_chats_wrapper.html#a238ae88371c93566ed8b65b9f482db7e">States::ChatState::ChatsWrapper</a>
+: <a class="el" href="class_chats_wrapper.html#a47a0780f3e50959f8d2477df1669f46a">ChatsWrapper</a>
+</li>
+<li>ChatsRequest()
+: <a class="el" href="class_chats_socket_1_1_chats_request.html#a6732301648099de1fd33eaccef3906c8">ChatsSocket::ChatsRequest</a>
+</li>
+<li>ChatsResponse()
+: <a class="el" href="class_chats_socket_1_1_chats_response.html#ac25766077627a1d041c4a7869b4ccb7a">ChatsSocket::ChatsResponse</a>
 </li>
 <li>content
 : <a class="el" href="classws_1_1_base_request.html#a7c830a7d0ade6150f1649dcb9b4715c0">ws::BaseRequest</a>
 , <a class="el" href="classws_1_1_base_response.html#a04739748d4f1c58196a8629e741d4722">ws::BaseResponse</a>
+, <a class="el" href="structws_1_1socket__buff.html#a743d8ec0e94333af80155bf7c0df417c">ws::socket_buff</a>
 </li>
 <li>creator
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#a56c452f883ce4ec966ad87eccb95282a">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a0d38477ba1ecc534a9df546fef01a40d">States::ChatState::ChatsMethods::Response::Chats</a>
+: <a class="el" href="class_chat.html#a9e410b53abf4ac4478ab45f4c542fc37">Chat</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a7e0aa7dc6447728e89b9ea79829d3c3a">ChatsSocket::ChatsResponse</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>destination
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#a33d19e5f2eda8b56e5483f156694e3c9">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#a42a6a4831965cf0d5d1fd204427ca5d0">States::ChatState::ChatsMethods::Request::Chats</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#aaca8a3c175692c574ff402f4bc326d27">States::ChatState::ChatsMethods::Response::Chats</a>
+: <a class="el" href="class_chat.html#aad79f7854db3e046a38ff14bfc5f096e">Chat</a>
+, <a class="el" href="class_chats_socket_1_1_chats_request.html#a10aa7c9b264215dbcb4ed24cc837cb40">ChatsSocket::ChatsRequest</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a2ea4046e96644bdfb101bc84e7b16b95">ChatsSocket::ChatsResponse</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>error
-: <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#a73b77e5aa2a139be535f809b14f12a77">States::AuthState::Response::Auth</a>
+: <a class="el" href="class_auth_socket_1_1_auth_response.html#a8815efc958ca99cea468abee7a5e100c">AuthSocket::AuthResponse</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a83536484d3ba4bb4b7dc5cb1037f2b3f">ChatsSocket::ChatsResponse</a>
+, <a class="el" href="class_users_socket_1_1_users_response.html#a322db156fc2a85d5b0b07fca78f16952">UsersSocket::UsersResponse</a>
 , <a class="el" href="classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770">ws::BaseResponse</a>
 </li>
 </ul>
@@ -142,8 +150,8 @@ $(function() {
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>from
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#a923d139490e300f7dc54619bf5feb1e2">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a6315f46d57e327606740f2668a9934a2">States::ChatState::ChatsMethods::Response::Chats</a>
+: <a class="el" href="class_chat.html#ac6a85989525e0d6588d93d30e165b777">Chat</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a5262324bd4b665fe93666a0ae6cd1af0">ChatsSocket::ChatsResponse</a>
 </li>
 </ul>
 
@@ -153,37 +161,37 @@ $(function() {
 : <a class="el" href="class_user.html#a293c9893570650e14b9f8eb68fe707a1">User</a>
 </li>
 <li>is_send
-: <a class="el" href="structws_1_1socket__args.html#a46c65c55af9f54d41363a759e2342475">ws::socket_args</a>
+: <a class="el" href="structws_1_1socket__buff.html#abc15757231b84d9ef9723514cb0cc320">ws::socket_buff</a>
 </li>
 <li>is_valid()
 : <a class="el" href="class_user.html#a54af5624351276ec3f65b00e2a5ecbb8">User</a>
 </li>
 <li>isMe
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1ec6d5ee6cb1d2a70147b7bbfbad7535">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#a2ad1d99b0d69f50dad7f5f636862ef9d">States::ChatState::Message</a>
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a3acb01b227da2ace15fd368844757e16">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_message.html#a3c1d2546efec8b62f24f8e705189fdc6">Message</a>
 </li>
 </ul>
 
 
 <h3><a id="index_j"></a>- j -</h3><ul>
 <li>json_to_chats()
-: <a class="el" href="class_states_1_1_chat_state_1_1_chats_wrapper.html#a5d6d6afdf611383170a7abffc25d440d">States::ChatState::ChatsWrapper</a>
+: <a class="el" href="class_chats_wrapper.html#a466ee4ef41f80868995c36cf7f03139f">ChatsWrapper</a>
 </li>
 <li>json_to_messages()
-: <a class="el" href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a276e8e192e7e8caea4a5286a88448c30">States::ChatState::MessagesWrapper</a>
+: <a class="el" href="class_messages_wrapper.html#a5fb53c9e066b5b5e739f635f67f954e0">MessagesWrapper</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>Message()
-: <a class="el" href="class_states_1_1_chat_state_1_1_message.html#a93904aa18251713968a52069a31c54b4">States::ChatState::Message</a>
+: <a class="el" href="class_message.html#a4fc4f717b634e66070366cb7722d7761">Message</a>
 </li>
 <li>messages
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#a04da33ca5deed3eda7cc435b51a7c046">States::ChatState::Chat</a>
+: <a class="el" href="class_chat.html#aec8df0f4f3115cac483da0d8819497bd">Chat</a>
 </li>
 <li>messages_to_json()
-: <a class="el" href="class_states_1_1_chat_state_1_1_messages_wrapper.html#a501069a58af0d36952d4efa945d8f5e9">States::ChatState::MessagesWrapper</a>
+: <a class="el" href="class_messages_wrapper.html#aec7bd231d49f5d7fba9ae29488e9304c">MessagesWrapper</a>
 </li>
 </ul>
 
@@ -200,7 +208,7 @@ $(function() {
 : <a class="el" href="classws_1_1_base_response.html#a5dd04f77ea59a3463c3a5d4c8c9881be">ws::BaseResponse</a>
 </li>
 <li>online
-: <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#a08ca2509cb7135c88709460cb486d8e9">States::AuthState::Response::Auth</a>
+: <a class="el" href="class_auth_socket_1_1_auth_response.html#a28f8da882cec3db5a71523b65dbd4328">AuthSocket::AuthResponse</a>
 </li>
 </ul>
 
@@ -214,11 +222,11 @@ $(function() {
 
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>ref
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d12a42341020cb6f23fb7de3201d839">States::ChatState::ChatMethods::Response::Chat</a>
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a9535765ba40837d9a469d14b65868e7e">ChatSocket::ChatResponse</a>
 </li>
 <li>reference
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#a9a5ab1d0126cb895090ffe72581a0f94">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#acd9e94f461094dffdc96a693feb4da1e">States::ChatState::ChatsMethods::Response::Chats</a>
+: <a class="el" href="class_chat.html#a71b38183acf83451376752a79937d795">Chat</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a4b585aa1012cab680c3d1e8e5c8d948a">ChatsSocket::ChatsResponse</a>
 </li>
 <li>resume()
 : <a class="el" href="classws_1_1_socket.html#ad8072b97d41bf3f094f2230d43c3268c">ws::Socket</a>
@@ -228,83 +236,121 @@ $(function() {
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>serialize()
-: <a class="el" href="class_json_item.html#a776dd989b7cb52ce804350bdc31853c1">JsonItem</a>
+: <a class="el" href="class_json_item.html#a06b3978802243d25b475b218209997e7">JsonItem</a>
 </li>
 <li>setBuffer()
-: <a class="el" href="classws_1_1_socket.html#adb59ed4665bfd6e1e58891f984fb19bb">ws::Socket</a>
+: <a class="el" href="classws_1_1_socket.html#acd9fd31f296657b5f5d3fb0a5cb7cf93">ws::Socket</a>
 </li>
 <li>Socket()
-: <a class="el" href="classws_1_1_socket.html#a8bed860485e00880339c64ec5d5c8c03">ws::Socket</a>
+: <a class="el" href="classws_1_1_socket.html#a23a4b1dd8cb84584e461da8be2b06f44">ws::Socket</a>
 </li>
 <li>status
 : <a class="el" href="classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64">ws::BaseResponse</a>
-</li>
-<li>Stream()
-: <a class="el" href="class_states_1_1_users_state_1_1_request_1_1_stream.html#a204a585d3b270fca3435c3245380ed8d">States::UsersState::Request::Stream</a>
-, <a class="el" href="class_states_1_1_users_state_1_1_response_1_1_stream.html#a0931e0eca0dda4c6cf168708bdd1d6db">States::UsersState::Response::Stream</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>text
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html#a5f70237cd1251171a4c32aa58b62f57e">States::ChatState::ChatMethods::Request::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a6d3e6950ca837c0a6baf297e3c4ee6a6">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#a4847172f17195aa7989953bdcd7d2852">States::ChatState::Message</a>
+: <a class="el" href="class_chat_socket_1_1_chat_request.html#ac29bdfbca2b52cfe36997e302473ceca">ChatSocket::ChatRequest</a>
+, <a class="el" href="class_chat_socket_1_1_chat_response.html#af43badb4ab2485f238d8d0f13a39251a">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_message.html#a6643d6d90c0fdb11886b17d44a7a8183">Message</a>
 </li>
 <li>time
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a9e8461d30d4f51585188fee58d5c3af9">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#a643e8cb8c37439b59a92716e432c587c">States::ChatState::Message</a>
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a8d7d35f9d40adb474c2d011381106679">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_message.html#ae372af3cf12839f44346b03c54867ca0">Message</a>
 </li>
 <li>to_json()
-: <a class="el" href="class_json_item.html#a7443fc6e76e937927116930a73af542a">JsonItem</a>
-, <a class="el" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a5f71b6d5bae203d0a03b9108448f1567">States::AuthState::Request::Auth</a>
-, <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#adbec29c073e82de03b224b5c596255c3">States::AuthState::Response::Auth</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#ad074bcce678f4876b8f12c6e27896bbc">States::ChatState::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html#a61ada00595078fe40e65c9446bfd3c82">States::ChatState::ChatMethods::Request::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a1f12c7ab561528310410846365dae880">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#acdb69d456aa1e92096b990dc45de21b5">States::ChatState::ChatsMethods::Request::Chats</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a91b4d11efff929c56b0450429ab9f0ea">States::ChatState::ChatsMethods::Response::Chats</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_message.html#abb8077d77525a71764c79894e3a8fd22">States::ChatState::Message</a>
-, <a class="el" href="class_states_1_1_users_state_1_1_request_1_1_stream.html#a1f922ed4af58b9199fdb3debb2b4da43">States::UsersState::Request::Stream</a>
-, <a class="el" href="class_states_1_1_users_state_1_1_response_1_1_stream.html#ac72a87970f83b1c977dd153a12fe9746">States::UsersState::Response::Stream</a>
-, <a class="el" href="class_user.html#acede374f93e0db3c46de227112690df5">User</a>
-, <a class="el" href="classws_1_1_base_request.html#a28206a0e57c790e53a199d1ae04d0b04">ws::BaseRequest</a>
-, <a class="el" href="classws_1_1_base_response.html#a84ede1423d29cf3603dc45e169ce292d">ws::BaseResponse</a>
+: <a class="el" href="class_auth_socket_1_1_auth_request.html#ae66700b7489c653f68361ce05d5033c9">AuthSocket::AuthRequest</a>
+, <a class="el" href="class_auth_socket_1_1_auth_response.html#a38056ccb65a02e47a21aac737e102f68">AuthSocket::AuthResponse</a>
+, <a class="el" href="class_chat.html#a1c71afa68c93740ea91d88d7edc6c81d">Chat</a>
+, <a class="el" href="class_chat_socket_1_1_chat_request.html#a95d5ce404cfb3e6c409012072281762b">ChatSocket::ChatRequest</a>
+, <a class="el" href="class_chat_socket_1_1_chat_response.html#a2c3a18a2d3625abfa6d7bf03635746b9">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_chats_socket_1_1_chats_request.html#a6cb1de529a09c7c0802240b66e81d2d6">ChatsSocket::ChatsRequest</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#af72f66846ba200308bb599d9a0b2c603">ChatsSocket::ChatsResponse</a>
+, <a class="el" href="class_json_item.html#a46392181f02ecde08eb681b6e162c8f1">JsonItem</a>
+, <a class="el" href="class_message.html#a48b3e7ef15b2ec4b0ebedb514c772e5a">Message</a>
+, <a class="el" href="class_user.html#a3118630e74497be7c48ec510b9fa81e5">User</a>
+, <a class="el" href="class_users_socket_1_1_users_request.html#af3fa1b48a8951367c23ca16bdf33fe71">UsersSocket::UsersRequest</a>
+, <a class="el" href="class_users_socket_1_1_users_response.html#a184bc780896ac284263277a2f0d246f1">UsersSocket::UsersResponse</a>
+, <a class="el" href="classws_1_1_base_request.html#ad2e666ea24942eff5809468ece3b03c4">ws::BaseRequest</a>
+, <a class="el" href="classws_1_1_base_response.html#ac1a1190c5d5adbcafdd1971c578e4e10">ws::BaseResponse</a>
 </li>
 <li>type
-: <a class="el" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a7714ca897e4af462a56529a9319cb8e9">States::AuthState::Request::Auth</a>
-, <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#a8f238472aaceaffc4e39c2b919d32aef">States::AuthState::Response::Auth</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_request_1_1_chat.html#a533343838a0b6d85d2cdfd00b86e19ca">States::ChatState::ChatMethods::Request::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chat_methods_1_1_response_1_1_chat.html#a0c4f5ca246b2c2aae9ba7440ab0ba8cd">States::ChatState::ChatMethods::Response::Chat</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#a6fa8d81db4c4001e26637585a3725615">States::ChatState::ChatsMethods::Request::Chats</a>
-, <a class="el" href="class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#a2c98f618395b7725839fd29d216f93a2">States::ChatState::ChatsMethods::Response::Chats</a>
-, <a class="el" href="class_states_1_1_users_state_1_1_request_1_1_stream.html#a1bb61fb373d9a7f658b5eee2b62670fa">States::UsersState::Request::Stream</a>
-, <a class="el" href="class_states_1_1_users_state_1_1_response_1_1_stream.html#a216f7b13efc284aa5f49815c289dfdf7">States::UsersState::Response::Stream</a>
+: <a class="el" href="class_auth_socket_1_1_auth_request.html#ae599263b76850263ce527604d1cc6a0e">AuthSocket::AuthRequest</a>
+, <a class="el" href="class_auth_socket_1_1_auth_response.html#abb3f416c141da64a991096df7614df11">AuthSocket::AuthResponse</a>
+, <a class="el" href="class_chat_socket_1_1_chat_request.html#a1974f69ce4e49640e711945b6b51b5b1">ChatSocket::ChatRequest</a>
+, <a class="el" href="class_chat_socket_1_1_chat_response.html#a909550eb3550f5685a93369d541645af">ChatSocket::ChatResponse</a>
+, <a class="el" href="class_chats_socket_1_1_chats_request.html#aa1118f978cb62c82a55ae4c9f520694f">ChatsSocket::ChatsRequest</a>
+, <a class="el" href="class_chats_socket_1_1_chats_response.html#a7772249c04eb414ed8ca1edbdb5f1f59">ChatsSocket::ChatsResponse</a>
+, <a class="el" href="class_users_socket_1_1_users_request.html#ae7c66b2ee8e8daae473b10c53c9db866">UsersSocket::UsersRequest</a>
+, <a class="el" href="class_users_socket_1_1_users_response.html#af0b4bd3ef07c51a5495113a623703a18">UsersSocket::UsersResponse</a>
 </li>
 </ul>
 
 
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>user
-: <a class="el" href="class_states_1_1_auth_state_1_1_request_1_1_auth.html#a3054b4255b11d07476dbd04b85a88979">States::AuthState::Request::Auth</a>
-, <a class="el" href="class_states_1_1_auth_state_1_1_response_1_1_auth.html#ada4b554890795808947a975176f3bbaf">States::AuthState::Response::Auth</a>
+: <a class="el" href="class_auth_socket_1_1_auth_request.html#a38c8b2324ce374739c49f548dd851ade">AuthSocket::AuthRequest</a>
+, <a class="el" href="class_auth_socket_1_1_auth_response.html#aa9e0bd76e33190e54811097738170c7c">AuthSocket::AuthResponse</a>
 </li>
 <li>User()
-: <a class="el" href="class_user.html#a4a0137053e591fbb79d9057dd7d2283d">User</a>
+: <a class="el" href="class_user.html#a23e9be0eb96c06cbaba262e58d9a3342">User</a>
 </li>
 <li>usersList
-: <a class="el" href="class_states_1_1_users_state_1_1_response_1_1_stream.html#a5446678f553477c3c243335a2846bfe5">States::UsersState::Response::Stream</a>
+: <a class="el" href="class_users_socket_1_1_users_response.html#a28edcd962664dea2085b84fbc0440f1d">UsersSocket::UsersResponse</a>
+</li>
+<li>UsersRequest()
+: <a class="el" href="class_users_socket_1_1_users_request.html#aeecd846f6dd541b501342030f2068a40">UsersSocket::UsersRequest</a>
+</li>
+<li>UsersResponse()
+: <a class="el" href="class_users_socket_1_1_users_response.html#a36da4578ca5a2b9c6c19f3a7985848e2">UsersSocket::UsersResponse</a>
 </li>
 </ul>
 
 
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~AuthRequest()
+: <a class="el" href="class_auth_socket_1_1_auth_request.html#a58b134b1074c83ee709f044ae37030c2">AuthSocket::AuthRequest</a>
+</li>
+<li>~AuthResponse()
+: <a class="el" href="class_auth_socket_1_1_auth_response.html#a0c0e1aaee05ae810a42aa172c7ff1acf">AuthSocket::AuthResponse</a>
+</li>
+<li>~BaseRequest()
+: <a class="el" href="classws_1_1_base_request.html#ad81780419a9d8b9ee61f17e3496ebb30">ws::BaseRequest</a>
+</li>
+<li>~BaseResponse()
+: <a class="el" href="classws_1_1_base_response.html#a9787fa41b3adb81fb789aa8ea20f0a46">ws::BaseResponse</a>
+</li>
 <li>~Chat()
-: <a class="el" href="class_states_1_1_chat_state_1_1_chat.html#aecca330e4b3eb1b15c4f895f7ead21f1">States::ChatState::Chat</a>
+: <a class="el" href="class_chat.html#ab694996aa607aa60bdd14b84e481688b">Chat</a>
+</li>
+<li>~ChatRequest()
+: <a class="el" href="class_chat_socket_1_1_chat_request.html#a250a0132c3c7e4acac8182320ab059c8">ChatSocket::ChatRequest</a>
+</li>
+<li>~ChatResponse()
+: <a class="el" href="class_chat_socket_1_1_chat_response.html#a02514def52e3f6fa6fcc4af429b73ecf">ChatSocket::ChatResponse</a>
+</li>
+<li>~ChatsRequest()
+: <a class="el" href="class_chats_socket_1_1_chats_request.html#a41a8c9d99f6ecc2d8028e2519b8af8d0">ChatsSocket::ChatsRequest</a>
+</li>
+<li>~ChatsResponse()
+: <a class="el" href="class_chats_socket_1_1_chats_response.html#a680e5768478e7954f66eca2ec3083adc">ChatsSocket::ChatsResponse</a>
+</li>
+<li>~Message()
+: <a class="el" href="class_message.html#a3f7275462831f787a861271687bcad67">Message</a>
 </li>
 <li>~Socket()
 : <a class="el" href="classws_1_1_socket.html#ad0b6230f212c88c2042fd5fcae56f7d8">ws::Socket</a>
+</li>
+<li>~User()
+: <a class="el" href="class_user.html#ac00b72ad64eb4149f7b21b9f5468c2b2">User</a>
+</li>
+<li>~UsersRequest()
+: <a class="el" href="class_users_socket_1_1_users_request.html#a381d51a8c25183260697b9146117b7a5">UsersSocket::UsersRequest</a>
+</li>
+<li>~UsersResponse()
+: <a class="el" href="class_users_socket_1_1_users_response.html#a5bb1748661fe19065822b221a2dca856">UsersSocket::UsersResponse</a>
 </li>
 </ul>
 </div><!-- contents -->

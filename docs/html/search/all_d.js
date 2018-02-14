@@ -5,10 +5,11 @@ var searchData=
   ['navbar',['Navbar',['../namespace_navbar.html',1,'']]],
   ['navbar_2ecc',['navbar.cc',['../navbar_8cc.html',1,'']]],
   ['navbar_2eh',['navbar.h',['../navbar_8h.html',1,'']]],
-  ['navbar_2ehjs',['navbar.hjs',['../navbar_8hjs.html',1,'']]],
-  ['newchat',['NewChat',['../namespace_chat_list_1_1_events.html#a88ddff61dca27a862e40df650f48d45a',1,'ChatList::Events::NewChat(const string &amp;argc)'],['../namespace_chat_list_1_1_events.html#a69e7d1b102e93064d86d76a354ce43ac',1,'ChatList::Events::NewChat(const std::string &amp;arg)']]],
+  ['navbar_2ejs_2eh',['navbar.js.h',['../navbar_8js_8h.html',1,'']]],
+  ['newchat',['NewChat',['../namespace_chat_list_1_1_events.html#a8676ff753c21a589f251b676f69a788c',1,'ChatList::Events']]],
   ['newchatopen',['NewChatOpen',['../namespace_modals_1_1_chat_modal_1_1_events.html#a5678836353facc609fe5848b495779a7',1,'Modals::ChatModal::Events']]],
-  ['notify',['Notify',['../namespace_states_1_1_chat_state_1_1_chat_methods.html#a0a4f2ecca8431cdd18e332cfa3285807',1,'States::ChatState::ChatMethods::Notify()'],['../namespace_states_1_1_chat_state_1_1_chats_methods.html#ad3372895c036b3671315d469cd556c96',1,'States::ChatState::ChatsMethods::Notify()'],['../namespace_states_1_1_auth_state.html#afb1d07debeaff4258a9f46798320c4af',1,'States::AuthState::notify()'],['../namespace_states_1_1_users_state.html#aeae18a7efa73ef8c51706ffb790d0333',1,'States::UsersState::notify()']]],
+  ['notify',['Notify',['../namespace_states_1_1_auth_state.html#a4603c9572e1fcc84da206d7bfb063922',1,'States::AuthState::Notify()'],['../namespace_states_1_1_chats_state.html#a9c75388fea43dc3a32c459b58e39d5a7',1,'States::ChatsState::Notify()'],['../namespace_states_1_1_users_state.html#a931fa2c87dee9319c9874409670e25e4',1,'States::UsersState::Notify()']]],
+  ['notifycurrent',['NotifyCurrent',['../namespace_states_1_1_chats_state_1_1_chat_methods.html#a46ea8898bad55e1eb516986a4c1af0d4',1,'States::ChatsState::ChatMethods']]],
   ['profile',['Profile',['../namespace_navbar_1_1_profile.html',1,'Navbar']]],
   ['state',['State',['../namespace_navbar_1_1_state.html',1,'Navbar']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['server_5fhost',['SERVER_HOST',['../env_8h.html#a0d4e5e80c9ef9ab6578aa579dea7f679',1,'env.h']]],
-  ['status',['status',['../classws_1_1_base_response.html#a91cdb68f67560a51ae2423931f87ed64',1,'ws::BaseResponse']]],
-  ['subscribed',['subscribed',['../namespace_states_1_1_chat_state_1_1_chat_methods.html#ab01072fc673eb4739f5b2c5b628cc5e6',1,'States::ChatState::ChatMethods']]]
+  ['text',['text',['../class_message.html#a6643d6d90c0fdb11886b17d44a7a8183',1,'Message::text()'],['../class_chat_socket_1_1_chat_request.html#ac29bdfbca2b52cfe36997e302473ceca',1,'ChatSocket::ChatRequest::text()'],['../class_chat_socket_1_1_chat_response.html#af43badb4ab2485f238d8d0f13a39251a',1,'ChatSocket::ChatResponse::text()']]],
+  ['time',['time',['../class_message.html#ae372af3cf12839f44346b03c54867ca0',1,'Message::time()'],['../class_chat_socket_1_1_chat_response.html#a8d7d35f9d40adb474c2d011381106679',1,'ChatSocket::ChatResponse::time()']]],
+  ['type',['type',['../class_auth_socket_1_1_auth_request.html#ae599263b76850263ce527604d1cc6a0e',1,'AuthSocket::AuthRequest::type()'],['../class_auth_socket_1_1_auth_response.html#abb3f416c141da64a991096df7614df11',1,'AuthSocket::AuthResponse::type()'],['../class_chat_socket_1_1_chat_request.html#a1974f69ce4e49640e711945b6b51b5b1',1,'ChatSocket::ChatRequest::type()'],['../class_chat_socket_1_1_chat_response.html#a909550eb3550f5685a93369d541645af',1,'ChatSocket::ChatResponse::type()'],['../class_chats_socket_1_1_chats_request.html#aa1118f978cb62c82a55ae4c9f520694f',1,'ChatsSocket::ChatsRequest::type()'],['../class_chats_socket_1_1_chats_response.html#a7772249c04eb414ed8ca1edbdb5f1f59',1,'ChatsSocket::ChatsResponse::type()'],['../class_users_socket_1_1_users_request.html#ae7c66b2ee8e8daae473b10c53c9db866',1,'UsersSocket::UsersRequest::type()'],['../class_users_socket_1_1_users_response.html#af0b4bd3ef07c51a5495113a623703a18',1,'UsersSocket::UsersResponse::type()']]]
 ];

@@ -74,50 +74,74 @@ $(function() {
 <div class="title">Riferimenti per il file users-state.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="users-state_2definitions_2types_8h_source.html">definitions/types.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="states_2users-state_2definitions_2request_8h_source.html">definitions/request.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="states_2users-state_2definitions_2response_8h_source.html">definitions/response.h</a>&quot;</code><br />
+
+<p>Interfaccia stato di autenticazione utenti.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &lt;map&gt;</code><br />
+<code>#include &quot;<a class="el" href="users-socket_8h_source.html">models/socket/users/users-socket.h</a>&quot;</code><br />
 </div>
 <p><a href="users-state_8h_source.html">Vai al codice sorgente di questo file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespace</h2></td></tr>
 <tr class="memitem:namespace_states"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states.html">States</a></td></tr>
+<tr class="memdesc:namespace_states"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi relativo ai vari state dei dati. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_states_1_1_users_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html">States::UsersState</a></td></tr>
+<tr class="memdesc:namespace_states_1_1_users_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stato data lista utenti per iniziare chat. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_states_1_1_users_state_1_1_users_stream"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html">States::UsersState::UsersStream</a></td></tr>
+<tr class="memitem:namespace_states_1_1_users_state_1_1_users_socket_methods"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html">States::UsersState::UsersSocketMethods</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_states_1_1_users_state_1_1_state"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_state.html">States::UsersState::State</a></td></tr>
+<tr class="memdesc:namespace_states_1_1_users_state_1_1_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spazio dei nomi relativo agli eventi generati da callbacks. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Ridefinizioni di tipo (typedef)</h2></td></tr>
 <tr class="memitem:ac7e274ad4735dc6af82c1cb20d2acbea"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, void(*)()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">States::UsersState::Subscribers</a></td></tr>
+<tr class="memdesc:ac7e274ad4735dc6af82c1cb20d2acbea"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Definizione della struttura map che associa ad ogni stringa un puntatore a funzione.  <a href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea">Continua...</a><br /></td></tr>
 <tr class="separator:ac7e274ad4735dc6af82c1cb20d2acbea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
-<tr class="memitem:a2884ba10a5c2ab101c97ba744e8c50e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a2884ba10a5c2ab101c97ba744e8c50e3">States::UsersState::Register</a> (std::string abc, void(*)())</td></tr>
-<tr class="separator:a2884ba10a5c2ab101c97ba744e8c50e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddb311176c349b560864d1fb28eacc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a4ddb311176c349b560864d1fb28eacc3">States::UsersState::Register</a> (std::string cb_name, void(*cb_fn)())</td></tr>
+<tr class="memdesc:a4ddb311176c349b560864d1fb28eacc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserisce nella mappa dei subscribers <a class="el" href="namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea" title=" Definizione della struttura map che associa ad ogni stringa un puntatore a funzione. ">UsersState::Subscribers</a> un evento di callback.  <a href="namespace_states_1_1_users_state.html#a4ddb311176c349b560864d1fb28eacc3">Continua...</a><br /></td></tr>
+<tr class="separator:a4ddb311176c349b560864d1fb28eacc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2df6f82c9758bc3eadf9865030333840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a2df6f82c9758bc3eadf9865030333840">States::UsersState::Bootstrap</a> ()</td></tr>
+<tr class="memdesc:a2df6f82c9758bc3eadf9865030333840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per inizializzare il provider.  <a href="namespace_states_1_1_users_state.html#a2df6f82c9758bc3eadf9865030333840">Continua...</a><br /></td></tr>
 <tr class="separator:a2df6f82c9758bc3eadf9865030333840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91dd4a66e2f3f36dbf8cbb83ca1bc0e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a91dd4a66e2f3f36dbf8cbb83ca1bc0e9">States::UsersState::Destroy</a> ()</td></tr>
+<tr class="memdesc:a91dd4a66e2f3f36dbf8cbb83ca1bc0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per distruggere il provider.  <a href="namespace_states_1_1_users_state.html#a91dd4a66e2f3f36dbf8cbb83ca1bc0e9">Continua...</a><br /></td></tr>
 <tr class="separator:a91dd4a66e2f3f36dbf8cbb83ca1bc0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61256a5c2e41a9e86296d1b492760e78"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">States::UsersState::getSerializedList</a> ()</td></tr>
+<tr class="memitem:a61256a5c2e41a9e86296d1b492760e78"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">States::UsersState::getSerializedList</a> ()</td></tr>
+<tr class="memdesc:a61256a5c2e41a9e86296d1b492760e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per ottenere la lista di utenti disponibili con cui iniziare una chat.  <a href="namespace_states_1_1_users_state.html#a61256a5c2e41a9e86296d1b492760e78">Continua...</a><br /></td></tr>
 <tr class="separator:a61256a5c2e41a9e86296d1b492760e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d95bc8d03013764abd290ef5f86425d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#a3d95bc8d03013764abd290ef5f86425d">States::UsersState::UsersStream::Init</a> (const std::string &amp;)</td></tr>
-<tr class="separator:a3d95bc8d03013764abd290ef5f86425d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ee0beaa937009c0c8f0b0f6ff68251f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#a1ee0beaa937009c0c8f0b0f6ff68251f">States::UsersState::UsersStream::Close</a> ()</td></tr>
-<tr class="separator:a1ee0beaa937009c0c8f0b0f6ff68251f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3014d3162d3dbb7810c9123aa1537c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#af3014d3162d3dbb7810c9123aa1537c1">States::UsersState::UsersStream::ResponseSuccess</a> (const std::string str_response)</td></tr>
-<tr class="separator:af3014d3162d3dbb7810c9123aa1537c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac90061a2b55e5a8329a69936cf6921b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_stream.html#ac90061a2b55e5a8329a69936cf6921b0">States::UsersState::UsersStream::ResponseError</a> (const std::string str_error)</td></tr>
-<tr class="separator:ac90061a2b55e5a8329a69936cf6921b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931fa2c87dee9319c9874409670e25e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state.html#a931fa2c87dee9319c9874409670e25e4">States::UsersState::Notify</a> ()</td></tr>
+<tr class="memdesc:a931fa2c87dee9319c9874409670e25e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per notificare cambiamenti di stato ai componenti che hanno sottoscritto allo stato di users.  <a href="namespace_states_1_1_users_state.html#a931fa2c87dee9319c9874409670e25e4">Continua...</a><br /></td></tr>
+<tr class="separator:a931fa2c87dee9319c9874409670e25e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a873f62492849d03e11dcc203ddd83d16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a873f62492849d03e11dcc203ddd83d16">States::UsersState::UsersSocketMethods::InitChannelSession</a> (const std::string &amp;AUTH)</td></tr>
+<tr class="memdesc:a873f62492849d03e11dcc203ddd83d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per inizializzare una sessione sul canale websocket aperto per utente passato come parametro nel corpo del messaggio.  <a href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a873f62492849d03e11dcc203ddd83d16">Continua...</a><br /></td></tr>
+<tr class="separator:a873f62492849d03e11dcc203ddd83d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c644821096f55b3687b4c43e8093401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a0c644821096f55b3687b4c43e8093401">States::UsersState::UsersSocketMethods::CloseChannelSession</a> ()</td></tr>
+<tr class="memdesc:a0c644821096f55b3687b4c43e8093401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per terminare una sessione sul canale websocket aperto per utente precedentemente loggato.  <a href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a0c644821096f55b3687b4c43e8093401">Continua...</a><br /></td></tr>
+<tr class="separator:a0c644821096f55b3687b4c43e8093401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa22b61a40db528e5b270598c158bb8e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#aa22b61a40db528e5b270598c158bb8e0">States::UsersState::UsersSocketMethods::ResponseSuccess</a> (const std::string str_response)</td></tr>
+<tr class="memdesc:aa22b61a40db528e5b270598c158bb8e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per gestire l'avvenuta ricezione nel corretto formato a seguito di un azione di tipo <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cb" title="Enum identificativo del tipo di azione che si sta compiendo. ">UsersSocket::SIGNAL</a> sul canale di comunicazione aperto.  <a href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#aa22b61a40db528e5b270598c158bb8e0">Continua...</a><br /></td></tr>
+<tr class="separator:aa22b61a40db528e5b270598c158bb8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87118210e3ba3bfc438e39a18c72c0f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a87118210e3ba3bfc438e39a18c72c0f1">States::UsersState::UsersSocketMethods::ResponseError</a> (const std::string str_error)</td></tr>
+<tr class="memdesc:a87118210e3ba3bfc438e39a18c72c0f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per gestire l'avvenuta ricezione di un messaggio di errore a seguito di un azione di tipo <a class="el" href="namespace_users_socket.html#aefff7e43d2928626e40af8d019bb92cb" title="Enum identificativo del tipo di azione che si sta compiendo. ">UsersSocket::SIGNAL</a> sul canale di comunicazione aperto.  <a href="namespace_states_1_1_users_state_1_1_users_socket_methods.html#a87118210e3ba3bfc438e39a18c72c0f1">Continua...</a><br /></td></tr>
+<tr class="separator:a87118210e3ba3bfc438e39a18c72c0f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6ef78dd898f6c0bc1f4f72de5e19606"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606">States::UsersState::State::Auth</a> ()</td></tr>
+<tr class="memdesc:ac6ef78dd898f6c0bc1f4f72de5e19606"><td class="mdescLeft">&#160;</td><td class="mdescRight"><br />
+Metodo che ascolta in tempo reale eventi riguardanti l'autenticazione.  <a href="namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606">Continua...</a><br /></td></tr>
 <tr class="separator:ac6ef78dd898f6c0bc1f4f72de5e19606"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Interfaccia stato di autenticazione utenti. </p>
+
+<p class="definition">Definizione nel file <a class="el" href="users-state_8h_source.html">users-state.h</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generato da &#160;<a href="http://www.doxygen.org/index.html">

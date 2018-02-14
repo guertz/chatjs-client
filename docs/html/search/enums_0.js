@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['authsignal',['AUTHSIGNAL',['../namespace_states_1_1_auth_state.html#a6867d22aff00870b28cfffd32819a870',1,'States::AuthState']]]
+  ['lev',['LEV',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012',1,'logger.h']]]
 ];

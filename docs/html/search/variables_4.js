@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['destination',['destination',['../class_states_1_1_chat_state_1_1_chat.html#a33d19e5f2eda8b56e5483f156694e3c9',1,'States::ChatState::Chat::destination()'],['../class_states_1_1_chat_state_1_1_chats_methods_1_1_request_1_1_chats.html#a42a6a4831965cf0d5d1fd204427ca5d0',1,'States::ChatState::ChatsMethods::Request::Chats::destination()'],['../class_states_1_1_chat_state_1_1_chats_methods_1_1_response_1_1_chats.html#aaca8a3c175692c574ff402f4bc326d27',1,'States::ChatState::ChatsMethods::Response::Chats::destination()']]],
-  ['disable_5fform',['DISABLE_FORM',['../namespace_chat_details.html#abf28a0eecb97576973d9f4c4671a93a2',1,'ChatDetails']]]
+  ['enable_5fform',['ENABLE_FORM',['../namespace_chat_details.html#a6fc71f78caffdea58d0f4fd643b27572',1,'ChatDetails']]],
+  ['error',['error',['../class_auth_socket_1_1_auth_response.html#a8815efc958ca99cea468abee7a5e100c',1,'AuthSocket::AuthResponse::error()'],['../class_chats_socket_1_1_chats_response.html#a83536484d3ba4bb4b7dc5cb1037f2b3f',1,'ChatsSocket::ChatsResponse::error()'],['../classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770',1,'ws::BaseResponse::error()'],['../class_users_socket_1_1_users_response.html#a322db156fc2a85d5b0b07fca78f16952',1,'UsersSocket::UsersResponse::error()']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chat.js: Riferimenti per il file src/app/components.h</title>
+<title>Chat.js: Riferimenti per il file src/components.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5194e5fea318fda12687127c23f8aba1.html">app</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -78,15 +78,15 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Breve descrizione della struttura di un componente. </p>
 <p>Per un componente generico è possibile notare in comune:</p><ul>
-<li>La presenza di un file .hjs contente una stringa di tipo R (raw literals) che contiene la logica Javascript del componente</li>
+<li>La presenza di un file .js.h contente una stringa di tipo R (raw literals) che contiene la logica Javascript del componente</li>
 <li>Namespace interni:<ul>
 <li><b>Events</b>: per metodi che effettuano cambiamenti all'interfaccia (Hanlder/Dispatcher)</li>
-<li><b>State</b>: per i metodi che fungono da callback per eventi di cambiamento allo stato dei dati. I metodi sono del tipo <code>inline</code> con la convenzione di essere chiamati <em>Auth</em> per <em>AuthState</em> o <em>Chat</em> per <em>ChatState</em></li>
+<li><b>State</b>: per i metodi che fungono da callback per eventi di cambiamento allo stato dei dati. I metodi sono del tipo <code>inline</code> con la convenzione di essere chiamati <em>Auth</em> per <em>AuthState</em> o <em><a class="el" href="class_chat.html" title="Interfaccia classe Chat (JSON) ">Chat</a></em> per <em>ChatState</em></li>
 <li><b>&lt;State&gt;Methods</b>: per i metodi di supporto di un determinato state dei dati: <em>Auth</em> può avere in questa sezione i metodi <code>OnLoginSuccess</code>, <code>OnLoginError</code>. Sono inseriti in questa sezione per non sporcare altri parti del codice.</li>
 </ul>
 </li>
 <li>Metodi comuni:<ul>
-<li><b>Bootstrap</b>: che funge da costruttore (Carica il componente Javascript nel file .hjs e registra eventi di callback)</li>
+<li><b>Bootstrap</b>: che funge da costruttore (Carica il componente Javascript nel file .js.h e registra eventi di callback)</li>
 <li><b>Destroy</b>: che funge da distruttore</li>
 </ul>
 </li>
