@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "navbar.h"
-#include "navbar.hjs"
+#include "navbar.js.h"
 #include "profile/profile.h"
 
 #include "common/web-ui/web-ui.h"

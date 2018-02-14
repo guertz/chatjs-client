@@ -5,7 +5,7 @@ using json = nlohmann::json;
 using namespace std;
 
 /**
- * @brief Definizione modelli Socket (Json): BaseRequest, BaseResponse.
+ * @brief Definizione modelli Socket (Json):ws::BaseRequest, ws::BaseResponse.
  * @file socket.cc
  */
 
@@ -15,7 +15,7 @@ namespace ws {
         log_C(TAG::OBJ, "BaseRequest@JsonItem::Create", "");
     }
     
-    BaseRequest::BaseRequest(const json& j) {
+    BaseRequest::BaseRequest(const nlohmann::json& j) {
         log_C(TAG::OBJ, "BaseRequest@JsonItem::Create", "...json...");
 
         this->AUTH = j.at("AUTH").get<string>();
@@ -29,7 +29,7 @@ namespace ws {
         log_C(TAG::OBJ, "BaseRequest@JsonItem::Destroy", "");
     }
 
-    json BaseRequest::to_json() const {
+    nlohmann::json BaseRequest::to_json() const {
         return json{ 
             { "AUTH", this->AUTH },
             { "content", json::parse(this->content) }
@@ -41,8 +41,6 @@ namespace ws {
 
         this->ok      = false;
         this->status  = 0;
-        // this->content = "";
-        // this->error   = "";
     }
 
     BaseResponse::BaseResponse(const nlohmann::json& j) {
@@ -61,7 +59,7 @@ namespace ws {
         log_C(TAG::OBJ, "BaseResponse@JsonItem::Destroy", "");
     }
 
-    json BaseResponse::to_json() const {
+    nlohmann::json BaseResponse::to_json() const {
         return json { 
             { "ok", this->ok },
             { "status", this->status }, 

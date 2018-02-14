@@ -1,8 +1,9 @@
 #ifndef STATES_AUTH_STATE_AUTH_STATE_H
 #define STATES_AUTH_STATE_AUTH_STATE_H
 
-#include "models/user/user.h"
-#include "models/socket/auth/auth.h"
+#include <map>
+
+#include "models/socket/auth/auth-socket.h"
 
 /**
  * @brief Interfaccia stato di autenticazione utenti
@@ -24,7 +25,7 @@ namespace States {
         typedef std::map<std::string, void(*)()> Subscribers;
 
         /**
-        * Inserisce nella mappa dei subscribers ::Subscribers un evento di callback.
+        * Inserisce nella mappa dei subscribers AuthState::Subscribers un evento di callback.
         *
         * @param[in] cb_name string contenente il nome di riferimento all'evento di callback
         * @param[in] cb_fn Puntatore a funzione relativo all'evento di callback da invocare
@@ -68,6 +69,34 @@ namespace States {
          * @return stringa con errori di autenticazione (vuota se tutto corretto) 
          */
         std::string getAuthError();
+
+        /** 
+        * Metodo per notificare cambiamenti di stato ai componenti che
+        * hanno sottoscritto allo stato di autenticazione
+        */
+        inline void Notify();
+        
+        namespace AuthSocketMethods {
+
+            /**
+            * Metodo per gestire l'avvenuta ricezione nel corretto formato
+            * a seguito di un azione di tipo AuthSocket::SIGNAL sul canale 
+            * di comunicazione socket aperto.
+            *
+            * @param str_response Messaggio di risposta in formato JSON serializzato
+            */
+            inline void ResponseSuccess(const std::string str_response);
+
+            /**
+            * Metodo per gestire l'avvenuta ricezione di un messaggio di errore a 
+            * seguito di un azione di tipo AuthSocket::SIGNAL sul canale 
+            * di comunicazione socket aperto.
+            *
+            * @param str_error Messaggio di errore stringa testo
+            */
+            inline void ResponseError(const std::string str_error);
+
+        }
 
     }
 }

@@ -18,9 +18,9 @@ class User : public JsonItem {
         std::string image; /**< Attributo immagine utente */
         std::string _id; /**< Attributo user ID utente */
 
-        User(); /**< Costruttore di default. */
-        User(const nlohmann::json& j); /**< Costruttore da oggetto Json */
-        User(const std::string& serialized); /**< Costruttore da oggetto Json serializzato (string) */
+        User();
+        User(const nlohmann::json& j);
+        User(const std::string& serialized);
         ~User();
 
         nlohmann::json to_json() const;

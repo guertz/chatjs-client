@@ -3,10 +3,10 @@
 #include <json.hpp>
 #include <cassert>
 
-#include "assets/appinit.hjs"
-#include "assets/index.hhtml"
-#include "assets/style.hcss"
-#include "assets/w3.hcss"
+#include "assets/appinit.js.h"
+#include "assets/index.html.h"
+#include "assets/style.css.h"
+#include "assets/w3.css.h"
 
 #define WEBVIEW_IMPLEMENTATION
 #include <webview.h>
@@ -35,6 +35,8 @@ namespace WebUI {
      * tutto il programma (**static**)
      */
     static Webview webview; 
+
+    /** Lista dei callback (puntatori a funzione) registrati */
     static Methods callbacks;
 
     void Register(std::string cb_name, void (*cb_fn)(const std::string&)) {

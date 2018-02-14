@@ -38,7 +38,7 @@ namespace ws {
 
         // creazione di un canale websocket (vedi libreria easywsclient)
         // viene effettuata nel thread così il thread UI non ne risente
-        //   per i tempi di handshaking
+        // per i tempi di handshaking
         this->channel = WebSocket::from_url(this->path);
 
         // Abilitazione socket in modalità computing

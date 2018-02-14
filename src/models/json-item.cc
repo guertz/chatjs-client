@@ -12,10 +12,10 @@ using json = nlohmann::json;
 using namespace std;
 
 
-json JsonItem::to_json() const {
+nlohmann::json JsonItem::to_json() const {
     return json::parse("{}");
 }
 
-string JsonItem::serialize() const {
+std::string JsonItem::serialize() const {
     return this->to_json().dump();
 }

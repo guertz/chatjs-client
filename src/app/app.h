@@ -36,7 +36,7 @@
  *     notificando di cambiamenti altri eventuali componti che ne fanno attraverso
  *     un sistema di callback.
  *     - ::States::AuthState
- *     - ::States::ChatState
+ *     - ::States::ChatsState
  *     - ::States::UsersState
  */
 namespace App {

@@ -9,14 +9,15 @@ using namespace std;
  * @file logger.cc
  */
 
+// TODO: Limit length
+// TODO: limit colors
+
 /** Metodo interno per la stampa dei log */
 void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_msg) {
-    // limit all lenght like web_ui.cc
-    // color output cross-platform?
 
     string composed_message = "";
 
-           log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), '\n'), log_msg.end());
+        log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), '\n'), log_msg.end());
 
     switch(tag) {
         case TAG::INF:
@@ -48,6 +49,7 @@ void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_m
 
     }
 
+    // Single atomic operation
     cout<<composed_message;
         
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "app.h"
-#include "app.hjs"
+#include "app.js.h"
 
 #include "components/navbar/navbar.h" 
 #include "components/modals/modals.h"
@@ -14,7 +14,7 @@
 #include "common/logger/logger.h"
 
 #include "states/users-state/users-state.h"
-#include "states/chat-state/chat-state.h"
+#include "states/chats-state/chats-state.h"
 #include "states/auth-state/auth-state.h"
 
 using namespace WebUI;
@@ -34,7 +34,7 @@ namespace App {
             log_B(TAG::CMP, "App::Ready", args);
            
             AuthState::Bootstrap();
-            ChatState::Bootstrap();
+            ChatsState::Bootstrap();
             UsersState::Bootstrap();
             
             Navbar::Bootstrap();
@@ -67,7 +67,7 @@ namespace App {
         ChatList::Destroy();
         ChatDetails::Destroy();
 
-        ChatState::Destroy();
+        ChatsState::Destroy();
         UsersState::Destroy();
         AuthState::Destroy();
         

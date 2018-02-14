@@ -18,7 +18,7 @@ namespace ChatList {
         * visualizzare.
         * Di seguito e riportata la struttura dati ricevuta dalla funzione
         *
-        * @include pages/chat-list/user-selected.json
+        * @include components/chat-list/user-selected.json
         *
         * @param[in] args Parametri della chiamata JS in formato JSON serialized
         */

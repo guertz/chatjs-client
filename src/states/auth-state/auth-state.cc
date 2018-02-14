@@ -21,47 +21,20 @@ namespace States {
     
     namespace AuthState {
 
-        // Dichiarazione metodi non definiti a livello di interfaccia
-
-        /**
-         * Metodo per gestire l'avvenuta ricezione nel corretto formato
-         * a seguito di un azione di tipo AUTHSIGNAL sul canale di comunicazione
-         * socket authSocket.
-         *
-         * @param str_response Messaggio di risposta in formato JSON serializzato
-         */
-        inline void ResponseSuccess(const std::string str_response);
-
-        /**
-         * Metodo per gestire l'avvenuta ricezione di un messaggio di errore a 
-         * seguito di un azione di tipo AUTHSIGNAL sul canale di comunicazione
-         * socket authSocket.
-         *
-         * @param str_error Messaggio di errore stringa testo
-         */
-        inline void ResponseError(const std::string str_error);
-
         /** 
-         * Metodo per notificare cambiamenti di stato ai componenti che
-         * hanno sottoscritto allo stato di autenticazione
+         * Puntatore al canale di comunicazione aperto. 
+         * In questo caso fa riferimento all'enpoint 'auth'
+         * sul server websocket
          */
-        inline void Notify();
-
-        // Variabile che contiene il puntatore al canale di comunicazione 
-        // websocket all'endpoint 'auth' e ha durata di vita per tutto il
-        // corso del programma
         static Socket* authSocket = 0;
 
-        // Variabile per specificare se vi sono azioni in attesa di risposta
-        // in corso
+        /** Specifica se vi sono altre azioni di login in corso */
         static bool pending = false;
         
-        // Variabile in cui viene mantenuto il contenuto a seguito di una risposta
-        // da parte del canale di comunicazione authSocket
-        static AuthSocket::Response authResponse;
+        /** Tiene traccia dell'ultima risposta ricevuta */
+        static AuthSocket::AuthResponse authResponse;
 
-        // Mappa dei componenti che sottoscrivono ad eventi relativi allo stato
-        // di autenticazione
+        /** Mappa dei componenti che hanno sottoscritto allo stato */
         static Subscribers subscribed;
 
         void Register(std::string cb_name, void (*cb_fn)()) {
@@ -73,8 +46,9 @@ namespace States {
         void Bootstrap() {
             log_B(TAG::STA, "States::AuthState::Bootstrap", "");
 
-            assert(!authSocket);
-            authSocket = new Socket("auth", ResponseSuccess, ResponseError);
+            authSocket = new Socket("auth", 
+                                AuthSocketMethods::ResponseSuccess, 
+                                AuthSocketMethods::ResponseError);
 
         }
 
@@ -89,42 +63,44 @@ namespace States {
         void Login(const std::string& AUTH_KEY){
             log_C(TAG::STA, "States::AuthState::Login", AUTH_KEY);
 
+            // verifica condizioni base elementari per poter
+            // effettuare una richiesta di questo tipo
             assert(!pending && !authResponse.online);
-            // if(!pending && !authResponse.online){
+
             pending = true;
             
-            AuthSocket::Request auth_request;
+            // Preparazione della richiesta ad alto livello
+            AuthSocket::AuthRequest auth_request;
                 auth_request.type = AuthSocket::SIGNAL::LOGIN;
                 auth_request.user = AUTH_KEY;
 
-
+            // Preparazione della richiesta a livello più basso
             BaseRequest socket_data;
                         socket_data.content = auth_request.serialize();
 
+            // Invio della richiesta sul buffer del canale
             authSocket->setBuffer(socket_data);
-            // }
 
         }
 
+        // Fare riferimento a Login per la descrizione dei vari step
         void Logout(){
             log_C(TAG::STA, "States::AuthState::Logout", "");
 
             assert(!pending && authResponse.online);
-            // if(!pending && authResponse.online){
             pending = true;
 
 
-            AuthSocket::Request auth_request;
+            AuthSocket::AuthRequest auth_request;
                 auth_request.type = AuthSocket::SIGNAL::LOGOUT;
-                // auth_request.user = "";
 
             
             BaseRequest socket_data;
                         socket_data.content = auth_request.serialize();
+                        // Fa riferimento all'utente attualmente connesso
                         socket_data.AUTH    = authResponse.user._id;
 
             authSocket->setBuffer(socket_data);
-            // }
 
         }
 
@@ -148,28 +124,33 @@ namespace States {
                 (*subscription.second)(); 
             }
         }
+        
+        namespace AuthSocketMethods {
 
-        inline void ResponseSuccess(const std::string str_response) {
-            log_C(TAG::STA, "States::AuthState::Response", str_response);
+            inline void ResponseSuccess(const std::string str_response) {
+                log_C(TAG::STA, "States::AuthState::Response", str_response);
 
-            authResponse = AuthSocket::Response(str_response);
-            pending = false;
+                // namespace inheritance
+                authResponse = AuthSocket::AuthResponse(str_response);
+                pending = false;
 
-            Notify();
-        }
+                Notify();
+            }
 
-        inline void ResponseError(const std::string str_error) {
-            log_C(TAG::STA, "States::AuthState::Response", str_error);
+            inline void ResponseError(const std::string str_error) {
+                log_C(TAG::STA, "States::AuthState::Response", str_error);
 
-            AuthSocket::Response response_errors;
-                    // Other action won't send errors
-                    response_errors.type  = AuthSocket::SIGNAL::LOGIN; 
-                    response_errors.error = str_error;
+                // namespace inheritance
+                AuthSocket::AuthResponse response_errors;
+                        response_errors.type  = AuthSocket::SIGNAL::LOGIN; 
+                        response_errors.error = str_error;
 
-            authResponse = response_errors;
-            pending = false;
+                authResponse = response_errors;
+                pending = false;
 
-            Notify();
+                Notify();
+            }
+
         }
 
     }

@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "profile.h"
-#include "profile.hjs"
+#include "profile.js.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"

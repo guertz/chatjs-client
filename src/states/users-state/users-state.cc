@@ -22,76 +22,41 @@ namespace States {
 
     namespace UsersState {
 
-        // Dichiarazione metodi non definiti a livello di interfaccia
-
-        /**
-         * Metodo per inizializzare il socket usersSocket a seguito dell'azione di login
-         *
-         * @param AUTH
-         */
-        inline void Init(const std::string& AUTH);
-
-        /** Metodo per chiudere il socket usersSocket a seguito dell'azione di logout */
-        inline void Close();
-
-        /**
-         * Metodo per gestire l'avvenuta ricezione nel corretto formato
-         * a seguito di un azione di tipo USERSSIGNAL sul canale di comunicazione
-         * socket usersSocket.
-         *
-         * @param str_response Messaggio di risposta in formato JSON serializzato
-         */
-        inline void ResponseSuccess(const std::string str_response);
-
-        /**
-         * Metodo per gestire l'avvenuta ricezione di un messaggio di errore a 
-         * seguito di un azione di tipo USERSSIGNAL sul canale di comunicazione
-         * socket usersSocket.
-         *
-         * @param str_error Messaggio di errore stringa testo
-         */
-        inline void ResponseError(const std::string str_error);
-        
         /** 
-         * Metodo per notificare cambiamenti di stato ai componenti che
-         * hanno sottoscritto allo stato di users
+         * Puntatore al canale di comunicazione aperto. 
+         * In questo caso fa riferimento all'enpoint 'users-stream'
+         * sul server websocket
          */
-        inline void Notify();
-
-        // Variabile che contiene il puntatore al canale di comunicazione 
-        // websocket all'endpoint 'users-stream' e ha durata di vita per tutto il
-        // corso del programma
         static Socket *usersSocket = 0;
 
-        // Variabile in cui viene mantenuto il contenuto a seguito di una risposta
-        // da parte del canale di comunicazione usersSocket
-        static UsersSocket::Response usersResponse;
-
-        // Mappa dei componenti che sottoscrivono ad eventi relativi allo stato
-        // di autenticazione
-        static Subscribers subscribed;
-
-        // Determina se il canale è già in ascolto della lista di utenti
+        /** Specifica se vi sono altre azioni in corso sul canale*/
         static bool pending = false;
 
+        /** Tiene traccia dell'ultima risposta ricevuta */
+        static UsersSocket::UsersResponse usersResponse;
+
+        /** Mappa dei componenti che hanno sottoscritto allo stato */
+        static Subscribers subscribed;
+
         void Register(std::string cb_name, void (*cb_fn)()) {
-            log_C(TAG::STA, "States::ChatState::Register", cb_name);
+            log_C(TAG::STA, "States::UsersState::Register", cb_name);
 
             subscribed[cb_name] = cb_fn;
         }
 
         void Bootstrap() {
-            log_B(TAG::STA, "States::ChatState::Bootstrap", "");
+            log_B(TAG::STA, "States::UsersState::Bootstrap", "");
 
             AuthState::Register("UsersState", State::Auth);
 
-            assert(!usersSocket);
-            usersSocket = new Socket( "users-stream", ResponseSuccess, ResponseError);
+            usersSocket = new Socket("users-stream", 
+                                UsersSocketMethods::ResponseSuccess, 
+                                UsersSocketMethods::ResponseError);
 
         }
 
         void Destroy() {
-            log_B(TAG::STA, "States::ChatState::Destroy", "");
+            log_B(TAG::STA, "States::UsersState::Destroy", "");
 
             assert(usersSocket);
             delete usersSocket;
@@ -103,68 +68,69 @@ namespace States {
             return usersResponse.usersList;    
         }
         
-        inline void Init(const std::string& AUTH) {
-            log_B(TAG::STA, "States::ChatState::Init", AUTH);
-
-            assert(!pending);
-            pending = true;
-        
-            UsersSocket::Request users_request;
-                    users_request.type = UsersSocket::SIGNAL::OPEN;
-
-                
-            BaseRequest socket_data;
-                socket_data.content = users_request.serialize();
-                socket_data.AUTH = AUTH;
-
-                usersSocket->setBuffer(socket_data);
-             
-        }
-
-        inline void Close() {
-            log_B(TAG::STA, "States::ChatState::Close", "");
-
-            assert(pending);
-            UsersSocket::Request users_request;
-                    users_request.type = UsersSocket::SIGNAL::CLOSE;
-
-            
-            BaseRequest socket_data;
-                socket_data.content = users_request.serialize();
-
-            // stop computing next
-            usersSocket->setBuffer(socket_data);
-            pending = false;
-
-        }
-
         inline void Notify(){
 
-            log_B(TAG::STA, "States::ChatState::Notify", "State changes");
+            log_B(TAG::STA, "States::UsersState::Notify", "State changes");
 
             for (const auto& subscription : subscribed) {
-                log_C(TAG::STA, "States::ChatState::Notify", subscription.first);
+                log_C(TAG::STA, "States::UsersState::Notify", subscription.first);
                 (*subscription.second)(); 
             }
             
         }
 
-        inline void ResponseSuccess(const std::string str_response) {
-            log_C(TAG::STA, "States::AuthState::Response", str_response);
+        namespace UsersSocketMethods {
+            inline void InitChannelSession(const std::string& AUTH) {
+                log_B(TAG::STA, "States::UsersState::InitChannelSession", AUTH);
 
-            usersResponse = UsersSocket::Response(str_response);
-
-            Notify();
-        }
-
-        inline void ResponseError(const std::string str_error) {
+                assert(!pending);
+                pending = true;
             
-            usersResponse = UsersSocket::Response();
+                UsersSocket::UsersRequest users_request;
+                        users_request.type = UsersSocket::SIGNAL::OPEN;
 
-            Notify();
+                    
+                BaseRequest socket_data;
+                    socket_data.content = users_request.serialize();
+                    socket_data.AUTH = AUTH;
+
+                usersSocket->setBuffer(socket_data);
+                
+            }
+
+            inline void CloseChannelSession() {
+                log_B(TAG::STA, "States::UsersState::Close", "");
+
+                assert(pending);
+                pending = false;
+
+                UsersSocket::UsersRequest users_request;
+                        users_request.type = UsersSocket::SIGNAL::CLOSE;
+
+                
+                BaseRequest socket_data;
+                    socket_data.content = users_request.serialize();
+
+                usersSocket->setBuffer(socket_data);
+                
+            }
+
+            inline void ResponseSuccess(const std::string str_response) {
+                log_C(TAG::STA, "States::UsersState::Response", str_response);
+
+                usersResponse = UsersSocket::UsersResponse(str_response);
+
+                Notify();
+            }
+
+            inline void ResponseError(const std::string str_error) {
+                
+                usersResponse = UsersSocket::UsersResponse();
+
+                Notify();
+            }
+        
         }
-        
-        
 
         namespace State {
 
@@ -179,13 +145,13 @@ namespace States {
                     case AuthSocket::SIGNAL::LOGIN:
 
                         if(auth_user.is_valid())
-                            Init(auth_user._id);
+                            UsersSocketMethods::InitChannelSession(auth_user._id);
 
                         break;
 
                     default:
 
-                        Close();
+                        UsersSocketMethods::CloseChannelSession();
                         break;
                     
                 }

@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "chat-modal.h"
-#include "chat-modal.hjs"
+#include "chat-modal.js.h"
 
 #include "components/modals/modals.h"
 
@@ -10,7 +10,7 @@
 #include "common/web-ui/web-ui.h"
 
 #include "states/users-state/users-state.h"
-#include "states/chat-state/chat-state.h"
+#include "states/chats-state/chats-state.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -36,7 +36,7 @@ namespace Modals {
                 log_C(TAG::CMP, "Modals::ChatModal::NewChatOpen", args);
 
                 json function = json::parse(args);
-                ChatState::ChatsMethods::StartAChat(function.at("user").get<string>());
+                ChatsState::StartAChat(function.at("user").get<string>());
             }
 
             void Show() {

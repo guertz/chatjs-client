@@ -2,7 +2,7 @@
 #include<json.hpp>
 
 #include "toast.h"
-#include "toast.hjs"
+#include "toast.js.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"

@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "chat-list.h"
-#include "chat-list.hjs"
+#include "chat-list.js.h"
 
 #include "components/modals/chat-modal/chat-modal.h"
 #include "components/toast/toast.h"
@@ -11,7 +11,7 @@
 #include "common/logger/logger.h"
 
 #include "states/auth-state/auth-state.h"
-#include "states/chat-state/chat-state.h"
+#include "states/chats-state/chats-state.h"
 
 
 using json = nlohmann::json;
@@ -36,7 +36,7 @@ namespace ChatList {
             log_C(TAG::CMP, "ChatList::UserSelected", args);
 
             json event_args = json::parse(args);
-            ChatState::ChatsMethods::setCurrentChat(event_args.at("ref").get<string>());
+            ChatsState::setCurrentChat(event_args.at("ref").get<string>());
         }
     }
 
@@ -48,7 +48,7 @@ namespace ChatList {
         WebUI::Register("ChatList::NewChat", Events::NewChat);
         WebUI::Register("ChatList::UserSelected", Events::UserSelected);
 
-        ChatState::ChatsMethods::Register("ChatList", State::Chats);
+        ChatsState::Register("ChatList", State::Chats);
 
         AuthState::Register("ChatList", State::Auth);
     }
@@ -81,7 +81,7 @@ namespace ChatList {
 
         inline void Chats() {
             const string js_context = "components.ChatList.populateChatList('" +
-                                        ChatState::ChatsMethods::getSerializedChats() +
+                                        ChatsState::getSerializedChats() +
                                       "')";
                                       
             WebUI::Execute(js_context);

@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "modals.h"
-#include "modals.hjs"
+#include "modals.js.h"
 
 #include "auth-modal/auth-modal.h"
 #include "chat-modal/chat-modal.h"
@@ -15,7 +15,7 @@ using namespace std;
 using namespace WebUI;
 
 /**
- * @brief Definizione Modals, modale per iniziareuna chat
+ * @brief Definizione Modals, modale per iniziare una chat
  * @file modals.cc
  */
 

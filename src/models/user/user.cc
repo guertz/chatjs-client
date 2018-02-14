@@ -17,7 +17,7 @@ User::User(){
     this->image = "";
 }
 
-User::User(const json& j) : User() {
+User::User(const nlohmann::json& j) : User() {
     log_C(TAG::OBJ, "User@JsonItem::Create", "...json...");
 
     if(j.is_object()) {
@@ -34,7 +34,7 @@ User::~User() {
     log_C(TAG::OBJ, "User@JsonItem::Destroy", "");
 }
 
-json User::to_json() const {
+nlohmann::json User::to_json() const {
     return json{
         { "name", this->name}, 
         { "image", this->image}, 

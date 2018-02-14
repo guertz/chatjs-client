@@ -4,9 +4,6 @@
 /**
  *  @brief Interfaccia sistema di logging.
  *  @file logger.h
- *  Descrizione del funzionamento e configurazioni:
- *  + I log sono di default abilitati da DEBUG_MASK (per i livelli LEV) e DEBUG_TASK per i tipi (TAG)
- *  + TODO: aggiorna doc logger and readme
  */
 
 #define LOG_LEN 60
@@ -15,18 +12,23 @@
 /** Abilitazione dello stream di uscita su cerr (per log errori) oltre che cout */
 // #define LOG_CERR
 
-/** Abilitazione debug webview per stampare log provenienti da essa */
-// #define WEBVIEW_DEBUG // TODO: it logs long string? (not if i cut on logger)
+/** Abilitazione debug webview per stampare log provenienti da essa (console + dispatch/execute) */
+// #define WEBVIEW_DEBUG // TODO: won't cut logs and will use its own system NSLog
+
+/** Livello di log */
+#define DEBUG_MASK 0
+
+/** Tipo oggetti da loggare */
+#define DEBUG_TASK 0
 
 #ifdef DEBUG_MODE
-    // refresh-app?
-    #define DEBUG_TASK 55
-    #define DEBUG_MASK 3
+    
+    #undef DEBUG_MASK
+    #undef DEBUG_TASK
 
-#else
-
-    #define DEBUG_MASK 0
-    #define DEBUG_TASK 0
+    // refresh-app richiesto se modificati i valori
+    #define DEBUG_MASK 3  // Log all levels but not pedantic
+    #define DEBUG_TASK 55 // Log all type except OBJ (Objects)
 
 #endif
 
@@ -46,10 +48,6 @@ enum LEV {
     LOGB = 2, /**< Standard output log (livello B)*/
     LOGC = 4  /**< Standard output log (livello C)*/
 };
-
-// logger.cc => metodo esterno, non bisogna ricompilare tutto
-// Wrap with { }/( ) [per evitare dispersione o mal interpretazione del contenuto]
-// webview ha il suo sitema interno che dovrà essere rimpiazzato (zerge, logging system)
 
 #define LOGGER(lev, tag, attr, msg)        \
     print_log(                             \

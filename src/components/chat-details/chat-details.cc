@@ -2,12 +2,12 @@
 #include <json.hpp>
 
 #include "chat-details.h"
-#include "chat-details.hjs"
+#include "chat-details.js.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
 
-#include "states/chat-state/chat-state.h"
+#include "states/chats-state/chats-state.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -34,7 +34,7 @@ namespace ChatDetails {
             log_C(TAG::CMP, "ChatDetails::Submit", args);
 
             json form_args = json::parse(args);
-            ChatState::ChatMethods::SendAMessage(form_args.at("text").get<string>());
+            ChatsState::ChatMethods::SendAMessage(form_args.at("text").get<string>());
 
         }
     }
@@ -46,7 +46,7 @@ namespace ChatDetails {
 
         WebUI::Register("ChatDetails::Submit", Events::Submit);
 
-        ChatState::ChatMethods::Register("ChatDetails", State::Chat);
+        ChatsState::ChatMethods::Register("ChatDetails", State::Chat);
 
     }
 
@@ -56,9 +56,9 @@ namespace ChatDetails {
 
     namespace State {
         inline void Chat(){
-            if(ChatState::ChatsMethods::isCurrentChat()){
+            if(ChatsState::isCurrentChat()){
                 const string js_chat = "components.ChatDetails.populateChatDetails('" +
-                                            ChatState::ChatsMethods::getCurrentChat() +
+                                            ChatsState::getCurrentChat() +
                                         "')";
 
                 WebUI::Execute(js_chat);

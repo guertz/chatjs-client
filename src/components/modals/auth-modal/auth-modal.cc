@@ -2,7 +2,7 @@
 #include <json.hpp>
 
 #include "auth-modal.h"
-#include "auth-modal.hjs"
+#include "auth-modal.js.h"
 
 #include "components/modals/modals.h"
 
