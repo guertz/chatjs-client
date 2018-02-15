@@ -144,7 +144,7 @@ namespace ws {
 
         if(this->running && !this->stopping) {
 
-            this->onclose = onclose
+            this->onclose = onclose;
             this->key = key;
             this->stopping = true;
 
