@@ -32,7 +32,7 @@ namespace UUID {
 
         // atomic?
         Tokens::iterator tk_itr = std::find(tokens.begin(), tokens.end(), unique);
-        assert(tk_itr !=  tokens.end());
+        assert(tk_itr ==  tokens.end());
         
         tokens.push_back(unique);
 
