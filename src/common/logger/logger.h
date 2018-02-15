@@ -27,8 +27,8 @@
     #undef DEBUG_TASK
 
     // refresh-app richiesto se modificati i valori
-    #define DEBUG_MASK 3  // Log all levels but not pedantic
-    #define DEBUG_TASK 55 // Log all type except OBJ (Objects)
+    #define DEBUG_MASK 7  // Log all levels but not pedantic
+    #define DEBUG_TASK 37 // Log all type except OBJ (Objects)
 
 #endif
 
@@ -42,6 +42,7 @@ enum TAG {
   STA = 32  /**< States, per log relativo a data states */
 };
 
+// LEV errore ?
 enum LEV {
     LOGN = 0, /**< Standard output log (livello N)*/
     LOGA = 1, /**< Standard output log (livello A)*/

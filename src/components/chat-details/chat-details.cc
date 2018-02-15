@@ -27,6 +27,7 @@ namespace ChatDetails {
 
     const string ENABLE_FORM  = "components.ChatDetails.enable()";
     const string DISABLE_FORM = "components.ChatDetails.disable()";
+    const string RESET_ALL = "components.ChatDetails.resetChat()";
 
     namespace Events {
 
@@ -43,6 +44,7 @@ namespace ChatDetails {
         log_B(TAG::CMP, "ChatDetails::Bootstrap", "");
 
         WebUI::Execute(_src_components_chat_details_chat_details_js);
+        WebUI::Execute(DISABLE_FORM);
 
         WebUI::Register("ChatDetails::Submit", Events::Submit);
 
@@ -63,6 +65,9 @@ namespace ChatDetails {
 
                 WebUI::Execute(js_chat);
                 WebUI::Execute(ENABLE_FORM);
+            } else { 
+                WebUI::Execute(RESET_ALL);
+                WebUI::Execute(DISABLE_FORM);
             }
         }
     }

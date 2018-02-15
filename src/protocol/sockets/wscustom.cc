@@ -1,11 +1,10 @@
 
 #include <iostream>
 #include <string>
-#include <thread>
-#include <thread>
 
 #include "wscustom.h"
 
+#include "common/uuid/uuid.h"
 #include "common/logger/logger.h"
 
 using json = nlohmann::json;
@@ -34,13 +33,22 @@ using namespace std;
 namespace ws {
  
     void Socket::ThreadMain(){
+
+        this->stopping = false;
+        this->running = true;
+
         log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running");
 
         // creazione di un canale websocket (vedi libreria easywsclient)
         // viene effettuata nel thread così il thread UI non ne risente
         // per i tempi di handshaking
-        this->channel = WebSocket::from_url(this->path);
 
+        #ifdef SERVER_REMOTE
+            this->channel = WebSocket::from_url("ws://" + string(SERVERHOST) + "/" + this->endpoint);
+        #else
+            this->channel = WebSocket::from_url("ws://" + string(LOCALHOST) + "/" + this->endpoint);
+        #endif
+        
         // Abilitazione socket in modalità computing
         this->is_computing = true;
 
@@ -65,7 +73,7 @@ namespace ws {
 
                     // Pulizia del buffer, invio & poll completato almeno una volta
                     this->reset();
-                    
+                     
                 }
 
                 // Dispatch ricezione risposta. Utilizzo lamba function condividento il contesto
@@ -97,7 +105,16 @@ namespace ws {
                    this->channel = 0;
         }
 
+        this->stopping = false;
+        this->running = false;
+
         log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] complete");
+
+        if(this->onclose) 
+            this->onclose(this->key);
+        
+        this->cv.notify_one();
+
     }
 
     void Socket::pause() {
@@ -122,33 +139,58 @@ namespace ws {
         log_A(TAG::WSS, this->endpoint + "::Buffer", this->buffer.content);
     }
 
+    // handle blocking deletion or subscriber/unsubscriber wrapper mutex
+    void Socket::asyncDelete(std::string key, void(*onclose)(const std::string k)) {
+
+        if(this->running && !this->stopping) {
+
+            this->onclose = onclose
+            this->key = key;
+            this->stopping = true;
+
+            this->pause(); 
+
+            // may not exist as well (if errors creating)
+            if(this->channel)
+                this->channel->close();
+
+        }
+
+    }
+
+    void Socket::syncDelete() {
+
+        this->asyncDelete(UUID::generate(), [](const string k){
+            log_A(TAG::INF, "Destroy handler", k);
+        });
+
+        if(this->running) {
+            if(this->stopping) {
+                std::unique_lock<std::mutex> lck(this->mtx);
+                this->cv.wait(lck, [this](){ return !this->stopping; });
+            }
+        }
+
+    }
+
     Socket::~Socket(){
 
+        assert(!this->running);
         log_A(TAG::WSS, this->endpoint + "::Destroy", "");
-
-        // Se il canale non è presente è già stato terminato
-        if(this->channel){
-            this->channel->close();
-        }
 
     }
 
     Socket::Socket( const std::string& node, 
                     void (*onmessage)(const std::string message), 
-                    void(*onerror)(const std::string error)) {
+                    void (*onerror)(const std::string error)) {
 
         this->endpoint = node;
-
-        #ifdef SERVER_REMOTE
-            this->path = "ws://" + string(SERVERHOST) + "/" + this->endpoint;
-        #else
-            this->path = "ws://" + string(LOCALHOST) + "/" + this->endpoint;
-        #endif
 
         log_A(TAG::WSS, this->endpoint + "::Create", "");
 
         this->onmessage = onmessage;
         this->onerror = onerror;
+        this->onclose = 0;
 
         this->reset();
         this->is_computing = true;
@@ -157,4 +199,5 @@ namespace ws {
         this->watcher.detach();
         
     }
+
 }

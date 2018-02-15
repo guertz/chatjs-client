@@ -56,6 +56,8 @@ namespace States {
             log_B(TAG::STA, "States::AuthState::Destroy", "");
 
             assert(authSocket);
+            
+            authSocket->syncDelete();
             delete authSocket;
                    authSocket = 0;
         }

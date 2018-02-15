@@ -70,13 +70,13 @@ namespace States {
             ChatsSocketMethods::CloseChannelSession();
 
             assert(chatsSocket);
+
+            chatsSocket->syncDelete();
             delete chatsSocket;
-            chatsSocket = 0;
+                   chatsSocket = 0;
             
         }
 
-        // logging ?
-        // move to sockets namespace?
         void StartAChat(const std::string user_dest) {
 
             User auth_user = AuthState::getAuthUser();
@@ -94,7 +94,7 @@ namespace States {
         }
 
         const std::string getSerializedChats() {
-            return ChatsWrapper::chats_to_json(chatsList);
+            return ChatsWrapper::chats_to_json(chatsList).dump();
         }
 
         void setCurrentChat(const std::string chat_ref) {
@@ -127,7 +127,7 @@ namespace States {
         }
 
         namespace ChatsSocketMethods {
-        
+
             inline void InitChannelSession(const std::string& AUTH) {
 
                 ChatsSocket::ChatsRequest connect_request;
@@ -142,26 +142,23 @@ namespace States {
             }   
 
             inline void CloseChannelSession () {
-                
-                // will map.clear destroy pointers?
-                // do i need pointers?
-                // // unique || shared ptr?
+
                 for (SocketsMap::iterator it = socketsChatsList.begin(); it != socketsChatsList.end(); ++it) {
-                    if(it->second) {
-                        // delete it->second;
-                        // it->second = 0;
-                    }
+                    it->second->syncDelete();
+                    
+                    delete  it->second;
+                    // it->second = 0;
 
-                    // socketsChatsList.erase(it);
+                    socketsChatsList.erase(it);
+
                 }
-
-                // // check size to know if actually deleated?
 
                 chatsList.clear();
                 currentChatRef = "";
 
                 Notify();
                 ChatMethods::NotifyCurrent();
+
             }
 
             inline void ResponseSuccess(const std::string str_response) {

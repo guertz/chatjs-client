@@ -30,7 +30,7 @@ const ChatDetailsFactory = function(){
             '<chat-messages>'+
             '</chat-messages>'+
             '<chat-form>' +
-                '<form id="chat-form" disabled=true>' +
+                '<form id="chat-form">' +
                     '<div class="form-wrap w3-row">'+
                         '<div class="w3-col m4" style="visibility: hidden;"><p></p></div>' +
                         '<div class="w3-col w3-right" style="width: 100px">' +
@@ -70,14 +70,18 @@ const ChatDetailsFactory = function(){
         }
     }
 
-    this.enable = function(){
-        formRef.disabled = false;
+    this.enable = function() {
+        window.getFirst(formRef, "button").disabled = false;
         window.getFirst(formRef, ".w3-input")
             .setAttribute("placeholder", inputPlaceholderText[1]);
     }
 
-    this.disable = function(){
-        formRef.disable = true;
+    this.resetChat = function() {
+        chatTreeRef.innerHTML = "";
+    }
+
+    this.disable = function() {
+        window.getFirst(formRef, "button").disabled = true;
         window.getFirst(formRef, ".w3-input")
             .setAttribute("placeholder", inputPlaceholderText[0]);
     }

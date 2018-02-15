@@ -2,6 +2,9 @@
 #define PROTOCOL_SOCKETS_WSCUSTOM_H
 
 #include <thread>
+#include <mutex>
+#include <condition_variable>
+
 #include "easywsclient.h"
 #include "models/socket/socket.h"
 
@@ -39,26 +42,26 @@ namespace ws{
     class Socket {
 
         private:
-            std::string endpoint;
+            std::string endpoint; /**< endpoint per la connessione del websocket */
+            
             WsBuffer buffer; /**< Buffer data per channel*/
-            std::string path; /**< URL per la connessione del websocket */
 
-            /**
-             * Determina se il websocket è attivo. 
-             * Non implica la chiusura del canale 
-             */
+            /**< Identificativo per oggetto di riferimento utilizzato nella fase di chiusura */
+            std::string key; 
+
+            /** Determina se il websocket è attivo. Non implica la chiusura del canale */
             bool is_computing;
 
-            /** 
-             * Puntatore all'oggetto di tipo canale webscoket
-             * messo a disposizione dalla libreria easywsclient
-             */
+            /** Determina se il thread sta eseguendo */
+            bool running;
+
+            /** Determina se è già stato richiesto lo stop del thread */
+            bool stopping;
+
+            /** Puntatore all'oggetto di tipo canale webscoket messo a disposizione dalla libreria easywsclient */
             easywsclient::WebSocket::pointer channel;
 
-             /**
-              * Thread incaricato della gestione del canale. 
-              * Fare riferimento a ThreadMain
-              */
+             /** Thread incaricato della gestione del canale. Fare riferimento a ThreadMain */
             std::thread watcher; 
 
             /** Puntatore a funzione (callback) per notificare la ricezione di un messaggio valido */
@@ -67,8 +70,14 @@ namespace ws{
             /** Puntatore a funzione (callback) per notificare errori o messaggio invalido */
             void (*onerror)(const std::string error);
 
+            /** Puntatore a funzione (callback) per notificare chiusura canale (e thread) */
+            void (*onclose)(const std::string key);
+
             void reset(); /**< Metodo per ripristinare il buffer al suo valore di default */
             
+            std::mutex mtx;
+            std::condition_variable cv;
+
             /**
              * Metodo in esecuzione dal thread watcher.
              * Incaricato della gestione del canale e 
@@ -86,7 +95,7 @@ namespace ws{
              * @param onerror Puntatore a funzione callback errors 
              */
             Socket(const std::string& node, void (*onmessage)(const std::string message), void(*onerror)(const std::string error));
-            
+        
             /** 
              * Distruttore del canale.
              */
@@ -97,6 +106,10 @@ namespace ws{
 
             /** Metodo per mettere in pausa l'esecuzione del polling */
             void pause();
+
+            /** Metodo per terminare il thread e il canale in modo sicuro */
+            void asyncDelete(std::string key, void (*onclose)(const std::string k));
+            void syncDelete();
 
             /** 
              * Metodo per impostare il contenuto del buffer con il contenuto della

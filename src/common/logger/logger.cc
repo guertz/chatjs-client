@@ -11,6 +11,7 @@ using namespace std;
 
 // TODO: Limit length
 // TODO: limit colors
+// TODO: stampa valore dei livelli in stringa piuttosto che int
 
 /** Metodo interno per la stampa dei log */
 void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_msg) {

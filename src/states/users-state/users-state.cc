@@ -59,6 +59,8 @@ namespace States {
             log_B(TAG::STA, "States::UsersState::Destroy", "");
 
             assert(usersSocket);
+
+            usersSocket->syncDelete();
             delete usersSocket;
                    usersSocket = 0;
         
