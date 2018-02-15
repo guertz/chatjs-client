@@ -4,6 +4,8 @@
 #include <vector>
 #include <cassert>
 
+#include "common/logger/logger.h"
+
 /**
  *  @brief Definizione metodi per generare stringhe caratteri uniche
  *  @file uuid.cc
@@ -16,6 +18,7 @@ namespace UUID {
 
     static Tokens tokens;
 
+    // atomic?
     std::string generate() {
 
         static const char alphanum[] =
@@ -23,16 +26,25 @@ namespace UUID {
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             "abcdefghijklmnopqrstuvwxyz";
 
+        Tokens::iterator tk_itr = tokens.end();
         string unique;
 
-        // automatically \0 at bottom ?
-        for (int i = 0; i < 8; ++i) {
-            unique.insert(0, 1, alphanum[rand() % (sizeof(alphanum) - 1)]);
-        }
+        while(tk_itr !=  tokens.end()) {
+            
+            log_A(TAG::INF, "UUID::generate", ((unique.size() > 0) ? 
+                                                (unique + " (duplicate found)") 
+                                                    : 
+                                                "" 
+                                              ));
 
-        // atomic?
-        Tokens::iterator tk_itr = std::find(tokens.begin(), tokens.end(), unique);
-        assert(tk_itr ==  tokens.end());
+            unique = "";
+
+            for (int i = 0; i < 10; ++i) {
+                unique.insert(0, 1, alphanum[rand() % (sizeof(alphanum) - 1)]);
+            }
+
+            tk_itr = std::find(tokens.begin(), tokens.end(), unique);
+        }
         
         tokens.push_back(unique);
 

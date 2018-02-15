@@ -10,5 +10,6 @@ var searchData=
   ['socket',['Socket',['../classws_1_1_socket.html#a23a4b1dd8cb84584e461da8be2b06f44',1,'ws::Socket']]],
   ['startachat',['StartAChat',['../namespace_states_1_1_chats_state.html#a1374dc8b8905c66340277bd5e2e1a560',1,'States::ChatsState']]],
   ['str_5fto_5fenum',['str_to_enum',['../namespace_auth_socket.html#ac8b09f56e03cffd10289338ef5bfdad5',1,'AuthSocket::str_to_enum()'],['../namespace_chat_socket.html#a09e165df8cc1b5c11efc73b5e530cba8',1,'ChatSocket::str_to_enum()'],['../namespace_chats_socket.html#a75e0b9486088591b360f204ee92fb8c1',1,'ChatsSocket::str_to_enum()'],['../namespace_users_socket.html#af5933c0d09cf1def2f470dd1dfc982b4',1,'UsersSocket::str_to_enum()']]],
-  ['submit',['Submit',['../namespace_chat_details_1_1_events.html#a42ee66bc390aa6ab45ac80c39f59f7d4',1,'ChatDetails::Events::Submit()'],['../namespace_modals_1_1_auth_modal_1_1_events.html#aaab982be2c2f1d7af5f649ac1742801a',1,'Modals::AuthModal::Events::Submit()']]]
+  ['submit',['Submit',['../namespace_chat_details_1_1_events.html#a42ee66bc390aa6ab45ac80c39f59f7d4',1,'ChatDetails::Events::Submit()'],['../namespace_modals_1_1_auth_modal_1_1_events.html#aaab982be2c2f1d7af5f649ac1742801a',1,'Modals::AuthModal::Events::Submit()']]],
+  ['syncdelete',['syncDelete',['../classws_1_1_socket.html#afe466c30e9e49acc99f631f91f172a3b',1,'ws::Socket']]]
 ];

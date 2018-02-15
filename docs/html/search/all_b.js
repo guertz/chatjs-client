@@ -13,7 +13,7 @@ var searchData=
   ['logger',['LOGGER',['../logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa',1,'logger.h']]],
   ['logger_2ecc',['logger.cc',['../logger_8cc.html',1,'']]],
   ['logger_2eh',['logger.h',['../logger_8h.html',1,'']]],
-  ['login',['Login',['../namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4',1,'States::AuthState::Login()'],['../namespace_auth_socket.html#a541538437c913afbac9ac573f342293baab3a50db73d51ac6095dff146cf89f8c',1,'AuthSocket::LOGIN()']]],
+  ['login',['LOGIN',['../namespace_auth_socket.html#a541538437c913afbac9ac573f342293baab3a50db73d51ac6095dff146cf89f8c',1,'AuthSocket::LOGIN()'],['../namespace_states_1_1_auth_state.html#a99e21c959d94a011d48abf9de9c0f9d4',1,'States::AuthState::Login()']]],
   ['logn',['LOGN',['../logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98',1,'logger.h']]],
   ['logout',['Logout',['../namespace_states_1_1_auth_state.html#a810363046ae8e416f0d398ee0f81ecae',1,'States::AuthState::Logout()'],['../namespace_auth_socket.html#a541538437c913afbac9ac573f342293ba141800aec7da32268b3cc1ef56a098b2',1,'AuthSocket::LOGOUT()']]]
 ];

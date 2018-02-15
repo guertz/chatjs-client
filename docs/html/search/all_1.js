@@ -6,6 +6,7 @@ var searchData=
   ['app_2eh',['app.h',['../app_8h.html',1,'']]],
   ['app_2ejs_2eh',['app.js.h',['../app_8js_8h.html',1,'']]],
   ['appinit_2ejs_2eh',['appinit.js.h',['../appinit_8js_8h.html',1,'']]],
+  ['asyncdelete',['asyncDelete',['../classws_1_1_socket.html#a175a308cfcdfb1053d5875dc108196a9',1,'ws::Socket']]],
   ['auth',['AUTH',['../classws_1_1_base_request.html#ab07f9b7bcb84c817f0da39b37ff39c5e',1,'ws::BaseRequest::AUTH()'],['../namespace_chat_list_1_1_state.html#adf9073703fe070937684befa41c6c280',1,'ChatList::State::Auth()'],['../namespace_modals_1_1_auth_modal_1_1_state.html#a646f790645edb078eb8d68b9c1709973',1,'Modals::AuthModal::State::Auth()'],['../namespace_navbar_1_1_state.html#a543a67d2e41acc5bdb582bdbc3297572',1,'Navbar::State::Auth()'],['../namespace_states_1_1_chats_state_1_1_state.html#a8ff66b5350d7860781d7a8af3c944d09',1,'States::ChatsState::State::Auth()'],['../namespace_states_1_1_users_state_1_1_state.html#ac6ef78dd898f6c0bc1f4f72de5e19606',1,'States::UsersState::State::Auth()']]],
   ['auth_2dmodal_2ecc',['auth-modal.cc',['../auth-modal_8cc.html',1,'']]],
   ['auth_2dmodal_2eh',['auth-modal.h',['../auth-modal_8h.html',1,'']]],

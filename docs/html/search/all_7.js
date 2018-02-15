@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['generate',['generate',['../namespace_u_u_i_d.html#a2534feee390bd544e4fe3f5ff88360e2',1,'UUID']]],
   ['getauthaction',['getAuthAction',['../namespace_states_1_1_auth_state.html#ab820801e86e7a745684d4d2361d06e11',1,'States::AuthState']]],
   ['getautherror',['getAuthError',['../namespace_states_1_1_auth_state.html#a99ede8406854fe788c19f96e945c4cb8',1,'States::AuthState']]],
   ['getauthuser',['getAuthUser',['../namespace_states_1_1_auth_state.html#a4f500b96867c231202e13927fc42e031',1,'States::AuthState']]],

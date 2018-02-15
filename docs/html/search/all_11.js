@@ -32,6 +32,7 @@ var searchData=
   ['style_2ecss_2eh',['style.css.h',['../style_8css_8h.html',1,'']]],
   ['submit',['Submit',['../namespace_chat_details_1_1_events.html#a42ee66bc390aa6ab45ac80c39f59f7d4',1,'ChatDetails::Events::Submit()'],['../namespace_modals_1_1_auth_modal_1_1_events.html#aaab982be2c2f1d7af5f649ac1742801a',1,'Modals::AuthModal::Events::Submit()']]],
   ['subscribers',['Subscribers',['../namespace_states_1_1_auth_state.html#a69bd880df132ed4401cf0d8a3117e89c',1,'States::AuthState::Subscribers()'],['../namespace_states_1_1_chats_state.html#a1aa8168b0a83cebfac5a9b1adbd43fb7',1,'States::ChatsState::Subscribers()'],['../namespace_states_1_1_users_state.html#ac7e274ad4735dc6af82c1cb20d2acbea',1,'States::UsersState::Subscribers()']]],
+  ['syncdelete',['syncDelete',['../classws_1_1_socket.html#afe466c30e9e49acc99f631f91f172a3b',1,'ws::Socket']]],
   ['userssocketmethods',['UsersSocketMethods',['../namespace_states_1_1_users_state_1_1_users_socket_methods.html',1,'States::UsersState']]],
   ['usersstate',['UsersState',['../namespace_states_1_1_users_state.html',1,'States']]]
 ];

@@ -9,5 +9,6 @@ var searchData=
   ['toast_2ecc',['toast.cc',['../toast_8cc.html',1,'']]],
   ['toast_2eh',['toast.h',['../toast_8h.html',1,'']]],
   ['toast_2ejs_2eh',['toast.js.h',['../toast_8js_8h.html',1,'']]],
+  ['tokens',['Tokens',['../namespace_u_u_i_d.html#aef85508fe84aadf296a832945ffd7f54',1,'UUID']]],
   ['type',['type',['../class_auth_socket_1_1_auth_request.html#ae599263b76850263ce527604d1cc6a0e',1,'AuthSocket::AuthRequest::type()'],['../class_auth_socket_1_1_auth_response.html#abb3f416c141da64a991096df7614df11',1,'AuthSocket::AuthResponse::type()'],['../class_chat_socket_1_1_chat_request.html#a1974f69ce4e49640e711945b6b51b5b1',1,'ChatSocket::ChatRequest::type()'],['../class_chat_socket_1_1_chat_response.html#a909550eb3550f5685a93369d541645af',1,'ChatSocket::ChatResponse::type()'],['../class_chats_socket_1_1_chats_request.html#aa1118f978cb62c82a55ae4c9f520694f',1,'ChatsSocket::ChatsRequest::type()'],['../class_chats_socket_1_1_chats_response.html#a7772249c04eb414ed8ca1edbdb5f1f59',1,'ChatsSocket::ChatsResponse::type()'],['../class_users_socket_1_1_users_request.html#ae7c66b2ee8e8daae473b10c53c9db866',1,'UsersSocket::UsersRequest::type()'],['../class_users_socket_1_1_users_response.html#af0b4bd3ef07c51a5495113a623703a18',1,'UsersSocket::UsersResponse::type()']]]
 ];
