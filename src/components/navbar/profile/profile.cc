@@ -26,12 +26,12 @@ namespace Navbar {
         namespace Events {
 
             inline void Disconnect(const std::string& args){
-                log_C(TAG::CMP, "Navbar::Profile::Disconnect", args);
+                log_details(TAG::CMP, "Navbar::Profile::Disconnect", args);
                 AuthState::Logout();
             }
 
             void SetText(const std::string text) {
-                log_C(TAG::CMP, "Navbar::Profile::SetText", text);
+                log_details(TAG::CMP, "Navbar::Profile::SetText", text);
 
                 const string js_nav_link = "window.navbar.ProfileLink.setText('" + 
                                                 text +
@@ -43,7 +43,7 @@ namespace Navbar {
         }
 
         void RegisterLink(){
-            log_B(TAG::CMP, "Navbar::Profile::RegisterLink", "");
+            log_base(TAG::CMP, "Navbar::Profile::RegisterLink", "");
 
             WebUI::Execute(_src_components_navbar_profile_profile_js);
 
@@ -51,7 +51,7 @@ namespace Navbar {
         }
 
         void EraseLink() {
-            log_B(TAG::CMP, "Navbar::Profile::EraseLink", "");
+            log_base(TAG::CMP, "Navbar::Profile::EraseLink", "");
         }
 
     }

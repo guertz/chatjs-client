@@ -32,7 +32,7 @@ namespace ChatDetails {
     namespace Events {
 
         inline void Submit(const std::string& args){
-            log_C(TAG::CMP, "ChatDetails::Submit", args);
+            log_details(TAG::CMP, "ChatDetails::Submit", args);
 
             json form_args = json::parse(args);
             ChatsState::ChatMethods::SendAMessage(form_args.at("text").get<string>());
@@ -41,7 +41,7 @@ namespace ChatDetails {
     }
 
     void Bootstrap() {
-        log_B(TAG::CMP, "ChatDetails::Bootstrap", "");
+        log_base(TAG::CMP, "ChatDetails::Bootstrap", "");
 
         WebUI::Execute(_src_components_chat_details_chat_details_js);
         WebUI::Execute(DISABLE_FORM);
@@ -53,7 +53,7 @@ namespace ChatDetails {
     }
 
     void Destroy() {
-        log_B(TAG::CMP, "ChatDetails::Destroy", "");
+        log_base(TAG::CMP, "ChatDetails::Destroy", "");
     }
 
     namespace State {

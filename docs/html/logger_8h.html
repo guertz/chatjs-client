@@ -83,8 +83,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Definizioni</h2></td></tr>
 <tr class="memitem:af2a0fa359400979a265d34bed5dfe91d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#af2a0fa359400979a265d34bed5dfe91d">LOG_LEN</a>&#160;&#160;&#160;60</td></tr>
+<tr class="memdesc:af2a0fa359400979a265d34bed5dfe91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definizione lunghezza stringa log, utilizzato in <a class="el" href="web-ui_8cc.html" title="Definizione Funzioni di supporto e metodi elementari e creazione della webview. ">web-ui.cc</a>.  <a href="#af2a0fa359400979a265d34bed5dfe91d">Continua...</a><br /></td></tr>
 <tr class="separator:af2a0fa359400979a265d34bed5dfe91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aababbf8f5faccce9ca33cd128e2bfa27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aababbf8f5faccce9ca33cd128e2bfa27">WIN_CONSOLE</a></td></tr>
+<tr class="memdesc:aababbf8f5faccce9ca33cd128e2bfa27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abilitazione console di log su windows (vedi <a class="el" href="main_8cc.html" title="Metodo main del programma. ">main.cc</a>)  <a href="#aababbf8f5faccce9ca33cd128e2bfa27">Continua...</a><br /></td></tr>
 <tr class="separator:aababbf8f5faccce9ca33cd128e2bfa27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a0a4b8064a8773b4e3a4a3c5bdc0ea3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:a3a0a4b8064a8773b4e3a4a3c5bdc0ea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abilitazione dello stream di uscita su cerr (per log errori) oltre che cout.  <a href="#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">Continua...</a><br /></td></tr>
@@ -94,13 +96,17 @@ Definizioni</h2></td></tr>
 <tr class="separator:ac3a54f3a6ca71cb643dc99df536f503c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13e832f76520506b7ff09fcd3a269eaa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(lev,  tag,  attr,  msg)</td></tr>
 <tr class="separator:a13e832f76520506b7ff09fcd3a269eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a580de68ded570cc8bca31ae3edb0aaa4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a580de68ded570cc8bca31ae3edb0aaa4">log_A</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LEV::LOGA</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LEV::LOGA</a>, tag, attr, msg); } }</td></tr>
-<tr class="separator:a580de68ded570cc8bca31ae3edb0aaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf7ac0eed934c82f22eb436003d89f14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#abf7ac0eed934c82f22eb436003d89f14">log_B</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LEV::LOGB</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LEV::LOGB</a>, tag, attr, msg); } }</td></tr>
-<tr class="separator:abf7ac0eed934c82f22eb436003d89f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee1a3d8785b569717ee7b86adbc60418"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aee1a3d8785b569717ee7b86adbc60418">log_C</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LEV::LOGC</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LEV::LOGC</a>, tag, attr, msg); } }</td></tr>
-<tr class="separator:aee1a3d8785b569717ee7b86adbc60418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea218dc022ea09f8e043bc36d8c0f276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aea218dc022ea09f8e043bc36d8c0f276">log_base</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LEV::LOG1</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LEV::LOG1</a>, tag, attr, msg); } }</td></tr>
+<tr class="memdesc:aea218dc022ea09f8e043bc36d8c0f276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro per livello di log base.  <a href="#aea218dc022ea09f8e043bc36d8c0f276">Continua...</a><br /></td></tr>
+<tr class="separator:aea218dc022ea09f8e043bc36d8c0f276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57cf1b1bd6ef0a4e4cf32e4621adecd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a57cf1b1bd6ef0a4e4cf32e4621adecd0">log_details</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LEV::LOG2</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LEV::LOG2</a>, tag, attr, msg); } }</td></tr>
+<tr class="memdesc:a57cf1b1bd6ef0a4e4cf32e4621adecd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro per livello di log details.  <a href="#a57cf1b1bd6ef0a4e4cf32e4621adecd0">Continua...</a><br /></td></tr>
+<tr class="separator:a57cf1b1bd6ef0a4e4cf32e4621adecd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307eb8cc348d3d6f19687cb2fe1d7802"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a307eb8cc348d3d6f19687cb2fe1d7802">log_pedantic</a>(tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LEV::LOG3</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LEV::LOG3</a>, tag, attr, msg); } }</td></tr>
+<tr class="memdesc:a307eb8cc348d3d6f19687cb2fe1d7802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro per livello di log pedantic.  <a href="#a307eb8cc348d3d6f19687cb2fe1d7802">Continua...</a><br /></td></tr>
+<tr class="separator:a307eb8cc348d3d6f19687cb2fe1d7802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9bb58a21642245d8d1639c917ae90ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aa9bb58a21642245d8d1639c917ae90ff">log_n</a>(lev,  tag,  attr,  msg)&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (lev &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) )       { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LEV::LOGN</a>, tag, attr, msg); } }</td></tr>
+<tr class="memdesc:aa9bb58a21642245d8d1639c917ae90ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro per livello di log custom.  <a href="#aa9bb58a21642245d8d1639c917ae90ff">Continua...</a><br /></td></tr>
 <tr class="separator:aa9bb58a21642245d8d1639c917ae90ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -118,16 +124,17 @@ Tipi enumerati (enum)</h2></td></tr>
 <tr class="memdesc:a781b03b8eb5f35cf89f3c931ffa26e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tags per identificare il tipo di azione di log.  <a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">Continua...</a><br /></td></tr>
 <tr class="separator:a781b03b8eb5f35cf89f3c931ffa26e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c6c14fc8a08e0ce3f3a8dc882510012"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012">LEV</a> { <a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LOGN</a> = 0, 
-<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LOGA</a> = 1, 
-<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LOGB</a> = 2, 
-<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LOGC</a> = 4
+<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LOG1</a> = 1, 
+<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LOG2</a> = 2, 
+<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LOG3</a> = 4
  }</td></tr>
+<tr class="memdesc:a8c6c14fc8a08e0ce3f3a8dc882510012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tags per identificare il livello di log.  <a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012">Continua...</a><br /></td></tr>
 <tr class="separator:a8c6c14fc8a08e0ce3f3a8dc882510012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funzioni</h2></td></tr>
 <tr class="memitem:aa891dc22b40328787f9a5361a13bcaae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8h.html#aa891dc22b40328787f9a5361a13bcaae">print_log</a> (const <a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012">LEV</a> lev, const <a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35">TAG</a> tag, std::string attr, std::string log_msg)</td></tr>
-<tr class="memdesc:aa891dc22b40328787f9a5361a13bcaae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo interno per la stampa dei log.  <a href="#aa891dc22b40328787f9a5361a13bcaae">Continua...</a><br /></td></tr>
+<tr class="memdesc:aa891dc22b40328787f9a5361a13bcaae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo per stampare un messaggio di log.  <a href="#aa891dc22b40328787f9a5361a13bcaae">Continua...</a><br /></td></tr>
 <tr class="separator:aa891dc22b40328787f9a5361a13bcaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
@@ -150,7 +157,7 @@ Funzioni</h2></td></tr>
 <p>Abilitazione dello stream di uscita su cerr (per log errori) oltre che cout. </p>
 <p>Abilitazione debug webview per stampare log provenienti da essa (console + dispatch/execute) Livello di log </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00019">19</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00022">22</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -168,18 +175,18 @@ Funzioni</h2></td></tr>
 
 <p>Tipo oggetti da loggare. </p>
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00022">22</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00025">25</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
-<a id="a580de68ded570cc8bca31ae3edb0aaa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a580de68ded570cc8bca31ae3edb0aaa4">&#9670;&nbsp;</a></span>log_A</h2>
+<a id="aea218dc022ea09f8e043bc36d8c0f276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea218dc022ea09f8e043bc36d8c0f276">&#9670;&nbsp;</a></span>log_base</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define log_A</td>
+          <td class="memname">#define log_base</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">tag, </td>
@@ -199,23 +206,25 @@ Funzioni</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LEV::LOGA</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LEV::LOGA</a>, tag, attr, msg); } }</td>
+          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LEV::LOG1</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LEV::LOG1</a>, tag, attr, msg); } }</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00061">61</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Macro per livello di log base. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00065">65</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
-<a id="abf7ac0eed934c82f22eb436003d89f14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf7ac0eed934c82f22eb436003d89f14">&#9670;&nbsp;</a></span>log_B</h2>
+<a id="a57cf1b1bd6ef0a4e4cf32e4621adecd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57cf1b1bd6ef0a4e4cf32e4621adecd0">&#9670;&nbsp;</a></span>log_details</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define log_B</td>
+          <td class="memname">#define log_details</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">tag, </td>
@@ -235,48 +244,14 @@ Funzioni</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LEV::LOGB</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LEV::LOGB</a>, tag, attr, msg); } }</td>
+          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LEV::LOG2</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LEV::LOG2</a>, tag, attr, msg); } }</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00062">62</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Macro per livello di log details. </p>
 
-</div>
-</div>
-<a id="aee1a3d8785b569717ee7b86adbc60418"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee1a3d8785b569717ee7b86adbc60418">&#9670;&nbsp;</a></span>log_C</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define log_C</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">tag, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">attr, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">msg&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LEV::LOGC</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LEV::LOGC</a>, tag, attr, msg); } }</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00063">63</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00068">68</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -292,7 +267,9 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00009">9</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definizione lunghezza stringa log, utilizzato in <a class="el" href="web-ui_8cc.html" title="Definizione Funzioni di supporto e metodi elementari e creazione della webview. ">web-ui.cc</a>. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00010">10</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +311,47 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00064">64</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Macro per livello di log custom. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00074">74</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a id="a307eb8cc348d3d6f19687cb2fe1d7802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a307eb8cc348d3d6f19687cb2fe1d7802">&#9670;&nbsp;</a></span>log_pedantic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define log_pedantic</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tag, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">attr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">msg&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ if( (tag &amp; <a class="el" href="logger_8h.html#ac3a54f3a6ca71cb643dc99df536f503c">DEBUG_TASK</a>) &amp;&amp; (<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LEV::LOG3</a> &amp; <a class="el" href="logger_8h.html#a3a0a4b8064a8773b4e3a4a3c5bdc0ea3">DEBUG_MASK</a>) ) { <a class="el" href="logger_8h.html#a13e832f76520506b7ff09fcd3a269eaa">LOGGER</a>(<a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LEV::LOG3</a>, tag, attr, msg); } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro per livello di log pedantic. </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00071">71</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -375,9 +392,9 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Valore:</b><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#aa891dc22b40328787f9a5361a13bcaae">print_log</a>(                             \</div><div class="line">        static_cast&lt;const LEV&gt;(lev),       \</div><div class="line">        static_cast&lt;const TAG&gt;(tag),       \</div><div class="line">        attr,                              \</div><div class="line">        msg                                \</div><div class="line">    );</div><div class="ttc" id="logger_8h_html_aa891dc22b40328787f9a5361a13bcaae"><div class="ttname"><a href="logger_8h.html#aa891dc22b40328787f9a5361a13bcaae">print_log</a></div><div class="ttdeci">void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_msg)</div><div class="ttdoc">Metodo interno per la stampa dei log. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8cc_source.html#l00017">logger.cc:17</a></div></div>
+<b>Valore:</b><div class="fragment"><div class="line"><a class="code" href="logger_8h.html#aa891dc22b40328787f9a5361a13bcaae">print_log</a>(                             \</div><div class="line">        static_cast&lt;const LEV&gt;(lev),       \</div><div class="line">        static_cast&lt;const TAG&gt;(tag),       \</div><div class="line">        attr,                              \</div><div class="line">        msg                                \</div><div class="line">    );</div><div class="ttc" id="logger_8h_html_aa891dc22b40328787f9a5361a13bcaae"><div class="ttname"><a href="logger_8h.html#aa891dc22b40328787f9a5361a13bcaae">print_log</a></div><div class="ttdeci">void print_log(const LEV lev, const TAG tag, std::string attr, std::string log_msg)</div><div class="ttdoc">Metodo per stampare un messaggio di log. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8cc_source.html#l00017">logger.cc:17</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00053">53</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00056">56</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -393,7 +410,9 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00010">10</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Abilitazione console di log su windows (vedi <a class="el" href="main_8cc.html" title="Metodo main del programma. ">main.cc</a>) </p>
+
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00013">13</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -409,22 +428,24 @@ Funzioni</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Tags per identificare il livello di log. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98"></a>LOGN&#160;</td><td class="fielddoc"><p>Standard output log (livello N) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af"></a>LOGA&#160;</td><td class="fielddoc"><p>Standard output log (livello A) </p>
+<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c"></a>LOG1&#160;</td><td class="fielddoc"><p>Standard output log (livello base) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3"></a>LOGB&#160;</td><td class="fielddoc"><p>Standard output log (livello B) </p>
+<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74"></a>LOG2&#160;</td><td class="fielddoc"><p>Standard output log (livello details) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b"></a>LOGC&#160;</td><td class="fielddoc"><p>Standard output log (livello C) </p>
+<tr><td class="fieldname"><a id="a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4"></a>LOG3&#160;</td><td class="fielddoc"><p>Standard output log (livello pedantic) </p>
 </td></tr>
 </table>
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00046">46</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LOGN</a> = 0, </div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LOGA</a> = 1, </div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LOGB</a> = 2, </div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LOGC</a> = 4  </div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div><div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a66a5a87d6da0eacb38ca276ce3ba66af">LOGA</a></div><div class="ttdoc">Standard output log (livello A) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00048">logger.h:48</a></div></div>
-<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adb2675cff207945e55bb98d062b74bf3">LOGB</a></div><div class="ttdoc">Standard output log (livello B) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00049">logger.h:49</a></div></div>
-<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012adca6c43cae4ced6a2b13ce623d49347b">LOGC</a></div><div class="ttdoc">Standard output log (livello C) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00050">logger.h:50</a></div></div>
-<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LOGN</a></div><div class="ttdoc">Standard output log (livello N) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00047">logger.h:47</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00049">49</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LOGN</a> = 0, </div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LOG1</a> = 1, </div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LOG2</a> = 2, </div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LOG3</a> = 4  </div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div><div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a76ca888df41bef4bd5c961edf718810c">LOG1</a></div><div class="ttdoc">Standard output log (livello base) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00051">logger.h:51</a></div></div>
+<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012aeab80ff887542bb53df9088a316488f4">LOG3</a></div><div class="ttdoc">Standard output log (livello pedantic) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00053">logger.h:53</a></div></div>
+<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012a268dfb944e6a7520663a20a2cf020d74">LOG2</a></div><div class="ttdoc">Standard output log (livello details) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00052">logger.h:52</a></div></div>
+<div class="ttc" id="logger_8h_html_a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98"><div class="ttname"><a href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012ae780a75a6dc69d4956edbb88453d4f98">LOGN</a></div><div class="ttdoc">Standard output log (livello N) </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00050">logger.h:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -456,13 +477,13 @@ Funzioni</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00036">36</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a> = 1,  </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a> = 2,  </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a> = 4,  </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a> = 8,  </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a> = 16, </div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a> = 32  </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a></div><div class="ttdoc">Components, per log relativo a componenti. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00041">logger.h:41</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a></div><div class="ttdoc">States, per log relativo a data states. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00042">logger.h:42</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a></div><div class="ttdoc">Base, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00037">logger.h:37</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00038">logger.h:38</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00039">logger.h:39</a></div></div>
+<p class="definition">Definizione alla linea <a class="el" href="logger_8h_source.html#l00039">39</a> del file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;         {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a> = 1,  </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a> = 2,  </div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a> = 4,  </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a> = 8,  </div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a> = 16, </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a> = 32  </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a></div><div class="ttdoc">Components, per log relativo a componenti. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00044">logger.h:44</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a></div><div class="ttdoc">States, per log relativo a data states. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00045">logger.h:45</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a></div><div class="ttdoc">Base, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00043">logger.h:43</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00041">logger.h:41</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00042">logger.h:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -505,15 +526,25 @@ Funzioni</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Metodo interno per la stampa dei log. </p>
+<p>Metodo per stampare un messaggio di log. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lev</td><td>Fare riferimento a <a class="el" href="logger_8h.html#a8c6c14fc8a08e0ce3f3a8dc882510012" title="Tags per identificare il livello di log. ">LEV</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tag</td><td>Fare riferimento a <a class="el" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35" title="Tags per identificare il tipo di azione di log. ">TAG</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attr</td><td>Riferimento al messaggio di log (componente/metodo) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">log_msg</td><td>Messaggio di log</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Metodo per stampare un messaggio di log. </p>
 
 <p class="definition">Definizione alla linea <a class="el" href="logger_8cc_source.html#l00017">17</a> del file <a class="el" href="logger_8cc_source.html">logger.cc</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                                                {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">string</span> composed_message = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), <span class="charliteral">&#39;\n&#39;</span>), log_msg.end());</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">switch</span>(tag) {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">TAG::INF</a>:</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            composed_message = <span class="stringliteral">&quot;[ INF&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">TAG::CSL</a>:</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            composed_message = <span class="stringliteral">&quot;[ CSL&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">TAG::WSS</a>:</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            composed_message = <span class="stringliteral">&quot;[ WSS&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">TAG::OBJ</a>:</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            composed_message = <span class="stringliteral">&quot;[ OBJ&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">TAG::CMP</a>:</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            composed_message = <span class="stringliteral">&quot;[ CMP&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">TAG::STA</a>:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            composed_message = <span class="stringliteral">&quot;[ STA&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@ &quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">default</span>:</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Single atomic operation</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    cout&lt;&lt;composed_message;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a></div><div class="ttdoc">Components, per log relativo a componenti. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00041">logger.h:41</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a></div><div class="ttdoc">States, per log relativo a data states. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00042">logger.h:42</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a></div><div class="ttdoc">Base, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00037">logger.h:37</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00038">logger.h:38</a></div></div>
-<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00039">logger.h:39</a></div></div>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                                                                {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">string</span> composed_message = <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        log_msg.erase(std::remove(log_msg.begin(), log_msg.end(), <span class="charliteral">&#39;\n&#39;</span>), log_msg.end());</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">switch</span>(tag) {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">TAG::INF</a>:</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            composed_message = <span class="stringliteral">&quot;[ INF&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">TAG::CSL</a>:</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            composed_message = <span class="stringliteral">&quot;[ CSL&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">TAG::WSS</a>:</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            composed_message = <span class="stringliteral">&quot;[ WSS&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">TAG::OBJ</a>:</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            composed_message = <span class="stringliteral">&quot;[ OBJ&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">TAG::CMP</a>:</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            composed_message = <span class="stringliteral">&quot;[ CMP&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@&quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">TAG::STA</a>:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            composed_message = <span class="stringliteral">&quot;[ STA&quot;</span> + to_string(lev) + <span class="stringliteral">&quot;@ &quot;</span> + attr + <span class="stringliteral">&quot; ]: &quot;</span> + log_msg + <span class="stringliteral">&quot;\n&quot;</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">default</span>:</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Single atomic operation</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    cout&lt;&lt;composed_message;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a7fd9a97abde63f8c83a4756769aa899e">CMP</a></div><div class="ttdoc">Components, per log relativo a componenti. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00044">logger.h:44</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a92ede1fbba1593b5ea4cd7da5f1253de">STA</a></div><div class="ttdoc">States, per log relativo a data states. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00045">logger.h:45</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a2e6059d72d8fde88f3127eb147e4eff8">INF</a></div><div class="ttdoc">Base, log per tracciare informazioni. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35a3423cfdbb12fd9e0df94b2a7ae4dcea0">OBJ</a></div><div class="ttdoc">Object, per log relativo a data models. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00043">logger.h:43</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35aa4b262ded2e8d73a8ff469f87a6b5e00">CSL</a></div><div class="ttdoc">Console, log relativo alla webview. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00041">logger.h:41</a></div></div>
+<div class="ttc" id="logger_8h_html_a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226"><div class="ttname"><a href="logger_8h.html#a781b03b8eb5f35cf89f3c931ffa26e35acc37183dbd9d52ebddf09b4b8e2a7226">WSS</a></div><div class="ttdoc">Websockets, log relativo ai websocket. </div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00042">logger.h:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

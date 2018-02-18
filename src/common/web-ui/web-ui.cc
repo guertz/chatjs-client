@@ -40,14 +40,14 @@ namespace WebUI {
     static Methods callbacks;
 
     void Register(std::string cb_name, void (*cb_fn)(const std::string&)) {
-        log_C(TAG::CSL, "WebUI::Register", cb_name);
+        log_details(TAG::CSL, "WebUI::Register", cb_name);
 
         callbacks[cb_name] = cb_fn;
     }
 
     Webview* Create() {
 
-        log_B(TAG::CSL, "WebUI::Create", "");
+        log_base(TAG::CSL, "WebUI::Create", "");
 
         const string prefix = "data:text/html," + _src_assets_index_html;
 
@@ -66,15 +66,15 @@ namespace WebUI {
             webview.debug = true;
         #endif
 
-        // TODO: check success or exception (assert)
-        webview_init(&webview);
+        int r = webview_init(&webview);
+        assert(r == 0);
 
         return &webview;
     }
 
     void Inject() {
         
-        log_B(TAG::CSL, "WebUI::Inject", "[r] running");
+        log_base(TAG::CSL, "WebUI::Inject", "[r] running");
 
         const string style_w3   = "stylify(false, '" +
                                     _src_assets_w3_css +
@@ -96,27 +96,33 @@ namespace WebUI {
         const string appready = "appready()";
 
         // Fixing gdk_threads queue
-        log_C(TAG::CSL, "WebUI::Inject", "appinit.js");
-        Dispatch(&webview, _src_assets_appinit_js.c_str());
+        log_details(TAG::CSL, "WebUI::Inject", "appinit.js");
+        Eval(&webview, _src_assets_appinit_js.c_str());
 
-        log_C(TAG::CSL, "WebUI::Inject", "w3.css");
-        Dispatch(&webview, style_w3.c_str());
+        log_details(TAG::CSL, "WebUI::Inject", "w3.css");
+        Eval(&webview, style_w3.c_str());
 
-        log_C(TAG::CSL, "WebUI::Inject", "style.css");
-        Dispatch(&webview, style.c_str());
+        log_details(TAG::CSL, "WebUI::Inject", "style.css");
+        Eval(&webview, style.c_str());
 
-        log_C(TAG::CSL, "WebUI::Inject", "appready.js");
+        log_details(TAG::CSL, "WebUI::Inject", "appready.js");
         Execute(appready);
 
-        log_B(TAG::CSL, "WebUI", "[c] completed");
+        log_base(TAG::CSL, "WebUI", "[c] completed");
 
     }
 
-    inline void DispatchThread(Webview* w, void* voidPtrChar) {
-        Dispatch(w, reinterpret_cast<const char*>(voidPtrChar));
+    inline void EvalWrapper(Webview* w, void* void_script) {
+
+        const char* parsed = reinterpret_cast<const char*>(void_script);
+        
+        Eval(w, parsed);
+
+        delete []parsed;
+               parsed = 0;
     }
 
-    inline void Dispatch(Webview* w, const char* parsed_script) {
+    inline void Eval(Webview* w, const char* parsed_script) {
 
         #ifdef DEBUG_MODE
         #ifndef WEBVIEW_DEBUG
@@ -137,10 +143,10 @@ namespace WebUI {
 
             string parsed_script_part(__parsed_script_part);
 
-            log_C(TAG::CSL, "WebUI::Dispatch", parsed_script_part);
+            log_details(TAG::CSL, "WebUI::Eval", parsed_script_part);
 
             assert(__parsed_script_part);
-            // TODO: check i always deleted arrays when needed
+            
             delete[] __parsed_script_part;
             __parsed_script_part = 0;
 
@@ -150,7 +156,10 @@ namespace WebUI {
         // Evaluating code inside the webview main ui thread
         webview_eval(w, parsed_script);
         
-        // TODO: pointers
+        // Here i don't need to free pointers because it either comes
+        // from a string .c_str() method or it is deleted by ExecuteWrapper
+        // and that will be fine since we are using pointers and not copying
+        // content
     }
 
     void Execute(const std::string& args) {
@@ -160,12 +169,11 @@ namespace WebUI {
 
         webview_dispatch(
             &webview,
-            DispatchThread,
+            EvalWrapper,
             content
         );
 
-        // TODO: pointers
-
+        // don't delete pointers otherwise content may not be dispatched properly
     }
 
     inline void JsHCallback(Webview *w, const char *args) {
@@ -173,7 +181,7 @@ namespace WebUI {
         /** Dati callback in formato JSON deserializzato */
         json function = json::parse(args); 
 
-        log_C(TAG::CSL, "WebUI::JsHCallback", function.at("fn").get<string>());
+        log_details(TAG::CSL, "WebUI::JsHCallback", function.at("fn").get<string>());
 
         Methods::iterator fn_itr = callbacks.find(function.at("fn").get<string>());
 
@@ -181,8 +189,7 @@ namespace WebUI {
         
         fn_itr->second(function.at("params").dump());
 
-        // duplicate string instead of reference?
-        // TODO: pointers
+        // don't delete args pointers
     }
 
 }

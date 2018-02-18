@@ -33,13 +33,13 @@ namespace ChatsSocket {
     }
 
     ChatsRequest::ChatsRequest() {
-        log_C(TAG::OBJ, "ChatsRequest@JsonItem::Create", "");
+        log_details(TAG::OBJ, "ChatsRequest@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
     }
 
     ChatsRequest::ChatsRequest(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "ChatsRequest@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "ChatsRequest@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
         this->destination = j.at("destination").get<string>();
@@ -49,7 +49,7 @@ namespace ChatsSocket {
         : ChatsRequest(json::parse(serialized)) { }
 
     ChatsRequest::~ChatsRequest() {
-        log_C(TAG::OBJ, "ChatsRequest@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "ChatsRequest@JsonItem::Destroy", "");
     }
 
     nlohmann::json ChatsRequest::to_json() const {
@@ -61,13 +61,13 @@ namespace ChatsSocket {
 
 
     ChatsResponse::ChatsResponse() {
-        log_C(TAG::OBJ, "ChatsResponse@JsonItem::Create", "");
+        log_details(TAG::OBJ, "ChatsResponse@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
     }
 
     ChatsResponse::ChatsResponse(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "ChatsResponse@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "ChatsResponse@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
         this->reference = j.at("reference").get<string>();
@@ -80,7 +80,7 @@ namespace ChatsSocket {
         : ChatsResponse(json::parse(serialized)) { }
 
     ChatsResponse::~ChatsResponse() {
-        log_C(TAG::OBJ, "ChatsResponse@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "ChatsResponse@JsonItem::Destroy", "");
     }
 
     nlohmann::json ChatsResponse::to_json() const {

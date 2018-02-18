@@ -46,9 +46,7 @@ const ChatList = function(){
                 '</ul>' +
             '</chats-wrapper>';
 
-    // Dom reference ok?
-    // 
-    // TODO: handle click + destroy
+    // Dom reference unique + destroy
     const chatHelper = { 
         ref:  window.getFirst(node, "chat-helper"),
         newChat: {

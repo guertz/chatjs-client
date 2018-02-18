@@ -10,13 +10,13 @@ using namespace std;
 using json = nlohmann::json;
 
 Message::Message() {
-    log_C(TAG::OBJ, "Message@JsonItem::Create", "");
+    log_details(TAG::OBJ, "Message@JsonItem::Create", "");
 
     this->isMe = false;
 }
 
 Message::Message(const nlohmann::json& j) {
-    log_C(TAG::OBJ, "Message@JsonItem::Create", "...json...");
+    log_details(TAG::OBJ, "Message@JsonItem::Create", "...json...");
 
     this->text = j.at("text").get<string>();
     this->isMe = j.at("isMe").get<bool>();
@@ -28,7 +28,7 @@ Message::Message(const std::string& serialized)
         : Message(json::parse(serialized)) { }
 
 Message::~Message() {
-    log_C(TAG::OBJ, "Message@JsonItem::Destroy", "");
+    log_details(TAG::OBJ, "Message@JsonItem::Destroy", "");
 }
 
 nlohmann::json Message::to_json() const {

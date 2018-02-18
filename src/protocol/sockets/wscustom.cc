@@ -21,7 +21,10 @@ using namespace std;
 /** Tempo espresso in ms di polling per socket dormiente */
 #define SOCKET_INACTIVE_POLL 1000
 
+/** Definizione url websocket per server remoto */
 #define SERVERHOST "137.74.196.151:8000"
+
+/** Definizione url websocket per server locale */
 #define LOCALHOST  "localhost:8000"
 
 // Improve
@@ -37,7 +40,7 @@ namespace ws {
         this->stopping = false;
         this->running = true;
 
-        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running");
+        log_details(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running");
 
         // creazione di un canale websocket (vedi libreria easywsclient)
         // viene effettuata nel thread così il thread UI non ne risente
@@ -66,10 +69,10 @@ namespace ws {
                     // Invia messagio e setta flag inviato sul buffer
                     this->channel->send(this->buffer.content);
                     this->buffer.is_send = true;
-                    log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running send");
+                    log_pedantic(TAG::WSS, this->endpoint + "::ThreadMain", "[r] running send");
                 } else {
                     if(this->buffer.is_send)
-                        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[c] complete send");
+                        log_pedantic(TAG::WSS, this->endpoint + "::ThreadMain", "[c] complete send");
 
                     // Pulizia del buffer, invio & poll completato almeno una volta
                     this->reset();
@@ -79,7 +82,7 @@ namespace ws {
                 // Dispatch ricezione risposta. Utilizzo lamba function condividento il contesto
                 this->channel->dispatch([this](const string& str_response) {
                     BaseResponse response(str_response);
-                    log_A(TAG::WSS, this->endpoint + "::ThreadMain::Dispatch", "Status: " + to_string(response.status));
+                    log_pedantic(TAG::WSS, this->endpoint + "::ThreadMain::Dispatch", "Status: " + to_string(response.status));
 
                     if(response.ok)
                         this->onmessage(response.content);
@@ -88,7 +91,7 @@ namespace ws {
                 });
 
             } else {
-                log_A(TAG::WSS, this->endpoint + "::ThreadMain", "KeepAlive");
+                log_pedantic(TAG::WSS, this->endpoint + "::ThreadMain", "KeepAlive");
             }
 
             // Effettua poll a livello più lento e ignora operazioni read/write
@@ -108,7 +111,7 @@ namespace ws {
         this->stopping = false;
         this->running = false;
 
-        log_A(TAG::WSS, this->endpoint + "::ThreadMain", "[r] complete");
+        log_details(TAG::WSS, this->endpoint + "::ThreadMain", "[r] complete");
 
         if(this->onclose) 
             this->onclose(this->key);
@@ -118,12 +121,12 @@ namespace ws {
     }
 
     void Socket::pause() {
-        log_A(TAG::WSS, this->endpoint + "::Pause", "");
+        log_details(TAG::WSS, this->endpoint + "::Pause", "");
         this->is_computing = false;
     }
 
     void Socket::resume() {
-        log_A(TAG::WSS, this->endpoint + "::Resume", "");
+        log_details(TAG::WSS, this->endpoint + "::Resume", "");
         this->is_computing = true;
     }
 
@@ -136,7 +139,7 @@ namespace ws {
         this->reset();
         this->buffer.content = request.serialize();
 
-        log_A(TAG::WSS, this->endpoint + "::Buffer", this->buffer.content);
+        log_pedantic(TAG::WSS, this->endpoint + "::Buffer", this->buffer.content);
     }
 
     // handle blocking deletion or subscriber/unsubscriber wrapper mutex
@@ -161,7 +164,7 @@ namespace ws {
     void Socket::syncDelete() {
 
         this->asyncDelete(UUID::generate(), [](const string k){
-            log_A(TAG::INF, "Destroy handler", k);
+            log_details(TAG::INF, "Destroy handler", k);
         });
 
         if(this->running) {
@@ -176,7 +179,7 @@ namespace ws {
     Socket::~Socket(){
 
         assert(!this->running);
-        log_A(TAG::WSS, this->endpoint + "::Destroy", "");
+        log_base(TAG::WSS, this->endpoint + "::Destroy", "");
 
     }
 
@@ -186,7 +189,7 @@ namespace ws {
 
         this->endpoint = node;
 
-        log_A(TAG::WSS, this->endpoint + "::Create", "");
+        log_base(TAG::WSS, this->endpoint + "::Create", "");
 
         this->onmessage = onmessage;
         this->onerror = onerror;

@@ -34,6 +34,7 @@ endif
 
 # Specifying compiler
 CXX=g++
+
 # List of compiler flags for all the specified parts of the app
 # 	Here using -isystem to prevent showing included dependencies Warnings
 CXXFLAGS= $(BUILD_FLAGS) -std=c++11 -I$(DIR_SRC) -isystem./dependencies/webview -isystem./dependencies/json $(WEBVIEW_CFLAGS)
@@ -64,11 +65,6 @@ endif
 .PHONY: build clean-env init directories depend check-env refresh-app
 
 # Example: run commands as following
-# *this is more safe then running default target make
-#  TODO: i can still reduce the steps (kind of unify them)
-#  		 default mean release or debug
-#  TODO: always check on the ofile app/assets list definition
-#		 on top
 #
 #	Debug: || ENV=debug
 # 		make depend
@@ -79,9 +75,6 @@ endif
 #		make ENV=release
 #
 # --------------------
-
-# FIRST TARGET: ORDER MATTER
-# What if up to date?
 #
 # Build the application based on the target definition.
 # *It will first check the environment
@@ -134,14 +127,11 @@ depend: directories init
 # *Prevents mixed build status
 #
 # Condition: run after depend
-#  (otherwise no directory and env data)
-# TODO: also check depend?
 check-env:
 	test -e $(DIR_BUILD_SPACE)/$(ENV) || exit 1;
 
 # Build the application based on the target definition.
 # *It will clean and recompile all APP objects
-# *Also use when changing env.h
 # 
 # Parent phony targets:
 #	clean

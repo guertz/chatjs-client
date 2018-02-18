@@ -6,5 +6,7 @@ var searchData=
   ['eraselink',['EraseLink',['../namespace_navbar_1_1_profile.html#a19bfb47626e101b73c6adb80b9136ace',1,'Navbar::Profile']]],
   ['erasemodal',['EraseModal',['../namespace_modals_1_1_auth_modal.html#abb269aa45723854314816cc82051a400',1,'Modals::AuthModal::EraseModal()'],['../namespace_modals_1_1_chat_modal.html#ae163b678a9a3178e012e3e6029fd23ce',1,'Modals::ChatModal::EraseModal()']]],
   ['error',['error',['../class_auth_socket_1_1_auth_response.html#a8815efc958ca99cea468abee7a5e100c',1,'AuthSocket::AuthResponse::error()'],['../class_chats_socket_1_1_chats_response.html#a83536484d3ba4bb4b7dc5cb1037f2b3f',1,'ChatsSocket::ChatsResponse::error()'],['../classws_1_1_base_response.html#a68f51c82ee12dce20dcd06101c6a6770',1,'ws::BaseResponse::error()'],['../class_users_socket_1_1_users_response.html#a322db156fc2a85d5b0b07fca78f16952',1,'UsersSocket::UsersResponse::error()']]],
+  ['eval',['Eval',['../namespace_web_u_i.html#a3129d2a890a3e2af02efd79625b852be',1,'WebUI']]],
+  ['evalwrapper',['EvalWrapper',['../namespace_web_u_i.html#a6850709de0b3e80afaa8831bdccd667b',1,'WebUI']]],
   ['execute',['Execute',['../namespace_web_u_i.html#aa0a173b2558de17879e1e6c09f014969',1,'WebUI']]]
 ];

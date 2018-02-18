@@ -10,11 +10,11 @@ using namespace std;
 using json = nlohmann::json;
 
 Chat::Chat() {
-    log_C(TAG::OBJ, "Chat@JsonItem::Create", "");
+    log_details(TAG::OBJ, "Chat@JsonItem::Create", "");
 }
 
 Chat::Chat(const nlohmann::json& j) {
-    log_C(TAG::OBJ, "Chat@JsonItem::Create", "...json...");
+    log_details(TAG::OBJ, "Chat@JsonItem::Create", "...json...");
 
     this->reference = j.at("reference").get<string>();
     this->destination = User(j.at("destination"));
@@ -29,7 +29,7 @@ Chat::Chat(const std::string& serialized)
     : Chat(json::parse(serialized)) { }
 
 Chat::~Chat() {
-    log_C(TAG::OBJ, "Chat@JsonItem::Destroy", "");
+    log_details(TAG::OBJ, "Chat@JsonItem::Destroy", "");
     this->messages.clear();
 }
 

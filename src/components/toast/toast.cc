@@ -20,7 +20,7 @@ namespace Toast {
 
     namespace Events {
         void Show(const std::string& args){
-            log_C(TAG::CMP, "Toast::Show", args);
+            log_details(TAG::CMP, "Toast::Show", args);
 
             const string js_toast = "window.makeAToast('" +
                                         args +
@@ -32,7 +32,7 @@ namespace Toast {
 
 
     void Bootstrap(){
-        log_B(TAG::CMP, "Toast::Bootstrap", "");
+        log_base(TAG::CMP, "Toast::Bootstrap", "");
 
         WebUI::Execute(_src_components_toast_toast_js);
     }

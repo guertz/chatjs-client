@@ -39,7 +39,6 @@ const ChatModalFactory = function() {
         }
     }
     
-    // TODO: namespace issue?
     this.populateChat = function(data) {
         var currentIndex = 0;
 

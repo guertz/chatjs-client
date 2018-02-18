@@ -39,13 +39,13 @@ namespace States {
         static Subscribers subscribed;
 
         void Register(std::string cb_name, void (*cb_fn)()) {
-            log_C(TAG::STA, "States::UsersState::Register", cb_name);
+            log_details(TAG::STA, "States::UsersState::Register", cb_name);
 
             subscribed[cb_name] = cb_fn;
         }
 
         void Bootstrap() {
-            log_B(TAG::STA, "States::UsersState::Bootstrap", "");
+            log_base(TAG::STA, "States::UsersState::Bootstrap", "");
 
             AuthState::Register("UsersState", State::Auth);
 
@@ -56,7 +56,7 @@ namespace States {
         }
 
         void Destroy() {
-            log_B(TAG::STA, "States::UsersState::Destroy", "");
+            log_base(TAG::STA, "States::UsersState::Destroy", "");
 
             assert(usersSocket);
 
@@ -72,10 +72,10 @@ namespace States {
         
         inline void Notify(){
 
-            log_B(TAG::STA, "States::UsersState::Notify", "State changes");
+            log_base(TAG::STA, "States::UsersState::Notify", "State changes");
 
             for (const auto& subscription : subscribed) {
-                log_C(TAG::STA, "States::UsersState::Notify", subscription.first);
+                log_details(TAG::STA, "States::UsersState::Notify", subscription.first);
                 (*subscription.second)(); 
             }
             
@@ -83,7 +83,7 @@ namespace States {
 
         namespace UsersSocketMethods {
             inline void InitChannelSession(const std::string& AUTH) {
-                log_B(TAG::STA, "States::UsersState::InitChannelSession", AUTH);
+                log_base(TAG::STA, "States::UsersState::InitChannelSession", AUTH);
 
                 assert(!pending);
                 pending = true;
@@ -101,7 +101,7 @@ namespace States {
             }
 
             inline void CloseChannelSession() {
-                log_B(TAG::STA, "States::UsersState::Close", "");
+                log_base(TAG::STA, "States::UsersState::Close", "");
 
                 assert(pending);
                 pending = false;
@@ -118,7 +118,7 @@ namespace States {
             }
 
             inline void ResponseSuccess(const std::string str_response) {
-                log_C(TAG::STA, "States::UsersState::Response", str_response);
+                log_details(TAG::STA, "States::UsersState::ResponseSuccess", str_response);
 
                 usersResponse = UsersSocket::UsersResponse(str_response);
 
@@ -126,7 +126,7 @@ namespace States {
             }
 
             inline void ResponseError(const std::string str_error) {
-                
+                log_details(TAG::STA, "States::UsersState::ResponseError", str_error);
                 usersResponse = UsersSocket::UsersResponse();
 
                 Notify();

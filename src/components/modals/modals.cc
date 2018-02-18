@@ -24,7 +24,7 @@ namespace Modals {
     namespace Events {
 
         void ShowModalByRef(const std::string& args) {
-            log_B(TAG::CMP, "Modals::Show", args);
+            log_base(TAG::CMP, "Modals::Show", args);
 
             const string js_hide_modal = "window.showModal('" +
                                             args +
@@ -34,7 +34,7 @@ namespace Modals {
         }
 
         void HideModalByRef(const std::string& args) {
-            log_B(TAG::CMP, "Modals::Hide", args);
+            log_base(TAG::CMP, "Modals::Hide", args);
 
             const string js_show_modal = "window.hideModal('" +
                                             args +
@@ -46,7 +46,7 @@ namespace Modals {
     }
 
     void Bootstrap() {
-        log_B(TAG::CMP, "Modals::Bootstrap", "");
+        log_base(TAG::CMP, "Modals::Bootstrap", "");
 
         WebUI::Execute(_src_components_modal_modal_js);
 
@@ -56,7 +56,7 @@ namespace Modals {
     }
 
     void Destroy() {
-        log_B(TAG::CMP, "Modals::Destroy", "");
+        log_base(TAG::CMP, "Modals::Destroy", "");
 
         AuthModal::EraseModal();
         ChatModal::EraseModal();

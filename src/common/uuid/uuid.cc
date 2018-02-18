@@ -31,7 +31,7 @@ namespace UUID {
 
         while(tk_itr !=  tokens.end()) {
             
-            log_A(TAG::INF, "UUID::generate", ((unique.size() > 0) ? 
+            log_base(TAG::INF, "UUID::generate", ((unique.size() > 0) ? 
                                                 (unique + " (duplicate found)") 
                                                     : 
                                                 "" 

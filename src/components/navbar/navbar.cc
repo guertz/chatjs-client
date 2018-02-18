@@ -23,7 +23,7 @@ using namespace States;
 namespace Navbar {
 
     void Bootstrap() {
-        log_B(TAG::CMP, "Navbar::Bootstrap", "");
+        log_base(TAG::CMP, "Navbar::Bootstrap", "");
 
         WebUI::Execute(_src_components_navbar_navbar_js);
 
@@ -33,7 +33,7 @@ namespace Navbar {
     }
 
     void Destroy() {
-        log_B(TAG::CMP, "Navbar::Destroy", "");
+        log_base(TAG::CMP, "Navbar::Destroy", "");
 
         Profile::EraseLink();
     }

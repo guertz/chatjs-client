@@ -33,7 +33,7 @@ namespace Modals {
 
         namespace Events { 
             inline void NewChatOpen(const std::string& args){
-                log_C(TAG::CMP, "Modals::ChatModal::NewChatOpen", args);
+                log_details(TAG::CMP, "Modals::ChatModal::NewChatOpen", args);
 
                 json function = json::parse(args);
                 ChatsState::StartAChat(function.at("user").get<string>());
@@ -50,7 +50,7 @@ namespace Modals {
         }
 
         void RegisterModal(){
-            log_B(TAG::CMP, "Modals::ChatModal::RegisterModal", "");
+            log_base(TAG::CMP, "Modals::ChatModal::RegisterModal", "");
 
             WebUI::Execute(_src_components_modal_chat_modal_chat_modal_js);
 
@@ -59,7 +59,7 @@ namespace Modals {
         }
 
         void EraseModal () {
-            log_B(TAG::CMP, "Modals::ChatModal::EraseModal", "");
+            log_base(TAG::CMP, "Modals::ChatModal::EraseModal", "");
 
             WebUI::Execute(CHAT_DESTROY);
         }

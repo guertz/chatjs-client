@@ -32,7 +32,6 @@ namespace AuthSocket {
         public:
             SIGNAL  type; /**< Identificativo azione da eseguire sul server. */
             std::string user; /**< Chiave identificativa utente per effettuare login (User ID) */
-                //  TODO: change to _id (since it is auth_key)
 
             /**
             * Costruttore di default. Inizializza la classe con

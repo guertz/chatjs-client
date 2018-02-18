@@ -33,13 +33,13 @@ namespace UsersSocket {
     }
 
     UsersRequest::UsersRequest() {
-        log_C(TAG::OBJ, "UsersRequest@JsonItem::Create", "");
+        log_details(TAG::OBJ, "UsersRequest@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
     }
 
     UsersRequest::UsersRequest(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "UsersRequest@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "UsersRequest@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
     }
@@ -48,7 +48,7 @@ namespace UsersSocket {
         : UsersRequest(json::parse(serialized)) { }
 
     UsersRequest::~UsersRequest() {
-        log_C(TAG::OBJ, "UsersRequest@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "UsersRequest@JsonItem::Destroy", "");
     }
 
     json UsersRequest::to_json() const {
@@ -59,14 +59,14 @@ namespace UsersSocket {
 
 
     UsersResponse::UsersResponse() {
-        log_C(TAG::OBJ, "UsersResponse@JsonItem::Create", "");
+        log_details(TAG::OBJ, "UsersResponse@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
         this->usersList = "[]";
     }
 
     UsersResponse::UsersResponse(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "UsersResponse@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "UsersResponse@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
         this->usersList = j.at("usersList").dump();
@@ -76,7 +76,7 @@ namespace UsersSocket {
         : UsersResponse(json::parse(serialized)) { }
 
     UsersResponse::~UsersResponse() {
-        log_C(TAG::OBJ, "UsersResponse@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "UsersResponse@JsonItem::Destroy", "");
     }
 
     json UsersResponse::to_json() const {

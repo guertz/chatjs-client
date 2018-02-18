@@ -34,14 +34,14 @@ namespace Modals {
         namespace Events {
 
             inline void Submit(const std::string& args){
-                log_C(TAG::CMP, "Modals::AuthModal::Submit", args);
+                log_details(TAG::CMP, "Modals::AuthModal::Submit", args);
 
                 json fn_params = json::parse(args);
                 AuthState::Login(fn_params.at("_id").get<string>());
             }
 
             inline void Reset(){
-                log_C(TAG::CMP, "Modals::AuthModal::Reset", "");
+                log_details(TAG::CMP, "Modals::AuthModal::Reset", "");
 
                 WebUI::Execute(AUTH_RESET);
             }
@@ -57,7 +57,7 @@ namespace Modals {
         }
 
         void RegisterModal(){
-            log_B(TAG::CMP, "Modals::AuthModal::RegisterModal", "");
+            log_base(TAG::CMP, "Modals::AuthModal::RegisterModal", "");
 
             WebUI::Execute(_src_components_modal_auth_modal_auth_modal_js);
             
@@ -68,7 +68,7 @@ namespace Modals {
         }
 
         void EraseModal () {
-            log_B(TAG::CMP, "Modals::AuthModal::EraseModal", "");
+            log_base(TAG::CMP, "Modals::AuthModal::EraseModal", "");
 
             WebUI::Execute(AUTH_DESTROY);
         }
@@ -76,7 +76,7 @@ namespace Modals {
         namespace State {
                 
             inline void Auth(){
-                log_C(TAG::CMP, "Modals::AuthModal::State::Auth", "!! Detect changes ");
+                log_details(TAG::CMP, "Modals::AuthModal::State::Auth", "!! Detect changes ");
                 
                 Events::Reset();
 

@@ -38,13 +38,13 @@ namespace States {
         static Subscribers subscribed;
 
         void Register(std::string cb_name, void (*cb_fn)()) {
-            log_C(TAG::STA, "States::AuthState::Register", cb_name);
+            log_details(TAG::STA, "States::AuthState::Register", cb_name);
 
             subscribed[cb_name] = cb_fn;
         }
 
         void Bootstrap() {
-            log_B(TAG::STA, "States::AuthState::Bootstrap", "");
+            log_base(TAG::STA, "States::AuthState::Bootstrap", "");
 
             authSocket = new Socket("auth", 
                                 AuthSocketMethods::ResponseSuccess, 
@@ -53,7 +53,7 @@ namespace States {
         }
 
         void Destroy() {
-            log_B(TAG::STA, "States::AuthState::Destroy", "");
+            log_base(TAG::STA, "States::AuthState::Destroy", "");
 
             assert(authSocket);
             
@@ -63,7 +63,7 @@ namespace States {
         }
 
         void Login(const std::string& AUTH_KEY){
-            log_C(TAG::STA, "States::AuthState::Login", AUTH_KEY);
+            log_details(TAG::STA, "States::AuthState::Login", AUTH_KEY);
 
             // verifica condizioni base elementari per poter
             // effettuare una richiesta di questo tipo
@@ -87,7 +87,7 @@ namespace States {
 
         // Fare riferimento a Login per la descrizione dei vari step
         void Logout(){
-            log_C(TAG::STA, "States::AuthState::Logout", "");
+            log_details(TAG::STA, "States::AuthState::Logout", "");
 
             assert(!pending && authResponse.online);
             pending = true;
@@ -119,10 +119,10 @@ namespace States {
         }
 
         inline void Notify(){
-            log_B(TAG::STA, "States::AuthState::Notify", "State changes");
+            log_base(TAG::STA, "States::AuthState::Notify", "State changes");
 
             for (const auto& subscription : subscribed) {
-                log_C(TAG::STA, "States::AuthState::Notify", subscription.first);
+                log_details(TAG::STA, "States::AuthState::Notify", subscription.first);
                 (*subscription.second)(); 
             }
         }
@@ -130,7 +130,7 @@ namespace States {
         namespace AuthSocketMethods {
 
             inline void ResponseSuccess(const std::string str_response) {
-                log_C(TAG::STA, "States::AuthState::Response", str_response);
+                log_details(TAG::STA, "States::AuthState::ResponseSuccess", str_response);
 
                 // namespace inheritance
                 authResponse = AuthSocket::AuthResponse(str_response);
@@ -140,7 +140,7 @@ namespace States {
             }
 
             inline void ResponseError(const std::string str_error) {
-                log_C(TAG::STA, "States::AuthState::Response", str_error);
+                log_details(TAG::STA, "States::AuthState::ResponseError", str_error);
 
                 // namespace inheritance
                 AuthSocket::AuthResponse response_errors;

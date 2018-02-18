@@ -52,30 +52,36 @@ namespace WebUI {
      */
     void Inject();
 
-    // TODO: Better method names + funzionalità di logging
     /**
      * Metodo helper interno per eseguire sulla webview le istruzioni JavaScript
-     * passate come parametro. Si limita semplicamente a leggere il contenuto 
-     * dal puntatore ad arrey di caratteri e ad eseguirlo tramite la funzione
-     * di libreria webview_eval. 
+     * passate come parametro. Oltre ad eseguire lo script js da eseguire sulla 
+     * webview passato come parametro sotto forma di array di caratteri tramite
+     * la suddetta funzione webview_eval, si comporta da sistema di logging
+     * appoggiandosi ai metodi di log già esistenti.
      *
      * @param[in] w Puntatore all'oggetto istanza Webview
      * @param[in] parsed_script Puntatore ad array di caratteri (codice js da eseguire)
      *
      */
-    inline void Dispatch(Webview *w, const char *parsed_script );
+    inline void Eval(Webview *w, const char *parsed_script );
 
-    // TODO: Explain
-    // Metodi di interfaccia per il metodo ::Execute
-    // legge l'array con reinterpret_cast e invoca il
-    // precedentemente definito metodo ::Dispatch
-    inline void DispatchThread(Webview *w, void *voidPtrChar );
+    /**
+     * Metodo wrapper interno per eseguire sulla webview le istruzioni JavaScript
+     * passate come parametro. Funziona da livello intermedio per tra il metodo Execute
+     * e il metodo Eval e viene utilizzato nel metodo Execute come funzione di dispatch
+     * a seguito dell'esecuzione di webview_dispatch.
+     *
+     * @param[in] w Puntatore all'oggetto istanza Webview
+     * @param[in] void_script Puntatore ad array di caratteri (void, codice js da eseguire)
+     *
+     */
+    inline void EvalWrapper(Webview *w, void *void_script );
     
     
     /**
      * Metodo per inviare in modo arbitrario dati da eseguire sul thread UI principale.
      * A livello di API è un wrapper per la funzione di libreria webview_dispatch e
-     * si appoggia al metodo ::Dispatch incaricato di eseguire il codice passato
+     * si appoggia al metodo ::EvalWrapper incaricato di eseguire il codice passato
      * come parametro
      *
      * @param[in] args Contenuto javascript da eseguire

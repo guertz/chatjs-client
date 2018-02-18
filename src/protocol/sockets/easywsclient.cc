@@ -93,7 +93,7 @@ socket_t hostname_connect(const std::string& hostname, int port) {
     if ((ret = getaddrinfo(hostname.c_str(), sport, &hints, &result)) != 0)
     {
       // stderr
-      log_A(TAG::WSS, "(easywsclient)", "getaddrinfo: " + std::string(gai_strerror(ret)));
+      log_pedantic(TAG::WSS, "(easywsclient)", "getaddrinfo: " + std::string(gai_strerror(ret)));
       return 1;
     }
     for(p = result; p != NULL; p = p->ai_next)
@@ -215,7 +215,7 @@ class _RealWebSocket : public easywsclient::WebSocket
                 closesocket(sockfd);
                 readyState = CLOSED;
                 // stderr
-                log_A(TAG::WSS, "(easywsclient)", ret < 0 ? "Connection error!" : "Connection closed!");
+                log_pedantic(TAG::WSS, "(easywsclient)", ret < 0 ? "Connection error!" : "Connection closed!");
                 break;
             }
             else {
@@ -232,7 +232,7 @@ class _RealWebSocket : public easywsclient::WebSocket
                 closesocket(sockfd);
                 readyState = CLOSED;
                 //stderr
-                log_A(TAG::WSS, "(easywsclient)", ret < 0 ? "Connection error!" : "Connection closed!");
+                log_pedantic(TAG::WSS, "(easywsclient)", ret < 0 ? "Connection error!" : "Connection closed!");
                 break;
             }
             else {
@@ -338,7 +338,7 @@ class _RealWebSocket : public easywsclient::WebSocket
             else if (ws.opcode == wsheader_type::CLOSE) { close(); }
             else { 
                 //stderr
-                log_A(TAG::WSS, "(wasywsclient)", "ERROR: Got unexpected WebSocket message.");
+                log_pedantic(TAG::WSS, "(wasywsclient)", "ERROR: Got unexpected WebSocket message.");
                 close(); 
             }
 
@@ -438,13 +438,13 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
     char path[128];
     if (url.size() >= 128) {
       // stderr
-      log_A(TAG::WSS, "(easywsclient)", "ERROR: url size limit exceeded: " + url);
+      log_pedantic(TAG::WSS, "(easywsclient)", "ERROR: url size limit exceeded: " + url);
       // fprintf(stderr, "ERROR: url size limit exceeded: %s\n", url.c_str());
       return NULL;
     }
     if (origin.size() >= 200) {
       // stderr
-      log_A(TAG::WSS, "(easywsclient)", "ERROR: origin size limit exceeded: " + origin);
+      log_pedantic(TAG::WSS, "(easywsclient)", "ERROR: origin size limit exceeded: " + origin);
       // fprintf(stderr, "ERROR: origin size limit exceeded: %s\n", origin.c_str());
       return NULL;
     }
@@ -463,18 +463,18 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
     }
     else {
         // stderr
-        log_A(TAG::WSS, "(easywsclient)", "ERROR: url size limit exceeded: " + url);
+        log_pedantic(TAG::WSS, "(easywsclient)", "ERROR: url size limit exceeded: " + url);
         // fprintf(stderr, "ERROR: Could not parse WebSocket url: %s\n", url.c_str());
         return NULL;
     }
 
     // stdout
-    log_A(TAG::WSS, "(easywsclient)", "connecting: host="+std::string(host)+" port="+std::to_string(port)+" path="+std::string(path));
+    log_pedantic(TAG::WSS, "(easywsclient)", "connecting: host="+std::string(host)+" port="+std::to_string(port)+" path="+std::string(path));
     // fprintf(stderr, "easywsclient: connecting: host=%s port=%d path=/%s\n", host, port, path);
     socket_t sockfd = hostname_connect(host, port);
     if (sockfd == INVALID_SOCKET) {
         // stderr
-        log_A(TAG::WSS, "(easywsclient)", "Unable to connect to "+std::string(host)+":"+std::to_string(port));
+        log_pedantic(TAG::WSS, "(easywsclient)", "Unable to connect to "+std::string(host)+":"+std::to_string(port));
         // fprintf(stderr, "Unable to connect to %s:%d\n", host, port);
         return NULL;
     }
@@ -502,13 +502,13 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
         line[i] = 0;
         if (i == 255) { 
             // stderr
-            log_A(TAG::WSS, "(easywsclient)", "ERROR: Got invalid status line connecting to: " + url);
+            log_pedantic(TAG::WSS, "(easywsclient)", "ERROR: Got invalid status line connecting to: " + url);
             // fprintf(stderr, "ERROR: Got invalid status line connecting to: %s\n", url.c_str()); 
             return NULL; 
         }
         if (sscanf(line, "HTTP/1.1 %d", &status) != 1 || status != 101) { 
             // stderr
-            log_A(TAG::WSS, "(easywsclient)", "ERROR: Got bad status connecting to " + url); // + ":" + std::string(line));
+            log_pedantic(TAG::WSS, "(easywsclient)", "ERROR: Got bad status connecting to " + url); // + ":" + std::string(line));
             // fprintf(stderr, "ERROR: Got bad status connecting to %s: %s", url.c_str(), line); 
             return NULL; 
         }
@@ -527,7 +527,7 @@ easywsclient::WebSocket::pointer from_url(const std::string& url, bool useMask, 
     fcntl(sockfd, F_SETFL, O_NONBLOCK);
 #endif
     // stdout
-    log_A(TAG::WSS, "(easywsclient)", "Connected to: "+url);
+    log_pedantic(TAG::WSS, "(easywsclient)", "Connected to: "+url);
     // fprintf(stderr, "Connected to: %s\n", url.c_str());
     return easywsclient::WebSocket::pointer(new _RealWebSocket(sockfd, useMask));
 }

@@ -31,7 +31,7 @@ namespace App {
 
         inline void Ready(const std::string& args) {
 
-            log_B(TAG::CMP, "App::Ready", args);
+            log_base(TAG::CMP, "App::Ready", args);
            
             AuthState::Bootstrap();
             ChatsState::Bootstrap();
@@ -50,7 +50,7 @@ namespace App {
 
 
     void Bootstrap() {
-        log_B(TAG::CMP, "App::Bootstrap", "");
+        log_base(TAG::CMP, "App::Bootstrap", "");
 
         WebUI::Register("App::Ready", Events::Ready);
         WebUI::Execute(_src_app_app_js);
@@ -58,7 +58,7 @@ namespace App {
     }
 
     void Destroy() {
-        log_B(TAG::CMP, "App::Destroy", "");
+        log_base(TAG::CMP, "App::Destroy", "");
 
         Navbar::Destroy();
         Modals::Destroy();

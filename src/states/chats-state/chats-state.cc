@@ -49,13 +49,13 @@ namespace States {
         static Subscribers subscribed;
 
         void Register(std::string cb_name, void (*cb_fn)()) {
-            log_C(TAG::STA, "States::ChatsState::Register", cb_name);
+            log_details(TAG::STA, "States::ChatsState::Register", cb_name);
 
             subscribed[cb_name] = cb_fn;
         }
 
         void Bootstrap(){
-            log_B(TAG::STA, "States::ChatsState::Bootstrap", "");
+            log_base(TAG::STA, "States::ChatsState::Bootstrap", "");
 
             chatsSocket = new Socket("chats-stream", 
                             ChatsSocketMethods::ResponseSuccess, 
@@ -65,7 +65,7 @@ namespace States {
         }
 
         void Destroy () {
-            log_B(TAG::STA, "States::ChatsState::Destroy", "");
+            log_base(TAG::STA, "States::ChatsState::Destroy", "");
 
             ChatsSocketMethods::CloseChannelSession();
 
@@ -78,6 +78,7 @@ namespace States {
         }
 
         void StartAChat(const std::string user_dest) {
+            log_details(TAG::STA, "States::ChatsState::StartAChat", user_dest);
 
             User auth_user = AuthState::getAuthUser();
             assert(auth_user.is_valid());
@@ -94,10 +95,13 @@ namespace States {
         }
 
         const std::string getSerializedChats() {
+            // log_D state data
             return ChatsWrapper::chats_to_json(chatsList).dump();
         }
 
         void setCurrentChat(const std::string chat_ref) {
+            log_details(TAG::STA, "States::ChatsState::setCurrentChat", chat_ref);
+
             assert(chat_ref.size());
             currentChatRef = chat_ref;
 
@@ -113,15 +117,17 @@ namespace States {
         }
 
         const std::string getCurrentChat() {
+            log_details(TAG::STA, "States::ChatsState::getCurrentChat", currentChatRef);
+
             assert(isCurrentChat());
             return chatsList[currentChatRef].serialize();
         }
 
         inline void Notify(){
-            log_B(TAG::STA, "States::ChatsState::Notify", "State changes");
+            log_base(TAG::STA, "States::ChatsState::Notify", "State changes");
 
             for (const auto& subscription : subscribed) {
-                log_C(TAG::STA, "States::ChatsState::Notify", subscription.first);
+                log_details(TAG::STA, "States::ChatsState::Notify", subscription.first);
                 (*subscription.second)(); 
             }
         }
@@ -129,6 +135,7 @@ namespace States {
         namespace ChatsSocketMethods {
 
             inline void InitChannelSession(const std::string& AUTH) {
+                log_base(TAG::STA, "States::ChatsState::InitChannelSession", AUTH);
 
                 ChatsSocket::ChatsRequest connect_request;
                         connect_request.type = ChatsSocket::SIGNAL::CONNECT;
@@ -142,26 +149,28 @@ namespace States {
             }   
 
             inline void CloseChannelSession () {
+                log_base(TAG::STA, "States::ChatsState::Close", "");
 
                 for (SocketsMap::iterator it = socketsChatsList.begin(); it != socketsChatsList.end(); ++it) {
-                    it->second->syncDelete();
                     
-                    delete  it->second;
+                    it->second->syncDelete();
+                    delete it->second;
                     // it->second = 0;
 
                     socketsChatsList.erase(it);
-
                 }
+
+                assert(socketsChatsList.empty());
 
                 chatsList.clear();
                 currentChatRef = "";
 
                 Notify();
                 ChatMethods::NotifyCurrent();
-
             }
 
             inline void ResponseSuccess(const std::string str_response) {
+                log_details(TAG::STA, "States::ChatsState::ResponseSuccess", str_response);
 
                 ChatsSocket::ChatsResponse chat_response(str_response);
 
@@ -173,24 +182,26 @@ namespace States {
             }
 
             inline void ResponseError(const std::string str_error) {
-
+                log_details(TAG::STA, "States::ChatsState::ResponseError", str_error);
             }
 
         }
 
         namespace ChatMethods {
 
-            // TODO: Muovi a lista di sottoscritti per chat (ciascuna)
+            // TODO: Chat subscription socket in chat object
             /** Mappa dei componenti che hanno sottoscritto per eventi delle singole chat */
             static Subscribers chat_subscribed;
 
             void Register(std::string cb_name, void (*cb_fn)()) {
+                log_details(TAG::STA, "States::ChatsState::ChatMethods::Register", cb_name);
+
                 chat_subscribed[cb_name] = cb_fn;
             }
 
-            // TODO: move in chatSocket
             void SendAMessage(const std::string text) {
-                
+                log_details(TAG::STA, "States::ChatsState::ChatMethods::SendAMessage", "{ to: '" + getCurrentChatRef() + "', text: '" + text + "'}");
+
                 User auth_user = AuthState::getAuthUser();
                 assert(auth_user.is_valid());
 
@@ -206,10 +217,10 @@ namespace States {
             }
 
             inline void NotifyCurrent(){
-                log_B(TAG::STA, "States::ChatsState::Notify(Chat)", "Current chat state: '" + currentChatRef + "' changes");
+                log_base(TAG::STA, "States::ChatsState::ChatMethods::NotifyCurrent", "Chat state changes");
 
                 for (const auto& subscription : chat_subscribed) {
-                    log_C(TAG::STA, "States::ChatsState::Notify(Chat)", subscription.first);
+                    log_details(TAG::STA, "States::ChatsState::ChatMethods::NotifyCurrent", subscription.first);
                     (*subscription.second)(); 
                 }
             }
@@ -217,6 +228,7 @@ namespace States {
             namespace ChatSocketMethods {
 
                 inline void InitChannelSession(const Chat& chat){
+                    log_base(TAG::STA, "States::ChatsState::ChatMethods::InitChannelSession", chat.reference);
 
                     User auth_user = AuthState::getAuthUser();
                     assert(auth_user.is_valid());
@@ -237,6 +249,7 @@ namespace States {
                 }
 
                 inline void ResponseSuccess(const std::string str_response){
+                    log_base(TAG::STA, "States::ChatsState::ChatMethods::ResponseSuccess", str_response);
 
                     ChatSocket::ChatResponse chat_response(str_response);
 
@@ -246,7 +259,7 @@ namespace States {
                 }
 
                 inline void ResponseError(const std::string str_error) {
-                    
+                    log_base(TAG::STA, "States::ChatsState::ChatMethods::ResponseError", str_error);
                 }
 
             }

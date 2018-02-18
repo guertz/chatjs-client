@@ -33,14 +33,14 @@ namespace AuthSocket {
     }
 
     AuthRequest::AuthRequest() {
-        log_C(TAG::OBJ, "AuthRequest@JsonItem::Create", "");
+        log_details(TAG::OBJ, "AuthRequest@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
         this->user = "";
     }
 
     AuthRequest::AuthRequest(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "AuthRequest@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "AuthRequest@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
         this->user = j.at("user").get<string>();
@@ -50,7 +50,7 @@ namespace AuthSocket {
         : AuthRequest(json::parse(serialized)) { }
 
     AuthRequest::~AuthRequest() {
-        log_C(TAG::OBJ, "AuthRequest@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "AuthRequest@JsonItem::Destroy", "");
     }
 
     nlohmann::json AuthRequest::to_json() const {
@@ -61,14 +61,14 @@ namespace AuthSocket {
     }
 
     AuthResponse::AuthResponse() {
-        log_C(TAG::OBJ, "AuthResponse@JsonItem::Create", "");
+        log_details(TAG::OBJ, "AuthResponse@JsonItem::Create", "");
 
         this->type = SIGNAL::ALL;
         this->online = false;
     }
 
     AuthResponse::AuthResponse(const nlohmann::json& j) {
-        log_C(TAG::OBJ, "AuthResponse@JsonItem::Create", "...json...");
+        log_details(TAG::OBJ, "AuthResponse@JsonItem::Create", "...json...");
 
         this->type = str_to_enum(j.at("type").get<string>());
         this->online = j.at("online").get<bool>();
@@ -79,7 +79,7 @@ namespace AuthSocket {
         : AuthResponse(json::parse(serialized)) { }
 
     AuthResponse::~AuthResponse() {
-        log_C(TAG::OBJ, "AuthResponse@JsonItem::Destroy", "");
+        log_details(TAG::OBJ, "AuthResponse@JsonItem::Destroy", "");
     }
 
 

@@ -28,12 +28,12 @@ namespace ChatList {
     namespace Events { 
 
         inline void NewChat(const std::string& args) {
-            log_C(TAG::CMP, "ChatList::NewChat", args);
+            log_details(TAG::CMP, "ChatList::NewChat", args);
             Modals::ChatModal::Events::Show();
         }
 
         inline void UserSelected(const std::string& args){
-            log_C(TAG::CMP, "ChatList::UserSelected", args);
+            log_details(TAG::CMP, "ChatList::UserSelected", args);
 
             json event_args = json::parse(args);
             ChatsState::setCurrentChat(event_args.at("ref").get<string>());
@@ -41,7 +41,7 @@ namespace ChatList {
     }
 
     void Bootstrap(){
-        log_B(TAG::CMP, "ChatList::Bootstrap", "");
+        log_base(TAG::CMP, "ChatList::Bootstrap", "");
 
         WebUI::Execute(_src_components_chat_list_chat_list_js);
 
@@ -54,7 +54,7 @@ namespace ChatList {
     }
 
     void Destroy() {
-        log_B(TAG::CMP, "ChatList::Destroy", "");
+        log_base(TAG::CMP, "ChatList::Destroy", "");
     }
 
     namespace State {
