@@ -5,6 +5,7 @@
 #include "auth-modal.js.h"
 
 #include "components/modals/modals.h"
+#include "components/modals/sign-modal/sign-modal.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
@@ -33,13 +34,19 @@ namespace Modals {
 
         namespace Events {
 
-            inline void Submit(const std::string& args){
+            inline void Submit(const std::string& args) {
                 log_details(TAG::CMP, "Modals::AuthModal::Submit", args);
 
                 json fn_params = json::parse(args);
                 AuthState::Login(fn_params.at("_id").get<string>());
             }
 
+            inline void SignIn(const std::string& args) {
+                log_details(TAG::CMP, "Modals::AuthModal::SignIn", args);
+
+                Modals::SignModal::Events::Show();
+            }
+            
             inline void Reset(){
                 log_details(TAG::CMP, "Modals::AuthModal::Reset", "");
 
@@ -62,6 +69,7 @@ namespace Modals {
             WebUI::Execute(_src_components_modal_auth_modal_auth_modal_js);
             
             WebUI::Register("Modals::AuthModal::Submit", Events::Submit);
+            WebUI::Register("Modals::AuthModal::SignIn", Events::SignIn);
             AuthState::Register("Modals::AuthModal", State::Auth);
 
             Events::Show();
@@ -108,7 +116,10 @@ namespace Modals {
             }
 
             inline void OnLoginErrors() {
-                WebUI::Execute("modals.AuthModal.showErrors('" + AuthState::getAuthError() + "')");
+                const string errors = AuthState::getAuthError();
+
+                if(errors.size() > 0)
+                    WebUI::Execute("modals.AuthModal.showErrors('" + errors + "')");
             }
 
             inline void OnLogout () {

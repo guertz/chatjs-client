@@ -100,8 +100,10 @@ $ doxygen
 ```
 ## Next steps
 - [x] Code refactoring
+- [ ] Iframe for user to register
 - [ ] OSX platform & release build
 - [ ] OOP (singleton & component will inherit states)
 - [ ] Websocket/Events poll loops like libuv
 - [ ] JavaScript document API binding
 - [ ] Data Models refactoring with different API system
+- [ ] Extend MakeFile support

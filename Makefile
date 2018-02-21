@@ -5,10 +5,10 @@ TARGET=application
 DIR_SRC=src
 
 # Directory containing the built application (could be debug or release)
-DIR_BUILD_SPACE=.build
+DIR_BUILD_SPACE=build
 
 # Compiled parts that compose the whole app
-APP=src/app/app.o src/common/base64/base64.o src/common/logger/logger.o src/common/uuid/uuid.o src/common/web-ui/web-ui.o src/components/chat-details/chat-details.o src/components/chat-list/chat-list.o src/components/modals/auth-modal/auth-modal.o src/components/modals/chat-modal/chat-modal.o src/components/modals/conn-modal/conn-modal.o src/components/modals/modals.o src/components/navbar/navbar.o src/components/navbar/profile/profile.o src/components/toast/toast.o src/main.o src/models/chats/chats.o src/models/chats/message.o src/models/json-item.o src/models/socket/auth/auth-socket.o src/models/socket/chat/chat-socket.o src/models/socket/chats/chats-socket.o src/models/socket/socket.o src/models/socket/users/users-socket.o src/models/user/user.o src/protocol/sockets/easywsclient.o src/protocol/sockets/wscustom.o src/states/auth-state/auth-state.o src/states/chats-state/chats-state.o src/states/users-state/users-state.o
+APP=src/app/app.o src/common/base64/base64.o src/common/logger/logger.o src/common/uuid/uuid.o src/common/web-ui/web-ui.o src/components/chat-details/chat-details.o src/components/chat-list/chat-list.o src/components/modals/auth-modal/auth-modal.o src/components/modals/chat-modal/chat-modal.o src/components/modals/conn-modal/conn-modal.o src/components/modals/modals.o src/components/modals/sign-modal/sign-modal.o src/components/navbar/navbar.o src/components/navbar/profile/profile.o src/components/toast/toast.o src/main.o src/models/chats/chats.o src/models/chats/message.o src/models/json-item.o src/models/socket/auth/auth-socket.o src/models/socket/chat/chat-socket.o src/models/socket/chats/chats-socket.o src/models/socket/socket.o src/models/socket/users/users-socket.o src/models/user/user.o src/protocol/sockets/easywsclient.o src/protocol/sockets/wscustom.o src/states/auth-state/auth-state.o src/states/chats-state/chats-state.o src/states/users-state/users-state.o
 
 # Flags that will be added to CXXFLAGS for the release build stage
 RELEASE_FLAGS= -DNDEBUG
@@ -107,7 +107,7 @@ clean-env:
 init: clean-env
 	touch $(DIR_BUILD_SPACE)/$(ENV)
 
-# Creates the .build directory if doesn't exist
+# Creates the build directory if doesn't exist
 directories:
 	mkdir -p $(DIR_BUILD_SPACE)
 
@@ -137,6 +137,10 @@ check-env:
 #	clean
 #	build (see for advice)
 refresh-app: clean build
+
+# refresh-assets: touch find *.cc => releted to *.js.h  && make
+# refresh-env: touch find *.cc => releted to env.h && make
+# ld -r linux ??
 	
 # ----------------- #
 # ----  CLEAN  ---- #

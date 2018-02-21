@@ -9,9 +9,6 @@
 /** Definizione lunghezza stringa log, utilizzato in web-ui.cc */
 #define LOG_LEN 60
 
-/** Abilitazione console di log su windows (vedi main.cc) */
-#define WIN_CONSOLE
-
 /** Abilitazione dello stream di uscita su cerr (per log errori) oltre che cout */
 // #define LOG_CERR
 
@@ -26,12 +23,15 @@
 
 #ifdef DEBUG_MODE
     
+    /** Abilitazione console di log su windows (vedi main.cc) */
+    #define WIN_CONSOLE
+
     #undef DEBUG_MASK
     #undef DEBUG_TASK
 
     // refresh-app richiesto se modificati i valori
-    #define DEBUG_MASK 3  // Log all levels but not pedantic
-    #define DEBUG_TASK 53 // Log all type except OBJ, CSL
+    #define DEBUG_MASK 1  // Log all levels but not pedantic
+    #define DEBUG_TASK 10 // Log all type except OBJ, CSL
 
 #endif
 

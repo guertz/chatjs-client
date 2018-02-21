@@ -1,15 +1,15 @@
-#ifndef COMPONENTS_MODALS_CONN_MODAL_CONN_MODAL_H
-#define COMPONENTS_MODALS_CONN_MODAL_CONN_MODAL_H
+#ifndef COMPONENTS_MODALS_SIGN_MODAL_SIGN_MODAL_H
+#define COMPONENTS_MODALS_SIGN_MODAL_SIGN_MODAL_H
 
 /**
- * @brief Interfaccia ConnModal, modale per gestire errori di connessione
- * @file conn-modal.h
+ * @brief Interfaccia SignModal, modale per registrarsi
+ * @file sign-modal.h
  */
 
 namespace Modals {
 
-    /** Modale che presenta gli errori in caso di malfunzionamento della connessione */
-    namespace ConnModal {
+   /** Modale che permette ad un utente di registrarsi */
+    namespace SignModal {
 
        /**
         * Spazio dei nomi in cui vengono registrati gli eventi che vanno ad interagire

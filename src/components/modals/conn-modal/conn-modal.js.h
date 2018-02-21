@@ -6,7 +6,7 @@
 /** Componente Javascript conn-modal.h */
 const std::string _src_components_modal_conn_modal_conn_modal_js = R"(
 const ConnectivityModalFactory = function() {
-    const domRef = "connectivity-modal";
+    const domRef = "conn-modal";
 
     // z-index
     // error format (color red)
@@ -32,7 +32,7 @@ const ConnectivityModalFactory = function() {
         document.body.appendChild(node);
     }();
  
-    window.modals['ConnectivityModal'] = this;
+    window.modals['ConnModal'] = this;
     
-};
+}();
 )";

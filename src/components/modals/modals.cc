@@ -6,6 +6,8 @@
 
 #include "auth-modal/auth-modal.h"
 #include "chat-modal/chat-modal.h"
+#include "conn-modal/conn-modal.h"
+#include "sign-modal/sign-modal.h"
 
 #include "common/web-ui/web-ui.h"
 #include "common/logger/logger.h"
@@ -52,7 +54,9 @@ namespace Modals {
 
         AuthModal::RegisterModal();
         ChatModal::RegisterModal();
-    
+        ConnModal::RegisterModal();
+        SignModal::RegisterModal();
+
     }
 
     void Destroy() {
@@ -60,6 +64,8 @@ namespace Modals {
 
         AuthModal::EraseModal();
         ChatModal::EraseModal();
+        ConnModal::EraseModal();
+        SignModal::EraseModal();
 
     }
 

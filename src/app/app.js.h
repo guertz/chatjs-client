@@ -5,6 +5,11 @@
 
 /** Componente Javascript app.h */
 const std::string _src_app_app_js = R"(
+
+var config = {
+    app_url: ''
+};
+
 // Basic inatializatios & Methods
 window.components = {};
 
@@ -33,5 +38,13 @@ window.forAll = function(root, query, action){
 
     for(var i = 0; i<nodes.length; i++)
         action(nodes[i]);
+}
+
+window.setAppUrl = function(app_url) {
+    config.app_url = app_url;
+}
+
+window.getAppUrl = function() {
+    return config.app_url;
 }
 )";

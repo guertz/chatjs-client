@@ -2,7 +2,10 @@
 #include <iostream>
 #include <string>
 
+#include "env.h"
 #include "wscustom.h"
+
+#include "components/modals/conn-modal/conn-modal.h"
 
 #include "common/uuid/uuid.h"
 #include "common/logger/logger.h"
@@ -20,12 +23,6 @@ using namespace std;
 #define SOCKET_ACTIVE_POLL 300
 /** Tempo espresso in ms di polling per socket dormiente */
 #define SOCKET_INACTIVE_POLL 1000
-
-/** Definizione url websocket per server remoto */
-#define SERVERHOST "137.74.196.151:8000"
-
-/** Definizione url websocket per server locale */
-#define LOCALHOST  "localhost:8000"
 
 // Improve
 //   - reconnect
@@ -46,11 +43,7 @@ namespace ws {
         // viene effettuata nel thread così il thread UI non ne risente
         // per i tempi di handshaking
 
-        #ifdef SERVER_REMOTE
-            this->channel = WebSocket::from_url("ws://" + string(SERVERHOST) + "/" + this->endpoint);
-        #else
-            this->channel = WebSocket::from_url("ws://" + string(LOCALHOST) + "/" + this->endpoint);
-        #endif
+        this->channel = WebSocket::from_url("ws://" + string(APPURL) + "/" + this->endpoint);
         
         // Abilitazione socket in modalità computing
         this->is_computing = true;
@@ -100,7 +93,8 @@ namespace ws {
 
         // Il canale è stato terminato in modo inaspettato e non richiesto dall'utente
         if(this->is_computing){
-            this->onerror("Bad connection");
+            this->onerror("");
+            Modals::ConnModal::Events::Show();
         }
 
         if(this->channel) {

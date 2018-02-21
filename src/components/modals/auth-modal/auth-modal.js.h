@@ -23,6 +23,8 @@ const AuthModalFactory = function(){
                         '<br/>' +
                         '<button type="submit" class="w3-button w3-teal can-disable">Entra</button>'+
                     '</form>'+
+                    '<br/>' +
+                    '<a href="javascript:void(0);" id="registrar">Oppure registrati</a>'
                 '</div>' +
             '</div>' +
         '</div>';
@@ -31,6 +33,17 @@ const AuthModalFactory = function(){
         window.forAll(node, ".can-disable", function(node){
             node.disabled = !!state;
         })
+    }
+
+    var signEvent = function(event) {
+        event.preventDefault();
+
+        window.external.invoke(JSON.stringify(
+            {
+                fn: 'Modals::AuthModal::SignIn', 
+                params: { }
+            }
+        ));
     }
 
     var submitEvent = function(event) {
@@ -58,6 +71,7 @@ const AuthModalFactory = function(){
 
     this.destroy = function() {
         window.unsubscribeTo(window.getFirst(node, "form"), "submit", submitEvent);  
+        window.unsubscribeTo(window.getFirst(node, "a#registrar"), "click", signEvent);
         // window.getFirst(document, "#"+domRef).parent.innerHTML = "";
     }
 
@@ -65,6 +79,7 @@ const AuthModalFactory = function(){
         // if dom not exist
         document.body.appendChild(node);
         window.subscribeTo(window.getFirst(node, "form"), "submit", submitEvent);
+        window.subscribeTo(window.getFirst(node, "a#registrar"), "click", signEvent);
     }();
     
 

@@ -36,6 +36,17 @@ namespace Modals {
            inline void Submit(const std::string& args);
 
            /**
+            * Handler di evento JavaScript che notifica la richiesta di registrazione
+            * utente.
+            * Di seguito e riportata la struttura dati ricevuta dalla funzione.
+            *
+            * @param[in] args Parametri della chiamata JS in formato JSON serialized.
+            * (stringa vuota)
+            *
+            */
+           inline void SignIn(const std::string& args);
+
+           /**
             * Metodo che agisce su l'interfaccia e riporta il form al suo 
             * stato di default.
             */

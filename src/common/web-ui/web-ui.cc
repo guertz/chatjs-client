@@ -7,6 +7,7 @@
 #include "assets/index.html.h"
 #include "assets/style.css.h"
 #include "assets/w3.css.h"
+#include "env.h"
 
 #define WEBVIEW_IMPLEMENTATION
 #include <webview.h>
@@ -93,7 +94,7 @@ namespace WebUI {
         // anche il css deve essere eseguito da una sorta di funzione javascript 
         const string style = "stylify(true, '" + style64 + "')";
 
-        const string appready = "appready()";
+        const string appready = "setAppUrl('" + string(APPURL) + "'); appready()";
 
         // Fixing gdk_threads queue
         log_details(TAG::CSL, "WebUI::Inject", "appinit.js");
