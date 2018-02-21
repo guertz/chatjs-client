@@ -140,6 +140,7 @@ refresh-app: clean build
 
 # refresh-assets: touch find *.cc => releted to *.js.h  && make
 # refresh-env: touch find *.cc => releted to env.h && make
+# minimize assets file?
 # ld -r linux ??
 	
 # ----------------- #

@@ -13,7 +13,7 @@
 // #define LOG_CERR
 
 /** Abilitazione debug webview per stampare log provenienti da essa (console + dispatch/execute) */
-// #define WEBVIEW_DEBUG // TODO: won't cut logs and will use its own system NSLog
+#define WEBVIEW_DEBUG // TODO: won't cut logs and will use its own system NSLog
 
 /** Livello di log */
 #define DEBUG_MASK 0

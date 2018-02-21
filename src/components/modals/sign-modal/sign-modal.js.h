@@ -25,10 +25,16 @@ const SignModalFactory = function() {
 
     this.create = function() {
         // if dom not exist
-        console.log("PROVA LOG#############");
         document.body.appendChild(node);
-        window.getFirst(node, "div.frame-wrap").innerHTML 
-            = "<iframe src='" + "http://" + window.getAppUrl() + "/users/form" + "'/></iframe>";
+
+        // iframe ok ma faccio prima a fare input e post con libcurl
+        var iframe = document.createElement("iframe");
+            iframe.src = "http://" + window.getAppUrl() + "/users/form";
+            iframe.style.width = "100%";
+            iframe.style.height = (parseInt(window.innerHeight) - 200) + 'px';
+            iframe.style.border = "0px";
+
+        window.getFirst(node, "div.frame-wrap").appendChild(iframe);
     }();
  
     window.modals['SignModal'] = this;

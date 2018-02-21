@@ -8,10 +8,8 @@ const std::string _src_assets_index_html = R"(
 <html>
     <head>
         <title>Chat.js</title>
-        
-        <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />  
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
         <script></script>
-    
     </head>
     <body>
 

@@ -63,6 +63,7 @@ namespace WebUI {
         webview.external_invoke_cb  = JsHCallback; 
 
         // TODO: Firebug/Web inspector
+        // On window this is not rendering correctly
         #ifdef WEBVIEW_DEBUG
             webview.debug = true;
         #endif
