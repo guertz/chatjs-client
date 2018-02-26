@@ -12,13 +12,19 @@ const SignModalFactory = function() {
         node.innerHTML = 
             '<div id="'+ domRef + '" class="w3-modal">' +
                     '<div class="w3-modal-content">' +
-                        '<div class="w3-container frame-wrap"></div>' +
+                        '<div class="w3-container frame-wrap">' +
+                            '<span class="w3-button w3-display-topright close-modal">&times</span>' +
+                        '</div>' +
                     '</div>' +
                 '</div>';
 
     
     
 
+    var hideEvent = function() {
+        window.hideModal(domRef);
+    }
+    
     this.destroy = function () {
         // remove dom reference
     }
@@ -35,6 +41,7 @@ const SignModalFactory = function() {
             iframe.style.border = "0px";
 
         window.getFirst(node, "div.frame-wrap").appendChild(iframe);
+        window.subscribeTo(window.getFirst(node, ".close-modal"), "click", hideEvent);
     }();
  
     window.modals['SignModal'] = this;

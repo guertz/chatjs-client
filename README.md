@@ -73,7 +73,7 @@ $ doxygen
 ## Folder Structure
 > Per una descrizione dettagliata dei vari file [fare riferimento qui](https://guertz.github.io/chatjs-client/html/files.html)
 ```
-├── .release                            # Release files & platform build
+├── build                               # Release files & platform build
 ├── assets                              # Assets file (HTML/JS/CSS)
 ├── dependencies                        # Dependencies
 ├── docs                                # Documentation files
